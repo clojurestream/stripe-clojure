@@ -1,0 +1,8 @@
+{:paths
+ ["src/config"
+  "src/main"
+  "resources"]
+
+ :deps
+ {org.clojure/clojure {:mvn/version "1.12.0"}
+  org.clojure/data.json {:mvn/version "2.5.0"}}}
