@@ -1,6 +1,7 @@
 (ns stream.clojure.stripe.generator
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
+            [clojure.string :as string]
             [stream.clojure.stripe.request :as request ]))
 
 ;; Step 1: Fetch OpenAPI Schema
@@ -29,16 +30,25 @@
     (map #(subs % 1 (dec (count %)))
       (re-seq #"\{[^\}]+\}" path-str))))
 
+(defn camel-to-kebab [s]
+  "Converts CamelCase to kebab-case"
+  (-> s
+    (string/replace #"([a-z])([A-Z])" "$1-$2") ;; Add hyphen between camelCase transitions
+    (string/replace #"([A-Z]+)([A-Z][a-z])" "$1-$2") ;; Fix uppercase sequences
+    (string/lower-case) ;; Convert everything to lowercase
+    (string/replace #"_" "-"))) ;; Replace underscores with dashes
+
 (defn generate-function [endpoint]
   (let [{:keys [operation-id method path]} endpoint
+        kebab-op-id (camel-to-kebab operation-id)
         path-str (name path)  ;; Ensure it's a string
         params (extract-path-params path-str)
-        param-names (clojure.string/join " " params)  ;; Convert to function arguments
+        param-names (if (empty? params) "params" (string/join " " params)) ;; Convert to function arguments
         replaced-path (reduce (fn [p param]
                                 (clojure.string/replace p (str "{" param "}") (str "\" " param " \"")))
                         path-str
                         params)]
-    (str "\n(defn " operation-id " [" param-names " params]\n"
+    (str "\n(defn " kebab-op-id " [" param-names " params]\n"
       "  (stripe-request :" (name method) " (str \"" replaced-path "\") params))")))
 
 ;; Step 4: Ensure Directory Exists & Write to File
