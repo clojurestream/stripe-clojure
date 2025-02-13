@@ -21,29 +21,29 @@ While Stripe provides a Java SDK, it is designed for object-oriented workflows, 
 This library follows a similar approach to [Cognitect’s AWS API](https://github.com/cognitect-labs/aws-api), in that it is automatically generated from Stripe’s OpenAPI specification. This ensures that it stays up to date with Stripe’s evolving API, reduces maintenance overhead, and provides a dynamic, data-driven interface for developers.
 ## Roadmap:
 
-### Phase 1: Prototype (Current Stage)
+### Phase 1: Prototype
 Establish the core architecture and foundational components for API interaction.
-- Adopt OpenAPI Specification – Automatically generate API functions to keep up with Stripe’s evolving features.
-- Base HTTP Client Implementation – Moved from clj-http.client to Java 11's HttpClient for reliability.
+- [x] Adopt OpenAPI Specification – Automatically generate API functions to keep up with Stripe’s evolving features.
+- [x] Base HTTP Client Implementation – Moved from clj-http.client to Java 11's HttpClient for reliability.
 
-### Phase 2: Beta
+### Phase 2: Beta (Current Stage)
 Feature-complete but may contain bugs; users can provide feedback.
-- Standardized Function Naming – Ensured consistency and idiomatic Clojure practices.
-- Improve Developer Experience – Add comprehensive docstrings and REPL-friendly usage guidance.
-- Error Handling & Logging – Provide structured logging and clear error messages for debugging.
-- Automated Testing & CI/CD Pipelines – Ensure continuous validation of API functionality.
-- Automated Deployment & Distribution – Set up Clojars, GitHub releases, and workflow automation.
+- [x] Standardized Function Naming – Ensured consistency and idiomatic Clojure practices.
+- [ ] Improve Developer Experience – Add comprehensive docstrings and REPL-friendly usage guidance.
+- [ ] Error Handling & Logging – Provide structured logging and clear error messages for debugging.
+- [ ] Automated Testing & CI/CD Pipelines – Ensure continuous validation of API functionality.
+- [ ] Automated Deployment & Distribution – Set up Clojars, GitHub releases, and workflow automation.
 
 #### Early Adopter Phase (Pre-1.0)
 The project remains publicly available on GitHub, but this phase marks:
-- A **wider call for contributors** to test and improve the library.
-- **Encouraging community feedback** on API design and usability.
-- The first **stable API draft**, though still subject to refinement.
+- [ ] A **wider call for contributors** to test and improve the library.
+- [ ] **Encouraging community feedback** on API design and usability.
+- [ ] The first **stable API draft**, though still subject to refinement.
 
 #### Release Candidate (RC)
 A stable version with a clear versioning scheme to align with Stripe for ease of use.
 
 ### Phase 3: Production & Maintenance
-- **General Availability (GA)** – Fully stable, recommended for production use. Continuous monitoring and incremental improvements.
-- **Long-Term Support (LTS)** – Establish a maintenance strategy with security updates, Stripe API alignment, and clear deprecation policies.
-- **Community Engagement** – Encourage contributions, provide issue resolution, and evolve the library based on real-world usage.
+- [ ] **General Availability (GA)** – Fully stable, recommended for production use. Continuous monitoring and incremental improvements.
+- [ ] **Long-Term Support (LTS)** – Establish a maintenance strategy with security updates, Stripe API alignment, and clear deprecation policies.
+- [ ] **Community Engagement** – Encourage contributions, provide issue resolution, and evolve the library based on real-world usage.
