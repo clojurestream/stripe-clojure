@@ -1,4 +1,5 @@
 (ns stream.clojure.stripe.request
+  (:refer-clojure :exclude [send])
   (:require [clojure.data.json :as json])
   (:import [java.net.http HttpClient HttpRequest HttpClient$Version]
            [java.net.http HttpRequest$BodyPublishers HttpResponse$BodyHandlers]

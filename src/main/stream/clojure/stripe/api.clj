@@ -4,1688 +4,1688 @@
   ALPHA: Work-in-progress - expect breaking changes before the stable release."
  (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
-(defn PostBillingAlertsIdArchive [id params]
+(defn post-billing-alerts-id-archive [id params]
   (stripe-request :post (str "v1/billing/alerts/" id "/archive") params))
 
-(defn PostClimateOrdersOrderCancel [order params]
+(defn post-climate-orders-order-cancel [order params]
   (stripe-request :post (str "v1/climate/orders/" order "/cancel") params))
 
-(defn GetSubscriptionSchedules [ params]
+(defn get-subscription-schedules [params params]
   (stripe-request :get (str "v1/subscription_schedules") params))
 
-(defn PostSubscriptionSchedules [ params]
+(defn post-subscription-schedules [params params]
   (stripe-request :post (str "v1/subscription_schedules") params))
 
-(defn GetRadarEarlyFraudWarnings [ params]
+(defn get-radar-early-fraud-warnings [params params]
   (stripe-request :get (str "v1/radar/early_fraud_warnings") params))
 
-(defn GetTreasuryTransactionEntriesId [id params]
+(defn get-treasury-transaction-entries-id [id params]
   (stripe-request :get (str "v1/treasury/transaction_entries/" id "") params))
 
-(defn PostTestHelpersTreasuryOutboundPaymentsIdFail [id params]
+(defn post-test-helpers-treasury-outbound-payments-id-fail [id params]
   (stripe-request :post (str "v1/test_helpers/treasury/outbound_payments/" id "/fail") params))
 
-(defn GetTaxIds [ params]
+(defn get-tax-ids [params params]
   (stripe-request :get (str "v1/tax_ids") params))
 
-(defn PostTaxIds [ params]
+(defn post-tax-ids [params params]
   (stripe-request :post (str "v1/tax_ids") params))
 
-(defn GetClimateSuppliers [ params]
+(defn get-climate-suppliers [params params]
   (stripe-request :get (str "v1/climate/suppliers") params))
 
-(defn GetLinkedAccountsAccount [account params]
+(defn get-linked-accounts-account [account params]
   (stripe-request :get (str "v1/linked_accounts/" account "") params))
 
-(defn GetTaxRegistrationsId [id params]
+(defn get-tax-registrations-id [id params]
   (stripe-request :get (str "v1/tax/registrations/" id "") params))
 
-(defn PostTaxRegistrationsId [id params]
+(defn post-tax-registrations-id [id params]
   (stripe-request :post (str "v1/tax/registrations/" id "") params))
 
-(defn GetBalanceHistory [ params]
+(defn get-balance-history [params params]
   (stripe-request :get (str "v1/balance/history") params))
 
-(defn GetPromotionCodesPromotionCode [promotion_code params]
+(defn get-promotion-codes-promotion-code [promotion_code params]
   (stripe-request :get (str "v1/promotion_codes/" promotion_code "") params))
 
-(defn PostPromotionCodesPromotionCode [promotion_code params]
+(defn post-promotion-codes-promotion-code [promotion_code params]
   (stripe-request :post (str "v1/promotion_codes/" promotion_code "") params))
 
-(defn GetCustomersCustomerCashBalanceTransactionsTransaction [customer transaction params]
+(defn get-customers-customer-cash-balance-transactions-transaction [customer transaction params]
   (stripe-request :get (str "v1/customers/" customer "/cash_balance_transactions/" transaction "") params))
 
-(defn GetTopups [ params]
+(defn get-topups [params params]
   (stripe-request :get (str "v1/topups") params))
 
-(defn PostTopups [ params]
+(defn post-topups [params params]
   (stripe-request :post (str "v1/topups") params))
 
-(defn GetPaymentLinksPaymentLink [payment_link params]
+(defn get-payment-links-payment-link [payment_link params]
   (stripe-request :get (str "v1/payment_links/" payment_link "") params))
 
-(defn PostPaymentLinksPaymentLink [payment_link params]
+(defn post-payment-links-payment-link [payment_link params]
   (stripe-request :post (str "v1/payment_links/" payment_link "") params))
 
-(defn GetPaymentMethodDomains [ params]
+(defn get-payment-method-domains [params params]
   (stripe-request :get (str "v1/payment_method_domains") params))
 
-(defn PostPaymentMethodDomains [ params]
+(defn post-payment-method-domains [params params]
   (stripe-request :post (str "v1/payment_method_domains") params))
 
-(defn PostBillingPortalSessions [ params]
+(defn post-billing-portal-sessions [params params]
   (stripe-request :post (str "v1/billing_portal/sessions") params))
 
-(defn PostAccountLinks [ params]
+(defn post-account-links [params params]
   (stripe-request :post (str "v1/account_links") params))
 
-(defn GetSourcesSourceSourceTransactionsSourceTransaction [source source_transaction params]
+(defn get-sources-source-source-transactions-source-transaction [source source_transaction params]
   (stripe-request :get (str "v1/sources/" source "/source_transactions/" source_transaction "") params))
 
-(defn GetInvoicesUpcomingLines [ params]
+(defn get-invoices-upcoming-lines [params params]
   (stripe-request :get (str "v1/invoices/upcoming/lines") params))
 
-(defn GetIssuingDisputesDispute [dispute params]
+(defn get-issuing-disputes-dispute [dispute params]
   (stripe-request :get (str "v1/issuing/disputes/" dispute "") params))
 
-(defn PostIssuingDisputesDispute [dispute params]
+(defn post-issuing-disputes-dispute [dispute params]
   (stripe-request :post (str "v1/issuing/disputes/" dispute "") params))
 
-(defn GetClimateProducts [ params]
+(defn get-climate-products [params params]
   (stripe-request :get (str "v1/climate/products") params))
 
-(defn PostRefundsRefundCancel [refund params]
+(defn post-refunds-refund-cancel [refund params]
   (stripe-request :post (str "v1/refunds/" refund "/cancel") params))
 
-(defn PostTaxTransactionsCreateReversal [ params]
+(defn post-tax-transactions-create-reversal [params params]
   (stripe-request :post (str "v1/tax/transactions/create_reversal") params))
 
-(defn DeleteTerminalConfigurationsConfiguration [configuration params]
+(defn delete-terminal-configurations-configuration [configuration params]
   (stripe-request :delete (str "v1/terminal/configurations/" configuration "") params))
 
-(defn GetTerminalConfigurationsConfiguration [configuration params]
+(defn get-terminal-configurations-configuration [configuration params]
   (stripe-request :get (str "v1/terminal/configurations/" configuration "") params))
 
-(defn PostTerminalConfigurationsConfiguration [configuration params]
+(defn post-terminal-configurations-configuration [configuration params]
   (stripe-request :post (str "v1/terminal/configurations/" configuration "") params))
 
-(defn GetMandatesMandate [mandate params]
+(defn get-mandates-mandate [mandate params]
   (stripe-request :get (str "v1/mandates/" mandate "") params))
 
-(defn GetPrices [ params]
+(defn get-prices [params params]
   (stripe-request :get (str "v1/prices") params))
 
-(defn PostPrices [ params]
+(defn post-prices [params params]
   (stripe-request :post (str "v1/prices") params))
 
-(defn PostSetupIntentsIntentCancel [intent params]
+(defn post-setup-intents-intent-cancel [intent params]
   (stripe-request :post (str "v1/setup_intents/" intent "/cancel") params))
 
-(defn GetIdentityVerificationSessions [ params]
+(defn get-identity-verification-sessions [params params]
   (stripe-request :get (str "v1/identity/verification_sessions") params))
 
-(defn PostIdentityVerificationSessions [ params]
+(defn post-identity-verification-sessions [params params]
   (stripe-request :post (str "v1/identity/verification_sessions") params))
 
-(defn GetTreasuryOutboundPaymentsId [id params]
+(defn get-treasury-outbound-payments-id [id params]
   (stripe-request :get (str "v1/treasury/outbound_payments/" id "") params))
 
-(defn PostTestHelpersTreasuryOutboundTransfersOutboundTransferPost [outbound_transfer params]
+(defn post-test-helpers-treasury-outbound-transfers-outbound-transfer-post [outbound_transfer params]
   (stripe-request :post (str "v1/test_helpers/treasury/outbound_transfers/" outbound_transfer "/post") params))
 
-(defn PostTestHelpersIssuingAuthorizationsAuthorizationFinalizeAmount [authorization params]
+(defn post-test-helpers-issuing-authorizations-authorization-finalize-amount [authorization params]
   (stripe-request :post (str "v1/test_helpers/issuing/authorizations/" authorization "/finalize_amount") params))
 
-(defn PostSourcesSourceVerify [source params]
+(defn post-sources-source-verify [source params]
   (stripe-request :post (str "v1/sources/" source "/verify") params))
 
-(defn GetTreasuryTransactions [ params]
+(defn get-treasury-transactions [params params]
   (stripe-request :get (str "v1/treasury/transactions") params))
 
-(defn GetCheckoutSessionsSession [session params]
+(defn get-checkout-sessions-session [session params]
   (stripe-request :get (str "v1/checkout/sessions/" session "") params))
 
-(defn PostCheckoutSessionsSession [session params]
+(defn post-checkout-sessions-session [session params]
   (stripe-request :post (str "v1/checkout/sessions/" session "") params))
 
-(defn GetClimateProductsProduct [product params]
+(defn get-climate-products-product [product params]
   (stripe-request :get (str "v1/climate/products/" product "") params))
 
-(defn PostFinancialConnectionsSessions [ params]
+(defn post-financial-connections-sessions [params params]
   (stripe-request :post (str "v1/financial_connections/sessions") params))
 
-(defn PostInvoiceRenderingTemplatesTemplateArchive [template params]
+(defn post-invoice-rendering-templates-template-archive [template params]
   (stripe-request :post (str "v1/invoice_rendering_templates/" template "/archive") params))
 
-(defn PostTestHelpersIssuingTransactionsTransactionRefund [transaction params]
+(defn post-test-helpers-issuing-transactions-transaction-refund [transaction params]
   (stripe-request :post (str "v1/test_helpers/issuing/transactions/" transaction "/refund") params))
 
-(defn PostInvoicesCreatePreview [ params]
+(defn post-invoices-create-preview [params params]
   (stripe-request :post (str "v1/invoices/create_preview") params))
 
-(defn GetCustomersCustomerBalanceTransactions [customer params]
+(defn get-customers-customer-balance-transactions [customer params]
   (stripe-request :get (str "v1/customers/" customer "/balance_transactions") params))
 
-(defn PostCustomersCustomerBalanceTransactions [customer params]
+(defn post-customers-customer-balance-transactions [customer params]
   (stripe-request :post (str "v1/customers/" customer "/balance_transactions") params))
 
-(defn PostCreditNotesIdVoid [id params]
+(defn post-credit-notes-id-void [id params]
   (stripe-request :post (str "v1/credit_notes/" id "/void") params))
 
-(defn GetBalanceTransactions [ params]
+(defn get-balance-transactions [params params]
   (stripe-request :get (str "v1/balance_transactions") params))
 
-(defn GetTerminalConfigurations [ params]
+(defn get-terminal-configurations [params params]
   (stripe-request :get (str "v1/terminal/configurations") params))
 
-(defn PostTerminalConfigurations [ params]
+(defn post-terminal-configurations [params params]
   (stripe-request :post (str "v1/terminal/configurations") params))
 
-(defn GetCustomersCustomerPaymentMethodsPaymentMethod [customer payment_method params]
+(defn get-customers-customer-payment-methods-payment-method [customer payment_method params]
   (stripe-request :get (str "v1/customers/" customer "/payment_methods/" payment_method "") params))
 
-(defn PostPayoutsPayoutCancel [payout params]
+(defn post-payouts-payout-cancel [payout params]
   (stripe-request :post (str "v1/payouts/" payout "/cancel") params))
 
-(defn PostTerminalReadersReaderProcessPaymentIntent [reader params]
+(defn post-terminal-readers-reader-process-payment-intent [reader params]
   (stripe-request :post (str "v1/terminal/readers/" reader "/process_payment_intent") params))
 
-(defn GetFiles [ params]
+(defn get-files [params params]
   (stripe-request :get (str "v1/files") params))
 
-(defn PostFiles [ params]
+(defn post-files [params params]
   (stripe-request :post (str "v1/files") params))
 
-(defn PostTestHelpersIssuingAuthorizations [ params]
+(defn post-test-helpers-issuing-authorizations [params params]
   (stripe-request :post (str "v1/test_helpers/issuing/authorizations") params))
 
-(defn GetInvoiceRenderingTemplates [ params]
+(defn get-invoice-rendering-templates [params params]
   (stripe-request :get (str "v1/invoice_rendering_templates") params))
 
-(defn GetReportingReportTypes [ params]
+(defn get-reporting-report-types [params params]
   (stripe-request :get (str "v1/reporting/report_types") params))
 
-(defn GetIssuingDisputes [ params]
+(defn get-issuing-disputes [params params]
   (stripe-request :get (str "v1/issuing/disputes") params))
 
-(defn PostIssuingDisputes [ params]
+(defn post-issuing-disputes [params params]
   (stripe-request :post (str "v1/issuing/disputes") params))
 
-(defn GetBillingAlertsId [id params]
+(defn get-billing-alerts-id [id params]
   (stripe-request :get (str "v1/billing/alerts/" id "") params))
 
-(defn GetTransfersIdReversals [id params]
+(defn get-transfers-id-reversals [id params]
   (stripe-request :get (str "v1/transfers/" id "/reversals") params))
 
-(defn PostTransfersIdReversals [id params]
+(defn post-transfers-id-reversals [id params]
   (stripe-request :post (str "v1/transfers/" id "/reversals") params))
 
-(defn GetProducts [ params]
+(defn get-products [params params]
   (stripe-request :get (str "v1/products") params))
 
-(defn PostProducts [ params]
+(defn post-products [params params]
   (stripe-request :post (str "v1/products") params))
 
-(defn DeleteCustomersCustomerSubscriptionsSubscriptionExposedId [customer subscription_exposed_id params]
+(defn delete-customers-customer-subscriptions-subscription-exposed-id [customer subscription_exposed_id params]
   (stripe-request :delete (str "v1/customers/" customer "/subscriptions/" subscription_exposed_id "") params))
 
-(defn GetCustomersCustomerSubscriptionsSubscriptionExposedId [customer subscription_exposed_id params]
+(defn get-customers-customer-subscriptions-subscription-exposed-id [customer subscription_exposed_id params]
   (stripe-request :get (str "v1/customers/" customer "/subscriptions/" subscription_exposed_id "") params))
 
-(defn PostCustomersCustomerSubscriptionsSubscriptionExposedId [customer subscription_exposed_id params]
+(defn post-customers-customer-subscriptions-subscription-exposed-id [customer subscription_exposed_id params]
   (stripe-request :post (str "v1/customers/" customer "/subscriptions/" subscription_exposed_id "") params))
 
-(defn GetInvoicesSearch [ params]
+(defn get-invoices-search [params params]
   (stripe-request :get (str "v1/invoices/search") params))
 
-(defn PostTestHelpersTreasuryReceivedDebits [ params]
+(defn post-test-helpers-treasury-received-debits [params params]
   (stripe-request :post (str "v1/test_helpers/treasury/received_debits") params))
 
-(defn GetTreasuryOutboundTransfersOutboundTransfer [outbound_transfer params]
+(defn get-treasury-outbound-transfers-outbound-transfer [outbound_transfer params]
   (stripe-request :get (str "v1/treasury/outbound_transfers/" outbound_transfer "") params))
 
-(defn GetCustomersCustomerBankAccounts [customer params]
+(defn get-customers-customer-bank-accounts [customer params]
   (stripe-request :get (str "v1/customers/" customer "/bank_accounts") params))
 
-(defn PostCustomersCustomerBankAccounts [customer params]
+(defn post-customers-customer-bank-accounts [customer params]
   (stripe-request :post (str "v1/customers/" customer "/bank_accounts") params))
 
-(defn DeleteSubscriptionsSubscriptionExposedId [subscription_exposed_id params]
+(defn delete-subscriptions-subscription-exposed-id [subscription_exposed_id params]
   (stripe-request :delete (str "v1/subscriptions/" subscription_exposed_id "") params))
 
-(defn GetSubscriptionsSubscriptionExposedId [subscription_exposed_id params]
+(defn get-subscriptions-subscription-exposed-id [subscription_exposed_id params]
   (stripe-request :get (str "v1/subscriptions/" subscription_exposed_id "") params))
 
-(defn PostSubscriptionsSubscriptionExposedId [subscription_exposed_id params]
+(defn post-subscriptions-subscription-exposed-id [subscription_exposed_id params]
   (stripe-request :post (str "v1/subscriptions/" subscription_exposed_id "") params))
 
-(defn GetEvents [ params]
+(defn get-events [params params]
   (stripe-request :get (str "v1/events") params))
 
-(defn GetAccounts [ params]
+(defn get-accounts [params params]
   (stripe-request :get (str "v1/accounts") params))
 
-(defn PostAccounts [ params]
+(defn post-accounts [params params]
   (stripe-request :post (str "v1/accounts") params))
 
-(defn PostTerminalReadersReaderSetReaderDisplay [reader params]
+(defn post-terminal-readers-reader-set-reader-display [reader params]
   (stripe-request :post (str "v1/terminal/readers/" reader "/set_reader_display") params))
 
-(defn GetTaxCodes [ params]
+(defn get-tax-codes [params params]
   (stripe-request :get (str "v1/tax_codes") params))
 
-(defn GetTaxTransactionsTransaction [transaction params]
+(defn get-tax-transactions-transaction [transaction params]
   (stripe-request :get (str "v1/tax/transactions/" transaction "") params))
 
-(defn PostInvoicesInvoiceVoid [invoice params]
+(defn post-invoices-invoice-void [invoice params]
   (stripe-request :post (str "v1/invoices/" invoice "/void") params))
 
-(defn GetRefundsRefund [refund params]
+(defn get-refunds-refund [refund params]
   (stripe-request :get (str "v1/refunds/" refund "") params))
 
-(defn PostRefundsRefund [refund params]
+(defn post-refunds-refund [refund params]
   (stripe-request :post (str "v1/refunds/" refund "") params))
 
-(defn GetBalanceHistoryId [id params]
+(defn get-balance-history-id [id params]
   (stripe-request :get (str "v1/balance/history/" id "") params))
 
-(defn GetSetupAttempts [ params]
+(defn get-setup-attempts [params params]
   (stripe-request :get (str "v1/setup_attempts") params))
 
-(defn PostTreasuryFinancialAccountsFinancialAccountClose [financial_account params]
+(defn post-treasury-financial-accounts-financial-account-close [financial_account params]
   (stripe-request :post (str "v1/treasury/financial_accounts/" financial_account "/close") params))
 
-(defn PostQuotesQuoteAccept [quote params]
+(defn post-quotes-quote-accept [quote params]
   (stripe-request :post (str "v1/quotes/" quote "/accept") params))
 
-(defn GetEntitlementsFeatures [ params]
+(defn get-entitlements-features [params params]
   (stripe-request :get (str "v1/entitlements/features") params))
 
-(defn PostEntitlementsFeatures [ params]
+(defn post-entitlements-features [params params]
   (stripe-request :post (str "v1/entitlements/features") params))
 
-(defn PostTestHelpersTreasuryInboundTransfersIdSucceed [id params]
+(defn post-test-helpers-treasury-inbound-transfers-id-succeed [id params]
   (stripe-request :post (str "v1/test_helpers/treasury/inbound_transfers/" id "/succeed") params))
 
-(defn GetBillingCreditGrants [ params]
+(defn get-billing-credit-grants [params params]
   (stripe-request :get (str "v1/billing/credit_grants") params))
 
-(defn PostBillingCreditGrants [ params]
+(defn post-billing-credit-grants [params params]
   (stripe-request :post (str "v1/billing/credit_grants") params))
 
-(defn GetTreasuryOutboundTransfers [ params]
+(defn get-treasury-outbound-transfers [params params]
   (stripe-request :get (str "v1/treasury/outbound_transfers") params))
 
-(defn PostTreasuryOutboundTransfers [ params]
+(defn post-treasury-outbound-transfers [params params]
   (stripe-request :post (str "v1/treasury/outbound_transfers") params))
 
-(defn GetWebhookEndpoints [ params]
+(defn get-webhook-endpoints [params params]
   (stripe-request :get (str "v1/webhook_endpoints") params))
 
-(defn PostWebhookEndpoints [ params]
+(defn post-webhook-endpoints [params params]
   (stripe-request :post (str "v1/webhook_endpoints") params))
 
-(defn PostIssuingDisputesDisputeSubmit [dispute params]
+(defn post-issuing-disputes-dispute-submit [dispute params]
   (stripe-request :post (str "v1/issuing/disputes/" dispute "/submit") params))
 
-(defn GetFinancialConnectionsAccountsAccount [account params]
+(defn get-financial-connections-accounts-account [account params]
   (stripe-request :get (str "v1/financial_connections/accounts/" account "") params))
 
-(defn GetQuotesQuoteLineItems [quote params]
+(defn get-quotes-quote-line-items [quote params]
   (stripe-request :get (str "v1/quotes/" quote "/line_items") params))
 
-(defn PostIdentityVerificationSessionsSessionCancel [session params]
+(defn post-identity-verification-sessions-session-cancel [session params]
   (stripe-request :post (str "v1/identity/verification_sessions/" session "/cancel") params))
 
-(defn GetBalanceTransactionsId [id params]
+(defn get-balance-transactions-id [id params]
   (stripe-request :get (str "v1/balance_transactions/" id "") params))
 
-(defn GetCustomersSearch [ params]
+(defn get-customers-search [params params]
   (stripe-request :get (str "v1/customers/search") params))
 
-(defn GetExchangeRatesRateId [rate_id params]
+(defn get-exchange-rates-rate-id [rate_id params]
   (stripe-request :get (str "v1/exchange_rates/" rate_id "") params))
 
-(defn GetCreditNotesPreviewLines [ params]
+(defn get-credit-notes-preview-lines [params params]
   (stripe-request :get (str "v1/credit_notes/preview/lines") params))
 
-(defn GetEventsId [id params]
+(defn get-events-id [id params]
   (stripe-request :get (str "v1/events/" id "") params))
 
-(defn DeleteSubscriptionItemsItem [item params]
+(defn delete-subscription-items-item [item params]
   (stripe-request :delete (str "v1/subscription_items/" item "") params))
 
-(defn GetSubscriptionItemsItem [item params]
+(defn get-subscription-items-item [item params]
   (stripe-request :get (str "v1/subscription_items/" item "") params))
 
-(defn PostSubscriptionItemsItem [item params]
+(defn post-subscription-items-item [item params]
   (stripe-request :post (str "v1/subscription_items/" item "") params))
 
-(defn GetPricesPrice [price params]
+(defn get-prices-price [price params]
   (stripe-request :get (str "v1/prices/" price "") params))
 
-(defn PostPricesPrice [price params]
+(defn post-prices-price [price params]
   (stripe-request :post (str "v1/prices/" price "") params))
 
-(defn GetReportingReportRuns [ params]
+(defn get-reporting-report-runs [params params]
   (stripe-request :get (str "v1/reporting/report_runs") params))
 
-(defn PostReportingReportRuns [ params]
+(defn post-reporting-report-runs [params params]
   (stripe-request :post (str "v1/reporting/report_runs") params))
 
-(defn GetCharges [ params]
+(defn get-charges [params params]
   (stripe-request :get (str "v1/charges") params))
 
-(defn PostCharges [ params]
+(defn post-charges [params params]
   (stripe-request :post (str "v1/charges") params))
 
-(defn GetPaymentMethodDomainsPaymentMethodDomain [payment_method_domain params]
+(defn get-payment-method-domains-payment-method-domain [payment_method_domain params]
   (stripe-request :get (str "v1/payment_method_domains/" payment_method_domain "") params))
 
-(defn PostPaymentMethodDomainsPaymentMethodDomain [payment_method_domain params]
+(defn post-payment-method-domains-payment-method-domain [payment_method_domain params]
   (stripe-request :post (str "v1/payment_method_domains/" payment_method_domain "") params))
 
-(defn GetCustomersCustomerCards [customer params]
+(defn get-customers-customer-cards [customer params]
   (stripe-request :get (str "v1/customers/" customer "/cards") params))
 
-(defn PostCustomersCustomerCards [customer params]
+(defn post-customers-customer-cards [customer params]
   (stripe-request :post (str "v1/customers/" customer "/cards") params))
 
-(defn PostAccountsAccountLoginLinks [account params]
+(defn post-accounts-account-login-links [account params]
   (stripe-request :post (str "v1/accounts/" account "/login_links") params))
 
-(defn GetTreasuryTransactionEntries [ params]
+(defn get-treasury-transaction-entries [params params]
   (stripe-request :get (str "v1/treasury/transaction_entries") params))
 
-(defn PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignReject [personalization_design params]
+(defn post-test-helpers-issuing-personalization-designs-personalization-design-reject [personalization_design params]
   (stripe-request :post (str "v1/test_helpers/issuing/personalization_designs/" personalization_design "/reject") params))
 
-(defn GetCreditNotesCreditNoteLines [credit_note params]
+(defn get-credit-notes-credit-note-lines [credit_note params]
   (stripe-request :get (str "v1/credit_notes/" credit_note "/lines") params))
 
-(defn GetIssuingTokens [ params]
+(defn get-issuing-tokens [params params]
   (stripe-request :get (str "v1/issuing/tokens") params))
 
-(defn GetBillingMetersIdEventSummaries [id params]
+(defn get-billing-meters-id-event-summaries [id params]
   (stripe-request :get (str "v1/billing/meters/" id "/event_summaries") params))
 
-(defn PostBillingMeterEventAdjustments [ params]
+(defn post-billing-meter-event-adjustments [params params]
   (stripe-request :post (str "v1/billing/meter_event_adjustments") params))
 
-(defn PostTestHelpersIssuingAuthorizationsAuthorizationReverse [authorization params]
+(defn post-test-helpers-issuing-authorizations-authorization-reverse [authorization params]
   (stripe-request :post (str "v1/test_helpers/issuing/authorizations/" authorization "/reverse") params))
 
-(defn GetPlans [ params]
+(defn get-plans [params params]
   (stripe-request :get (str "v1/plans") params))
 
-(defn PostPlans [ params]
+(defn post-plans [params params]
   (stripe-request :post (str "v1/plans") params))
 
-(defn DeleteAccountsAccountPersonsPerson [account person params]
+(defn delete-accounts-account-persons-person [account person params]
   (stripe-request :delete (str "v1/accounts/" account "/persons/" person "") params))
 
-(defn GetAccountsAccountPersonsPerson [account person params]
+(defn get-accounts-account-persons-person [account person params]
   (stripe-request :get (str "v1/accounts/" account "/persons/" person "") params))
 
-(defn PostAccountsAccountPersonsPerson [account person params]
+(defn post-accounts-account-persons-person [account person params]
   (stripe-request :post (str "v1/accounts/" account "/persons/" person "") params))
 
-(defn GetClimateOrders [ params]
+(defn get-climate-orders [params params]
   (stripe-request :get (str "v1/climate/orders") params))
 
-(defn PostClimateOrders [ params]
+(defn post-climate-orders [params params]
   (stripe-request :post (str "v1/climate/orders") params))
 
-(defn GetTreasuryCreditReversalsCreditReversal [credit_reversal params]
+(defn get-treasury-credit-reversals-credit-reversal [credit_reversal params]
   (stripe-request :get (str "v1/treasury/credit_reversals/" credit_reversal "") params))
 
-(defn PostTestHelpersTreasuryOutboundPaymentsIdReturn [id params]
+(defn post-test-helpers-treasury-outbound-payments-id-return [id params]
   (stripe-request :post (str "v1/test_helpers/treasury/outbound_payments/" id "/return") params))
 
-(defn GetPaymentIntentsIntent [intent params]
+(defn get-payment-intents-intent [intent params]
   (stripe-request :get (str "v1/payment_intents/" intent "") params))
 
-(defn PostPaymentIntentsIntent [intent params]
+(defn post-payment-intents-intent [intent params]
   (stripe-request :post (str "v1/payment_intents/" intent "") params))
 
-(defn GetCountrySpecsCountry [country params]
+(defn get-country-specs-country [country params]
   (stripe-request :get (str "v1/country_specs/" country "") params))
 
-(defn GetTokensToken [token params]
+(defn get-tokens-token [token params]
   (stripe-request :get (str "v1/tokens/" token "") params))
 
-(defn PostTestHelpersTreasuryInboundTransfersIdFail [id params]
+(defn post-test-helpers-treasury-inbound-transfers-id-fail [id params]
   (stripe-request :post (str "v1/test_helpers/treasury/inbound_transfers/" id "/fail") params))
 
-(defn PostTestHelpersTreasuryReceivedCredits [ params]
+(defn post-test-helpers-treasury-received-credits [params params]
   (stripe-request :post (str "v1/test_helpers/treasury/received_credits") params))
 
-(defn PostBillingAlertsIdDeactivate [id params]
+(defn post-billing-alerts-id-deactivate [id params]
   (stripe-request :post (str "v1/billing/alerts/" id "/deactivate") params))
 
-(defn GetTransfersTransferReversalsId [transfer id params]
+(defn get-transfers-transfer-reversals-id [transfer id params]
   (stripe-request :get (str "v1/transfers/" transfer "/reversals/" id "") params))
 
-(defn PostTransfersTransferReversalsId [transfer id params]
+(defn post-transfers-transfer-reversals-id [transfer id params]
   (stripe-request :post (str "v1/transfers/" transfer "/reversals/" id "") params))
 
-(defn GetInvoicesInvoiceLines [invoice params]
+(defn get-invoices-invoice-lines [invoice params]
   (stripe-request :get (str "v1/invoices/" invoice "/lines") params))
 
-(defn GetLinkedAccountsAccountOwners [account params]
+(defn get-linked-accounts-account-owners [account params]
   (stripe-request :get (str "v1/linked_accounts/" account "/owners") params))
 
-(defn PostQuotesQuoteFinalize [quote params]
+(defn post-quotes-quote-finalize [quote params]
   (stripe-request :post (str "v1/quotes/" quote "/finalize") params))
 
-(defn GetCustomersCustomerCashBalanceTransactions [customer params]
+(defn get-customers-customer-cash-balance-transactions [customer params]
   (stripe-request :get (str "v1/customers/" customer "/cash_balance_transactions") params))
 
-(defn GetSigmaScheduledQueryRuns [ params]
+(defn get-sigma-scheduled-query-runs [params params]
   (stripe-request :get (str "v1/sigma/scheduled_query_runs") params))
 
-(defn GetDisputes [ params]
+(defn get-disputes [params params]
   (stripe-request :get (str "v1/disputes") params))
 
-(defn GetIssuingPersonalizationDesignsPersonalizationDesign [personalization_design params]
+(defn get-issuing-personalization-designs-personalization-design [personalization_design params]
   (stripe-request :get (str "v1/issuing/personalization_designs/" personalization_design "") params))
 
-(defn PostIssuingPersonalizationDesignsPersonalizationDesign [personalization_design params]
+(defn post-issuing-personalization-designs-personalization-design [personalization_design params]
   (stripe-request :post (str "v1/issuing/personalization_designs/" personalization_design "") params))
 
-(defn GetTreasuryFinancialAccountsFinancialAccountFeatures [financial_account params]
+(defn get-treasury-financial-accounts-financial-account-features [financial_account params]
   (stripe-request :get (str "v1/treasury/financial_accounts/" financial_account "/features") params))
 
-(defn PostTreasuryFinancialAccountsFinancialAccountFeatures [financial_account params]
+(defn post-treasury-financial-accounts-financial-account-features [financial_account params]
   (stripe-request :post (str "v1/treasury/financial_accounts/" financial_account "/features") params))
 
-(defn GetTransfers [ params]
+(defn get-transfers [params params]
   (stripe-request :get (str "v1/transfers") params))
 
-(defn PostTransfers [ params]
+(defn post-transfers [params params]
   (stripe-request :post (str "v1/transfers") params))
 
-(defn PostInvoicesInvoiceUpdateLines [invoice params]
+(defn post-invoices-invoice-update-lines [invoice params]
   (stripe-request :post (str "v1/invoices/" invoice "/update_lines") params))
 
-(defn PostBillingCreditGrantsIdExpire [id params]
+(defn post-billing-credit-grants-id-expire [id params]
   (stripe-request :post (str "v1/billing/credit_grants/" id "/expire") params))
 
-(defn GetProductsSearch [ params]
+(defn get-products-search [params params]
   (stripe-request :get (str "v1/products/search") params))
 
-(defn DeleteTaxIdsId [id params]
+(defn delete-tax-ids-id [id params]
   (stripe-request :delete (str "v1/tax_ids/" id "") params))
 
-(defn GetTaxIdsId [id params]
+(defn get-tax-ids-id [id params]
   (stripe-request :get (str "v1/tax_ids/" id "") params))
 
-(defn PostLinkedAccountsAccountRefresh [account params]
+(defn post-linked-accounts-account-refresh [account params]
   (stripe-request :post (str "v1/linked_accounts/" account "/refresh") params))
 
-(defn GetCheckoutSessions [ params]
+(defn get-checkout-sessions [params params]
   (stripe-request :get (str "v1/checkout/sessions") params))
 
-(defn PostCheckoutSessions [ params]
+(defn post-checkout-sessions [params params]
   (stripe-request :post (str "v1/checkout/sessions") params))
 
-(defn DeleteCustomersCustomerSubscriptionsSubscriptionExposedIdDiscount [customer subscription_exposed_id params]
+(defn delete-customers-customer-subscriptions-subscription-exposed-id-discount [customer subscription_exposed_id params]
   (stripe-request :delete (str "v1/customers/" customer "/subscriptions/" subscription_exposed_id "/discount") params))
 
-(defn GetCustomersCustomerSubscriptionsSubscriptionExposedIdDiscount [customer subscription_exposed_id params]
+(defn get-customers-customer-subscriptions-subscription-exposed-id-discount [customer subscription_exposed_id params]
   (stripe-request :get (str "v1/customers/" customer "/subscriptions/" subscription_exposed_id "/discount") params))
 
-(defn GetApplicationFeesIdRefunds [id params]
+(defn get-application-fees-id-refunds [id params]
   (stripe-request :get (str "v1/application_fees/" id "/refunds") params))
 
-(defn PostApplicationFeesIdRefunds [id params]
+(defn post-application-fees-id-refunds [id params]
   (stripe-request :post (str "v1/application_fees/" id "/refunds") params))
 
-(defn GetIssuingCardholders [ params]
+(defn get-issuing-cardholders [params params]
   (stripe-request :get (str "v1/issuing/cardholders") params))
 
-(defn PostIssuingCardholders [ params]
+(defn post-issuing-cardholders [params params]
   (stripe-request :post (str "v1/issuing/cardholders") params))
 
-(defn GetCustomersCustomerTaxIds [customer params]
+(defn get-customers-customer-tax-ids [customer params]
   (stripe-request :get (str "v1/customers/" customer "/tax_ids") params))
 
-(defn PostCustomersCustomerTaxIds [customer params]
+(defn post-customers-customer-tax-ids [customer params]
   (stripe-request :post (str "v1/customers/" customer "/tax_ids") params))
 
-(defn PostFinancialConnectionsAccountsAccountRefresh [account params]
+(defn post-financial-connections-accounts-account-refresh [account params]
   (stripe-request :post (str "v1/financial_connections/accounts/" account "/refresh") params))
 
-(defn PostFinancialConnectionsAccountsAccountUnsubscribe [account params]
+(defn post-financial-connections-accounts-account-unsubscribe [account params]
   (stripe-request :post (str "v1/financial_connections/accounts/" account "/unsubscribe") params))
 
-(defn PostBillingMetersIdDeactivate [id params]
+(defn post-billing-meters-id-deactivate [id params]
   (stripe-request :post (str "v1/billing/meters/" id "/deactivate") params))
 
-(defn GetSubscriptionItems [ params]
+(defn get-subscription-items [params params]
   (stripe-request :get (str "v1/subscription_items") params))
 
-(defn PostSubscriptionItems [ params]
+(defn post-subscription-items [params params]
   (stripe-request :post (str "v1/subscription_items") params))
 
-(defn DeleteApplePayDomainsDomain [domain params]
+(defn delete-apple-pay-domains-domain [domain params]
   (stripe-request :delete (str "v1/apple_pay/domains/" domain "") params))
 
-(defn GetApplePayDomainsDomain [domain params]
+(defn get-apple-pay-domains-domain [domain params]
   (stripe-request :get (str "v1/apple_pay/domains/" domain "") params))
 
-(defn DeleteAccountsAccountBankAccountsId [account id params]
+(defn delete-accounts-account-bank-accounts-id [account id params]
   (stripe-request :delete (str "v1/accounts/" account "/bank_accounts/" id "") params))
 
-(defn GetAccountsAccountBankAccountsId [account id params]
+(defn get-accounts-account-bank-accounts-id [account id params]
   (stripe-request :get (str "v1/accounts/" account "/bank_accounts/" id "") params))
 
-(defn PostAccountsAccountBankAccountsId [account id params]
+(defn post-accounts-account-bank-accounts-id [account id params]
   (stripe-request :post (str "v1/accounts/" account "/bank_accounts/" id "") params))
 
-(defn PostFinancialConnectionsAccountsAccountDisconnect [account params]
+(defn post-financial-connections-accounts-account-disconnect [account params]
   (stripe-request :post (str "v1/financial_connections/accounts/" account "/disconnect") params))
 
-(defn GetReportingReportTypesReportType [report_type params]
+(defn get-reporting-report-types-report-type [report_type params]
   (stripe-request :get (str "v1/reporting/report_types/" report_type "") params))
 
-(defn GetAppsSecrets [ params]
+(defn get-apps-secrets [params params]
   (stripe-request :get (str "v1/apps/secrets") params))
 
-(defn PostAppsSecrets [ params]
+(defn post-apps-secrets [params params]
   (stripe-request :post (str "v1/apps/secrets") params))
 
-(defn GetConfirmationTokensConfirmationToken [confirmation_token params]
+(defn get-confirmation-tokens-confirmation-token [confirmation_token params]
   (stripe-request :get (str "v1/confirmation_tokens/" confirmation_token "") params))
 
-(defn GetTreasuryInboundTransfersId [id params]
+(defn get-treasury-inbound-transfers-id [id params]
   (stripe-request :get (str "v1/treasury/inbound_transfers/" id "") params))
 
-(defn PostInvoicesInvoiceAddLines [invoice params]
+(defn post-invoices-invoice-add-lines [invoice params]
   (stripe-request :post (str "v1/invoices/" invoice "/add_lines") params))
 
-(defn GetTreasuryFinancialAccounts [ params]
+(defn get-treasury-financial-accounts [params params]
   (stripe-request :get (str "v1/treasury/financial_accounts") params))
 
-(defn PostTreasuryFinancialAccounts [ params]
+(defn post-treasury-financial-accounts [params params]
   (stripe-request :post (str "v1/treasury/financial_accounts") params))
 
-(defn PostTerminalReadersReaderRefundPayment [reader params]
+(defn post-terminal-readers-reader-refund-payment [reader params]
   (stripe-request :post (str "v1/terminal/readers/" reader "/refund_payment") params))
 
-(defn DeletePlansPlan [plan params]
+(defn delete-plans-plan [plan params]
   (stripe-request :delete (str "v1/plans/" plan "") params))
 
-(defn GetPlansPlan [plan params]
+(defn get-plans-plan [plan params]
   (stripe-request :get (str "v1/plans/" plan "") params))
 
-(defn PostPlansPlan [plan params]
+(defn post-plans-plan [plan params]
   (stripe-request :post (str "v1/plans/" plan "") params))
 
-(defn DeleteSubscriptionsSubscriptionExposedIdDiscount [subscription_exposed_id params]
+(defn delete-subscriptions-subscription-exposed-id-discount [subscription_exposed_id params]
   (stripe-request :delete (str "v1/subscriptions/" subscription_exposed_id "/discount") params))
 
-(defn PostTreasuryInboundTransfersInboundTransferCancel [inbound_transfer params]
+(defn post-treasury-inbound-transfers-inbound-transfer-cancel [inbound_transfer params]
   (stripe-request :post (str "v1/treasury/inbound_transfers/" inbound_transfer "/cancel") params))
 
-(defn PostReviewsReviewApprove [review params]
+(defn post-reviews-review-approve [review params]
   (stripe-request :post (str "v1/reviews/" review "/approve") params))
 
-(defn GetIdentityVerificationReports [ params]
+(defn get-identity-verification-reports [params params]
   (stripe-request :get (str "v1/identity/verification_reports") params))
 
-(defn GetBillingAlerts [ params]
+(defn get-billing-alerts [params params]
   (stripe-request :get (str "v1/billing/alerts") params))
 
-(defn PostBillingAlerts [ params]
+(defn post-billing-alerts [params params]
   (stripe-request :post (str "v1/billing/alerts") params))
 
-(defn GetBillingPortalConfigurations [ params]
+(defn get-billing-portal-configurations [params params]
   (stripe-request :get (str "v1/billing_portal/configurations") params))
 
-(defn PostBillingPortalConfigurations [ params]
+(defn post-billing-portal-configurations [params params]
   (stripe-request :post (str "v1/billing_portal/configurations") params))
 
-(defn PostBillingAlertsIdActivate [id params]
+(defn post-billing-alerts-id-activate [id params]
   (stripe-request :post (str "v1/billing/alerts/" id "/activate") params))
 
-(defn GetEntitlementsFeaturesId [id params]
+(defn get-entitlements-features-id [id params]
   (stripe-request :get (str "v1/entitlements/features/" id "") params))
 
-(defn PostEntitlementsFeaturesId [id params]
+(defn post-entitlements-features-id [id params]
   (stripe-request :post (str "v1/entitlements/features/" id "") params))
 
-(defn GetSubscriptionItemsSubscriptionItemUsageRecordSummaries [subscription_item params]
+(defn get-subscription-items-subscription-item-usage-record-summaries [subscription_item params]
   (stripe-request :get (str "v1/subscription_items/" subscription_item "/usage_record_summaries") params))
 
-(defn GetBillingCreditBalanceTransactionsId [id params]
+(defn get-billing-credit-balance-transactions-id [id params]
   (stripe-request :get (str "v1/billing/credit_balance_transactions/" id "") params))
 
-(defn GetTreasuryReceivedDebitsId [id params]
+(defn get-treasury-received-debits-id [id params]
   (stripe-request :get (str "v1/treasury/received_debits/" id "") params))
 
-(defn GetChargesChargeRefunds [charge params]
+(defn get-charges-charge-refunds [charge params]
   (stripe-request :get (str "v1/charges/" charge "/refunds") params))
 
-(defn PostChargesChargeRefunds [charge params]
+(defn post-charges-charge-refunds [charge params]
   (stripe-request :post (str "v1/charges/" charge "/refunds") params))
 
-(defn GetCustomersCustomerSources [customer params]
+(defn get-customers-customer-sources [customer params]
   (stripe-request :get (str "v1/customers/" customer "/sources") params))
 
-(defn PostCustomersCustomerSources [customer params]
+(defn post-customers-customer-sources [customer params]
   (stripe-request :post (str "v1/customers/" customer "/sources") params))
 
-(defn GetSetupIntentsIntent [intent params]
+(defn get-setup-intents-intent [intent params]
   (stripe-request :get (str "v1/setup_intents/" intent "") params))
 
-(defn PostSetupIntentsIntent [intent params]
+(defn post-setup-intents-intent [intent params]
   (stripe-request :post (str "v1/setup_intents/" intent "") params))
 
-(defn DeleteCustomersCustomerBankAccountsId [customer id params]
+(defn delete-customers-customer-bank-accounts-id [customer id params]
   (stripe-request :delete (str "v1/customers/" customer "/bank_accounts/" id "") params))
 
-(defn GetCustomersCustomerBankAccountsId [customer id params]
+(defn get-customers-customer-bank-accounts-id [customer id params]
   (stripe-request :get (str "v1/customers/" customer "/bank_accounts/" id "") params))
 
-(defn PostCustomersCustomerBankAccountsId [customer id params]
+(defn post-customers-customer-bank-accounts-id [customer id params]
   (stripe-request :post (str "v1/customers/" customer "/bank_accounts/" id "") params))
 
-(defn PostTreasuryOutboundPaymentsIdCancel [id params]
+(defn post-treasury-outbound-payments-id-cancel [id params]
   (stripe-request :post (str "v1/treasury/outbound_payments/" id "/cancel") params))
 
-(defn GetReviewsReview [review params]
+(defn get-reviews-review [review params]
   (stripe-request :get (str "v1/reviews/" review "") params))
 
-(defn GetFinancialConnectionsTransactions [ params]
+(defn get-financial-connections-transactions [params params]
   (stripe-request :get (str "v1/financial_connections/transactions") params))
 
-(defn PostTaxTransactionsCreateFromCalculation [ params]
+(defn post-tax-transactions-create-from-calculation [params params]
   (stripe-request :post (str "v1/tax/transactions/create_from_calculation") params))
 
-(defn PostCustomerSessions [ params]
+(defn post-customer-sessions [params params]
   (stripe-request :post (str "v1/customer_sessions") params))
 
-(defn GetBillingMeters [ params]
+(defn get-billing-meters [params params]
   (stripe-request :get (str "v1/billing/meters") params))
 
-(defn PostBillingMeters [ params]
+(defn post-billing-meters [params params]
   (stripe-request :post (str "v1/billing/meters") params))
 
-(defn PostIssuingAuthorizationsAuthorizationDecline [authorization params]
+(defn post-issuing-authorizations-authorization-decline [authorization params]
   (stripe-request :post (str "v1/issuing/authorizations/" authorization "/decline") params))
 
-(defn GetIssuingAuthorizationsAuthorization [authorization params]
+(defn get-issuing-authorizations-authorization [authorization params]
   (stripe-request :get (str "v1/issuing/authorizations/" authorization "") params))
 
-(defn PostIssuingAuthorizationsAuthorization [authorization params]
+(defn post-issuing-authorizations-authorization [authorization params]
   (stripe-request :post (str "v1/issuing/authorizations/" authorization "") params))
 
-(defn GetBillingCreditBalanceSummary [ params]
+(defn get-billing-credit-balance-summary [params params]
   (stripe-request :get (str "v1/billing/credit_balance_summary") params))
 
-(defn PostDisputesDisputeClose [dispute params]
+(defn post-disputes-dispute-close [dispute params]
   (stripe-request :post (str "v1/disputes/" dispute "/close") params))
 
-(defn PostTestHelpersIssuingCardsCardShippingReturn [card params]
+(defn post-test-helpers-issuing-cards-card-shipping-return [card params]
   (stripe-request :post (str "v1/test_helpers/issuing/cards/" card "/shipping/return") params))
 
-(defn PostLinkAccountSessions [ params]
+(defn post-link-account-sessions [params params]
   (stripe-request :post (str "v1/link_account_sessions") params))
 
-(defn GetFinancialConnectionsAccountsAccountOwners [account params]
+(defn get-financial-connections-accounts-account-owners [account params]
   (stripe-request :get (str "v1/financial_connections/accounts/" account "/owners") params))
 
-(defn PostPaymentIntentsIntentIncrementAuthorization [intent params]
+(defn post-payment-intents-intent-increment-authorization [intent params]
   (stripe-request :post (str "v1/payment_intents/" intent "/increment_authorization") params))
 
-(defn DeleteRadarValueListItemsItem [item params]
+(defn delete-radar-value-list-items-item [item params]
   (stripe-request :delete (str "v1/radar/value_list_items/" item "") params))
 
-(defn GetRadarValueListItemsItem [item params]
+(defn get-radar-value-list-items-item [item params]
   (stripe-request :get (str "v1/radar/value_list_items/" item "") params))
 
-(defn PostCustomersCustomerBankAccountsIdVerify [customer id params]
+(defn post-customers-customer-bank-accounts-id-verify [customer id params]
   (stripe-request :post (str "v1/customers/" customer "/bank_accounts/" id "/verify") params))
 
-(defn PostSubscriptionSchedulesScheduleRelease [schedule params]
+(defn post-subscription-schedules-schedule-release [schedule params]
   (stripe-request :post (str "v1/subscription_schedules/" schedule "/release") params))
 
-(defn GetIssuingAuthorizations [ params]
+(defn get-issuing-authorizations [params params]
   (stripe-request :get (str "v1/issuing/authorizations") params))
 
-(defn DeleteRadarValueListsValueList [value_list params]
+(defn delete-radar-value-lists-value-list [value_list params]
   (stripe-request :delete (str "v1/radar/value_lists/" value_list "") params))
 
-(defn GetRadarValueListsValueList [value_list params]
+(defn get-radar-value-lists-value-list [value_list params]
   (stripe-request :get (str "v1/radar/value_lists/" value_list "") params))
 
-(defn PostRadarValueListsValueList [value_list params]
+(defn post-radar-value-lists-value-list [value_list params]
   (stripe-request :post (str "v1/radar/value_lists/" value_list "") params))
 
-(defn GetForwardingRequests [ params]
+(defn get-forwarding-requests [params params]
   (stripe-request :get (str "v1/forwarding/requests") params))
 
-(defn PostForwardingRequests [ params]
+(defn post-forwarding-requests [params params]
   (stripe-request :post (str "v1/forwarding/requests") params))
 
-(defn PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignDeactivate [personalization_design params]
+(defn post-test-helpers-issuing-personalization-designs-personalization-design-deactivate [personalization_design params]
   (stripe-request :post (str "v1/test_helpers/issuing/personalization_designs/" personalization_design "/deactivate") params))
 
-(defn GetReportingReportRunsReportRun [report_run params]
+(defn get-reporting-report-runs-report-run [report_run params]
   (stripe-request :get (str "v1/reporting/report_runs/" report_run "") params))
 
-(defn GetTreasuryOutboundPayments [ params]
+(defn get-treasury-outbound-payments [params params]
   (stripe-request :get (str "v1/treasury/outbound_payments") params))
 
-(defn PostTreasuryOutboundPayments [ params]
+(defn post-treasury-outbound-payments [params params]
   (stripe-request :post (str "v1/treasury/outbound_payments") params))
 
-(defn PostTokens [ params]
+(defn post-tokens [params params]
   (stripe-request :post (str "v1/tokens") params))
 
-(defn PostTestHelpersTreasuryOutboundTransfersOutboundTransferFail [outbound_transfer params]
+(defn post-test-helpers-treasury-outbound-transfers-outbound-transfer-fail [outbound_transfer params]
   (stripe-request :post (str "v1/test_helpers/treasury/outbound_transfers/" outbound_transfer "/fail") params))
 
-(defn GetTaxCalculationsCalculationLineItems [calculation params]
+(defn get-tax-calculations-calculation-line-items [calculation params]
   (stripe-request :get (str "v1/tax/calculations/" calculation "/line_items") params))
 
-(defn GetApplicationFees [ params]
+(defn get-application-fees [params params]
   (stripe-request :get (str "v1/application_fees") params))
 
-(defn GetInvoiceRenderingTemplatesTemplate [template params]
+(defn get-invoice-rendering-templates-template [template params]
   (stripe-request :get (str "v1/invoice_rendering_templates/" template "") params))
 
-(defn PostChargesChargeDisputeClose [charge params]
+(defn post-charges-charge-dispute-close [charge params]
   (stripe-request :post (str "v1/charges/" charge "/dispute/close") params))
 
-(defn PostTestHelpersConfirmationTokens [ params]
+(defn post-test-helpers-confirmation-tokens [params params]
   (stripe-request :post (str "v1/test_helpers/confirmation_tokens") params))
 
-(defn GetPromotionCodes [ params]
+(defn get-promotion-codes [params params]
   (stripe-request :get (str "v1/promotion_codes") params))
 
-(defn PostPromotionCodes [ params]
+(defn post-promotion-codes [params params]
   (stripe-request :post (str "v1/promotion_codes") params))
 
-(defn PostTopupsTopupCancel [topup params]
+(defn post-topups-topup-cancel [topup params]
   (stripe-request :post (str "v1/topups/" topup "/cancel") params))
 
-(defn DeleteAccountsAccountPeoplePerson [account person params]
+(defn delete-accounts-account-people-person [account person params]
   (stripe-request :delete (str "v1/accounts/" account "/people/" person "") params))
 
-(defn GetAccountsAccountPeoplePerson [account person params]
+(defn get-accounts-account-people-person [account person params]
   (stripe-request :get (str "v1/accounts/" account "/people/" person "") params))
 
-(defn PostAccountsAccountPeoplePerson [account person params]
+(defn post-accounts-account-people-person [account person params]
   (stripe-request :post (str "v1/accounts/" account "/people/" person "") params))
 
-(defn GetSourcesSource [source params]
+(defn get-sources-source [source params]
   (stripe-request :get (str "v1/sources/" source "") params))
 
-(defn PostSourcesSource [source params]
+(defn post-sources-source [source params]
   (stripe-request :post (str "v1/sources/" source "") params))
 
-(defn PostInvoicesInvoiceSend [invoice params]
+(defn post-invoices-invoice-send [invoice params]
   (stripe-request :post (str "v1/invoices/" invoice "/send") params))
 
-(defn GetCoupons [ params]
+(defn get-coupons [params params]
   (stripe-request :get (str "v1/coupons") params))
 
-(defn PostCoupons [ params]
+(defn post-coupons [params params]
   (stripe-request :post (str "v1/coupons") params))
 
-(defn GetIssuingCards [ params]
+(defn get-issuing-cards [params params]
   (stripe-request :get (str "v1/issuing/cards") params))
 
-(defn PostIssuingCards [ params]
+(defn post-issuing-cards [params params]
   (stripe-request :post (str "v1/issuing/cards") params))
 
-(defn PostTreasuryOutboundTransfersOutboundTransferCancel [outbound_transfer params]
+(defn post-treasury-outbound-transfers-outbound-transfer-cancel [outbound_transfer params]
   (stripe-request :post (str "v1/treasury/outbound_transfers/" outbound_transfer "/cancel") params))
 
-(defn GetBalance [ params]
+(defn get-balance [params params]
   (stripe-request :get (str "v1/balance") params))
 
-(defn DeleteTerminalReadersReader [reader params]
+(defn delete-terminal-readers-reader [reader params]
   (stripe-request :delete (str "v1/terminal/readers/" reader "") params))
 
-(defn GetTerminalReadersReader [reader params]
+(defn get-terminal-readers-reader [reader params]
   (stripe-request :get (str "v1/terminal/readers/" reader "") params))
 
-(defn PostTerminalReadersReader [reader params]
+(defn post-terminal-readers-reader [reader params]
   (stripe-request :post (str "v1/terminal/readers/" reader "") params))
 
-(defn GetTaxSettings [ params]
+(defn get-tax-settings [params params]
   (stripe-request :get (str "v1/tax/settings") params))
 
-(defn PostTaxSettings [ params]
+(defn post-tax-settings [params params]
   (stripe-request :post (str "v1/tax/settings") params))
 
-(defn GetTreasuryReceivedDebits [ params]
+(defn get-treasury-received-debits [params params]
   (stripe-request :get (str "v1/treasury/received_debits") params))
 
-(defn PostPaymentMethodDomainsPaymentMethodDomainValidate [payment_method_domain params]
+(defn post-payment-method-domains-payment-method-domain-validate [payment_method_domain params]
   (stripe-request :post (str "v1/payment_method_domains/" payment_method_domain "/validate") params))
 
-(defn PostInvoicesInvoiceMarkUncollectible [invoice params]
+(defn post-invoices-invoice-mark-uncollectible [invoice params]
   (stripe-request :post (str "v1/invoices/" invoice "/mark_uncollectible") params))
 
-(defn GetPayoutsPayout [payout params]
+(defn get-payouts-payout [payout params]
   (stripe-request :get (str "v1/payouts/" payout "") params))
 
-(defn PostPayoutsPayout [payout params]
+(defn post-payouts-payout [payout params]
   (stripe-request :post (str "v1/payouts/" payout "") params))
 
-(defn PostChargesChargeCapture [charge params]
+(defn post-charges-charge-capture [charge params]
   (stripe-request :post (str "v1/charges/" charge "/capture") params))
 
-(defn GetFilesFile [file params]
+(defn get-files-file [file params]
   (stripe-request :get (str "v1/files/" file "") params))
 
-(defn PostLinkedAccountsAccountDisconnect [account params]
+(defn post-linked-accounts-account-disconnect [account params]
   (stripe-request :post (str "v1/linked_accounts/" account "/disconnect") params))
 
-(defn GetRadarValueLists [ params]
+(defn get-radar-value-lists [params params]
   (stripe-request :get (str "v1/radar/value_lists") params))
 
-(defn PostRadarValueLists [ params]
+(defn post-radar-value-lists [params params]
   (stripe-request :post (str "v1/radar/value_lists") params))
 
-(defn PostAppsSecretsDelete [ params]
+(defn post-apps-secrets-delete [params params]
   (stripe-request :post (str "v1/apps/secrets/delete") params))
 
-(defn GetIssuingTransactionsTransaction [transaction params]
+(defn get-issuing-transactions-transaction [transaction params]
   (stripe-request :get (str "v1/issuing/transactions/" transaction "") params))
 
-(defn PostIssuingTransactionsTransaction [transaction params]
+(defn post-issuing-transactions-transaction [transaction params]
   (stripe-request :post (str "v1/issuing/transactions/" transaction "") params))
 
-(defn DeleteTestHelpersTestClocksTestClock [test_clock params]
+(defn delete-test-helpers-test-clocks-test-clock [test_clock params]
   (stripe-request :delete (str "v1/test_helpers/test_clocks/" test_clock "") params))
 
-(defn GetTestHelpersTestClocksTestClock [test_clock params]
+(defn get-test-helpers-test-clocks-test-clock [test_clock params]
   (stripe-request :get (str "v1/test_helpers/test_clocks/" test_clock "") params))
 
-(defn GetSourcesSourceMandateNotificationsMandateNotification [source mandate_notification params]
+(defn get-sources-source-mandate-notifications-mandate-notification [source mandate_notification params]
   (stripe-request :get (str "v1/sources/" source "/mandate_notifications/" mandate_notification "") params))
 
-(defn GetTreasuryDebitReversalsDebitReversal [debit_reversal params]
+(defn get-treasury-debit-reversals-debit-reversal [debit_reversal params]
   (stripe-request :get (str "v1/treasury/debit_reversals/" debit_reversal "") params))
 
-(defn GetRadarValueListItems [ params]
+(defn get-radar-value-list-items [params params]
   (stripe-request :get (str "v1/radar/value_list_items") params))
 
-(defn PostRadarValueListItems [ params]
+(defn post-radar-value-list-items [params params]
   (stripe-request :post (str "v1/radar/value_list_items") params))
 
-(defn PostPaymentMethodsPaymentMethodDetach [payment_method params]
+(defn post-payment-methods-payment-method-detach [payment_method params]
   (stripe-request :post (str "v1/payment_methods/" payment_method "/detach") params))
 
-(defn PostTestHelpersRefundsRefundExpire [refund params]
+(defn post-test-helpers-refunds-refund-expire [refund params]
   (stripe-request :post (str "v1/test_helpers/refunds/" refund "/expire") params))
 
-(defn GetTreasuryReceivedCreditsId [id params]
+(defn get-treasury-received-credits-id [id params]
   (stripe-request :get (str "v1/treasury/received_credits/" id "") params))
 
-(defn PostCustomersCustomerFundingInstructions [customer params]
+(defn post-customers-customer-funding-instructions [customer params]
   (stripe-request :post (str "v1/customers/" customer "/funding_instructions") params))
 
-(defn GetAccountsAccountPeople [account params]
+(defn get-accounts-account-people [account params]
   (stripe-request :get (str "v1/accounts/" account "/people") params))
 
-(defn PostAccountsAccountPeople [account params]
+(defn post-accounts-account-people [account params]
   (stripe-request :post (str "v1/accounts/" account "/people") params))
 
-(defn GetIdentityVerificationReportsReport [report params]
+(defn get-identity-verification-reports-report [report params]
   (stripe-request :get (str "v1/identity/verification_reports/" report "") params))
 
-(defn GetQuotes [ params]
+(defn get-quotes [params params]
   (stripe-request :get (str "v1/quotes") params))
 
-(defn PostQuotes [ params]
+(defn post-quotes [params params]
   (stripe-request :post (str "v1/quotes") params))
 
-(defn PostTestHelpersIssuingCardsCardShippingFail [card params]
+(defn post-test-helpers-issuing-cards-card-shipping-fail [card params]
   (stripe-request :post (str "v1/test_helpers/issuing/cards/" card "/shipping/fail") params))
 
-(defn PostPaymentIntentsIntentVerifyMicrodeposits [intent params]
+(defn post-payment-intents-intent-verify-microdeposits [intent params]
   (stripe-request :post (str "v1/payment_intents/" intent "/verify_microdeposits") params))
 
-(defn DeleteCouponsCoupon [coupon params]
+(defn delete-coupons-coupon [coupon params]
   (stripe-request :delete (str "v1/coupons/" coupon "") params))
 
-(defn GetCouponsCoupon [coupon params]
+(defn get-coupons-coupon [coupon params]
   (stripe-request :get (str "v1/coupons/" coupon "") params))
 
-(defn PostCouponsCoupon [coupon params]
+(defn post-coupons-coupon [coupon params]
   (stripe-request :post (str "v1/coupons/" coupon "") params))
 
-(defn PostTestHelpersIssuingAuthorizationsAuthorizationCapture [authorization params]
+(defn post-test-helpers-issuing-authorizations-authorization-capture [authorization params]
   (stripe-request :post (str "v1/test_helpers/issuing/authorizations/" authorization "/capture") params))
 
-(defn GetEntitlementsActiveEntitlementsId [id params]
+(defn get-entitlements-active-entitlements-id [id params]
   (stripe-request :get (str "v1/entitlements/active_entitlements/" id "") params))
 
-(defn GetApplicationFeesFeeRefundsId [fee id params]
+(defn get-application-fees-fee-refunds-id [fee id params]
   (stripe-request :get (str "v1/application_fees/" fee "/refunds/" id "") params))
 
-(defn PostApplicationFeesFeeRefundsId [fee id params]
+(defn post-application-fees-fee-refunds-id [fee id params]
   (stripe-request :post (str "v1/application_fees/" fee "/refunds/" id "") params))
 
-(defn PostIdentityVerificationSessionsSessionRedact [session params]
+(defn post-identity-verification-sessions-session-redact [session params]
   (stripe-request :post (str "v1/identity/verification_sessions/" session "/redact") params))
 
-(defn PostTestHelpersTreasuryOutboundPaymentsIdPost [id params]
+(defn post-test-helpers-treasury-outbound-payments-id-post [id params]
   (stripe-request :post (str "v1/test_helpers/treasury/outbound_payments/" id "/post") params))
 
-(defn GetApplicationFeesId [id params]
+(defn get-application-fees-id [id params]
   (stripe-request :get (str "v1/application_fees/" id "") params))
 
-(defn GetFinancialConnectionsTransactionsTransaction [transaction params]
+(defn get-financial-connections-transactions-transaction [transaction params]
   (stripe-request :get (str "v1/financial_connections/transactions/" transaction "") params))
 
-(defn PostTestHelpersTreasuryOutboundTransfersOutboundTransferReturn [outbound_transfer params]
+(defn post-test-helpers-treasury-outbound-transfers-outbound-transfer-return [outbound_transfer params]
   (stripe-request :post (str "v1/test_helpers/treasury/outbound_transfers/" outbound_transfer "/return") params))
 
-(defn DeleteTerminalLocationsLocation [location params]
+(defn delete-terminal-locations-location [location params]
   (stripe-request :delete (str "v1/terminal/locations/" location "") params))
 
-(defn GetTerminalLocationsLocation [location params]
+(defn get-terminal-locations-location [location params]
   (stripe-request :get (str "v1/terminal/locations/" location "") params))
 
-(defn PostTerminalLocationsLocation [location params]
+(defn post-terminal-locations-location [location params]
   (stripe-request :post (str "v1/terminal/locations/" location "") params))
 
-(defn GetCheckoutSessionsSessionLineItems [session params]
+(defn get-checkout-sessions-session-line-items [session params]
   (stripe-request :get (str "v1/checkout/sessions/" session "/line_items") params))
 
-(defn GetCreditNotes [ params]
+(defn get-credit-notes [params params]
   (stripe-request :get (str "v1/credit_notes") params))
 
-(defn PostCreditNotes [ params]
+(defn post-credit-notes [params params]
   (stripe-request :post (str "v1/credit_notes") params))
 
-(defn GetShippingRatesShippingRateToken [shipping_rate_token params]
+(defn get-shipping-rates-shipping-rate-token [shipping_rate_token params]
   (stripe-request :get (str "v1/shipping_rates/" shipping_rate_token "") params))
 
-(defn PostShippingRatesShippingRateToken [shipping_rate_token params]
+(defn post-shipping-rates-shipping-rate-token [shipping_rate_token params]
   (stripe-request :post (str "v1/shipping_rates/" shipping_rate_token "") params))
 
-(defn PostTestHelpersIssuingAuthorizationsAuthorizationFraudChallengesRespond [authorization params]
+(defn post-test-helpers-issuing-authorizations-authorization-fraud-challenges-respond [authorization params]
   (stripe-request :post (str "v1/test_helpers/issuing/authorizations/" authorization "/fraud_challenges/respond") params))
 
-(defn GetPaymentMethodConfigurations [ params]
+(defn get-payment-method-configurations [params params]
   (stripe-request :get (str "v1/payment_method_configurations") params))
 
-(defn PostPaymentMethodConfigurations [ params]
+(defn post-payment-method-configurations [params params]
   (stripe-request :post (str "v1/payment_method_configurations") params))
 
-(defn GetPricesSearch [ params]
+(defn get-prices-search [params params]
   (stripe-request :get (str "v1/prices/search") params))
 
-(defn PostBillingMetersIdReactivate [id params]
+(defn post-billing-meters-id-reactivate [id params]
   (stripe-request :post (str "v1/billing/meters/" id "/reactivate") params))
 
-(defn GetBillingPortalConfigurationsConfiguration [configuration params]
+(defn get-billing-portal-configurations-configuration [configuration params]
   (stripe-request :get (str "v1/billing_portal/configurations/" configuration "") params))
 
-(defn PostBillingPortalConfigurationsConfiguration [configuration params]
+(defn post-billing-portal-configurations-configuration [configuration params]
   (stripe-request :post (str "v1/billing_portal/configurations/" configuration "") params))
 
-(defn GetPaymentMethodConfigurationsConfiguration [configuration params]
+(defn get-payment-method-configurations-configuration [configuration params]
   (stripe-request :get (str "v1/payment_method_configurations/" configuration "") params))
 
-(defn PostPaymentMethodConfigurationsConfiguration [configuration params]
+(defn post-payment-method-configurations-configuration [configuration params]
   (stripe-request :post (str "v1/payment_method_configurations/" configuration "") params))
 
-(defn GetEntitlementsActiveEntitlements [ params]
+(defn get-entitlements-active-entitlements [params params]
   (stripe-request :get (str "v1/entitlements/active_entitlements") params))
 
-(defn DeleteAccountsAccount [account params]
+(defn delete-accounts-account [account params]
   (stripe-request :delete (str "v1/accounts/" account "") params))
 
-(defn GetAccountsAccount [account params]
+(defn get-accounts-account [account params]
   (stripe-request :get (str "v1/accounts/" account "") params))
 
-(defn PostAccountsAccount [account params]
+(defn post-accounts-account [account params]
   (stripe-request :post (str "v1/accounts/" account "") params))
 
-(defn GetExchangeRates [ params]
+(defn get-exchange-rates [params params]
   (stripe-request :get (str "v1/exchange_rates") params))
 
-(defn GetTaxRatesTaxRate [tax_rate params]
+(defn get-tax-rates-tax-rate [tax_rate params]
   (stripe-request :get (str "v1/tax_rates/" tax_rate "") params))
 
-(defn PostTaxRatesTaxRate [tax_rate params]
+(defn post-tax-rates-tax-rate [tax_rate params]
   (stripe-request :post (str "v1/tax_rates/" tax_rate "") params))
 
-(defn GetTaxRegistrations [ params]
+(defn get-tax-registrations [params params]
   (stripe-request :get (str "v1/tax/registrations") params))
 
-(defn PostTaxRegistrations [ params]
+(defn post-tax-registrations [params params]
   (stripe-request :post (str "v1/tax/registrations") params))
 
-(defn PostTerminalReadersReaderProcessSetupIntent [reader params]
+(defn post-terminal-readers-reader-process-setup-intent [reader params]
   (stripe-request :post (str "v1/terminal/readers/" reader "/process_setup_intent") params))
 
-(defn PostTaxCalculations [ params]
+(defn post-tax-calculations [params params]
   (stripe-request :post (str "v1/tax/calculations") params))
 
-(defn GetCustomersCustomerSubscriptions [customer params]
+(defn get-customers-customer-subscriptions [customer params]
   (stripe-request :get (str "v1/customers/" customer "/subscriptions") params))
 
-(defn PostCustomersCustomerSubscriptions [customer params]
+(defn post-customers-customer-subscriptions [customer params]
   (stripe-request :post (str "v1/customers/" customer "/subscriptions") params))
 
-(defn GetQuotesQuoteComputedUpfrontLineItems [quote params]
+(defn get-quotes-quote-computed-upfront-line-items [quote params]
   (stripe-request :get (str "v1/quotes/" quote "/computed_upfront_line_items") params))
 
-(defn PostInvoicesInvoiceFinalize [invoice params]
+(defn post-invoices-invoice-finalize [invoice params]
   (stripe-request :post (str "v1/invoices/" invoice "/finalize") params))
 
-(defn PostAccountSessions [ params]
+(defn post-account-sessions [params params]
   (stripe-request :post (str "v1/account_sessions") params))
 
-(defn GetChargesSearch [ params]
+(defn get-charges-search [params params]
   (stripe-request :get (str "v1/charges/search") params))
 
-(defn GetClimateOrdersOrder [order params]
+(defn get-climate-orders-order [order params]
   (stripe-request :get (str "v1/climate/orders/" order "") params))
 
-(defn PostClimateOrdersOrder [order params]
+(defn post-climate-orders-order [order params]
   (stripe-request :post (str "v1/climate/orders/" order "") params))
 
-(defn GetLinkedAccounts [ params]
+(defn get-linked-accounts [params params]
   (stripe-request :get (str "v1/linked_accounts") params))
 
-(defn GetForwardingRequestsId [id params]
+(defn get-forwarding-requests-id [id params]
   (stripe-request :get (str "v1/forwarding/requests/" id "") params))
 
-(defn DeleteCustomersCustomerSourcesId [customer id params]
+(defn delete-customers-customer-sources-id [customer id params]
   (stripe-request :delete (str "v1/customers/" customer "/sources/" id "") params))
 
-(defn GetCustomersCustomerSourcesId [customer id params]
+(defn get-customers-customer-sources-id [customer id params]
   (stripe-request :get (str "v1/customers/" customer "/sources/" id "") params))
 
-(defn PostCustomersCustomerSourcesId [customer id params]
+(defn post-customers-customer-sources-id [customer id params]
   (stripe-request :post (str "v1/customers/" customer "/sources/" id "") params))
 
-(defn GetChargesChargeDispute [charge params]
+(defn get-charges-charge-dispute [charge params]
   (stripe-request :get (str "v1/charges/" charge "/dispute") params))
 
-(defn PostChargesChargeDispute [charge params]
+(defn post-charges-charge-dispute [charge params]
   (stripe-request :post (str "v1/charges/" charge "/dispute") params))
 
-(defn PostTestHelpersIssuingAuthorizationsAuthorizationExpire [authorization params]
+(defn post-test-helpers-issuing-authorizations-authorization-expire [authorization params]
   (stripe-request :post (str "v1/test_helpers/issuing/authorizations/" authorization "/expire") params))
 
-(defn PostPaymentIntentsIntentCapture [intent params]
+(defn post-payment-intents-intent-capture [intent params]
   (stripe-request :post (str "v1/payment_intents/" intent "/capture") params))
 
-(defn GetReviews [ params]
+(defn get-reviews [params params]
   (stripe-request :get (str "v1/reviews") params))
 
-(defn GetCreditNotesId [id params]
+(defn get-credit-notes-id [id params]
   (stripe-request :get (str "v1/credit_notes/" id "") params))
 
-(defn PostCreditNotesId [id params]
+(defn post-credit-notes-id [id params]
   (stripe-request :post (str "v1/credit_notes/" id "") params))
 
-(defn PostInvoicesInvoiceLinesLineItemId [invoice line_item_id params]
+(defn post-invoices-invoice-lines-line-item-id [invoice line_item_id params]
   (stripe-request :post (str "v1/invoices/" invoice "/lines/" line_item_id "") params))
 
-(defn GetLinkAccountSessionsSession [session params]
+(defn get-link-account-sessions-session [session params]
   (stripe-request :get (str "v1/link_account_sessions/" session "") params))
 
-(defn PostTestHelpersCustomersCustomerFundCashBalance [customer params]
+(defn post-test-helpers-customers-customer-fund-cash-balance [customer params]
   (stripe-request :post (str "v1/test_helpers/customers/" customer "/fund_cash_balance") params))
 
-(defn GetDisputesDispute [dispute params]
+(defn get-disputes-dispute [dispute params]
   (stripe-request :get (str "v1/disputes/" dispute "") params))
 
-(defn PostDisputesDispute [dispute params]
+(defn post-disputes-dispute [dispute params]
   (stripe-request :post (str "v1/disputes/" dispute "") params))
 
-(defn GetCustomersCustomerBalanceTransactionsTransaction [customer transaction params]
+(defn get-customers-customer-balance-transactions-transaction [customer transaction params]
   (stripe-request :get (str "v1/customers/" customer "/balance_transactions/" transaction "") params))
 
-(defn PostCustomersCustomerBalanceTransactionsTransaction [customer transaction params]
+(defn post-customers-customer-balance-transactions-transaction [customer transaction params]
   (stripe-request :post (str "v1/customers/" customer "/balance_transactions/" transaction "") params))
 
-(defn GetAccountsAccountPersons [account params]
+(defn get-accounts-account-persons [account params]
   (stripe-request :get (str "v1/accounts/" account "/persons") params))
 
-(defn PostAccountsAccountPersons [account params]
+(defn post-accounts-account-persons [account params]
   (stripe-request :post (str "v1/accounts/" account "/persons") params))
 
-(defn GetTaxTransactionsTransactionLineItems [transaction params]
+(defn get-tax-transactions-transaction-line-items [transaction params]
   (stripe-request :get (str "v1/tax/transactions/" transaction "/line_items") params))
 
-(defn GetSubscriptionSchedulesSchedule [schedule params]
+(defn get-subscription-schedules-schedule [schedule params]
   (stripe-request :get (str "v1/subscription_schedules/" schedule "") params))
 
-(defn PostSubscriptionSchedulesSchedule [schedule params]
+(defn post-subscription-schedules-schedule [schedule params]
   (stripe-request :post (str "v1/subscription_schedules/" schedule "") params))
 
-(defn GetPaymentMethods [ params]
+(defn get-payment-methods [params params]
   (stripe-request :get (str "v1/payment_methods") params))
 
-(defn PostPaymentMethods [ params]
+(defn post-payment-methods [params params]
   (stripe-request :post (str "v1/payment_methods") params))
 
-(defn GetCustomersCustomerCashBalance [customer params]
+(defn get-customers-customer-cash-balance [customer params]
   (stripe-request :get (str "v1/customers/" customer "/cash_balance") params))
 
-(defn PostCustomersCustomerCashBalance [customer params]
+(defn post-customers-customer-cash-balance [customer params]
   (stripe-request :post (str "v1/customers/" customer "/cash_balance") params))
 
-(defn DeleteCustomersCustomerTaxIdsId [customer id params]
+(defn delete-customers-customer-tax-ids-id [customer id params]
   (stripe-request :delete (str "v1/customers/" customer "/tax_ids/" id "") params))
 
-(defn GetCustomersCustomerTaxIdsId [customer id params]
+(defn get-customers-customer-tax-ids-id [customer id params]
   (stripe-request :get (str "v1/customers/" customer "/tax_ids/" id "") params))
 
-(defn GetSourcesSourceSourceTransactions [source params]
+(defn get-sources-source-source-transactions [source params]
   (stripe-request :get (str "v1/sources/" source "/source_transactions") params))
 
-(defn GetFinancialConnectionsSessionsSession [session params]
+(defn get-financial-connections-sessions-session [session params]
   (stripe-request :get (str "v1/financial_connections/sessions/" session "") params))
 
-(defn DeleteInvoiceitemsInvoiceitem [invoiceitem params]
+(defn delete-invoiceitems-invoiceitem [invoiceitem params]
   (stripe-request :delete (str "v1/invoiceitems/" invoiceitem "") params))
 
-(defn GetInvoiceitemsInvoiceitem [invoiceitem params]
+(defn get-invoiceitems-invoiceitem [invoiceitem params]
   (stripe-request :get (str "v1/invoiceitems/" invoiceitem "") params))
 
-(defn PostInvoiceitemsInvoiceitem [invoiceitem params]
+(defn post-invoiceitems-invoiceitem [invoiceitem params]
   (stripe-request :post (str "v1/invoiceitems/" invoiceitem "") params))
 
-(defn PostTerminalReadersReaderCancelAction [reader params]
+(defn post-terminal-readers-reader-cancel-action [reader params]
   (stripe-request :post (str "v1/terminal/readers/" reader "/cancel_action") params))
 
-(defn GetInvoices [ params]
+(defn get-invoices [params params]
   (stripe-request :get (str "v1/invoices") params))
 
-(defn PostInvoices [ params]
+(defn post-invoices [params params]
   (stripe-request :post (str "v1/invoices") params))
 
-(defn GetAccountsAccountCapabilitiesCapability [account capability params]
+(defn get-accounts-account-capabilities-capability [account capability params]
   (stripe-request :get (str "v1/accounts/" account "/capabilities/" capability "") params))
 
-(defn PostAccountsAccountCapabilitiesCapability [account capability params]
+(defn post-accounts-account-capabilities-capability [account capability params]
   (stripe-request :post (str "v1/accounts/" account "/capabilities/" capability "") params))
 
-(defn PostTestHelpersTestClocksTestClockAdvance [test_clock params]
+(defn post-test-helpers-test-clocks-test-clock-advance [test_clock params]
   (stripe-request :post (str "v1/test_helpers/test_clocks/" test_clock "/advance") params))
 
-(defn GetAccountsAccountCapabilities [account params]
+(defn get-accounts-account-capabilities [account params]
   (stripe-request :get (str "v1/accounts/" account "/capabilities") params))
 
-(defn PostBillingCreditGrantsIdVoid [id params]
+(defn post-billing-credit-grants-id-void [id params]
   (stripe-request :post (str "v1/billing/credit_grants/" id "/void") params))
 
-(defn GetSigmaScheduledQueryRunsScheduledQueryRun [scheduled_query_run params]
+(defn get-sigma-scheduled-query-runs-scheduled-query-run [scheduled_query_run params]
   (stripe-request :get (str "v1/sigma/scheduled_query_runs/" scheduled_query_run "") params))
 
-(defn GetTopupsTopup [topup params]
+(defn get-topups-topup [topup params]
   (stripe-request :get (str "v1/topups/" topup "") params))
 
-(defn PostTopupsTopup [topup params]
+(defn post-topups-topup [topup params]
   (stripe-request :post (str "v1/topups/" topup "") params))
 
-(defn PostTestHelpersTreasuryInboundTransfersIdReturn [id params]
+(defn post-test-helpers-treasury-inbound-transfers-id-return [id params]
   (stripe-request :post (str "v1/test_helpers/treasury/inbound_transfers/" id "/return") params))
 
-(defn GetTreasuryReceivedCredits [ params]
+(defn get-treasury-received-credits [params params]
   (stripe-request :get (str "v1/treasury/received_credits") params))
 
-(defn GetTaxCalculationsCalculation [calculation params]
+(defn get-tax-calculations-calculation [calculation params]
   (stripe-request :get (str "v1/tax/calculations/" calculation "") params))
 
-(defn PostQuotesQuoteCancel [quote params]
+(defn post-quotes-quote-cancel [quote params]
   (stripe-request :post (str "v1/quotes/" quote "/cancel") params))
 
-(defn GetIssuingPhysicalBundles [ params]
+(defn get-issuing-physical-bundles [params params]
   (stripe-request :get (str "v1/issuing/physical_bundles") params))
 
-(defn PostTestHelpersTreasuryOutboundTransfersOutboundTransfer [outbound_transfer params]
+(defn post-test-helpers-treasury-outbound-transfers-outbound-transfer [outbound_transfer params]
   (stripe-request :post (str "v1/test_helpers/treasury/outbound_transfers/" outbound_transfer "") params))
 
-(defn PostSubscriptionItemsSubscriptionItemUsageRecords [subscription_item params]
+(defn post-subscription-items-subscription-item-usage-records [subscription_item params]
   (stripe-request :post (str "v1/subscription_items/" subscription_item "/usage_records") params))
 
-(defn PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignActivate [personalization_design params]
+(defn post-test-helpers-issuing-personalization-designs-personalization-design-activate [personalization_design params]
   (stripe-request :post (str "v1/test_helpers/issuing/personalization_designs/" personalization_design "/activate") params))
 
-(defn DeleteEphemeralKeysKey [key params]
+(defn delete-ephemeral-keys-key [key params]
   (stripe-request :delete (str "v1/ephemeral_keys/" key "") params))
 
-(defn GetQuotesQuote [quote params]
+(defn get-quotes-quote [quote params]
   (stripe-request :get (str "v1/quotes/" quote "") params))
 
-(defn PostQuotesQuote [quote params]
+(defn post-quotes-quote [quote params]
   (stripe-request :post (str "v1/quotes/" quote "") params))
 
-(defn GetSubscriptionsSearch [ params]
+(defn get-subscriptions-search [params params]
   (stripe-request :get (str "v1/subscriptions/search") params))
 
-(defn PostFinancialConnectionsAccountsAccountSubscribe [account params]
+(defn post-financial-connections-accounts-account-subscribe [account params]
   (stripe-request :post (str "v1/financial_connections/accounts/" account "/subscribe") params))
 
-(defn PostPaymentIntentsIntentCancel [intent params]
+(defn post-payment-intents-intent-cancel [intent params]
   (stripe-request :post (str "v1/payment_intents/" intent "/cancel") params))
 
-(defn GetAccount [ params]
+(defn get-account [params params]
   (stripe-request :get (str "v1/account") params))
 
-(defn GetPaymentLinksPaymentLinkLineItems [payment_link params]
+(defn get-payment-links-payment-link-line-items [payment_link params]
   (stripe-request :get (str "v1/payment_links/" payment_link "/line_items") params))
 
-(defn GetTreasuryInboundTransfers [ params]
+(defn get-treasury-inbound-transfers [params params]
   (stripe-request :get (str "v1/treasury/inbound_transfers") params))
 
-(defn PostTreasuryInboundTransfers [ params]
+(defn post-treasury-inbound-transfers [params params]
   (stripe-request :post (str "v1/treasury/inbound_transfers") params))
 
-(defn GetTransfersTransfer [transfer params]
+(defn get-transfers-transfer [transfer params]
   (stripe-request :get (str "v1/transfers/" transfer "") params))
 
-(defn PostTransfersTransfer [transfer params]
+(defn post-transfers-transfer [transfer params]
   (stripe-request :post (str "v1/transfers/" transfer "") params))
 
-(defn GetPaymentIntentsSearch [ params]
+(defn get-payment-intents-search [params params]
   (stripe-request :get (str "v1/payment_intents/search") params))
 
-(defn GetBillingCreditGrantsId [id params]
+(defn get-billing-credit-grants-id [id params]
   (stripe-request :get (str "v1/billing/credit_grants/" id "") params))
 
-(defn PostBillingCreditGrantsId [id params]
+(defn post-billing-credit-grants-id [id params]
   (stripe-request :post (str "v1/billing/credit_grants/" id "") params))
 
-(defn PostSetupIntentsIntentConfirm [intent params]
+(defn post-setup-intents-intent-confirm [intent params]
   (stripe-request :post (str "v1/setup_intents/" intent "/confirm") params))
 
-(defn DeleteCustomersCustomer [customer params]
+(defn delete-customers-customer [customer params]
   (stripe-request :delete (str "v1/customers/" customer "") params))
 
-(defn GetCustomersCustomer [customer params]
+(defn get-customers-customer [customer params]
   (stripe-request :get (str "v1/customers/" customer "") params))
 
-(defn PostCustomersCustomer [customer params]
+(defn post-customers-customer [customer params]
   (stripe-request :post (str "v1/customers/" customer "") params))
 
-(defn GetChargesCharge [charge params]
+(defn get-charges-charge [charge params]
   (stripe-request :get (str "v1/charges/" charge "") params))
 
-(defn PostChargesCharge [charge params]
+(defn post-charges-charge [charge params]
   (stripe-request :post (str "v1/charges/" charge "") params))
 
-(defn DeleteProductsProductFeaturesId [product id params]
+(defn delete-products-product-features-id [product id params]
   (stripe-request :delete (str "v1/products/" product "/features/" id "") params))
 
-(defn GetProductsProductFeaturesId [product id params]
+(defn get-products-product-features-id [product id params]
   (stripe-request :get (str "v1/products/" product "/features/" id "") params))
 
-(defn DeleteWebhookEndpointsWebhookEndpoint [webhook_endpoint params]
+(defn delete-webhook-endpoints-webhook-endpoint [webhook_endpoint params]
   (stripe-request :delete (str "v1/webhook_endpoints/" webhook_endpoint "") params))
 
-(defn GetWebhookEndpointsWebhookEndpoint [webhook_endpoint params]
+(defn get-webhook-endpoints-webhook-endpoint [webhook_endpoint params]
   (stripe-request :get (str "v1/webhook_endpoints/" webhook_endpoint "") params))
 
-(defn PostWebhookEndpointsWebhookEndpoint [webhook_endpoint params]
+(defn post-webhook-endpoints-webhook-endpoint [webhook_endpoint params]
   (stripe-request :post (str "v1/webhook_endpoints/" webhook_endpoint "") params))
 
-(defn GetFileLinksLink [link params]
+(defn get-file-links-link [link params]
   (stripe-request :get (str "v1/file_links/" link "") params))
 
-(defn PostFileLinksLink [link params]
+(defn post-file-links-link [link params]
   (stripe-request :post (str "v1/file_links/" link "") params))
 
-(defn PostPayoutsPayoutReverse [payout params]
+(defn post-payouts-payout-reverse [payout params]
   (stripe-request :post (str "v1/payouts/" payout "/reverse") params))
 
-(defn GetCreditNotesPreview [ params]
+(defn get-credit-notes-preview [params params]
   (stripe-request :get (str "v1/credit_notes/preview") params))
 
-(defn PostPaymentMethodsPaymentMethodAttach [payment_method params]
+(defn post-payment-methods-payment-method-attach [payment_method params]
   (stripe-request :post (str "v1/payment_methods/" payment_method "/attach") params))
 
-(defn DeleteCustomersCustomerCardsId [customer id params]
+(defn delete-customers-customer-cards-id [customer id params]
   (stripe-request :delete (str "v1/customers/" customer "/cards/" id "") params))
 
-(defn GetCustomersCustomerCardsId [customer id params]
+(defn get-customers-customer-cards-id [customer id params]
   (stripe-request :get (str "v1/customers/" customer "/cards/" id "") params))
 
-(defn PostCustomersCustomerCardsId [customer id params]
+(defn post-customers-customer-cards-id [customer id params]
   (stripe-request :post (str "v1/customers/" customer "/cards/" id "") params))
 
-(defn GetInvoiceitems [ params]
+(defn get-invoiceitems [params params]
   (stripe-request :get (str "v1/invoiceitems") params))
 
-(defn PostInvoiceitems [ params]
+(defn post-invoiceitems [params params]
   (stripe-request :post (str "v1/invoiceitems") params))
 
-(defn PostTestHelpersIssuingSettlements [ params]
+(defn post-test-helpers-issuing-settlements [params params]
   (stripe-request :post (str "v1/test_helpers/issuing/settlements") params))
 
-(defn GetPaymentLinks [ params]
+(defn get-payment-links [params params]
   (stripe-request :get (str "v1/payment_links") params))
 
-(defn PostPaymentLinks [ params]
+(defn post-payment-links [params params]
   (stripe-request :post (str "v1/payment_links") params))
 
-(defn PostTestHelpersIssuingTransactionsCreateUnlinkedRefund [ params]
+(defn post-test-helpers-issuing-transactions-create-unlinked-refund [params params]
   (stripe-request :post (str "v1/test_helpers/issuing/transactions/create_unlinked_refund") params))
 
-(defn PostTestHelpersIssuingAuthorizationsAuthorizationIncrement [authorization params]
+(defn post-test-helpers-issuing-authorizations-authorization-increment [authorization params]
   (stripe-request :post (str "v1/test_helpers/issuing/authorizations/" authorization "/increment") params))
 
-(defn PostTestHelpersIssuingCardsCardShippingShip [card params]
+(defn post-test-helpers-issuing-cards-card-shipping-ship [card params]
   (stripe-request :post (str "v1/test_helpers/issuing/cards/" card "/shipping/ship") params))
 
-(defn PostInvoicesInvoiceRemoveLines [invoice params]
+(defn post-invoices-invoice-remove-lines [invoice params]
   (stripe-request :post (str "v1/invoices/" invoice "/remove_lines") params))
 
-(defn PostTestHelpersIssuingCardsCardShippingDeliver [card params]
+(defn post-test-helpers-issuing-cards-card-shipping-deliver [card params]
   (stripe-request :post (str "v1/test_helpers/issuing/cards/" card "/shipping/deliver") params))
 
-(defn GetIssuingCardsCard [card params]
+(defn get-issuing-cards-card [card params]
   (stripe-request :get (str "v1/issuing/cards/" card "") params))
 
-(defn PostIssuingCardsCard [card params]
+(defn post-issuing-cards-card [card params]
   (stripe-request :post (str "v1/issuing/cards/" card "") params))
 
-(defn PostCustomersCustomerSourcesIdVerify [customer id params]
+(defn post-customers-customer-sources-id-verify [customer id params]
   (stripe-request :post (str "v1/customers/" customer "/sources/" id "/verify") params))
 
-(defn PostSubscriptionsSubscriptionResume [subscription params]
+(defn post-subscriptions-subscription-resume [subscription params]
   (stripe-request :post (str "v1/subscriptions/" subscription "/resume") params))
 
-(defn PostAccountsAccountBankAccounts [account params]
+(defn post-accounts-account-bank-accounts [account params]
   (stripe-request :post (str "v1/accounts/" account "/bank_accounts") params))
 
-(defn GetIssuingTransactions [ params]
+(defn get-issuing-transactions [params params]
   (stripe-request :get (str "v1/issuing/transactions") params))
 
-(defn PostTestHelpersTerminalReadersReaderPresentPaymentMethod [reader params]
+(defn post-test-helpers-terminal-readers-reader-present-payment-method [reader params]
   (stripe-request :post (str "v1/test_helpers/terminal/readers/" reader "/present_payment_method") params))
 
-(defn GetTreasuryCreditReversals [ params]
+(defn get-treasury-credit-reversals [params params]
   (stripe-request :get (str "v1/treasury/credit_reversals") params))
 
-(defn PostTreasuryCreditReversals [ params]
+(defn post-treasury-credit-reversals [params params]
   (stripe-request :post (str "v1/treasury/credit_reversals") params))
 
-(defn GetIssuingPersonalizationDesigns [ params]
+(defn get-issuing-personalization-designs [params params]
   (stripe-request :get (str "v1/issuing/personalization_designs") params))
 
-(defn PostIssuingPersonalizationDesigns [ params]
+(defn post-issuing-personalization-designs [params params]
   (stripe-request :post (str "v1/issuing/personalization_designs") params))
 
-(defn GetTerminalReaders [ params]
+(defn get-terminal-readers [params params]
   (stripe-request :get (str "v1/terminal/readers") params))
 
-(defn PostTerminalReaders [ params]
+(defn post-terminal-readers [params params]
   (stripe-request :post (str "v1/terminal/readers") params))
 
-(defn GetApplePayDomains [ params]
+(defn get-apple-pay-domains [params params]
   (stripe-request :get (str "v1/apple_pay/domains") params))
 
-(defn PostApplePayDomains [ params]
+(defn post-apple-pay-domains [params params]
   (stripe-request :post (str "v1/apple_pay/domains") params))
 
-(defn GetTaxCodesId [id params]
+(defn get-tax-codes-id [id params]
   (stripe-request :get (str "v1/tax_codes/" id "") params))
 
-(defn GetBillingCreditBalanceTransactions [ params]
+(defn get-billing-credit-balance-transactions [params params]
   (stripe-request :get (str "v1/billing/credit_balance_transactions") params))
 
-(defn PostChargesChargeRefund [charge params]
+(defn post-charges-charge-refund [charge params]
   (stripe-request :post (str "v1/charges/" charge "/refund") params))
 
-(defn GetIssuingPhysicalBundlesPhysicalBundle [physical_bundle params]
+(defn get-issuing-physical-bundles-physical-bundle [physical_bundle params]
   (stripe-request :get (str "v1/issuing/physical_bundles/" physical_bundle "") params))
 
-(defn GetTreasuryTransactionsId [id params]
+(defn get-treasury-transactions-id [id params]
   (stripe-request :get (str "v1/treasury/transactions/" id "") params))
 
-(defn GetCustomersCustomerPaymentMethods [customer params]
+(defn get-customers-customer-payment-methods [customer params]
   (stripe-request :get (str "v1/customers/" customer "/payment_methods") params))
 
-(defn GetCustomers [ params]
+(defn get-customers [params params]
   (stripe-request :get (str "v1/customers") params))
 
-(defn PostCustomers [ params]
+(defn post-customers [params params]
   (stripe-request :post (str "v1/customers") params))
 
-(defn PostSetupIntentsIntentVerifyMicrodeposits [intent params]
+(defn post-setup-intents-intent-verify-microdeposits [intent params]
   (stripe-request :post (str "v1/setup_intents/" intent "/verify_microdeposits") params))
 
-(defn GetFinancialConnectionsAccounts [ params]
+(defn get-financial-connections-accounts [params params]
   (stripe-request :get (str "v1/financial_connections/accounts") params))
 
-(defn GetCountrySpecs [ params]
+(defn get-country-specs [params params]
   (stripe-request :get (str "v1/country_specs") params))
 
-(defn GetChargesChargeRefundsRefund [charge refund params]
+(defn get-charges-charge-refunds-refund [charge refund params]
   (stripe-request :get (str "v1/charges/" charge "/refunds/" refund "") params))
 
-(defn PostChargesChargeRefundsRefund [charge refund params]
+(defn post-charges-charge-refunds-refund [charge refund params]
   (stripe-request :post (str "v1/charges/" charge "/refunds/" refund "") params))
 
-(defn DeleteCustomersCustomerDiscount [customer params]
+(defn delete-customers-customer-discount [customer params]
   (stripe-request :delete (str "v1/customers/" customer "/discount") params))
 
-(defn GetCustomersCustomerDiscount [customer params]
+(defn get-customers-customer-discount [customer params]
   (stripe-request :get (str "v1/customers/" customer "/discount") params))
 
-(defn GetPaymentMethodsPaymentMethod [payment_method params]
+(defn get-payment-methods-payment-method [payment_method params]
   (stripe-request :get (str "v1/payment_methods/" payment_method "") params))
 
-(defn PostPaymentMethodsPaymentMethod [payment_method params]
+(defn post-payment-methods-payment-method [payment_method params]
   (stripe-request :post (str "v1/payment_methods/" payment_method "") params))
 
-(defn GetAccountsAccountExternalAccounts [account params]
+(defn get-accounts-account-external-accounts [account params]
   (stripe-request :get (str "v1/accounts/" account "/external_accounts") params))
 
-(defn PostAccountsAccountExternalAccounts [account params]
+(defn post-accounts-account-external-accounts [account params]
   (stripe-request :post (str "v1/accounts/" account "/external_accounts") params))
 
-(defn GetAppsSecretsFind [ params]
+(defn get-apps-secrets-find [params params]
   (stripe-request :get (str "v1/apps/secrets/find") params))
 
-(defn GetProductsProductFeatures [product params]
+(defn get-products-product-features [product params]
   (stripe-request :get (str "v1/products/" product "/features") params))
 
-(defn PostProductsProductFeatures [product params]
+(defn post-products-product-features [product params]
   (stripe-request :post (str "v1/products/" product "/features") params))
 
-(defn PostInvoiceRenderingTemplatesTemplateUnarchive [template params]
+(defn post-invoice-rendering-templates-template-unarchive [template params]
   (stripe-request :post (str "v1/invoice_rendering_templates/" template "/unarchive") params))
 
-(defn PostPaymentIntentsIntentConfirm [intent params]
+(defn post-payment-intents-intent-confirm [intent params]
   (stripe-request :post (str "v1/payment_intents/" intent "/confirm") params))
 
-(defn PostEphemeralKeys [ params]
+(defn post-ephemeral-keys [params params]
   (stripe-request :post (str "v1/ephemeral_keys") params))
 
-(defn GetTreasuryFinancialAccountsFinancialAccount [financial_account params]
+(defn get-treasury-financial-accounts-financial-account [financial_account params]
   (stripe-request :get (str "v1/treasury/financial_accounts/" financial_account "") params))
 
-(defn PostTreasuryFinancialAccountsFinancialAccount [financial_account params]
+(defn post-treasury-financial-accounts-financial-account [financial_account params]
   (stripe-request :post (str "v1/treasury/financial_accounts/" financial_account "") params))
 
-(defn PostPaymentIntentsIntentApplyCustomerBalance [intent params]
+(defn post-payment-intents-intent-apply-customer-balance [intent params]
   (stripe-request :post (str "v1/payment_intents/" intent "/apply_customer_balance") params))
 
-(defn GetInvoicesUpcoming [ params]
+(defn get-invoices-upcoming [params params]
   (stripe-request :get (str "v1/invoices/upcoming") params))
 
-(defn GetTerminalLocations [ params]
+(defn get-terminal-locations [params params]
   (stripe-request :get (str "v1/terminal/locations") params))
 
-(defn PostTerminalLocations [ params]
+(defn post-terminal-locations [params params]
   (stripe-request :post (str "v1/terminal/locations") params))
 
-(defn GetIssuingCardholdersCardholder [cardholder params]
+(defn get-issuing-cardholders-cardholder [cardholder params]
   (stripe-request :get (str "v1/issuing/cardholders/" cardholder "") params))
 
-(defn PostIssuingCardholdersCardholder [cardholder params]
+(defn post-issuing-cardholders-cardholder [cardholder params]
   (stripe-request :post (str "v1/issuing/cardholders/" cardholder "") params))
 
-(defn GetBillingMetersId [id params]
+(defn get-billing-meters-id [id params]
   (stripe-request :get (str "v1/billing/meters/" id "") params))
 
-(defn PostBillingMetersId [id params]
+(defn post-billing-meters-id [id params]
   (stripe-request :post (str "v1/billing/meters/" id "") params))
 
-(defn GetPayouts [ params]
+(defn get-payouts [params params]
   (stripe-request :get (str "v1/payouts") params))
 
-(defn PostPayouts [ params]
+(defn post-payouts [params params]
   (stripe-request :post (str "v1/payouts") params))
 
-(defn GetTreasuryDebitReversals [ params]
+(defn get-treasury-debit-reversals [params params]
   (stripe-request :get (str "v1/treasury/debit_reversals") params))
 
-(defn PostTreasuryDebitReversals [ params]
+(defn post-treasury-debit-reversals [params params]
   (stripe-request :post (str "v1/treasury/debit_reversals") params))
 
-(defn GetQuotesQuotePdf [quote params]
+(defn get-quotes-quote-pdf [quote params]
   (stripe-request :get (str "v1/quotes/" quote "/pdf") params))
 
-(defn GetSetupIntents [ params]
+(defn get-setup-intents [params params]
   (stripe-request :get (str "v1/setup_intents") params))
 
-(defn PostSetupIntents [ params]
+(defn post-setup-intents [params params]
   (stripe-request :post (str "v1/setup_intents") params))
 
-(defn GetIdentityVerificationSessionsSession [session params]
+(defn get-identity-verification-sessions-session [session params]
   (stripe-request :get (str "v1/identity/verification_sessions/" session "") params))
 
-(defn PostIdentityVerificationSessionsSession [session params]
+(defn post-identity-verification-sessions-session [session params]
   (stripe-request :post (str "v1/identity/verification_sessions/" session "") params))
 
-(defn PostCheckoutSessionsSessionExpire [session params]
+(defn post-checkout-sessions-session-expire [session params]
   (stripe-request :post (str "v1/checkout/sessions/" session "/expire") params))
 
-(defn GetPaymentIntents [ params]
+(defn get-payment-intents [params params]
   (stripe-request :get (str "v1/payment_intents") params))
 
-(defn PostPaymentIntents [ params]
+(defn post-payment-intents [params params]
   (stripe-request :post (str "v1/payment_intents") params))
 
-(defn PostApplicationFeesIdRefund [id params]
+(defn post-application-fees-id-refund [id params]
   (stripe-request :post (str "v1/application_fees/" id "/refund") params))
 
-(defn DeleteAccountsAccountExternalAccountsId [account id params]
+(defn delete-accounts-account-external-accounts-id [account id params]
   (stripe-request :delete (str "v1/accounts/" account "/external_accounts/" id "") params))
 
-(defn GetAccountsAccountExternalAccountsId [account id params]
+(defn get-accounts-account-external-accounts-id [account id params]
   (stripe-request :get (str "v1/accounts/" account "/external_accounts/" id "") params))
 
-(defn PostAccountsAccountExternalAccountsId [account id params]
+(defn post-accounts-account-external-accounts-id [account id params]
   (stripe-request :post (str "v1/accounts/" account "/external_accounts/" id "") params))
 
-(defn DeleteInvoicesInvoice [invoice params]
+(defn delete-invoices-invoice [invoice params]
   (stripe-request :delete (str "v1/invoices/" invoice "") params))
 
-(defn GetInvoicesInvoice [invoice params]
+(defn get-invoices-invoice [invoice params]
   (stripe-request :get (str "v1/invoices/" invoice "") params))
 
-(defn PostInvoicesInvoice [invoice params]
+(defn post-invoices-invoice [invoice params]
   (stripe-request :post (str "v1/invoices/" invoice "") params))
 
-(defn GetTestHelpersTestClocks [ params]
+(defn get-test-helpers-test-clocks [params params]
   (stripe-request :get (str "v1/test_helpers/test_clocks") params))
 
-(defn PostTestHelpersTestClocks [ params]
+(defn post-test-helpers-test-clocks [params params]
   (stripe-request :post (str "v1/test_helpers/test_clocks") params))
 
-(defn PostTestHelpersIssuingTransactionsCreateForceCapture [ params]
+(defn post-test-helpers-issuing-transactions-create-force-capture [params params]
   (stripe-request :post (str "v1/test_helpers/issuing/transactions/create_force_capture") params))
 
-(defn PostTestHelpersTreasuryOutboundPaymentsId [id params]
+(defn post-test-helpers-treasury-outbound-payments-id [id params]
   (stripe-request :post (str "v1/test_helpers/treasury/outbound_payments/" id "") params))
 
-(defn PostIssuingAuthorizationsAuthorizationApprove [authorization params]
+(defn post-issuing-authorizations-authorization-approve [authorization params]
   (stripe-request :post (str "v1/issuing/authorizations/" authorization "/approve") params))
 
-(defn PostInvoicesInvoicePay [invoice params]
+(defn post-invoices-invoice-pay [invoice params]
   (stripe-request :post (str "v1/invoices/" invoice "/pay") params))
 
-(defn GetClimateSuppliersSupplier [supplier params]
+(defn get-climate-suppliers-supplier [supplier params]
   (stripe-request :get (str "v1/climate/suppliers/" supplier "") params))
 
-(defn GetIssuingSettlementsSettlement [settlement params]
+(defn get-issuing-settlements-settlement [settlement params]
   (stripe-request :get (str "v1/issuing/settlements/" settlement "") params))
 
-(defn PostIssuingSettlementsSettlement [settlement params]
+(defn post-issuing-settlements-settlement [settlement params]
   (stripe-request :post (str "v1/issuing/settlements/" settlement "") params))
 
-(defn GetRefunds [ params]
+(defn get-refunds [params params]
   (stripe-request :get (str "v1/refunds") params))
 
-(defn PostRefunds [ params]
+(defn post-refunds [params params]
   (stripe-request :post (str "v1/refunds") params))
 
-(defn PostBillingMeterEvents [ params]
+(defn post-billing-meter-events [params params]
   (stripe-request :post (str "v1/billing/meter_events") params))
 
-(defn GetSubscriptions [ params]
+(defn get-subscriptions [params params]
   (stripe-request :get (str "v1/subscriptions") params))
 
-(defn PostSubscriptions [ params]
+(defn post-subscriptions [params params]
   (stripe-request :post (str "v1/subscriptions") params))
 
-(defn DeleteProductsId [id params]
+(defn delete-products-id [id params]
   (stripe-request :delete (str "v1/products/" id "") params))
 
-(defn GetProductsId [id params]
+(defn get-products-id [id params]
   (stripe-request :get (str "v1/products/" id "") params))
 
-(defn PostProductsId [id params]
+(defn post-products-id [id params]
   (stripe-request :post (str "v1/products/" id "") params))
 
-(defn GetIssuingTokensToken [token params]
+(defn get-issuing-tokens-token [token params]
   (stripe-request :get (str "v1/issuing/tokens/" token "") params))
 
-(defn PostIssuingTokensToken [token params]
+(defn post-issuing-tokens-token [token params]
   (stripe-request :post (str "v1/issuing/tokens/" token "") params))
 
-(defn GetShippingRates [ params]
+(defn get-shipping-rates [params params]
   (stripe-request :get (str "v1/shipping_rates") params))
 
-(defn PostShippingRates [ params]
+(defn post-shipping-rates [params params]
   (stripe-request :post (str "v1/shipping_rates") params))
 
-(defn PostTestHelpersIssuingCardsCardShippingSubmit [card params]
+(defn post-test-helpers-issuing-cards-card-shipping-submit [card params]
   (stripe-request :post (str "v1/test_helpers/issuing/cards/" card "/shipping/submit") params))
 
-(defn PostAccountsAccountReject [account params]
+(defn post-accounts-account-reject [account params]
   (stripe-request :post (str "v1/accounts/" account "/reject") params))
 
-(defn GetFileLinks [ params]
+(defn get-file-links [params params]
   (stripe-request :get (str "v1/file_links") params))
 
-(defn PostFileLinks [ params]
+(defn post-file-links [params params]
   (stripe-request :post (str "v1/file_links") params))
 
-(defn GetTaxRates [ params]
+(defn get-tax-rates [params params]
   (stripe-request :get (str "v1/tax_rates") params))
 
-(defn PostTaxRates [ params]
+(defn post-tax-rates [params params]
   (stripe-request :post (str "v1/tax_rates") params))
 
-(defn PostSubscriptionSchedulesScheduleCancel [schedule params]
+(defn post-subscription-schedules-schedule-cancel [schedule params]
   (stripe-request :post (str "v1/subscription_schedules/" schedule "/cancel") params))
 
-(defn GetRadarEarlyFraudWarningsEarlyFraudWarning [early_fraud_warning params]
+(defn get-radar-early-fraud-warnings-early-fraud-warning [early_fraud_warning params]
   (stripe-request :get (str "v1/radar/early_fraud_warnings/" early_fraud_warning "") params))
 
-(defn PostSources [ params]
+(defn post-sources [params params]
   (stripe-request :post (str "v1/sources") params))
 
-(defn PostTerminalConnectionTokens [ params]
+(defn post-terminal-connection-tokens [params params]
   (stripe-request :post (str "v1/terminal/connection_tokens") params))
