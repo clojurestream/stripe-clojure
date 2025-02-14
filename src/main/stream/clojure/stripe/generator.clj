@@ -2,7 +2,7 @@
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
             [clojure.string :as string]
-            [stream.clojure.stripe.request :as request ]))
+            [stream.clojure.stripe.request :as request]))
 
 ;; Step 1: Fetch OpenAPI Schema
 (def stripe-openapi-url
@@ -19,7 +19,10 @@
            (map (fn [[method details]]
                   {:path path
                    :method method
-                   :operation-id (get details :operationId)})
+                   :operation-id (get details :operationId)
+                   :summary (get details :summary)
+                   :description (get details :description)
+                   :parameters (get details :parameters [])})  ;; Include parameters
              methods)))
     (apply concat)))
 
@@ -39,16 +42,32 @@
     (string/replace #"_" "-"))) ;; Replace underscores with dashes
 
 (defn generate-function [endpoint]
-  (let [{:keys [operation-id method path]} endpoint
+  (let [{:keys [operation-id method path summary parameters]} endpoint
         kebab-op-id (camel-to-kebab operation-id)
-        path-str (name path)  ;; Ensure it's a string
+        path-str (name path) ;; Ensure it's a string
         params (extract-path-params path-str)
         param-names (if (empty? params) "params" (string/join " " params)) ;; Convert to function arguments
         replaced-path (reduce (fn [p param]
-                                (clojure.string/replace p (str "{" param "}") (str "\" " param " \"")))
+                                (string/replace p (str "{" param "}") (str "\" " param " \"")))
                         path-str
-                        params)]
+                        params)
+        path-params (filter #(= (:in %) "path") parameters)
+        query-params (filter #(= (:in %) "query") parameters)
+        docstring (str "  \"\"\"\n"
+                    "  " (or summary "No description available.") "\n\n"
+                    "  HTTP Method: " (string/upper-case (name method)) "\n"
+                    "  Endpoint: " path-str "\n\n"
+                    (when (seq path-params)
+                      (str "  Path Parameters:\n"
+                        (string/join "\n" (map #(str "    - " (:name %) ": " (:description %)) path-params))
+                        "\n\n"))
+                    (when (seq query-params)
+                      (str "  Query Parameters:\n"
+                        (string/join "\n" (map #(str "    - " (:name %) ": " (:description %)) query-params))
+                        "\n\n"))
+                    "  \"\"\"")]
     (str "\n(defn " kebab-op-id " [" param-names " params]\n"
+      docstring "\n"
       "  (stripe-request :" (name method) " (str \"" replaced-path "\") params))")))
 
 ;; Step 4: Ensure Directory Exists & Write to File
@@ -67,7 +86,7 @@
                     "  DO NOT MODIFY THIS FILE MANUALLY. Any changes will be overwritten.\n"
                     "  ALPHA: Work-in-progress - expect breaking changes before the stable release.\"")
         header (str "(ns stream.clojure.stripe.api\n" docstring "\n (:require [stream.clojure.stripe.request :refer [stripe-request]]))\n")
-        body (clojure.string/join "\n" functions)
+        body (string/join "\n" functions)
         content (str header body)]
     (write-to-file "src/main/stream/clojure/stripe/api.clj" content)))
 
