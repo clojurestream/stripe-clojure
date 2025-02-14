@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-identity-verification-sessions [params]
+(defn retrieve-identity [params]
   """
   List VerificationSessions
 
@@ -20,9 +20,9 @@
     - status: Only return VerificationSessions with this status. [Learn more about the lifecycle of sessions](https://stripe.com/docs/identity/how-sessions-work).
 
   """
-  (stripe-request :get "/v1/identity/verification_sessions" params))
+  (stripe-request :get (str "/v1/identity/verification_sessions") params))
 
-(defn post-identity-verification-sessions [params]
+(defn create-identity [params]
   """
   Create a VerificationSession
 
@@ -30,9 +30,9 @@
   Endpoint: /v1/identity/verification_sessions
 
   """
-  (stripe-request :post "/v1/identity/verification_sessions" params))
+  (stripe-request :post (str "/v1/identity/verification_sessions") params))
 
-(defn post-identity-verification-sessions-session-cancel [session params]
+(defn create-identity [session params]
   """
   Cancel a VerificationSession
 
@@ -43,9 +43,9 @@
     - session: Path parameter.
 
   """
-  (stripe-request :post "/v1/identity/verification_sessions/" session "/cancel" params))
+  (stripe-request :post (str "/v1/identity/verification_sessions/" session "/cancel") params))
 
-(defn get-identity-verification-reports [params]
+(defn retrieve-identity [params]
   """
   List VerificationReports
 
@@ -63,9 +63,9 @@
     - verification_session: Only return VerificationReports created by this VerificationSession ID. It is allowed to provide a VerificationIntent ID.
 
   """
-  (stripe-request :get "/v1/identity/verification_reports" params))
+  (stripe-request :get (str "/v1/identity/verification_reports") params))
 
-(defn get-identity-verification-reports-report [report params]
+(defn retrieve-identity [report params]
   """
   Retrieve a VerificationReport
 
@@ -79,9 +79,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/identity/verification_reports/" report "" params))
+  (stripe-request :get (str "/v1/identity/verification_reports/" report "") params))
 
-(defn post-identity-verification-sessions-session-redact [session params]
+(defn create-identity [session params]
   """
   Redact a VerificationSession
 
@@ -92,9 +92,9 @@
     - session: Path parameter.
 
   """
-  (stripe-request :post "/v1/identity/verification_sessions/" session "/redact" params))
+  (stripe-request :post (str "/v1/identity/verification_sessions/" session "/redact") params))
 
-(defn get-identity-verification-sessions-session [session params]
+(defn retrieve-identity [session params]
   """
   Retrieve a VerificationSession
 
@@ -108,9 +108,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/identity/verification_sessions/" session "" params))
+  (stripe-request :get (str "/v1/identity/verification_sessions/" session "") params))
 
-(defn post-identity-verification-sessions-session [session params]
+(defn create-identity [session params]
   """
   Update a VerificationSession
 
@@ -121,4 +121,4 @@
     - session: Path parameter.
 
   """
-  (stripe-request :post "/v1/identity/verification_sessions/" session "" params))
+  (stripe-request :post (str "/v1/identity/verification_sessions/" session "") params))

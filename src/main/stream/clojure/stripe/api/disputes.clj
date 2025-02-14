@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-disputes [params]
+(defn retrieve-disputes [params]
   """
   List all disputes
 
@@ -19,9 +19,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/disputes" params))
+  (stripe-request :get (str "/v1/disputes") params))
 
-(defn post-disputes-dispute-close [dispute params]
+(defn create-disputes [dispute params]
   """
   Close a dispute
 
@@ -32,9 +32,9 @@
     - dispute: Path parameter.
 
   """
-  (stripe-request :post "/v1/disputes/" dispute "/close" params))
+  (stripe-request :post (str "/v1/disputes/" dispute "/close") params))
 
-(defn get-disputes-dispute [dispute params]
+(defn retrieve-disputes [dispute params]
   """
   Retrieve a dispute
 
@@ -48,9 +48,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/disputes/" dispute "" params))
+  (stripe-request :get (str "/v1/disputes/" dispute "") params))
 
-(defn post-disputes-dispute [dispute params]
+(defn create-disputes [dispute params]
   """
   Update a dispute
 
@@ -61,4 +61,4 @@
     - dispute: Path parameter.
 
   """
-  (stripe-request :post "/v1/disputes/" dispute "" params))
+  (stripe-request :post (str "/v1/disputes/" dispute "") params))

@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-invoiceitems-invoiceitem [invoiceitem params]
+(defn delete-invoiceitems [invoiceitem params]
   """
   Delete an invoice item
 
@@ -13,9 +13,9 @@
     - invoiceitem: Path parameter.
 
   """
-  (stripe-request :delete "/v1/invoiceitems/" invoiceitem "" params))
+  (stripe-request :delete (str "/v1/invoiceitems/" invoiceitem "") params))
 
-(defn get-invoiceitems-invoiceitem [invoiceitem params]
+(defn retrieve-invoiceitems [invoiceitem params]
   """
   Retrieve an invoice item
 
@@ -29,9 +29,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/invoiceitems/" invoiceitem "" params))
+  (stripe-request :get (str "/v1/invoiceitems/" invoiceitem "") params))
 
-(defn post-invoiceitems-invoiceitem [invoiceitem params]
+(defn create-invoiceitems [invoiceitem params]
   """
   Update an invoice item
 
@@ -42,9 +42,9 @@
     - invoiceitem: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoiceitems/" invoiceitem "" params))
+  (stripe-request :post (str "/v1/invoiceitems/" invoiceitem "") params))
 
-(defn get-invoiceitems [params]
+(defn retrieve-invoiceitems [params]
   """
   List all invoice items
 
@@ -62,9 +62,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/invoiceitems" params))
+  (stripe-request :get (str "/v1/invoiceitems") params))
 
-(defn post-invoiceitems [params]
+(defn create-invoiceitems [params]
   """
   Create an invoice item
 
@@ -72,4 +72,4 @@
   Endpoint: /v1/invoiceitems
 
   """
-  (stripe-request :post "/v1/invoiceitems" params))
+  (stripe-request :post (str "/v1/invoiceitems") params))

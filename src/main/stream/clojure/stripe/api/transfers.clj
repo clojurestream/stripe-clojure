@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-transfers-id-reversals [id params]
+(defn retrieve-transfers [id params]
   """
   List all reversals
 
@@ -19,9 +19,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/transfers/" id "/reversals" params))
+  (stripe-request :get (str "/v1/transfers/" id "/reversals") params))
 
-(defn post-transfers-id-reversals [id params]
+(defn create-transfers [id params]
   """
   Create a transfer reversal
 
@@ -32,9 +32,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/transfers/" id "/reversals" params))
+  (stripe-request :post (str "/v1/transfers/" id "/reversals") params))
 
-(defn get-transfers-transfer-reversals-id [transfer id params]
+(defn retrieve-transfers [transfer id params]
   """
   Retrieve a reversal
 
@@ -49,9 +49,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/transfers/" transfer "/reversals/" id "" params))
+  (stripe-request :get (str "/v1/transfers/" transfer "/reversals/" id "") params))
 
-(defn post-transfers-transfer-reversals-id [transfer id params]
+(defn create-transfers [transfer id params]
   """
   Update a reversal
 
@@ -63,9 +63,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/transfers/" transfer "/reversals/" id "" params))
+  (stripe-request :post (str "/v1/transfers/" transfer "/reversals/" id "") params))
 
-(defn get-transfers [params]
+(defn retrieve-transfers [params]
   """
   List all transfers
 
@@ -82,9 +82,9 @@
     - transfer_group: Only return transfers with the specified transfer group.
 
   """
-  (stripe-request :get "/v1/transfers" params))
+  (stripe-request :get (str "/v1/transfers") params))
 
-(defn post-transfers [params]
+(defn create-transfers [params]
   """
   Create a transfer
 
@@ -92,9 +92,9 @@
   Endpoint: /v1/transfers
 
   """
-  (stripe-request :post "/v1/transfers" params))
+  (stripe-request :post (str "/v1/transfers") params))
 
-(defn get-transfers-transfer [transfer params]
+(defn retrieve-transfers [transfer params]
   """
   Retrieve a transfer
 
@@ -108,9 +108,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/transfers/" transfer "" params))
+  (stripe-request :get (str "/v1/transfers/" transfer "") params))
 
-(defn post-transfers-transfer [transfer params]
+(defn create-transfers [transfer params]
   """
   Update a transfer
 
@@ -121,4 +121,4 @@
     - transfer: Path parameter.
 
   """
-  (stripe-request :post "/v1/transfers/" transfer "" params))
+  (stripe-request :post (str "/v1/transfers/" transfer "") params))

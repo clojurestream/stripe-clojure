@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-topups [params]
+(defn retrieve-topups [params]
   """
   List all top-ups
 
@@ -19,9 +19,9 @@
     - status: Only return top-ups that have the given status. One of `canceled`, `failed`, `pending` or `succeeded`.
 
   """
-  (stripe-request :get "/v1/topups" params))
+  (stripe-request :get (str "/v1/topups") params))
 
-(defn post-topups [params]
+(defn create-topups [params]
   """
   Create a top-up
 
@@ -29,9 +29,9 @@
   Endpoint: /v1/topups
 
   """
-  (stripe-request :post "/v1/topups" params))
+  (stripe-request :post (str "/v1/topups") params))
 
-(defn post-topups-topup-cancel [topup params]
+(defn create-topups [topup params]
   """
   Cancel a top-up
 
@@ -42,9 +42,9 @@
     - topup: Path parameter.
 
   """
-  (stripe-request :post "/v1/topups/" topup "/cancel" params))
+  (stripe-request :post (str "/v1/topups/" topup "/cancel") params))
 
-(defn get-topups-topup [topup params]
+(defn retrieve-topups [topup params]
   """
   Retrieve a top-up
 
@@ -58,9 +58,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/topups/" topup "" params))
+  (stripe-request :get (str "/v1/topups/" topup "") params))
 
-(defn post-topups-topup [topup params]
+(defn create-topups [topup params]
   """
   Update a top-up
 
@@ -71,4 +71,4 @@
     - topup: Path parameter.
 
   """
-  (stripe-request :post "/v1/topups/" topup "" params))
+  (stripe-request :post (str "/v1/topups/" topup "") params))

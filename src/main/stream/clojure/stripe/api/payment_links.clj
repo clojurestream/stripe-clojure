@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-payment-links-payment-link [payment_link params]
+(defn retrieve-payment-links [payment_link params]
   """
   Retrieve payment link
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/payment_links/" payment_link "" params))
+  (stripe-request :get (str "/v1/payment_links/" payment_link "") params))
 
-(defn post-payment-links-payment-link [payment_link params]
+(defn create-payment-links [payment_link params]
   """
   Update a payment link
 
@@ -29,9 +29,9 @@
     - payment_link: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_links/" payment_link "" params))
+  (stripe-request :post (str "/v1/payment_links/" payment_link "") params))
 
-(defn get-payment-links-payment-link-line-items [payment_link params]
+(defn retrieve-payment-links [payment_link params]
   """
   Retrieve a payment link's line items
 
@@ -48,9 +48,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/payment_links/" payment_link "/line_items" params))
+  (stripe-request :get (str "/v1/payment_links/" payment_link "/line_items") params))
 
-(defn get-payment-links [params]
+(defn retrieve-payment-links [params]
   """
   List all payment links
 
@@ -65,9 +65,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/payment_links" params))
+  (stripe-request :get (str "/v1/payment_links") params))
 
-(defn post-payment-links [params]
+(defn create-payment-links [params]
   """
   Create a payment link
 
@@ -75,4 +75,4 @@
   Endpoint: /v1/payment_links
 
   """
-  (stripe-request :post "/v1/payment_links" params))
+  (stripe-request :post (str "/v1/payment_links") params))

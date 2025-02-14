@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-charges [params]
+(defn retrieve-charges [params]
   """
   List all charges
 
@@ -20,9 +20,9 @@
     - transfer_group: Only return charges for this transfer group, limited to 100.
 
   """
-  (stripe-request :get "/v1/charges" params))
+  (stripe-request :get (str "/v1/charges") params))
 
-(defn post-charges [params]
+(defn create-charges [params]
   """
   No description available.
 
@@ -30,9 +30,9 @@
   Endpoint: /v1/charges
 
   """
-  (stripe-request :post "/v1/charges" params))
+  (stripe-request :post (str "/v1/charges") params))
 
-(defn get-charges-charge-refunds [charge params]
+(defn retrieve-charges [charge params]
   """
   List all refunds
 
@@ -49,9 +49,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/charges/" charge "/refunds" params))
+  (stripe-request :get (str "/v1/charges/" charge "/refunds") params))
 
-(defn post-charges-charge-refunds [charge params]
+(defn create-charges [charge params]
   """
   Create customer balance refund
 
@@ -62,9 +62,9 @@
     - charge: Path parameter.
 
   """
-  (stripe-request :post "/v1/charges/" charge "/refunds" params))
+  (stripe-request :post (str "/v1/charges/" charge "/refunds") params))
 
-(defn post-charges-charge-dispute-close [charge params]
+(defn create-charges [charge params]
   """
   No description available.
 
@@ -75,9 +75,9 @@
     - charge: Path parameter.
 
   """
-  (stripe-request :post "/v1/charges/" charge "/dispute/close" params))
+  (stripe-request :post (str "/v1/charges/" charge "/dispute/close") params))
 
-(defn post-charges-charge-capture [charge params]
+(defn create-charges [charge params]
   """
   Capture a payment
 
@@ -88,9 +88,9 @@
     - charge: Path parameter.
 
   """
-  (stripe-request :post "/v1/charges/" charge "/capture" params))
+  (stripe-request :post (str "/v1/charges/" charge "/capture") params))
 
-(defn get-charges-search [params]
+(defn retrieve-charges [params]
   """
   Search charges
 
@@ -104,9 +104,9 @@
     - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for charges](https://stripe.com/docs/search#query-fields-for-charges).
 
   """
-  (stripe-request :get "/v1/charges/search" params))
+  (stripe-request :get (str "/v1/charges/search") params))
 
-(defn get-charges-charge-dispute [charge params]
+(defn retrieve-charges [charge params]
   """
   No description available.
 
@@ -120,9 +120,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/charges/" charge "/dispute" params))
+  (stripe-request :get (str "/v1/charges/" charge "/dispute") params))
 
-(defn post-charges-charge-dispute [charge params]
+(defn create-charges [charge params]
   """
   No description available.
 
@@ -133,9 +133,9 @@
     - charge: Path parameter.
 
   """
-  (stripe-request :post "/v1/charges/" charge "/dispute" params))
+  (stripe-request :post (str "/v1/charges/" charge "/dispute") params))
 
-(defn get-charges-charge [charge params]
+(defn retrieve-charges [charge params]
   """
   Retrieve a charge
 
@@ -149,9 +149,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/charges/" charge "" params))
+  (stripe-request :get (str "/v1/charges/" charge "") params))
 
-(defn post-charges-charge [charge params]
+(defn create-charges [charge params]
   """
   Update a charge
 
@@ -162,9 +162,9 @@
     - charge: Path parameter.
 
   """
-  (stripe-request :post "/v1/charges/" charge "" params))
+  (stripe-request :post (str "/v1/charges/" charge "") params))
 
-(defn post-charges-charge-refund [charge params]
+(defn create-charges [charge params]
   """
   Create a refund
 
@@ -175,9 +175,9 @@
     - charge: Path parameter.
 
   """
-  (stripe-request :post "/v1/charges/" charge "/refund" params))
+  (stripe-request :post (str "/v1/charges/" charge "/refund") params))
 
-(defn get-charges-charge-refunds-refund [charge refund params]
+(defn retrieve-charges [charge refund params]
   """
   No description available.
 
@@ -192,9 +192,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/charges/" charge "/refunds/" refund "" params))
+  (stripe-request :get (str "/v1/charges/" charge "/refunds/" refund "") params))
 
-(defn post-charges-charge-refunds-refund [charge refund params]
+(defn create-charges [charge refund params]
   """
   No description available.
 
@@ -206,4 +206,4 @@
     - refund: Path parameter.
 
   """
-  (stripe-request :post "/v1/charges/" charge "/refunds/" refund "" params))
+  (stripe-request :post (str "/v1/charges/" charge "/refunds/" refund "") params))

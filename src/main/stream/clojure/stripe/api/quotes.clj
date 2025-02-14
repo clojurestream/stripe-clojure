@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-quotes-quote-accept [quote params]
+(defn create-quotes [quote params]
   """
   Accept a quote
 
@@ -13,9 +13,9 @@
     - quote: Path parameter.
 
   """
-  (stripe-request :post "/v1/quotes/" quote "/accept" params))
+  (stripe-request :post (str "/v1/quotes/" quote "/accept") params))
 
-(defn get-quotes-quote-line-items [quote params]
+(defn retrieve-quotes [quote params]
   """
   Retrieve a quote's line items
 
@@ -32,9 +32,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/quotes/" quote "/line_items" params))
+  (stripe-request :get (str "/v1/quotes/" quote "/line_items") params))
 
-(defn post-quotes-quote-finalize [quote params]
+(defn create-quotes [quote params]
   """
   Finalize a quote
 
@@ -45,9 +45,9 @@
     - quote: Path parameter.
 
   """
-  (stripe-request :post "/v1/quotes/" quote "/finalize" params))
+  (stripe-request :post (str "/v1/quotes/" quote "/finalize") params))
 
-(defn get-quotes [params]
+(defn retrieve-quotes [params]
   """
   List all quotes
 
@@ -64,9 +64,9 @@
     - test_clock: Provides a list of quotes that are associated with the specified test clock. The response will not include quotes with test clocks if this and the customer parameter is not set.
 
   """
-  (stripe-request :get "/v1/quotes" params))
+  (stripe-request :get (str "/v1/quotes") params))
 
-(defn post-quotes [params]
+(defn create-quotes [params]
   """
   Create a quote
 
@@ -74,9 +74,9 @@
   Endpoint: /v1/quotes
 
   """
-  (stripe-request :post "/v1/quotes" params))
+  (stripe-request :post (str "/v1/quotes") params))
 
-(defn get-quotes-quote-computed-upfront-line-items [quote params]
+(defn retrieve-quotes [quote params]
   """
   Retrieve a quote's upfront line items
 
@@ -93,9 +93,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/quotes/" quote "/computed_upfront_line_items" params))
+  (stripe-request :get (str "/v1/quotes/" quote "/computed_upfront_line_items") params))
 
-(defn post-quotes-quote-cancel [quote params]
+(defn create-quotes [quote params]
   """
   Cancel a quote
 
@@ -106,9 +106,9 @@
     - quote: Path parameter.
 
   """
-  (stripe-request :post "/v1/quotes/" quote "/cancel" params))
+  (stripe-request :post (str "/v1/quotes/" quote "/cancel") params))
 
-(defn get-quotes-quote [quote params]
+(defn retrieve-quotes [quote params]
   """
   Retrieve a quote
 
@@ -122,9 +122,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/quotes/" quote "" params))
+  (stripe-request :get (str "/v1/quotes/" quote "") params))
 
-(defn post-quotes-quote [quote params]
+(defn create-quotes [quote params]
   """
   Update a quote
 
@@ -135,9 +135,9 @@
     - quote: Path parameter.
 
   """
-  (stripe-request :post "/v1/quotes/" quote "" params))
+  (stripe-request :post (str "/v1/quotes/" quote "") params))
 
-(defn get-quotes-quote-pdf [quote params]
+(defn retrieve-quotes [quote params]
   """
   Download quote PDF
 
@@ -151,4 +151,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/quotes/" quote "/pdf" params))
+  (stripe-request :get (str "/v1/quotes/" quote "/pdf") params))

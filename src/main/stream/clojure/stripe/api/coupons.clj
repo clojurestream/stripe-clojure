@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-coupons [params]
+(defn retrieve-coupons [params]
   """
   List all coupons
 
@@ -17,9 +17,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/coupons" params))
+  (stripe-request :get (str "/v1/coupons") params))
 
-(defn post-coupons [params]
+(defn create-coupons [params]
   """
   Create a coupon
 
@@ -27,9 +27,9 @@
   Endpoint: /v1/coupons
 
   """
-  (stripe-request :post "/v1/coupons" params))
+  (stripe-request :post (str "/v1/coupons") params))
 
-(defn delete-coupons-coupon [coupon params]
+(defn delete-coupons [coupon params]
   """
   Delete a coupon
 
@@ -40,9 +40,9 @@
     - coupon: Path parameter.
 
   """
-  (stripe-request :delete "/v1/coupons/" coupon "" params))
+  (stripe-request :delete (str "/v1/coupons/" coupon "") params))
 
-(defn get-coupons-coupon [coupon params]
+(defn retrieve-coupons [coupon params]
   """
   Retrieve a coupon
 
@@ -56,9 +56,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/coupons/" coupon "" params))
+  (stripe-request :get (str "/v1/coupons/" coupon "") params))
 
-(defn post-coupons-coupon [coupon params]
+(defn create-coupons [coupon params]
   """
   Update a coupon
 
@@ -69,4 +69,4 @@
     - coupon: Path parameter.
 
   """
-  (stripe-request :post "/v1/coupons/" coupon "" params))
+  (stripe-request :post (str "/v1/coupons/" coupon "") params))

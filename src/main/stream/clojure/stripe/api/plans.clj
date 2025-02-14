@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-plans [params]
+(defn retrieve-plans [params]
   """
   List all plans
 
@@ -19,9 +19,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/plans" params))
+  (stripe-request :get (str "/v1/plans") params))
 
-(defn post-plans [params]
+(defn create-plans [params]
   """
   Create a plan
 
@@ -29,9 +29,9 @@
   Endpoint: /v1/plans
 
   """
-  (stripe-request :post "/v1/plans" params))
+  (stripe-request :post (str "/v1/plans") params))
 
-(defn delete-plans-plan [plan params]
+(defn delete-plans [plan params]
   """
   Delete a plan
 
@@ -42,9 +42,9 @@
     - plan: Path parameter.
 
   """
-  (stripe-request :delete "/v1/plans/" plan "" params))
+  (stripe-request :delete (str "/v1/plans/" plan "") params))
 
-(defn get-plans-plan [plan params]
+(defn retrieve-plans [plan params]
   """
   Retrieve a plan
 
@@ -58,9 +58,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/plans/" plan "" params))
+  (stripe-request :get (str "/v1/plans/" plan "") params))
 
-(defn post-plans-plan [plan params]
+(defn create-plans [plan params]
   """
   Update a plan
 
@@ -71,4 +71,4 @@
     - plan: Path parameter.
 
   """
-  (stripe-request :post "/v1/plans/" plan "" params))
+  (stripe-request :post (str "/v1/plans/" plan "") params))

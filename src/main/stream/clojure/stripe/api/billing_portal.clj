@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-billing-portal-sessions [params]
+(defn create-billing-portal [params]
   """
   Create a portal session
 
@@ -10,9 +10,9 @@
   Endpoint: /v1/billing_portal/sessions
 
   """
-  (stripe-request :post "/v1/billing_portal/sessions" params))
+  (stripe-request :post (str "/v1/billing_portal/sessions") params))
 
-(defn get-billing-portal-configurations [params]
+(defn retrieve-billing-portal [params]
   """
   List portal configurations
 
@@ -28,9 +28,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/billing_portal/configurations" params))
+  (stripe-request :get (str "/v1/billing_portal/configurations") params))
 
-(defn post-billing-portal-configurations [params]
+(defn create-billing-portal [params]
   """
   Create a portal configuration
 
@@ -38,9 +38,9 @@
   Endpoint: /v1/billing_portal/configurations
 
   """
-  (stripe-request :post "/v1/billing_portal/configurations" params))
+  (stripe-request :post (str "/v1/billing_portal/configurations") params))
 
-(defn get-billing-portal-configurations-configuration [configuration params]
+(defn retrieve-billing-portal [configuration params]
   """
   Retrieve a portal configuration
 
@@ -54,9 +54,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/billing_portal/configurations/" configuration "" params))
+  (stripe-request :get (str "/v1/billing_portal/configurations/" configuration "") params))
 
-(defn post-billing-portal-configurations-configuration [configuration params]
+(defn create-billing-portal [configuration params]
   """
   Update a portal configuration
 
@@ -67,4 +67,4 @@
     - configuration: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing_portal/configurations/" configuration "" params))
+  (stripe-request :post (str "/v1/billing_portal/configurations/" configuration "") params))

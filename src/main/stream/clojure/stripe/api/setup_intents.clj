@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-setup-intents-intent-cancel [intent params]
+(defn create-setup-intents [intent params]
   """
   Cancel a SetupIntent
 
@@ -13,9 +13,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/setup_intents/" intent "/cancel" params))
+  (stripe-request :post (str "/v1/setup_intents/" intent "/cancel") params))
 
-(defn get-setup-intents-intent [intent params]
+(defn retrieve-setup-intents [intent params]
   """
   Retrieve a SetupIntent
 
@@ -30,9 +30,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/setup_intents/" intent "" params))
+  (stripe-request :get (str "/v1/setup_intents/" intent "") params))
 
-(defn post-setup-intents-intent [intent params]
+(defn create-setup-intents [intent params]
   """
   Update a SetupIntent
 
@@ -43,9 +43,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/setup_intents/" intent "" params))
+  (stripe-request :post (str "/v1/setup_intents/" intent "") params))
 
-(defn post-setup-intents-intent-confirm [intent params]
+(defn create-setup-intents [intent params]
   """
   Confirm a SetupIntent
 
@@ -56,9 +56,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/setup_intents/" intent "/confirm" params))
+  (stripe-request :post (str "/v1/setup_intents/" intent "/confirm") params))
 
-(defn post-setup-intents-intent-verify-microdeposits [intent params]
+(defn create-setup-intents [intent params]
   """
   Verify microdeposits on a SetupIntent
 
@@ -69,9 +69,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/setup_intents/" intent "/verify_microdeposits" params))
+  (stripe-request :post (str "/v1/setup_intents/" intent "/verify_microdeposits") params))
 
-(defn get-setup-intents [params]
+(defn retrieve-setup-intents [params]
   """
   List all SetupIntents
 
@@ -91,9 +91,9 @@ It can only be used for this Stripe Account’s own money movement flows like In
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/setup_intents" params))
+  (stripe-request :get (str "/v1/setup_intents") params))
 
-(defn post-setup-intents [params]
+(defn create-setup-intents [params]
   """
   Create a SetupIntent
 
@@ -101,4 +101,4 @@ It can only be used for this Stripe Account’s own money movement flows like In
   Endpoint: /v1/setup_intents
 
   """
-  (stripe-request :post "/v1/setup_intents" params))
+  (stripe-request :post (str "/v1/setup_intents") params))

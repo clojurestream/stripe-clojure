@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-payment-methods-payment-method-detach [payment_method params]
+(defn create-payment-methods [payment_method params]
   """
   Detach a PaymentMethod from a Customer
 
@@ -13,9 +13,9 @@
     - payment_method: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_methods/" payment_method "/detach" params))
+  (stripe-request :post (str "/v1/payment_methods/" payment_method "/detach") params))
 
-(defn get-payment-methods [params]
+(defn retrieve-payment-methods [params]
   """
   List PaymentMethods
 
@@ -31,9 +31,9 @@
     - type: An optional filter on the list, based on the object `type` field. Without the filter, the list includes all current and future payment method types. If your integration expects only one type of payment method in the response, make sure to provide a type value in the request.
 
   """
-  (stripe-request :get "/v1/payment_methods" params))
+  (stripe-request :get (str "/v1/payment_methods") params))
 
-(defn post-payment-methods [params]
+(defn create-payment-methods [params]
   """
   Shares a PaymentMethod
 
@@ -41,9 +41,9 @@
   Endpoint: /v1/payment_methods
 
   """
-  (stripe-request :post "/v1/payment_methods" params))
+  (stripe-request :post (str "/v1/payment_methods") params))
 
-(defn post-payment-methods-payment-method-attach [payment_method params]
+(defn create-payment-methods [payment_method params]
   """
   Attach a PaymentMethod to a Customer
 
@@ -54,9 +54,9 @@
     - payment_method: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_methods/" payment_method "/attach" params))
+  (stripe-request :post (str "/v1/payment_methods/" payment_method "/attach") params))
 
-(defn get-payment-methods-payment-method [payment_method params]
+(defn retrieve-payment-methods [payment_method params]
   """
   Retrieve a PaymentMethod
 
@@ -70,9 +70,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/payment_methods/" payment_method "" params))
+  (stripe-request :get (str "/v1/payment_methods/" payment_method "") params))
 
-(defn post-payment-methods-payment-method [payment_method params]
+(defn create-payment-methods [payment_method params]
   """
   Update a PaymentMethod
 
@@ -83,4 +83,4 @@
     - payment_method: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_methods/" payment_method "" params))
+  (stripe-request :post (str "/v1/payment_methods/" payment_method "") params))

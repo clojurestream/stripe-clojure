@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-forwarding-requests [params]
+(defn retrieve-forwarding [params]
   """
   List all ForwardingRequests
 
@@ -17,9 +17,9 @@
     - starting_after: A pagination cursor to fetch the next page of the list. The value must be a ForwardingRequest ID.
 
   """
-  (stripe-request :get "/v1/forwarding/requests" params))
+  (stripe-request :get (str "/v1/forwarding/requests") params))
 
-(defn post-forwarding-requests [params]
+(defn create-forwarding [params]
   """
   Create a ForwardingRequest
 
@@ -27,9 +27,9 @@
   Endpoint: /v1/forwarding/requests
 
   """
-  (stripe-request :post "/v1/forwarding/requests" params))
+  (stripe-request :post (str "/v1/forwarding/requests") params))
 
-(defn get-forwarding-requests-id [id params]
+(defn retrieve-forwarding [id params]
   """
   Retrieve a ForwardingRequest
 
@@ -43,4 +43,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/forwarding/requests/" id "" params))
+  (stripe-request :get (str "/v1/forwarding/requests/" id "") params))

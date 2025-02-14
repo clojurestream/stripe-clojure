@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-confirmation-tokens-confirmation-token [confirmation_token params]
+(defn retrieve-confirmation-tokens [confirmation_token params]
   """
   Retrieve a ConfirmationToken
 
@@ -16,4 +16,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/confirmation_tokens/" confirmation_token "" params))
+  (stripe-request :get (str "/v1/confirmation_tokens/" confirmation_token "") params))

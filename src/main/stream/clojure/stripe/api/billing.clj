@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-billing-alerts-id-archive [id params]
+(defn create-billing [id params]
   """
   Archive a billing alert
 
@@ -13,9 +13,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing/alerts/" id "/archive" params))
+  (stripe-request :post (str "/v1/billing/alerts/" id "/archive") params))
 
-(defn get-billing-alerts-id [id params]
+(defn retrieve-billing [id params]
   """
   Retrieve a billing alert
 
@@ -29,9 +29,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/billing/alerts/" id "" params))
+  (stripe-request :get (str "/v1/billing/alerts/" id "") params))
 
-(defn get-billing-credit-grants [params]
+(defn retrieve-billing [params]
   """
   List credit grants
 
@@ -46,9 +46,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/billing/credit_grants" params))
+  (stripe-request :get (str "/v1/billing/credit_grants") params))
 
-(defn post-billing-credit-grants [params]
+(defn create-billing [params]
   """
   Create a credit grant
 
@@ -56,9 +56,9 @@
   Endpoint: /v1/billing/credit_grants
 
   """
-  (stripe-request :post "/v1/billing/credit_grants" params))
+  (stripe-request :post (str "/v1/billing/credit_grants") params))
 
-(defn get-billing-meters-id-event-summaries [id params]
+(defn retrieve-billing [id params]
   """
   List billing meter event summaries
 
@@ -79,9 +79,9 @@
     - value_grouping_window: Specifies what granularity to use when generating event summaries. If not specified, a single event summary would be returned for the specified time range. For hourly granularity, start and end times must align with hour boundaries (e.g., 00:00, 01:00, ..., 23:00). For daily granularity, start and end times must align with UTC day boundaries (00:00 UTC).
 
   """
-  (stripe-request :get "/v1/billing/meters/" id "/event_summaries" params))
+  (stripe-request :get (str "/v1/billing/meters/" id "/event_summaries") params))
 
-(defn post-billing-meter-event-adjustments [params]
+(defn create-billing [params]
   """
   Create a billing meter event adjustment
 
@@ -89,9 +89,9 @@
   Endpoint: /v1/billing/meter_event_adjustments
 
   """
-  (stripe-request :post "/v1/billing/meter_event_adjustments" params))
+  (stripe-request :post (str "/v1/billing/meter_event_adjustments") params))
 
-(defn post-billing-alerts-id-deactivate [id params]
+(defn create-billing [id params]
   """
   Deactivate a billing alert
 
@@ -102,9 +102,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing/alerts/" id "/deactivate" params))
+  (stripe-request :post (str "/v1/billing/alerts/" id "/deactivate") params))
 
-(defn post-billing-credit-grants-id-expire [id params]
+(defn create-billing [id params]
   """
   Expire a credit grant
 
@@ -115,9 +115,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing/credit_grants/" id "/expire" params))
+  (stripe-request :post (str "/v1/billing/credit_grants/" id "/expire") params))
 
-(defn post-billing-meters-id-deactivate [id params]
+(defn create-billing [id params]
   """
   Deactivate a billing meter
 
@@ -128,9 +128,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing/meters/" id "/deactivate" params))
+  (stripe-request :post (str "/v1/billing/meters/" id "/deactivate") params))
 
-(defn get-billing-alerts [params]
+(defn retrieve-billing [params]
   """
   List billing alerts
 
@@ -146,9 +146,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/billing/alerts" params))
+  (stripe-request :get (str "/v1/billing/alerts") params))
 
-(defn post-billing-alerts [params]
+(defn create-billing [params]
   """
   Create a billing alert
 
@@ -156,9 +156,9 @@
   Endpoint: /v1/billing/alerts
 
   """
-  (stripe-request :post "/v1/billing/alerts" params))
+  (stripe-request :post (str "/v1/billing/alerts") params))
 
-(defn post-billing-alerts-id-activate [id params]
+(defn create-billing [id params]
   """
   Activate a billing alert
 
@@ -169,9 +169,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing/alerts/" id "/activate" params))
+  (stripe-request :post (str "/v1/billing/alerts/" id "/activate") params))
 
-(defn get-billing-credit-balance-transactions-id [id params]
+(defn retrieve-billing [id params]
   """
   Retrieve a credit balance transaction
 
@@ -185,9 +185,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/billing/credit_balance_transactions/" id "" params))
+  (stripe-request :get (str "/v1/billing/credit_balance_transactions/" id "") params))
 
-(defn get-billing-meters [params]
+(defn retrieve-billing [params]
   """
   List billing meters
 
@@ -202,9 +202,9 @@
     - status: Filter results to only include meters with the given status.
 
   """
-  (stripe-request :get "/v1/billing/meters" params))
+  (stripe-request :get (str "/v1/billing/meters") params))
 
-(defn post-billing-meters [params]
+(defn create-billing [params]
   """
   Create a billing meter
 
@@ -212,9 +212,9 @@
   Endpoint: /v1/billing/meters
 
   """
-  (stripe-request :post "/v1/billing/meters" params))
+  (stripe-request :post (str "/v1/billing/meters") params))
 
-(defn get-billing-credit-balance-summary [params]
+(defn retrieve-billing [params]
   """
   Retrieve the credit balance summary for a customer
 
@@ -227,9 +227,9 @@
     - filter: The filter criteria for the credit balance summary.
 
   """
-  (stripe-request :get "/v1/billing/credit_balance_summary" params))
+  (stripe-request :get (str "/v1/billing/credit_balance_summary") params))
 
-(defn post-billing-meters-id-reactivate [id params]
+(defn create-billing [id params]
   """
   Reactivate a billing meter
 
@@ -240,9 +240,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing/meters/" id "/reactivate" params))
+  (stripe-request :post (str "/v1/billing/meters/" id "/reactivate") params))
 
-(defn post-billing-credit-grants-id-void [id params]
+(defn create-billing [id params]
   """
   Void a credit grant
 
@@ -253,9 +253,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing/credit_grants/" id "/void" params))
+  (stripe-request :post (str "/v1/billing/credit_grants/" id "/void") params))
 
-(defn get-billing-credit-grants-id [id params]
+(defn retrieve-billing [id params]
   """
   Retrieve a credit grant
 
@@ -269,9 +269,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/billing/credit_grants/" id "" params))
+  (stripe-request :get (str "/v1/billing/credit_grants/" id "") params))
 
-(defn post-billing-credit-grants-id [id params]
+(defn create-billing [id params]
   """
   Update a credit grant
 
@@ -282,9 +282,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing/credit_grants/" id "" params))
+  (stripe-request :post (str "/v1/billing/credit_grants/" id "") params))
 
-(defn get-billing-credit-balance-transactions [params]
+(defn retrieve-billing [params]
   """
   List credit balance transactions
 
@@ -300,9 +300,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/billing/credit_balance_transactions" params))
+  (stripe-request :get (str "/v1/billing/credit_balance_transactions") params))
 
-(defn get-billing-meters-id [id params]
+(defn retrieve-billing [id params]
   """
   Retrieve a billing meter
 
@@ -316,9 +316,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/billing/meters/" id "" params))
+  (stripe-request :get (str "/v1/billing/meters/" id "") params))
 
-(defn post-billing-meters-id [id params]
+(defn create-billing [id params]
   """
   Update a billing meter
 
@@ -329,9 +329,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/billing/meters/" id "" params))
+  (stripe-request :post (str "/v1/billing/meters/" id "") params))
 
-(defn post-billing-meter-events [params]
+(defn create-billing [params]
   """
   Create a billing meter event
 
@@ -339,4 +339,4 @@
   Endpoint: /v1/billing/meter_events
 
   """
-  (stripe-request :post "/v1/billing/meter_events" params))
+  (stripe-request :post (str "/v1/billing/meter_events") params))

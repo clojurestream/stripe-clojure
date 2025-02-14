@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-subscription-schedules [params]
+(defn retrieve-subscription-schedules [params]
   """
   List all schedules
 
@@ -22,9 +22,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/subscription_schedules" params))
+  (stripe-request :get (str "/v1/subscription_schedules") params))
 
-(defn post-subscription-schedules [params]
+(defn create-subscription-schedules [params]
   """
   Create a schedule
 
@@ -32,9 +32,9 @@
   Endpoint: /v1/subscription_schedules
 
   """
-  (stripe-request :post "/v1/subscription_schedules" params))
+  (stripe-request :post (str "/v1/subscription_schedules") params))
 
-(defn post-subscription-schedules-schedule-release [schedule params]
+(defn create-subscription-schedules [schedule params]
   """
   Release a schedule
 
@@ -45,9 +45,9 @@
     - schedule: Path parameter.
 
   """
-  (stripe-request :post "/v1/subscription_schedules/" schedule "/release" params))
+  (stripe-request :post (str "/v1/subscription_schedules/" schedule "/release") params))
 
-(defn get-subscription-schedules-schedule [schedule params]
+(defn retrieve-subscription-schedules [schedule params]
   """
   Retrieve a schedule
 
@@ -61,9 +61,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/subscription_schedules/" schedule "" params))
+  (stripe-request :get (str "/v1/subscription_schedules/" schedule "") params))
 
-(defn post-subscription-schedules-schedule [schedule params]
+(defn create-subscription-schedules [schedule params]
   """
   Update a schedule
 
@@ -74,9 +74,9 @@
     - schedule: Path parameter.
 
   """
-  (stripe-request :post "/v1/subscription_schedules/" schedule "" params))
+  (stripe-request :post (str "/v1/subscription_schedules/" schedule "") params))
 
-(defn post-subscription-schedules-schedule-cancel [schedule params]
+(defn create-subscription-schedules [schedule params]
   """
   Cancel a schedule
 
@@ -87,4 +87,4 @@
     - schedule: Path parameter.
 
   """
-  (stripe-request :post "/v1/subscription_schedules/" schedule "/cancel" params))
+  (stripe-request :post (str "/v1/subscription_schedules/" schedule "/cancel") params))

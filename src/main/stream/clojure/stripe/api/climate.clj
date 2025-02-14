@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-climate-orders-order-cancel [order params]
+(defn create-climate [order params]
   """
   Cancel an order
 
@@ -13,9 +13,9 @@
     - order: Path parameter.
 
   """
-  (stripe-request :post "/v1/climate/orders/" order "/cancel" params))
+  (stripe-request :post (str "/v1/climate/orders/" order "/cancel") params))
 
-(defn get-climate-suppliers [params]
+(defn retrieve-climate [params]
   """
   List suppliers
 
@@ -29,9 +29,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/climate/suppliers" params))
+  (stripe-request :get (str "/v1/climate/suppliers") params))
 
-(defn get-climate-products [params]
+(defn retrieve-climate [params]
   """
   List products
 
@@ -45,9 +45,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/climate/products" params))
+  (stripe-request :get (str "/v1/climate/products") params))
 
-(defn get-climate-products-product [product params]
+(defn retrieve-climate [product params]
   """
   Retrieve a product
 
@@ -61,9 +61,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/climate/products/" product "" params))
+  (stripe-request :get (str "/v1/climate/products/" product "") params))
 
-(defn get-climate-orders [params]
+(defn retrieve-climate [params]
   """
   List orders
 
@@ -77,9 +77,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/climate/orders" params))
+  (stripe-request :get (str "/v1/climate/orders") params))
 
-(defn post-climate-orders [params]
+(defn create-climate [params]
   """
   Create an order
 
@@ -87,9 +87,9 @@
   Endpoint: /v1/climate/orders
 
   """
-  (stripe-request :post "/v1/climate/orders" params))
+  (stripe-request :post (str "/v1/climate/orders") params))
 
-(defn get-climate-orders-order [order params]
+(defn retrieve-climate [order params]
   """
   Retrieve an order
 
@@ -103,9 +103,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/climate/orders/" order "" params))
+  (stripe-request :get (str "/v1/climate/orders/" order "") params))
 
-(defn post-climate-orders-order [order params]
+(defn create-climate [order params]
   """
   Update an order
 
@@ -116,9 +116,9 @@
     - order: Path parameter.
 
   """
-  (stripe-request :post "/v1/climate/orders/" order "" params))
+  (stripe-request :post (str "/v1/climate/orders/" order "") params))
 
-(defn get-climate-suppliers-supplier [supplier params]
+(defn retrieve-climate [supplier params]
   """
   Retrieve a supplier
 
@@ -132,4 +132,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/climate/suppliers/" supplier "" params))
+  (stripe-request :get (str "/v1/climate/suppliers/" supplier "") params))

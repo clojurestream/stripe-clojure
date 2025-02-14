@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-account-sessions [params]
+(defn create-account-sessions [params]
   """
   Create an Account Session
 
@@ -10,4 +10,4 @@
   Endpoint: /v1/account_sessions
 
   """
-  (stripe-request :post "/v1/account_sessions" params))
+  (stripe-request :post (str "/v1/account_sessions") params))

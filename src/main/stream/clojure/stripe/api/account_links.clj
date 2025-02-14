@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-account-links [params]
+(defn create-account-links [params]
   """
   Create an account link
 
@@ -10,4 +10,4 @@
   Endpoint: /v1/account_links
 
   """
-  (stripe-request :post "/v1/account_links" params))
+  (stripe-request :post (str "/v1/account_links") params))

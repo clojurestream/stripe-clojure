@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-files [params]
+(defn retrieve-files [params]
   """
   List all files
 
@@ -18,9 +18,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/files" params))
+  (stripe-request :get (str "/v1/files") params))
 
-(defn post-files [params]
+(defn create-files [params]
   """
   Create a file
 
@@ -28,9 +28,9 @@
   Endpoint: /v1/files
 
   """
-  (stripe-request :post "/v1/files" params))
+  (stripe-request :post (str "/v1/files") params))
 
-(defn get-files-file [file params]
+(defn retrieve-files [file params]
   """
   Retrieve a file
 
@@ -44,4 +44,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/files/" file "" params))
+  (stripe-request :get (str "/v1/files/" file "") params))

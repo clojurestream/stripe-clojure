@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-credit-notes-id-void [id params]
+(defn create-credit-notes [id params]
   """
   Void a credit note
 
@@ -13,9 +13,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/credit_notes/" id "/void" params))
+  (stripe-request :post (str "/v1/credit_notes/" id "/void") params))
 
-(defn get-credit-notes-preview-lines [params]
+(defn retrieve-credit-notes [params]
   """
   Retrieve a credit note preview's line items
 
@@ -42,9 +42,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/credit_notes/preview/lines" params))
+  (stripe-request :get (str "/v1/credit_notes/preview/lines") params))
 
-(defn get-credit-notes-credit-note-lines [credit_note params]
+(defn retrieve-credit-notes [credit_note params]
   """
   Retrieve a credit note's line items
 
@@ -61,9 +61,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/credit_notes/" credit_note "/lines" params))
+  (stripe-request :get (str "/v1/credit_notes/" credit_note "/lines") params))
 
-(defn get-credit-notes [params]
+(defn retrieve-credit-notes [params]
   """
   List all credit notes
 
@@ -80,9 +80,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/credit_notes" params))
+  (stripe-request :get (str "/v1/credit_notes") params))
 
-(defn post-credit-notes [params]
+(defn create-credit-notes [params]
   """
   Create a credit note
 
@@ -90,9 +90,9 @@
   Endpoint: /v1/credit_notes
 
   """
-  (stripe-request :post "/v1/credit_notes" params))
+  (stripe-request :post (str "/v1/credit_notes") params))
 
-(defn get-credit-notes-id [id params]
+(defn retrieve-credit-notes [id params]
   """
   Retrieve a credit note
 
@@ -106,9 +106,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/credit_notes/" id "" params))
+  (stripe-request :get (str "/v1/credit_notes/" id "") params))
 
-(defn post-credit-notes-id [id params]
+(defn create-credit-notes [id params]
   """
   Update a credit note
 
@@ -119,9 +119,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/credit_notes/" id "" params))
+  (stripe-request :post (str "/v1/credit_notes/" id "") params))
 
-(defn get-credit-notes-preview [params]
+(defn retrieve-credit-notes [params]
   """
   Preview a credit note
 
@@ -145,4 +145,4 @@
     - shipping_cost: When shipping_cost contains the shipping_rate from the invoice, the shipping_cost is included in the credit note.
 
   """
-  (stripe-request :get "/v1/credit_notes/preview" params))
+  (stripe-request :get (str "/v1/credit_notes/preview") params))

@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-events [params]
+(defn retrieve-events [params]
   """
   List all events
 
@@ -20,9 +20,9 @@
     - types: An array of up to 20 strings containing specific event names. The list will be filtered to include only events with a matching event property. You may pass either `type` or `types`, but not both.
 
   """
-  (stripe-request :get "/v1/events" params))
+  (stripe-request :get (str "/v1/events") params))
 
-(defn get-events-id [id params]
+(defn retrieve-events [id params]
   """
   Retrieve an event
 
@@ -36,4 +36,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/events/" id "" params))
+  (stripe-request :get (str "/v1/events/" id "") params))

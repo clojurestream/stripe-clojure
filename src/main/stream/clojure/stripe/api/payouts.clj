@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-payouts-payout-cancel [payout params]
+(defn create-payouts [payout params]
   """
   Cancel a payout
 
@@ -13,9 +13,9 @@
     - payout: Path parameter.
 
   """
-  (stripe-request :post "/v1/payouts/" payout "/cancel" params))
+  (stripe-request :post (str "/v1/payouts/" payout "/cancel") params))
 
-(defn get-payouts-payout [payout params]
+(defn retrieve-payouts [payout params]
   """
   Retrieve a payout
 
@@ -29,9 +29,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/payouts/" payout "" params))
+  (stripe-request :get (str "/v1/payouts/" payout "") params))
 
-(defn post-payouts-payout [payout params]
+(defn create-payouts [payout params]
   """
   Update a payout
 
@@ -42,9 +42,9 @@
     - payout: Path parameter.
 
   """
-  (stripe-request :post "/v1/payouts/" payout "" params))
+  (stripe-request :post (str "/v1/payouts/" payout "") params))
 
-(defn post-payouts-payout-reverse [payout params]
+(defn create-payouts [payout params]
   """
   Reverse a payout
 
@@ -55,9 +55,9 @@
     - payout: Path parameter.
 
   """
-  (stripe-request :post "/v1/payouts/" payout "/reverse" params))
+  (stripe-request :post (str "/v1/payouts/" payout "/reverse") params))
 
-(defn get-payouts [params]
+(defn retrieve-payouts [params]
   """
   List all payouts
 
@@ -75,9 +75,9 @@
     - status: Only return payouts that have the given status: `pending`, `paid`, `failed`, or `canceled`.
 
   """
-  (stripe-request :get "/v1/payouts" params))
+  (stripe-request :get (str "/v1/payouts") params))
 
-(defn post-payouts [params]
+(defn create-payouts [params]
   """
   Create a payout
 
@@ -85,4 +85,4 @@
   Endpoint: /v1/payouts
 
   """
-  (stripe-request :post "/v1/payouts" params))
+  (stripe-request :post (str "/v1/payouts") params))

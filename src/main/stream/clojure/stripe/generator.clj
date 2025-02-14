@@ -53,9 +53,22 @@
     (string/replace #"([A-Z]+)([A-Z][a-z])" "$1-$2") ; Fix uppercase sequences
     (string/lower-case))) ; Convert everything to lowercase
 
+(def http-to-stripe
+  {"get" "retrieve"
+   "post" "create"
+   "delete" "delete"
+   "put" "update"})
+
+(defn generate-stripe-style-function-name [endpoint]
+  (let [{:keys [method path]} endpoint
+        method-str (get http-to-stripe (name method) (name method))
+        resource (extract-resource path)
+        resource-kebab (camel-to-kebab resource)]
+    (str method-str "-" resource-kebab)))
+
 (defn generate-function [endpoint schema]
-  (let [{:keys [operation-id method path summary parameters]} endpoint
-        kebab-op-id (camel-to-kebab operation-id)
+  (let [{:keys [method path summary parameters]} endpoint
+        kebab-op-id (generate-stripe-style-function-name endpoint)
         params (extract-path-params path)
         required-params (string/join " " params)
         param-docs (map (fn [p] (str "    - " p ": Path parameter.")) params)
@@ -78,7 +91,7 @@
                     "  \"\"\"")]
     (str "\n(defn " kebab-op-id " [" (if (empty? required-params) "params" (str required-params " params")) "]\n"
       docstring "\n"
-      "  (stripe-request :" (name method) " " final-path " params))")))
+      "  (stripe-request :" (name method) " (str " final-path ") params))")))
 
 ;; Step 4: Ensure Directory Exists & Write to File
 (defn ensure-directory [path]

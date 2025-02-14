@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-treasury-transaction-entries-id [id params]
+(defn retrieve-treasury [id params]
   """
   Retrieve a TransactionEntry
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/transaction_entries/" id "" params))
+  (stripe-request :get (str "/v1/treasury/transaction_entries/" id "") params))
 
-(defn get-treasury-outbound-payments-id [id params]
+(defn retrieve-treasury [id params]
   """
   Retrieve an OutboundPayment
 
@@ -32,9 +32,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/outbound_payments/" id "" params))
+  (stripe-request :get (str "/v1/treasury/outbound_payments/" id "") params))
 
-(defn get-treasury-transactions [params]
+(defn retrieve-treasury [params]
   """
   List all Transactions
 
@@ -53,9 +53,9 @@
     - status_transitions: A filter for the `status_transitions.posted_at` timestamp. When using this filter, `status=posted` and `order_by=posted_at` must also be specified.
 
   """
-  (stripe-request :get "/v1/treasury/transactions" params))
+  (stripe-request :get (str "/v1/treasury/transactions") params))
 
-(defn get-treasury-outbound-transfers-outbound-transfer [outbound_transfer params]
+(defn retrieve-treasury [outbound_transfer params]
   """
   Retrieve an OutboundTransfer
 
@@ -69,9 +69,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/outbound_transfers/" outbound_transfer "" params))
+  (stripe-request :get (str "/v1/treasury/outbound_transfers/" outbound_transfer "") params))
 
-(defn post-treasury-financial-accounts-financial-account-close [financial_account params]
+(defn create-treasury [financial_account params]
   """
   Close a FinancialAccount
 
@@ -82,9 +82,9 @@
     - financial_account: Path parameter.
 
   """
-  (stripe-request :post "/v1/treasury/financial_accounts/" financial_account "/close" params))
+  (stripe-request :post (str "/v1/treasury/financial_accounts/" financial_account "/close") params))
 
-(defn get-treasury-outbound-transfers [params]
+(defn retrieve-treasury [params]
   """
   List all OutboundTransfers
 
@@ -100,9 +100,9 @@
     - status: Only return OutboundTransfers that have the given status: `processing`, `canceled`, `failed`, `posted`, or `returned`.
 
   """
-  (stripe-request :get "/v1/treasury/outbound_transfers" params))
+  (stripe-request :get (str "/v1/treasury/outbound_transfers") params))
 
-(defn post-treasury-outbound-transfers [params]
+(defn create-treasury [params]
   """
   Create an OutboundTransfer
 
@@ -110,9 +110,9 @@
   Endpoint: /v1/treasury/outbound_transfers
 
   """
-  (stripe-request :post "/v1/treasury/outbound_transfers" params))
+  (stripe-request :post (str "/v1/treasury/outbound_transfers") params))
 
-(defn get-treasury-transaction-entries [params]
+(defn retrieve-treasury [params]
   """
   List all TransactionEntries
 
@@ -131,9 +131,9 @@
     - transaction: Only return TransactionEntries associated with this Transaction.
 
   """
-  (stripe-request :get "/v1/treasury/transaction_entries" params))
+  (stripe-request :get (str "/v1/treasury/transaction_entries") params))
 
-(defn get-treasury-credit-reversals-credit-reversal [credit_reversal params]
+(defn retrieve-treasury [credit_reversal params]
   """
   Retrieve a CreditReversal
 
@@ -147,9 +147,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/credit_reversals/" credit_reversal "" params))
+  (stripe-request :get (str "/v1/treasury/credit_reversals/" credit_reversal "") params))
 
-(defn get-treasury-financial-accounts-financial-account-features [financial_account params]
+(defn retrieve-treasury [financial_account params]
   """
   Retrieve FinancialAccount Features
 
@@ -163,9 +163,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/financial_accounts/" financial_account "/features" params))
+  (stripe-request :get (str "/v1/treasury/financial_accounts/" financial_account "/features") params))
 
-(defn post-treasury-financial-accounts-financial-account-features [financial_account params]
+(defn create-treasury [financial_account params]
   """
   Update FinancialAccount Features
 
@@ -176,9 +176,9 @@
     - financial_account: Path parameter.
 
   """
-  (stripe-request :post "/v1/treasury/financial_accounts/" financial_account "/features" params))
+  (stripe-request :post (str "/v1/treasury/financial_accounts/" financial_account "/features") params))
 
-(defn get-treasury-inbound-transfers-id [id params]
+(defn retrieve-treasury [id params]
   """
   Retrieve an InboundTransfer
 
@@ -192,9 +192,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/inbound_transfers/" id "" params))
+  (stripe-request :get (str "/v1/treasury/inbound_transfers/" id "") params))
 
-(defn get-treasury-financial-accounts [params]
+(defn retrieve-treasury [params]
   """
   List all FinancialAccounts
 
@@ -209,9 +209,9 @@
     - starting_after: An object ID cursor for use in pagination.
 
   """
-  (stripe-request :get "/v1/treasury/financial_accounts" params))
+  (stripe-request :get (str "/v1/treasury/financial_accounts") params))
 
-(defn post-treasury-financial-accounts [params]
+(defn create-treasury [params]
   """
   Create a FinancialAccount
 
@@ -219,9 +219,9 @@
   Endpoint: /v1/treasury/financial_accounts
 
   """
-  (stripe-request :post "/v1/treasury/financial_accounts" params))
+  (stripe-request :post (str "/v1/treasury/financial_accounts") params))
 
-(defn post-treasury-inbound-transfers-inbound-transfer-cancel [inbound_transfer params]
+(defn create-treasury [inbound_transfer params]
   """
   Cancel an InboundTransfer
 
@@ -232,9 +232,9 @@
     - inbound_transfer: Path parameter.
 
   """
-  (stripe-request :post "/v1/treasury/inbound_transfers/" inbound_transfer "/cancel" params))
+  (stripe-request :post (str "/v1/treasury/inbound_transfers/" inbound_transfer "/cancel") params))
 
-(defn get-treasury-received-debits-id [id params]
+(defn retrieve-treasury [id params]
   """
   Retrieve a ReceivedDebit
 
@@ -248,9 +248,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/received_debits/" id "" params))
+  (stripe-request :get (str "/v1/treasury/received_debits/" id "") params))
 
-(defn post-treasury-outbound-payments-id-cancel [id params]
+(defn create-treasury [id params]
   """
   Cancel an OutboundPayment
 
@@ -261,9 +261,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/treasury/outbound_payments/" id "/cancel" params))
+  (stripe-request :post (str "/v1/treasury/outbound_payments/" id "/cancel") params))
 
-(defn get-treasury-outbound-payments [params]
+(defn retrieve-treasury [params]
   """
   List all OutboundPayments
 
@@ -281,9 +281,9 @@
     - status: Only return OutboundPayments that have the given status: `processing`, `failed`, `posted`, `returned`, or `canceled`.
 
   """
-  (stripe-request :get "/v1/treasury/outbound_payments" params))
+  (stripe-request :get (str "/v1/treasury/outbound_payments") params))
 
-(defn post-treasury-outbound-payments [params]
+(defn create-treasury [params]
   """
   Create an OutboundPayment
 
@@ -291,9 +291,9 @@
   Endpoint: /v1/treasury/outbound_payments
 
   """
-  (stripe-request :post "/v1/treasury/outbound_payments" params))
+  (stripe-request :post (str "/v1/treasury/outbound_payments") params))
 
-(defn post-treasury-outbound-transfers-outbound-transfer-cancel [outbound_transfer params]
+(defn create-treasury [outbound_transfer params]
   """
   Cancel an OutboundTransfer
 
@@ -304,9 +304,9 @@
     - outbound_transfer: Path parameter.
 
   """
-  (stripe-request :post "/v1/treasury/outbound_transfers/" outbound_transfer "/cancel" params))
+  (stripe-request :post (str "/v1/treasury/outbound_transfers/" outbound_transfer "/cancel") params))
 
-(defn get-treasury-received-debits [params]
+(defn retrieve-treasury [params]
   """
   List all ReceivedDebits
 
@@ -322,9 +322,9 @@
     - status: Only return ReceivedDebits that have the given status: `succeeded` or `failed`.
 
   """
-  (stripe-request :get "/v1/treasury/received_debits" params))
+  (stripe-request :get (str "/v1/treasury/received_debits") params))
 
-(defn get-treasury-debit-reversals-debit-reversal [debit_reversal params]
+(defn retrieve-treasury [debit_reversal params]
   """
   Retrieve a DebitReversal
 
@@ -338,9 +338,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/debit_reversals/" debit_reversal "" params))
+  (stripe-request :get (str "/v1/treasury/debit_reversals/" debit_reversal "") params))
 
-(defn get-treasury-received-credits-id [id params]
+(defn retrieve-treasury [id params]
   """
   Retrieve a ReceivedCredit
 
@@ -354,9 +354,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/received_credits/" id "" params))
+  (stripe-request :get (str "/v1/treasury/received_credits/" id "") params))
 
-(defn get-treasury-received-credits [params]
+(defn retrieve-treasury [params]
   """
   List all ReceivedCredits
 
@@ -373,9 +373,9 @@
     - status: Only return ReceivedCredits that have the given status: `succeeded` or `failed`.
 
   """
-  (stripe-request :get "/v1/treasury/received_credits" params))
+  (stripe-request :get (str "/v1/treasury/received_credits") params))
 
-(defn get-treasury-inbound-transfers [params]
+(defn retrieve-treasury [params]
   """
   List all InboundTransfers
 
@@ -391,9 +391,9 @@
     - status: Only return InboundTransfers that have the given status: `processing`, `succeeded`, `failed` or `canceled`.
 
   """
-  (stripe-request :get "/v1/treasury/inbound_transfers" params))
+  (stripe-request :get (str "/v1/treasury/inbound_transfers") params))
 
-(defn post-treasury-inbound-transfers [params]
+(defn create-treasury [params]
   """
   Create an InboundTransfer
 
@@ -401,9 +401,9 @@
   Endpoint: /v1/treasury/inbound_transfers
 
   """
-  (stripe-request :post "/v1/treasury/inbound_transfers" params))
+  (stripe-request :post (str "/v1/treasury/inbound_transfers") params))
 
-(defn get-treasury-credit-reversals [params]
+(defn retrieve-treasury [params]
   """
   List all CreditReversals
 
@@ -420,9 +420,9 @@
     - status: Only return CreditReversals for a given status.
 
   """
-  (stripe-request :get "/v1/treasury/credit_reversals" params))
+  (stripe-request :get (str "/v1/treasury/credit_reversals") params))
 
-(defn post-treasury-credit-reversals [params]
+(defn create-treasury [params]
   """
   Create a CreditReversal
 
@@ -430,9 +430,9 @@
   Endpoint: /v1/treasury/credit_reversals
 
   """
-  (stripe-request :post "/v1/treasury/credit_reversals" params))
+  (stripe-request :post (str "/v1/treasury/credit_reversals") params))
 
-(defn get-treasury-transactions-id [id params]
+(defn retrieve-treasury [id params]
   """
   Retrieve a Transaction
 
@@ -446,9 +446,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/transactions/" id "" params))
+  (stripe-request :get (str "/v1/treasury/transactions/" id "") params))
 
-(defn get-treasury-financial-accounts-financial-account [financial_account params]
+(defn retrieve-treasury [financial_account params]
   """
   Retrieve a FinancialAccount
 
@@ -462,9 +462,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/treasury/financial_accounts/" financial_account "" params))
+  (stripe-request :get (str "/v1/treasury/financial_accounts/" financial_account "") params))
 
-(defn post-treasury-financial-accounts-financial-account [financial_account params]
+(defn create-treasury [financial_account params]
   """
   Update a FinancialAccount
 
@@ -475,9 +475,9 @@
     - financial_account: Path parameter.
 
   """
-  (stripe-request :post "/v1/treasury/financial_accounts/" financial_account "" params))
+  (stripe-request :post (str "/v1/treasury/financial_accounts/" financial_account "") params))
 
-(defn get-treasury-debit-reversals [params]
+(defn retrieve-treasury [params]
   """
   List all DebitReversals
 
@@ -495,9 +495,9 @@
     - status: Only return DebitReversals for a given status.
 
   """
-  (stripe-request :get "/v1/treasury/debit_reversals" params))
+  (stripe-request :get (str "/v1/treasury/debit_reversals") params))
 
-(defn post-treasury-debit-reversals [params]
+(defn create-treasury [params]
   """
   Create a DebitReversal
 
@@ -505,4 +505,4 @@
   Endpoint: /v1/treasury/debit_reversals
 
   """
-  (stripe-request :post "/v1/treasury/debit_reversals" params))
+  (stripe-request :post (str "/v1/treasury/debit_reversals") params))

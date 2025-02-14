@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-customers-customer-cash-balance-transactions-transaction [customer transaction params]
+(defn retrieve-customers [customer transaction params]
   """
   Retrieve a cash balance transaction
 
@@ -17,9 +17,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/cash_balance_transactions/" transaction "" params))
+  (stripe-request :get (str "/v1/customers/" customer "/cash_balance_transactions/" transaction "") params))
 
-(defn get-customers-customer-balance-transactions [customer params]
+(defn retrieve-customers [customer params]
   """
   List customer balance transactions
 
@@ -36,9 +36,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/balance_transactions" params))
+  (stripe-request :get (str "/v1/customers/" customer "/balance_transactions") params))
 
-(defn post-customers-customer-balance-transactions [customer params]
+(defn create-customers [customer params]
   """
   Create a customer balance transaction
 
@@ -49,9 +49,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/balance_transactions" params))
+  (stripe-request :post (str "/v1/customers/" customer "/balance_transactions") params))
 
-(defn get-customers-customer-payment-methods-payment-method [customer payment_method params]
+(defn retrieve-customers [customer payment_method params]
   """
   Retrieve a Customer's PaymentMethod
 
@@ -66,9 +66,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/payment_methods/" payment_method "" params))
+  (stripe-request :get (str "/v1/customers/" customer "/payment_methods/" payment_method "") params))
 
-(defn delete-customers-customer-subscriptions-subscription-exposed-id [customer subscription_exposed_id params]
+(defn delete-customers [customer subscription_exposed_id params]
   """
   Cancel a subscription
 
@@ -80,9 +80,9 @@
     - subscription_exposed_id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "" params))
+  (stripe-request :delete (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "") params))
 
-(defn get-customers-customer-subscriptions-subscription-exposed-id [customer subscription_exposed_id params]
+(defn retrieve-customers [customer subscription_exposed_id params]
   """
   Retrieve a subscription
 
@@ -97,9 +97,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "" params))
+  (stripe-request :get (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "") params))
 
-(defn post-customers-customer-subscriptions-subscription-exposed-id [customer subscription_exposed_id params]
+(defn create-customers [customer subscription_exposed_id params]
   """
   Update a subscription on a customer
 
@@ -111,9 +111,9 @@
     - subscription_exposed_id: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "" params))
+  (stripe-request :post (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "") params))
 
-(defn get-customers-customer-bank-accounts [customer params]
+(defn retrieve-customers [customer params]
   """
   List all bank accounts
 
@@ -130,9 +130,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/bank_accounts" params))
+  (stripe-request :get (str "/v1/customers/" customer "/bank_accounts") params))
 
-(defn post-customers-customer-bank-accounts [customer params]
+(defn create-customers [customer params]
   """
   Create a card
 
@@ -143,9 +143,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/bank_accounts" params))
+  (stripe-request :post (str "/v1/customers/" customer "/bank_accounts") params))
 
-(defn get-customers-search [params]
+(defn retrieve-customers [params]
   """
   Search customers
 
@@ -159,9 +159,9 @@
     - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for customers](https://stripe.com/docs/search#query-fields-for-customers).
 
   """
-  (stripe-request :get "/v1/customers/search" params))
+  (stripe-request :get (str "/v1/customers/search") params))
 
-(defn get-customers-customer-cards [customer params]
+(defn retrieve-customers [customer params]
   """
   List all cards
 
@@ -178,9 +178,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/cards" params))
+  (stripe-request :get (str "/v1/customers/" customer "/cards") params))
 
-(defn post-customers-customer-cards [customer params]
+(defn create-customers [customer params]
   """
   Create a card
 
@@ -191,9 +191,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/cards" params))
+  (stripe-request :post (str "/v1/customers/" customer "/cards") params))
 
-(defn get-customers-customer-cash-balance-transactions [customer params]
+(defn retrieve-customers [customer params]
   """
   List cash balance transactions
 
@@ -210,9 +210,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/cash_balance_transactions" params))
+  (stripe-request :get (str "/v1/customers/" customer "/cash_balance_transactions") params))
 
-(defn delete-customers-customer-subscriptions-subscription-exposed-id-discount [customer subscription_exposed_id params]
+(defn delete-customers [customer subscription_exposed_id params]
   """
   Delete a customer discount
 
@@ -224,9 +224,9 @@
     - subscription_exposed_id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "/discount" params))
+  (stripe-request :delete (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "/discount") params))
 
-(defn get-customers-customer-subscriptions-subscription-exposed-id-discount [customer subscription_exposed_id params]
+(defn retrieve-customers [customer subscription_exposed_id params]
   """
   No description available.
 
@@ -241,9 +241,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "/discount" params))
+  (stripe-request :get (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "/discount") params))
 
-(defn get-customers-customer-tax-ids [customer params]
+(defn retrieve-customers [customer params]
   """
   List all Customer tax IDs
 
@@ -260,9 +260,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/tax_ids" params))
+  (stripe-request :get (str "/v1/customers/" customer "/tax_ids") params))
 
-(defn post-customers-customer-tax-ids [customer params]
+(defn create-customers [customer params]
   """
   Create a Customer tax ID
 
@@ -273,9 +273,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/tax_ids" params))
+  (stripe-request :post (str "/v1/customers/" customer "/tax_ids") params))
 
-(defn get-customers-customer-sources [customer params]
+(defn retrieve-customers [customer params]
   """
   No description available.
 
@@ -293,9 +293,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/sources" params))
+  (stripe-request :get (str "/v1/customers/" customer "/sources") params))
 
-(defn post-customers-customer-sources [customer params]
+(defn create-customers [customer params]
   """
   Create a card
 
@@ -306,9 +306,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/sources" params))
+  (stripe-request :post (str "/v1/customers/" customer "/sources") params))
 
-(defn delete-customers-customer-bank-accounts-id [customer id params]
+(defn delete-customers [customer id params]
   """
   Delete a customer source
 
@@ -320,9 +320,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/customers/" customer "/bank_accounts/" id "" params))
+  (stripe-request :delete (str "/v1/customers/" customer "/bank_accounts/" id "") params))
 
-(defn get-customers-customer-bank-accounts-id [customer id params]
+(defn retrieve-customers [customer id params]
   """
   Retrieve a bank account
 
@@ -337,9 +337,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/bank_accounts/" id "" params))
+  (stripe-request :get (str "/v1/customers/" customer "/bank_accounts/" id "") params))
 
-(defn post-customers-customer-bank-accounts-id [customer id params]
+(defn create-customers [customer id params]
   """
   No description available.
 
@@ -351,9 +351,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/bank_accounts/" id "" params))
+  (stripe-request :post (str "/v1/customers/" customer "/bank_accounts/" id "") params))
 
-(defn post-customers-customer-bank-accounts-id-verify [customer id params]
+(defn create-customers [customer id params]
   """
   Verify a bank account
 
@@ -365,9 +365,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/bank_accounts/" id "/verify" params))
+  (stripe-request :post (str "/v1/customers/" customer "/bank_accounts/" id "/verify") params))
 
-(defn post-customers-customer-funding-instructions [customer params]
+(defn create-customers [customer params]
   """
   Create or retrieve funding instructions for a customer cash balance
 
@@ -378,9 +378,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/funding_instructions" params))
+  (stripe-request :post (str "/v1/customers/" customer "/funding_instructions") params))
 
-(defn get-customers-customer-subscriptions [customer params]
+(defn retrieve-customers [customer params]
   """
   List active subscriptions
 
@@ -397,9 +397,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/subscriptions" params))
+  (stripe-request :get (str "/v1/customers/" customer "/subscriptions") params))
 
-(defn post-customers-customer-subscriptions [customer params]
+(defn create-customers [customer params]
   """
   Create a subscription
 
@@ -410,9 +410,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/subscriptions" params))
+  (stripe-request :post (str "/v1/customers/" customer "/subscriptions") params))
 
-(defn delete-customers-customer-sources-id [customer id params]
+(defn delete-customers [customer id params]
   """
   Delete a customer source
 
@@ -424,9 +424,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/customers/" customer "/sources/" id "" params))
+  (stripe-request :delete (str "/v1/customers/" customer "/sources/" id "") params))
 
-(defn get-customers-customer-sources-id [customer id params]
+(defn retrieve-customers [customer id params]
   """
   No description available.
 
@@ -441,9 +441,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/sources/" id "" params))
+  (stripe-request :get (str "/v1/customers/" customer "/sources/" id "") params))
 
-(defn post-customers-customer-sources-id [customer id params]
+(defn create-customers [customer id params]
   """
   No description available.
 
@@ -455,9 +455,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/sources/" id "" params))
+  (stripe-request :post (str "/v1/customers/" customer "/sources/" id "") params))
 
-(defn get-customers-customer-balance-transactions-transaction [customer transaction params]
+(defn retrieve-customers [customer transaction params]
   """
   Retrieve a customer balance transaction
 
@@ -472,9 +472,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/balance_transactions/" transaction "" params))
+  (stripe-request :get (str "/v1/customers/" customer "/balance_transactions/" transaction "") params))
 
-(defn post-customers-customer-balance-transactions-transaction [customer transaction params]
+(defn create-customers [customer transaction params]
   """
   Update a customer credit balance transaction
 
@@ -486,9 +486,9 @@
     - transaction: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/balance_transactions/" transaction "" params))
+  (stripe-request :post (str "/v1/customers/" customer "/balance_transactions/" transaction "") params))
 
-(defn get-customers-customer-cash-balance [customer params]
+(defn retrieve-customers [customer params]
   """
   Retrieve a cash balance
 
@@ -502,9 +502,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/cash_balance" params))
+  (stripe-request :get (str "/v1/customers/" customer "/cash_balance") params))
 
-(defn post-customers-customer-cash-balance [customer params]
+(defn create-customers [customer params]
   """
   Update a cash balance's settings
 
@@ -515,9 +515,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/cash_balance" params))
+  (stripe-request :post (str "/v1/customers/" customer "/cash_balance") params))
 
-(defn delete-customers-customer-tax-ids-id [customer id params]
+(defn delete-customers [customer id params]
   """
   Delete a Customer tax ID
 
@@ -529,9 +529,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/customers/" customer "/tax_ids/" id "" params))
+  (stripe-request :delete (str "/v1/customers/" customer "/tax_ids/" id "") params))
 
-(defn get-customers-customer-tax-ids-id [customer id params]
+(defn retrieve-customers [customer id params]
   """
   Retrieve a Customer tax ID
 
@@ -546,9 +546,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/tax_ids/" id "" params))
+  (stripe-request :get (str "/v1/customers/" customer "/tax_ids/" id "") params))
 
-(defn delete-customers-customer [customer params]
+(defn delete-customers [customer params]
   """
   Delete a customer
 
@@ -559,9 +559,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :delete "/v1/customers/" customer "" params))
+  (stripe-request :delete (str "/v1/customers/" customer "") params))
 
-(defn get-customers-customer [customer params]
+(defn retrieve-customers [customer params]
   """
   Retrieve a customer
 
@@ -575,9 +575,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "" params))
+  (stripe-request :get (str "/v1/customers/" customer "") params))
 
-(defn post-customers-customer [customer params]
+(defn create-customers [customer params]
   """
   Update a customer
 
@@ -588,9 +588,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "" params))
+  (stripe-request :post (str "/v1/customers/" customer "") params))
 
-(defn delete-customers-customer-cards-id [customer id params]
+(defn delete-customers [customer id params]
   """
   Delete a customer source
 
@@ -602,9 +602,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/customers/" customer "/cards/" id "" params))
+  (stripe-request :delete (str "/v1/customers/" customer "/cards/" id "") params))
 
-(defn get-customers-customer-cards-id [customer id params]
+(defn retrieve-customers [customer id params]
   """
   Retrieve a card
 
@@ -619,9 +619,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/cards/" id "" params))
+  (stripe-request :get (str "/v1/customers/" customer "/cards/" id "") params))
 
-(defn post-customers-customer-cards-id [customer id params]
+(defn create-customers [customer id params]
   """
   No description available.
 
@@ -633,9 +633,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/cards/" id "" params))
+  (stripe-request :post (str "/v1/customers/" customer "/cards/" id "") params))
 
-(defn post-customers-customer-sources-id-verify [customer id params]
+(defn create-customers [customer id params]
   """
   Verify a bank account
 
@@ -647,9 +647,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/customers/" customer "/sources/" id "/verify" params))
+  (stripe-request :post (str "/v1/customers/" customer "/sources/" id "/verify") params))
 
-(defn get-customers-customer-payment-methods [customer params]
+(defn retrieve-customers [customer params]
   """
   List a Customer's PaymentMethods
 
@@ -668,9 +668,9 @@
     - type: An optional filter on the list, based on the object `type` field. Without the filter, the list includes all current and future payment method types. If your integration expects only one type of payment method in the response, make sure to provide a type value in the request.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/payment_methods" params))
+  (stripe-request :get (str "/v1/customers/" customer "/payment_methods") params))
 
-(defn get-customers [params]
+(defn retrieve-customers [params]
   """
   List all customers
 
@@ -687,9 +687,9 @@
     - test_clock: Provides a list of customers that are associated with the specified test clock. The response will not include customers with test clocks if this parameter is not set.
 
   """
-  (stripe-request :get "/v1/customers" params))
+  (stripe-request :get (str "/v1/customers") params))
 
-(defn post-customers [params]
+(defn create-customers [params]
   """
   Create a customer
 
@@ -697,9 +697,9 @@
   Endpoint: /v1/customers
 
   """
-  (stripe-request :post "/v1/customers" params))
+  (stripe-request :post (str "/v1/customers") params))
 
-(defn delete-customers-customer-discount [customer params]
+(defn delete-customers [customer params]
   """
   Delete a customer discount
 
@@ -710,9 +710,9 @@
     - customer: Path parameter.
 
   """
-  (stripe-request :delete "/v1/customers/" customer "/discount" params))
+  (stripe-request :delete (str "/v1/customers/" customer "/discount") params))
 
-(defn get-customers-customer-discount [customer params]
+(defn retrieve-customers [customer params]
   """
   No description available.
 
@@ -726,4 +726,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/customers/" customer "/discount" params))
+  (stripe-request :get (str "/v1/customers/" customer "/discount") params))

@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-application-fees-id-refunds [id params]
+(defn retrieve-application-fees [id params]
   """
   List all application fee refunds
 
@@ -19,9 +19,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/application_fees/" id "/refunds" params))
+  (stripe-request :get (str "/v1/application_fees/" id "/refunds") params))
 
-(defn post-application-fees-id-refunds [id params]
+(defn create-application-fees [id params]
   """
   Create an application fee refund
 
@@ -32,9 +32,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/application_fees/" id "/refunds" params))
+  (stripe-request :post (str "/v1/application_fees/" id "/refunds") params))
 
-(defn get-application-fees [params]
+(defn retrieve-application-fees [params]
   """
   List all application fees
 
@@ -50,9 +50,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/application_fees" params))
+  (stripe-request :get (str "/v1/application_fees") params))
 
-(defn get-application-fees-fee-refunds-id [fee id params]
+(defn retrieve-application-fees [fee id params]
   """
   Retrieve an application fee refund
 
@@ -67,9 +67,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/application_fees/" fee "/refunds/" id "" params))
+  (stripe-request :get (str "/v1/application_fees/" fee "/refunds/" id "") params))
 
-(defn post-application-fees-fee-refunds-id [fee id params]
+(defn create-application-fees [fee id params]
   """
   Update an application fee refund
 
@@ -81,9 +81,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/application_fees/" fee "/refunds/" id "" params))
+  (stripe-request :post (str "/v1/application_fees/" fee "/refunds/" id "") params))
 
-(defn get-application-fees-id [id params]
+(defn retrieve-application-fees [id params]
   """
   Retrieve an application fee
 
@@ -97,9 +97,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/application_fees/" id "" params))
+  (stripe-request :get (str "/v1/application_fees/" id "") params))
 
-(defn post-application-fees-id-refund [id params]
+(defn create-application-fees [id params]
   """
   No description available.
 
@@ -110,4 +110,4 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/application_fees/" id "/refund" params))
+  (stripe-request :post (str "/v1/application_fees/" id "/refund") params))

@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-link-account-sessions [params]
+(defn create-link-account-sessions [params]
   """
   Create a Session
 
@@ -10,9 +10,9 @@
   Endpoint: /v1/link_account_sessions
 
   """
-  (stripe-request :post "/v1/link_account_sessions" params))
+  (stripe-request :post (str "/v1/link_account_sessions") params))
 
-(defn get-link-account-sessions-session [session params]
+(defn retrieve-link-account-sessions [session params]
   """
   Retrieve a Session
 
@@ -26,4 +26,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/link_account_sessions/" session "" params))
+  (stripe-request :get (str "/v1/link_account_sessions/" session "") params))

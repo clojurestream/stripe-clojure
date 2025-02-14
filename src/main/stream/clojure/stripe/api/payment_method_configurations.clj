@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-payment-method-configurations [params]
+(defn retrieve-payment-method-configurations [params]
   """
   List payment method configurations
 
@@ -17,9 +17,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/payment_method_configurations" params))
+  (stripe-request :get (str "/v1/payment_method_configurations") params))
 
-(defn post-payment-method-configurations [params]
+(defn create-payment-method-configurations [params]
   """
   Create a payment method configuration
 
@@ -27,9 +27,9 @@
   Endpoint: /v1/payment_method_configurations
 
   """
-  (stripe-request :post "/v1/payment_method_configurations" params))
+  (stripe-request :post (str "/v1/payment_method_configurations") params))
 
-(defn get-payment-method-configurations-configuration [configuration params]
+(defn retrieve-payment-method-configurations [configuration params]
   """
   Retrieve payment method configuration
 
@@ -43,9 +43,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/payment_method_configurations/" configuration "" params))
+  (stripe-request :get (str "/v1/payment_method_configurations/" configuration "") params))
 
-(defn post-payment-method-configurations-configuration [configuration params]
+(defn create-payment-method-configurations [configuration params]
   """
   Update payment method configuration
 
@@ -56,4 +56,4 @@
     - configuration: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_method_configurations/" configuration "" params))
+  (stripe-request :post (str "/v1/payment_method_configurations/" configuration "") params))

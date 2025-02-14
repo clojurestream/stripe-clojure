@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-financial-connections-sessions [params]
+(defn create-financial-connections [params]
   """
   Create a Session
 
@@ -10,9 +10,9 @@
   Endpoint: /v1/financial_connections/sessions
 
   """
-  (stripe-request :post "/v1/financial_connections/sessions" params))
+  (stripe-request :post (str "/v1/financial_connections/sessions") params))
 
-(defn get-financial-connections-accounts-account [account params]
+(defn retrieve-financial-connections [account params]
   """
   Retrieve an Account
 
@@ -26,9 +26,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/financial_connections/accounts/" account "" params))
+  (stripe-request :get (str "/v1/financial_connections/accounts/" account "") params))
 
-(defn post-financial-connections-accounts-account-refresh [account params]
+(defn create-financial-connections [account params]
   """
   Refresh Account data
 
@@ -39,9 +39,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/financial_connections/accounts/" account "/refresh" params))
+  (stripe-request :post (str "/v1/financial_connections/accounts/" account "/refresh") params))
 
-(defn post-financial-connections-accounts-account-unsubscribe [account params]
+(defn create-financial-connections [account params]
   """
   Unsubscribe from data refreshes for an Account
 
@@ -52,9 +52,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/financial_connections/accounts/" account "/unsubscribe" params))
+  (stripe-request :post (str "/v1/financial_connections/accounts/" account "/unsubscribe") params))
 
-(defn post-financial-connections-accounts-account-disconnect [account params]
+(defn create-financial-connections [account params]
   """
   Disconnect an Account
 
@@ -65,9 +65,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/financial_connections/accounts/" account "/disconnect" params))
+  (stripe-request :post (str "/v1/financial_connections/accounts/" account "/disconnect") params))
 
-(defn get-financial-connections-transactions [params]
+(defn retrieve-financial-connections [params]
   """
   List Transactions
 
@@ -84,9 +84,9 @@
     - transaction_refresh: A filter on the list based on the object `transaction_refresh` field. The value can be a dictionary with the following options:
 
   """
-  (stripe-request :get "/v1/financial_connections/transactions" params))
+  (stripe-request :get (str "/v1/financial_connections/transactions") params))
 
-(defn get-financial-connections-accounts-account-owners [account params]
+(defn retrieve-financial-connections [account params]
   """
   List Account Owners
 
@@ -104,9 +104,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/financial_connections/accounts/" account "/owners" params))
+  (stripe-request :get (str "/v1/financial_connections/accounts/" account "/owners") params))
 
-(defn get-financial-connections-transactions-transaction [transaction params]
+(defn retrieve-financial-connections [transaction params]
   """
   Retrieve a Transaction
 
@@ -120,9 +120,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/financial_connections/transactions/" transaction "" params))
+  (stripe-request :get (str "/v1/financial_connections/transactions/" transaction "") params))
 
-(defn get-financial-connections-sessions-session [session params]
+(defn retrieve-financial-connections [session params]
   """
   Retrieve a Session
 
@@ -136,9 +136,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/financial_connections/sessions/" session "" params))
+  (stripe-request :get (str "/v1/financial_connections/sessions/" session "") params))
 
-(defn post-financial-connections-accounts-account-subscribe [account params]
+(defn create-financial-connections [account params]
   """
   Subscribe to data refreshes for an Account
 
@@ -149,9 +149,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/financial_connections/accounts/" account "/subscribe" params))
+  (stripe-request :post (str "/v1/financial_connections/accounts/" account "/subscribe") params))
 
-(defn get-financial-connections-accounts [params]
+(defn retrieve-financial-connections [params]
   """
   List Accounts
 
@@ -167,4 +167,4 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/financial_connections/accounts" params))
+  (stripe-request :get (str "/v1/financial_connections/accounts") params))
