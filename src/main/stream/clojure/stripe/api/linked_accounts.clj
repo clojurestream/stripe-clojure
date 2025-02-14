@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-linked-accounts-account [account params]
+(defn retrieve-linked-accounts [account params]
   """
   Retrieve an Account
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/linked_accounts/" account "" params))
+  (stripe-request :get (str "/v1/linked_accounts/" account "") params))
 
-(defn get-linked-accounts-account-owners [account params]
+(defn retrieve-linked-accounts [account params]
   """
   List Account Owners
 
@@ -36,9 +36,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/linked_accounts/" account "/owners" params))
+  (stripe-request :get (str "/v1/linked_accounts/" account "/owners") params))
 
-(defn post-linked-accounts-account-refresh [account params]
+(defn create-linked-accounts [account params]
   """
   Refresh Account data
 
@@ -49,9 +49,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/linked_accounts/" account "/refresh" params))
+  (stripe-request :post (str "/v1/linked_accounts/" account "/refresh") params))
 
-(defn post-linked-accounts-account-disconnect [account params]
+(defn create-linked-accounts [account params]
   """
   Disconnect an Account
 
@@ -62,9 +62,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/linked_accounts/" account "/disconnect" params))
+  (stripe-request :post (str "/v1/linked_accounts/" account "/disconnect") params))
 
-(defn get-linked-accounts [params]
+(defn retrieve-linked-accounts [params]
   """
   List Accounts
 
@@ -80,4 +80,4 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/linked_accounts" params))
+  (stripe-request :get (str "/v1/linked_accounts") params))

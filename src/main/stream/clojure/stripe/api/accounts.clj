@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-accounts [params]
+(defn retrieve-accounts [params]
   """
   List all connected accounts
 
@@ -17,9 +17,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/accounts" params))
+  (stripe-request :get (str "/v1/accounts") params))
 
-(defn post-accounts [params]
+(defn create-accounts [params]
   """
   No description available.
 
@@ -27,9 +27,9 @@
   Endpoint: /v1/accounts
 
   """
-  (stripe-request :post "/v1/accounts" params))
+  (stripe-request :post (str "/v1/accounts") params))
 
-(defn post-accounts-account-login-links [account params]
+(defn create-accounts [account params]
   """
   Create a login link
 
@@ -40,9 +40,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/login_links" params))
+  (stripe-request :post (str "/v1/accounts/" account "/login_links") params))
 
-(defn delete-accounts-account-persons-person [account person params]
+(defn delete-accounts [account person params]
   """
   Delete a person
 
@@ -54,9 +54,9 @@
     - person: Path parameter.
 
   """
-  (stripe-request :delete "/v1/accounts/" account "/persons/" person "" params))
+  (stripe-request :delete (str "/v1/accounts/" account "/persons/" person "") params))
 
-(defn get-accounts-account-persons-person [account person params]
+(defn retrieve-accounts [account person params]
   """
   Retrieve a person
 
@@ -71,9 +71,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/accounts/" account "/persons/" person "" params))
+  (stripe-request :get (str "/v1/accounts/" account "/persons/" person "") params))
 
-(defn post-accounts-account-persons-person [account person params]
+(defn create-accounts [account person params]
   """
   Update a person
 
@@ -85,9 +85,9 @@
     - person: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/persons/" person "" params))
+  (stripe-request :post (str "/v1/accounts/" account "/persons/" person "") params))
 
-(defn delete-accounts-account-bank-accounts-id [account id params]
+(defn delete-accounts [account id params]
   """
   Delete an external account
 
@@ -99,9 +99,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/accounts/" account "/bank_accounts/" id "" params))
+  (stripe-request :delete (str "/v1/accounts/" account "/bank_accounts/" id "") params))
 
-(defn get-accounts-account-bank-accounts-id [account id params]
+(defn retrieve-accounts [account id params]
   """
   Retrieve an external account
 
@@ -116,9 +116,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/accounts/" account "/bank_accounts/" id "" params))
+  (stripe-request :get (str "/v1/accounts/" account "/bank_accounts/" id "") params))
 
-(defn post-accounts-account-bank-accounts-id [account id params]
+(defn create-accounts [account id params]
   """
   No description available.
 
@@ -130,9 +130,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/bank_accounts/" id "" params))
+  (stripe-request :post (str "/v1/accounts/" account "/bank_accounts/" id "") params))
 
-(defn delete-accounts-account-people-person [account person params]
+(defn delete-accounts [account person params]
   """
   Delete a person
 
@@ -144,9 +144,9 @@
     - person: Path parameter.
 
   """
-  (stripe-request :delete "/v1/accounts/" account "/people/" person "" params))
+  (stripe-request :delete (str "/v1/accounts/" account "/people/" person "") params))
 
-(defn get-accounts-account-people-person [account person params]
+(defn retrieve-accounts [account person params]
   """
   Retrieve a person
 
@@ -161,9 +161,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/accounts/" account "/people/" person "" params))
+  (stripe-request :get (str "/v1/accounts/" account "/people/" person "") params))
 
-(defn post-accounts-account-people-person [account person params]
+(defn create-accounts [account person params]
   """
   Update a person
 
@@ -175,9 +175,9 @@
     - person: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/people/" person "" params))
+  (stripe-request :post (str "/v1/accounts/" account "/people/" person "") params))
 
-(defn get-accounts-account-people [account params]
+(defn retrieve-accounts [account params]
   """
   List all persons
 
@@ -195,9 +195,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/accounts/" account "/people" params))
+  (stripe-request :get (str "/v1/accounts/" account "/people") params))
 
-(defn post-accounts-account-people [account params]
+(defn create-accounts [account params]
   """
   Create a person
 
@@ -208,9 +208,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/people" params))
+  (stripe-request :post (str "/v1/accounts/" account "/people") params))
 
-(defn delete-accounts-account [account params]
+(defn delete-accounts [account params]
   """
   Delete an account
 
@@ -221,9 +221,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :delete "/v1/accounts/" account "" params))
+  (stripe-request :delete (str "/v1/accounts/" account "") params))
 
-(defn get-accounts-account [account params]
+(defn retrieve-accounts [account params]
   """
   Retrieve account
 
@@ -237,9 +237,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/accounts/" account "" params))
+  (stripe-request :get (str "/v1/accounts/" account "") params))
 
-(defn post-accounts-account [account params]
+(defn create-accounts [account params]
   """
   Update an account
 
@@ -250,9 +250,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "" params))
+  (stripe-request :post (str "/v1/accounts/" account "") params))
 
-(defn get-accounts-account-persons [account params]
+(defn retrieve-accounts [account params]
   """
   List all persons
 
@@ -270,9 +270,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/accounts/" account "/persons" params))
+  (stripe-request :get (str "/v1/accounts/" account "/persons") params))
 
-(defn post-accounts-account-persons [account params]
+(defn create-accounts [account params]
   """
   Create a person
 
@@ -283,9 +283,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/persons" params))
+  (stripe-request :post (str "/v1/accounts/" account "/persons") params))
 
-(defn get-accounts-account-capabilities-capability [account capability params]
+(defn retrieve-accounts [account capability params]
   """
   Retrieve an Account Capability
 
@@ -300,9 +300,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/accounts/" account "/capabilities/" capability "" params))
+  (stripe-request :get (str "/v1/accounts/" account "/capabilities/" capability "") params))
 
-(defn post-accounts-account-capabilities-capability [account capability params]
+(defn create-accounts [account capability params]
   """
   Update an Account Capability
 
@@ -314,9 +314,9 @@
     - capability: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/capabilities/" capability "" params))
+  (stripe-request :post (str "/v1/accounts/" account "/capabilities/" capability "") params))
 
-(defn get-accounts-account-capabilities [account params]
+(defn retrieve-accounts [account params]
   """
   List all account capabilities
 
@@ -330,9 +330,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/accounts/" account "/capabilities" params))
+  (stripe-request :get (str "/v1/accounts/" account "/capabilities") params))
 
-(defn post-accounts-account-bank-accounts [account params]
+(defn create-accounts [account params]
   """
   Create an external account
 
@@ -343,9 +343,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/bank_accounts" params))
+  (stripe-request :post (str "/v1/accounts/" account "/bank_accounts") params))
 
-(defn get-accounts-account-external-accounts [account params]
+(defn retrieve-accounts [account params]
   """
   List all external accounts
 
@@ -363,9 +363,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/accounts/" account "/external_accounts" params))
+  (stripe-request :get (str "/v1/accounts/" account "/external_accounts") params))
 
-(defn post-accounts-account-external-accounts [account params]
+(defn create-accounts [account params]
   """
   Create an external account
 
@@ -376,9 +376,9 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/external_accounts" params))
+  (stripe-request :post (str "/v1/accounts/" account "/external_accounts") params))
 
-(defn delete-accounts-account-external-accounts-id [account id params]
+(defn delete-accounts [account id params]
   """
   Delete an external account
 
@@ -390,9 +390,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/accounts/" account "/external_accounts/" id "" params))
+  (stripe-request :delete (str "/v1/accounts/" account "/external_accounts/" id "") params))
 
-(defn get-accounts-account-external-accounts-id [account id params]
+(defn retrieve-accounts [account id params]
   """
   Retrieve an external account
 
@@ -407,9 +407,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/accounts/" account "/external_accounts/" id "" params))
+  (stripe-request :get (str "/v1/accounts/" account "/external_accounts/" id "") params))
 
-(defn post-accounts-account-external-accounts-id [account id params]
+(defn create-accounts [account id params]
   """
   No description available.
 
@@ -421,9 +421,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/external_accounts/" id "" params))
+  (stripe-request :post (str "/v1/accounts/" account "/external_accounts/" id "") params))
 
-(defn post-accounts-account-reject [account params]
+(defn create-accounts [account params]
   """
   Reject an account
 
@@ -434,4 +434,4 @@
     - account: Path parameter.
 
   """
-  (stripe-request :post "/v1/accounts/" account "/reject" params))
+  (stripe-request :post (str "/v1/accounts/" account "/reject") params))

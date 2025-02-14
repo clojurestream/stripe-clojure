@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-shipping-rates-shipping-rate-token [shipping_rate_token params]
+(defn retrieve-shipping-rates [shipping_rate_token params]
   """
   Retrieve a shipping rate
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/shipping_rates/" shipping_rate_token "" params))
+  (stripe-request :get (str "/v1/shipping_rates/" shipping_rate_token "") params))
 
-(defn post-shipping-rates-shipping-rate-token [shipping_rate_token params]
+(defn create-shipping-rates [shipping_rate_token params]
   """
   Update a shipping rate
 
@@ -29,9 +29,9 @@
     - shipping_rate_token: Path parameter.
 
   """
-  (stripe-request :post "/v1/shipping_rates/" shipping_rate_token "" params))
+  (stripe-request :post (str "/v1/shipping_rates/" shipping_rate_token "") params))
 
-(defn get-shipping-rates [params]
+(defn retrieve-shipping-rates [params]
   """
   List all shipping rates
 
@@ -48,9 +48,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/shipping_rates" params))
+  (stripe-request :get (str "/v1/shipping_rates") params))
 
-(defn post-shipping-rates [params]
+(defn create-shipping-rates [params]
   """
   Create a shipping rate
 
@@ -58,4 +58,4 @@
   Endpoint: /v1/shipping_rates
 
   """
-  (stripe-request :post "/v1/shipping_rates" params))
+  (stripe-request :post (str "/v1/shipping_rates") params))

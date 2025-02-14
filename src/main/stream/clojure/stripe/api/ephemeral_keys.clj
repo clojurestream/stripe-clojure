@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-ephemeral-keys-key [key params]
+(defn delete-ephemeral-keys [key params]
   """
   Immediately invalidate an ephemeral key
 
@@ -13,9 +13,9 @@
     - key: Path parameter.
 
   """
-  (stripe-request :delete "/v1/ephemeral_keys/" key "" params))
+  (stripe-request :delete (str "/v1/ephemeral_keys/" key "") params))
 
-(defn post-ephemeral-keys [params]
+(defn create-ephemeral-keys [params]
   """
   Create an ephemeral key
 
@@ -23,4 +23,4 @@
   Endpoint: /v1/ephemeral_keys
 
   """
-  (stripe-request :post "/v1/ephemeral_keys" params))
+  (stripe-request :post (str "/v1/ephemeral_keys") params))

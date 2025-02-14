@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-tokens-token [token params]
+(defn retrieve-tokens [token params]
   """
   Retrieve a token
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/tokens/" token "" params))
+  (stripe-request :get (str "/v1/tokens/" token "") params))
 
-(defn post-tokens [params]
+(defn create-tokens [params]
   """
   Create a CVC update token
 
@@ -26,4 +26,4 @@
   Endpoint: /v1/tokens
 
   """
-  (stripe-request :post "/v1/tokens" params))
+  (stripe-request :post (str "/v1/tokens") params))

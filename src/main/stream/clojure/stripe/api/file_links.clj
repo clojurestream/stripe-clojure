@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-file-links-link [link params]
+(defn retrieve-file-links [link params]
   """
   Retrieve a file link
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/file_links/" link "" params))
+  (stripe-request :get (str "/v1/file_links/" link "") params))
 
-(defn post-file-links-link [link params]
+(defn create-file-links [link params]
   """
   Update a file link
 
@@ -29,9 +29,9 @@
     - link: Path parameter.
 
   """
-  (stripe-request :post "/v1/file_links/" link "" params))
+  (stripe-request :post (str "/v1/file_links/" link "") params))
 
-(defn get-file-links [params]
+(defn retrieve-file-links [params]
   """
   List all file links
 
@@ -48,9 +48,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/file_links" params))
+  (stripe-request :get (str "/v1/file_links") params))
 
-(defn post-file-links [params]
+(defn create-file-links [params]
   """
   Create a file link
 
@@ -58,4 +58,4 @@
   Endpoint: /v1/file_links
 
   """
-  (stripe-request :post "/v1/file_links" params))
+  (stripe-request :post (str "/v1/file_links") params))

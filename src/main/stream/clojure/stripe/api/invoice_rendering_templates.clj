@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-invoice-rendering-templates-template-archive [template params]
+(defn create-invoice-rendering-templates [template params]
   """
   Archive an invoice rendering template
 
@@ -13,9 +13,9 @@
     - template: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoice_rendering_templates/" template "/archive" params))
+  (stripe-request :post (str "/v1/invoice_rendering_templates/" template "/archive") params))
 
-(defn get-invoice-rendering-templates [params]
+(defn retrieve-invoice-rendering-templates [params]
   """
   List all invoice rendering templates
 
@@ -30,9 +30,9 @@
     - status: 
 
   """
-  (stripe-request :get "/v1/invoice_rendering_templates" params))
+  (stripe-request :get (str "/v1/invoice_rendering_templates") params))
 
-(defn get-invoice-rendering-templates-template [template params]
+(defn retrieve-invoice-rendering-templates [template params]
   """
   Retrieve an invoice rendering template
 
@@ -47,9 +47,9 @@
     - version: 
 
   """
-  (stripe-request :get "/v1/invoice_rendering_templates/" template "" params))
+  (stripe-request :get (str "/v1/invoice_rendering_templates/" template "") params))
 
-(defn post-invoice-rendering-templates-template-unarchive [template params]
+(defn create-invoice-rendering-templates [template params]
   """
   Unarchive an invoice rendering template
 
@@ -60,4 +60,4 @@
     - template: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoice_rendering_templates/" template "/unarchive" params))
+  (stripe-request :post (str "/v1/invoice_rendering_templates/" template "/unarchive") params))

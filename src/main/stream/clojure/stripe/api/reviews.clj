@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-reviews-review-approve [review params]
+(defn create-reviews [review params]
   """
   Approve a review
 
@@ -13,9 +13,9 @@
     - review: Path parameter.
 
   """
-  (stripe-request :post "/v1/reviews/" review "/approve" params))
+  (stripe-request :post (str "/v1/reviews/" review "/approve") params))
 
-(defn get-reviews-review [review params]
+(defn retrieve-reviews [review params]
   """
   Retrieve a review
 
@@ -29,9 +29,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/reviews/" review "" params))
+  (stripe-request :get (str "/v1/reviews/" review "") params))
 
-(defn get-reviews [params]
+(defn retrieve-reviews [params]
   """
   List all open reviews
 
@@ -46,4 +46,4 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/reviews" params))
+  (stripe-request :get (str "/v1/reviews") params))

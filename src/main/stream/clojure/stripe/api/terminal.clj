@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-terminal-configurations-configuration [configuration params]
+(defn delete-terminal [configuration params]
   """
   Delete a Configuration
 
@@ -13,9 +13,9 @@
     - configuration: Path parameter.
 
   """
-  (stripe-request :delete "/v1/terminal/configurations/" configuration "" params))
+  (stripe-request :delete (str "/v1/terminal/configurations/" configuration "") params))
 
-(defn get-terminal-configurations-configuration [configuration params]
+(defn retrieve-terminal [configuration params]
   """
   Retrieve a Configuration
 
@@ -29,9 +29,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/terminal/configurations/" configuration "" params))
+  (stripe-request :get (str "/v1/terminal/configurations/" configuration "") params))
 
-(defn post-terminal-configurations-configuration [configuration params]
+(defn create-terminal [configuration params]
   """
   Update a Configuration
 
@@ -42,9 +42,9 @@
     - configuration: Path parameter.
 
   """
-  (stripe-request :post "/v1/terminal/configurations/" configuration "" params))
+  (stripe-request :post (str "/v1/terminal/configurations/" configuration "") params))
 
-(defn get-terminal-configurations [params]
+(defn retrieve-terminal [params]
   """
   List all Configurations
 
@@ -59,9 +59,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/terminal/configurations" params))
+  (stripe-request :get (str "/v1/terminal/configurations") params))
 
-(defn post-terminal-configurations [params]
+(defn create-terminal [params]
   """
   Create a Configuration
 
@@ -69,9 +69,9 @@
   Endpoint: /v1/terminal/configurations
 
   """
-  (stripe-request :post "/v1/terminal/configurations" params))
+  (stripe-request :post (str "/v1/terminal/configurations") params))
 
-(defn post-terminal-readers-reader-process-payment-intent [reader params]
+(defn create-terminal [reader params]
   """
   Hand-off a PaymentIntent to a Reader
 
@@ -82,9 +82,9 @@
     - reader: Path parameter.
 
   """
-  (stripe-request :post "/v1/terminal/readers/" reader "/process_payment_intent" params))
+  (stripe-request :post (str "/v1/terminal/readers/" reader "/process_payment_intent") params))
 
-(defn post-terminal-readers-reader-set-reader-display [reader params]
+(defn create-terminal [reader params]
   """
   Set reader display
 
@@ -95,9 +95,9 @@
     - reader: Path parameter.
 
   """
-  (stripe-request :post "/v1/terminal/readers/" reader "/set_reader_display" params))
+  (stripe-request :post (str "/v1/terminal/readers/" reader "/set_reader_display") params))
 
-(defn post-terminal-readers-reader-refund-payment [reader params]
+(defn create-terminal [reader params]
   """
   Refund a Charge or a PaymentIntent in-person
 
@@ -108,9 +108,9 @@
     - reader: Path parameter.
 
   """
-  (stripe-request :post "/v1/terminal/readers/" reader "/refund_payment" params))
+  (stripe-request :post (str "/v1/terminal/readers/" reader "/refund_payment") params))
 
-(defn delete-terminal-readers-reader [reader params]
+(defn delete-terminal [reader params]
   """
   Delete a Reader
 
@@ -121,9 +121,9 @@
     - reader: Path parameter.
 
   """
-  (stripe-request :delete "/v1/terminal/readers/" reader "" params))
+  (stripe-request :delete (str "/v1/terminal/readers/" reader "") params))
 
-(defn get-terminal-readers-reader [reader params]
+(defn retrieve-terminal [reader params]
   """
   Retrieve a Reader
 
@@ -137,9 +137,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/terminal/readers/" reader "" params))
+  (stripe-request :get (str "/v1/terminal/readers/" reader "") params))
 
-(defn post-terminal-readers-reader [reader params]
+(defn create-terminal [reader params]
   """
   Update a Reader
 
@@ -150,9 +150,9 @@
     - reader: Path parameter.
 
   """
-  (stripe-request :post "/v1/terminal/readers/" reader "" params))
+  (stripe-request :post (str "/v1/terminal/readers/" reader "") params))
 
-(defn delete-terminal-locations-location [location params]
+(defn delete-terminal [location params]
   """
   Delete a Location
 
@@ -163,9 +163,9 @@
     - location: Path parameter.
 
   """
-  (stripe-request :delete "/v1/terminal/locations/" location "" params))
+  (stripe-request :delete (str "/v1/terminal/locations/" location "") params))
 
-(defn get-terminal-locations-location [location params]
+(defn retrieve-terminal [location params]
   """
   Retrieve a Location
 
@@ -179,9 +179,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/terminal/locations/" location "" params))
+  (stripe-request :get (str "/v1/terminal/locations/" location "") params))
 
-(defn post-terminal-locations-location [location params]
+(defn create-terminal [location params]
   """
   Update a Location
 
@@ -192,9 +192,9 @@
     - location: Path parameter.
 
   """
-  (stripe-request :post "/v1/terminal/locations/" location "" params))
+  (stripe-request :post (str "/v1/terminal/locations/" location "") params))
 
-(defn post-terminal-readers-reader-process-setup-intent [reader params]
+(defn create-terminal [reader params]
   """
   Hand-off a SetupIntent to a Reader
 
@@ -205,9 +205,9 @@
     - reader: Path parameter.
 
   """
-  (stripe-request :post "/v1/terminal/readers/" reader "/process_setup_intent" params))
+  (stripe-request :post (str "/v1/terminal/readers/" reader "/process_setup_intent") params))
 
-(defn post-terminal-readers-reader-cancel-action [reader params]
+(defn create-terminal [reader params]
   """
   Cancel the current reader action
 
@@ -218,9 +218,9 @@
     - reader: Path parameter.
 
   """
-  (stripe-request :post "/v1/terminal/readers/" reader "/cancel_action" params))
+  (stripe-request :post (str "/v1/terminal/readers/" reader "/cancel_action") params))
 
-(defn get-terminal-readers [params]
+(defn retrieve-terminal [params]
   """
   List all Readers
 
@@ -238,9 +238,9 @@
     - status: A status filter to filter readers to only offline or online readers
 
   """
-  (stripe-request :get "/v1/terminal/readers" params))
+  (stripe-request :get (str "/v1/terminal/readers") params))
 
-(defn post-terminal-readers [params]
+(defn create-terminal [params]
   """
   Create a Reader
 
@@ -248,9 +248,9 @@
   Endpoint: /v1/terminal/readers
 
   """
-  (stripe-request :post "/v1/terminal/readers" params))
+  (stripe-request :post (str "/v1/terminal/readers") params))
 
-(defn get-terminal-locations [params]
+(defn retrieve-terminal [params]
   """
   List all Locations
 
@@ -264,9 +264,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/terminal/locations" params))
+  (stripe-request :get (str "/v1/terminal/locations") params))
 
-(defn post-terminal-locations [params]
+(defn create-terminal [params]
   """
   Create a Location
 
@@ -274,9 +274,9 @@
   Endpoint: /v1/terminal/locations
 
   """
-  (stripe-request :post "/v1/terminal/locations" params))
+  (stripe-request :post (str "/v1/terminal/locations") params))
 
-(defn post-terminal-connection-tokens [params]
+(defn create-terminal [params]
   """
   Create a Connection Token
 
@@ -284,4 +284,4 @@
   Endpoint: /v1/terminal/connection_tokens
 
   """
-  (stripe-request :post "/v1/terminal/connection_tokens" params))
+  (stripe-request :post (str "/v1/terminal/connection_tokens") params))

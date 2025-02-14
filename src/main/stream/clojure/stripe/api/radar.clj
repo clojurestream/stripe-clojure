@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-radar-early-fraud-warnings [params]
+(defn retrieve-radar [params]
   """
   List all early fraud warnings
 
@@ -19,9 +19,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/radar/early_fraud_warnings" params))
+  (stripe-request :get (str "/v1/radar/early_fraud_warnings") params))
 
-(defn delete-radar-value-list-items-item [item params]
+(defn delete-radar [item params]
   """
   Delete a value list item
 
@@ -32,9 +32,9 @@
     - item: Path parameter.
 
   """
-  (stripe-request :delete "/v1/radar/value_list_items/" item "" params))
+  (stripe-request :delete (str "/v1/radar/value_list_items/" item "") params))
 
-(defn get-radar-value-list-items-item [item params]
+(defn retrieve-radar [item params]
   """
   Retrieve a value list item
 
@@ -48,9 +48,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/radar/value_list_items/" item "" params))
+  (stripe-request :get (str "/v1/radar/value_list_items/" item "") params))
 
-(defn delete-radar-value-lists-value-list [value_list params]
+(defn delete-radar [value_list params]
   """
   Delete a value list
 
@@ -61,9 +61,9 @@
     - value_list: Path parameter.
 
   """
-  (stripe-request :delete "/v1/radar/value_lists/" value_list "" params))
+  (stripe-request :delete (str "/v1/radar/value_lists/" value_list "") params))
 
-(defn get-radar-value-lists-value-list [value_list params]
+(defn retrieve-radar [value_list params]
   """
   Retrieve a value list
 
@@ -77,9 +77,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/radar/value_lists/" value_list "" params))
+  (stripe-request :get (str "/v1/radar/value_lists/" value_list "") params))
 
-(defn post-radar-value-lists-value-list [value_list params]
+(defn create-radar [value_list params]
   """
   Update a value list
 
@@ -90,9 +90,9 @@
     - value_list: Path parameter.
 
   """
-  (stripe-request :post "/v1/radar/value_lists/" value_list "" params))
+  (stripe-request :post (str "/v1/radar/value_lists/" value_list "") params))
 
-(defn get-radar-value-lists [params]
+(defn retrieve-radar [params]
   """
   List all value lists
 
@@ -109,9 +109,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/radar/value_lists" params))
+  (stripe-request :get (str "/v1/radar/value_lists") params))
 
-(defn post-radar-value-lists [params]
+(defn create-radar [params]
   """
   Create a value list
 
@@ -119,9 +119,9 @@
   Endpoint: /v1/radar/value_lists
 
   """
-  (stripe-request :post "/v1/radar/value_lists" params))
+  (stripe-request :post (str "/v1/radar/value_lists") params))
 
-(defn get-radar-value-list-items [params]
+(defn retrieve-radar [params]
   """
   List all value list items
 
@@ -138,9 +138,9 @@
     - value_list: Identifier for the parent value list this item belongs to.
 
   """
-  (stripe-request :get "/v1/radar/value_list_items" params))
+  (stripe-request :get (str "/v1/radar/value_list_items") params))
 
-(defn post-radar-value-list-items [params]
+(defn create-radar [params]
   """
   Create a value list item
 
@@ -148,9 +148,9 @@
   Endpoint: /v1/radar/value_list_items
 
   """
-  (stripe-request :post "/v1/radar/value_list_items" params))
+  (stripe-request :post (str "/v1/radar/value_list_items") params))
 
-(defn get-radar-early-fraud-warnings-early-fraud-warning [early_fraud_warning params]
+(defn retrieve-radar [early_fraud_warning params]
   """
   Retrieve an early fraud warning
 
@@ -164,4 +164,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/radar/early_fraud_warnings/" early_fraud_warning "" params))
+  (stripe-request :get (str "/v1/radar/early_fraud_warnings/" early_fraud_warning "") params))

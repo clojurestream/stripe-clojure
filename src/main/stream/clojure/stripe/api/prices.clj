@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-prices [params]
+(defn retrieve-prices [params]
   """
   List all prices
 
@@ -23,9 +23,9 @@
     - type: Only return prices of type `recurring` or `one_time`.
 
   """
-  (stripe-request :get "/v1/prices" params))
+  (stripe-request :get (str "/v1/prices") params))
 
-(defn post-prices [params]
+(defn create-prices [params]
   """
   Create a price
 
@@ -33,9 +33,9 @@
   Endpoint: /v1/prices
 
   """
-  (stripe-request :post "/v1/prices" params))
+  (stripe-request :post (str "/v1/prices") params))
 
-(defn get-prices-price [price params]
+(defn retrieve-prices [price params]
   """
   Retrieve a price
 
@@ -49,9 +49,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/prices/" price "" params))
+  (stripe-request :get (str "/v1/prices/" price "") params))
 
-(defn post-prices-price [price params]
+(defn create-prices [price params]
   """
   Update a price
 
@@ -62,9 +62,9 @@
     - price: Path parameter.
 
   """
-  (stripe-request :post "/v1/prices/" price "" params))
+  (stripe-request :post (str "/v1/prices/" price "") params))
 
-(defn get-prices-search [params]
+(defn retrieve-prices [params]
   """
   Search prices
 
@@ -78,4 +78,4 @@
     - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for prices](https://stripe.com/docs/search#query-fields-for-prices).
 
   """
-  (stripe-request :get "/v1/prices/search" params))
+  (stripe-request :get (str "/v1/prices/search") params))

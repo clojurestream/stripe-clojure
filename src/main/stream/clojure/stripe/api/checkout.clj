@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-checkout-sessions-session [session params]
+(defn retrieve-checkout [session params]
   """
   Retrieve a Session
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/checkout/sessions/" session "" params))
+  (stripe-request :get (str "/v1/checkout/sessions/" session "") params))
 
-(defn post-checkout-sessions-session [session params]
+(defn create-checkout [session params]
   """
   Update a Session
 
@@ -29,9 +29,9 @@
     - session: Path parameter.
 
   """
-  (stripe-request :post "/v1/checkout/sessions/" session "" params))
+  (stripe-request :post (str "/v1/checkout/sessions/" session "") params))
 
-(defn get-checkout-sessions [params]
+(defn retrieve-checkout [params]
   """
   List all Checkout Sessions
 
@@ -52,9 +52,9 @@
     - subscription: Only return the Checkout Session for the subscription specified.
 
   """
-  (stripe-request :get "/v1/checkout/sessions" params))
+  (stripe-request :get (str "/v1/checkout/sessions") params))
 
-(defn post-checkout-sessions [params]
+(defn create-checkout [params]
   """
   Create a Session
 
@@ -62,9 +62,9 @@
   Endpoint: /v1/checkout/sessions
 
   """
-  (stripe-request :post "/v1/checkout/sessions" params))
+  (stripe-request :post (str "/v1/checkout/sessions") params))
 
-(defn get-checkout-sessions-session-line-items [session params]
+(defn retrieve-checkout [session params]
   """
   Retrieve a Checkout Session's line items
 
@@ -81,9 +81,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/checkout/sessions/" session "/line_items" params))
+  (stripe-request :get (str "/v1/checkout/sessions/" session "/line_items") params))
 
-(defn post-checkout-sessions-session-expire [session params]
+(defn create-checkout [session params]
   """
   Expire a Session
 
@@ -94,4 +94,4 @@
     - session: Path parameter.
 
   """
-  (stripe-request :post "/v1/checkout/sessions/" session "/expire" params))
+  (stripe-request :post (str "/v1/checkout/sessions/" session "/expire") params))

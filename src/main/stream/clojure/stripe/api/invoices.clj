@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-invoices-upcoming-lines [params]
+(defn retrieve-invoices [params]
   """
   Retrieve an upcoming invoice's line items
 
@@ -41,9 +41,9 @@
     - subscription_trial_end: If provided, the invoice returned will preview updating or creating a subscription with that trial end. If set, one of `subscription_items` or `subscription` is required. This field has been deprecated and will be removed in a future API version. Use `subscription_details.trial_end` instead.
 
   """
-  (stripe-request :get "/v1/invoices/upcoming/lines" params))
+  (stripe-request :get (str "/v1/invoices/upcoming/lines") params))
 
-(defn post-invoices-create-preview [params]
+(defn create-invoices [params]
   """
   Create a preview invoice
 
@@ -51,9 +51,9 @@
   Endpoint: /v1/invoices/create_preview
 
   """
-  (stripe-request :post "/v1/invoices/create_preview" params))
+  (stripe-request :post (str "/v1/invoices/create_preview") params))
 
-(defn get-invoices-search [params]
+(defn retrieve-invoices [params]
   """
   Search invoices
 
@@ -67,9 +67,9 @@
     - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for invoices](https://stripe.com/docs/search#query-fields-for-invoices).
 
   """
-  (stripe-request :get "/v1/invoices/search" params))
+  (stripe-request :get (str "/v1/invoices/search") params))
 
-(defn post-invoices-invoice-void [invoice params]
+(defn create-invoices [invoice params]
   """
   Void an invoice
 
@@ -80,9 +80,9 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "/void" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "/void") params))
 
-(defn get-invoices-invoice-lines [invoice params]
+(defn retrieve-invoices [invoice params]
   """
   Retrieve an invoice's line items
 
@@ -99,9 +99,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/invoices/" invoice "/lines" params))
+  (stripe-request :get (str "/v1/invoices/" invoice "/lines") params))
 
-(defn post-invoices-invoice-update-lines [invoice params]
+(defn create-invoices [invoice params]
   """
   Bulk update invoice line items
 
@@ -112,9 +112,9 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "/update_lines" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "/update_lines") params))
 
-(defn post-invoices-invoice-add-lines [invoice params]
+(defn create-invoices [invoice params]
   """
   Bulk add invoice line items
 
@@ -125,9 +125,9 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "/add_lines" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "/add_lines") params))
 
-(defn post-invoices-invoice-send [invoice params]
+(defn create-invoices [invoice params]
   """
   Send an invoice for manual payment
 
@@ -138,9 +138,9 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "/send" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "/send") params))
 
-(defn post-invoices-invoice-mark-uncollectible [invoice params]
+(defn create-invoices [invoice params]
   """
   Mark an invoice as uncollectible
 
@@ -151,9 +151,9 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "/mark_uncollectible" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "/mark_uncollectible") params))
 
-(defn post-invoices-invoice-finalize [invoice params]
+(defn create-invoices [invoice params]
   """
   Finalize an invoice
 
@@ -164,9 +164,9 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "/finalize" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "/finalize") params))
 
-(defn post-invoices-invoice-lines-line-item-id [invoice line_item_id params]
+(defn create-invoices [invoice line_item_id params]
   """
   Update an invoice's line item
 
@@ -178,9 +178,9 @@
     - line_item_id: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "/lines/" line_item_id "" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "/lines/" line_item_id "") params))
 
-(defn get-invoices [params]
+(defn retrieve-invoices [params]
   """
   List all invoices
 
@@ -200,9 +200,9 @@
     - subscription: Only return invoices for the subscription specified by this subscription ID.
 
   """
-  (stripe-request :get "/v1/invoices" params))
+  (stripe-request :get (str "/v1/invoices") params))
 
-(defn post-invoices [params]
+(defn create-invoices [params]
   """
   Create an invoice
 
@@ -210,9 +210,9 @@
   Endpoint: /v1/invoices
 
   """
-  (stripe-request :post "/v1/invoices" params))
+  (stripe-request :post (str "/v1/invoices") params))
 
-(defn post-invoices-invoice-remove-lines [invoice params]
+(defn create-invoices [invoice params]
   """
   Bulk remove invoice line items
 
@@ -223,9 +223,9 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "/remove_lines" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "/remove_lines") params))
 
-(defn get-invoices-upcoming [params]
+(defn retrieve-invoices [params]
   """
   Retrieve an upcoming invoice
 
@@ -261,9 +261,9 @@
     - subscription_trial_end: If provided, the invoice returned will preview updating or creating a subscription with that trial end. If set, one of `subscription_items` or `subscription` is required. This field has been deprecated and will be removed in a future API version. Use `subscription_details.trial_end` instead.
 
   """
-  (stripe-request :get "/v1/invoices/upcoming" params))
+  (stripe-request :get (str "/v1/invoices/upcoming") params))
 
-(defn delete-invoices-invoice [invoice params]
+(defn delete-invoices [invoice params]
   """
   Delete a draft invoice
 
@@ -274,9 +274,9 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :delete "/v1/invoices/" invoice "" params))
+  (stripe-request :delete (str "/v1/invoices/" invoice "") params))
 
-(defn get-invoices-invoice [invoice params]
+(defn retrieve-invoices [invoice params]
   """
   Retrieve an invoice
 
@@ -290,9 +290,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/invoices/" invoice "" params))
+  (stripe-request :get (str "/v1/invoices/" invoice "") params))
 
-(defn post-invoices-invoice [invoice params]
+(defn create-invoices [invoice params]
   """
   Update an invoice
 
@@ -303,9 +303,9 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "") params))
 
-(defn post-invoices-invoice-pay [invoice params]
+(defn create-invoices [invoice params]
   """
   Pay an invoice
 
@@ -316,4 +316,4 @@
     - invoice: Path parameter.
 
   """
-  (stripe-request :post "/v1/invoices/" invoice "/pay" params))
+  (stripe-request :post (str "/v1/invoices/" invoice "/pay") params))

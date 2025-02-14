@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-promotion-codes-promotion-code [promotion_code params]
+(defn retrieve-promotion-codes [promotion_code params]
   """
   Retrieve a promotion code
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/promotion_codes/" promotion_code "" params))
+  (stripe-request :get (str "/v1/promotion_codes/" promotion_code "") params))
 
-(defn post-promotion-codes-promotion-code [promotion_code params]
+(defn create-promotion-codes [promotion_code params]
   """
   Update a promotion code
 
@@ -29,9 +29,9 @@
     - promotion_code: Path parameter.
 
   """
-  (stripe-request :post "/v1/promotion_codes/" promotion_code "" params))
+  (stripe-request :post (str "/v1/promotion_codes/" promotion_code "") params))
 
-(defn get-promotion-codes [params]
+(defn retrieve-promotion-codes [params]
   """
   List all promotion codes
 
@@ -50,9 +50,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/promotion_codes" params))
+  (stripe-request :get (str "/v1/promotion_codes") params))
 
-(defn post-promotion-codes [params]
+(defn create-promotion-codes [params]
   """
   Create a promotion code
 
@@ -60,4 +60,4 @@
   Endpoint: /v1/promotion_codes
 
   """
-  (stripe-request :post "/v1/promotion_codes" params))
+  (stripe-request :post (str "/v1/promotion_codes") params))

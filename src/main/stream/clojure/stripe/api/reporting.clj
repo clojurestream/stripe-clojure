@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-reporting-report-types [params]
+(defn retrieve-reporting [params]
   """
   List all Report Types
 
@@ -13,9 +13,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/reporting/report_types" params))
+  (stripe-request :get (str "/v1/reporting/report_types") params))
 
-(defn get-reporting-report-runs [params]
+(defn retrieve-reporting [params]
   """
   List all Report Runs
 
@@ -30,9 +30,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/reporting/report_runs" params))
+  (stripe-request :get (str "/v1/reporting/report_runs") params))
 
-(defn post-reporting-report-runs [params]
+(defn create-reporting [params]
   """
   Create a Report Run
 
@@ -40,9 +40,9 @@
   Endpoint: /v1/reporting/report_runs
 
   """
-  (stripe-request :post "/v1/reporting/report_runs" params))
+  (stripe-request :post (str "/v1/reporting/report_runs") params))
 
-(defn get-reporting-report-types-report-type [report_type params]
+(defn retrieve-reporting [report_type params]
   """
   Retrieve a Report Type
 
@@ -56,9 +56,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/reporting/report_types/" report_type "" params))
+  (stripe-request :get (str "/v1/reporting/report_types/" report_type "") params))
 
-(defn get-reporting-report-runs-report-run [report_run params]
+(defn retrieve-reporting [report_run params]
   """
   Retrieve a Report Run
 
@@ -72,4 +72,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/reporting/report_runs/" report_run "" params))
+  (stripe-request :get (str "/v1/reporting/report_runs/" report_run "") params))

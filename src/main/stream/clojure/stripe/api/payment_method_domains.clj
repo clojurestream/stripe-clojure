@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-payment-method-domains [params]
+(defn retrieve-payment-method-domains [params]
   """
   List payment method domains
 
@@ -18,9 +18,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/payment_method_domains" params))
+  (stripe-request :get (str "/v1/payment_method_domains") params))
 
-(defn post-payment-method-domains [params]
+(defn create-payment-method-domains [params]
   """
   Create a payment method domain
 
@@ -28,9 +28,9 @@
   Endpoint: /v1/payment_method_domains
 
   """
-  (stripe-request :post "/v1/payment_method_domains" params))
+  (stripe-request :post (str "/v1/payment_method_domains") params))
 
-(defn get-payment-method-domains-payment-method-domain [payment_method_domain params]
+(defn retrieve-payment-method-domains [payment_method_domain params]
   """
   Retrieve a payment method domain
 
@@ -44,9 +44,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/payment_method_domains/" payment_method_domain "" params))
+  (stripe-request :get (str "/v1/payment_method_domains/" payment_method_domain "") params))
 
-(defn post-payment-method-domains-payment-method-domain [payment_method_domain params]
+(defn create-payment-method-domains [payment_method_domain params]
   """
   Update a payment method domain
 
@@ -57,9 +57,9 @@
     - payment_method_domain: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_method_domains/" payment_method_domain "" params))
+  (stripe-request :post (str "/v1/payment_method_domains/" payment_method_domain "") params))
 
-(defn post-payment-method-domains-payment-method-domain-validate [payment_method_domain params]
+(defn create-payment-method-domains [payment_method_domain params]
   """
   Validate an existing payment method domain
 
@@ -70,4 +70,4 @@
     - payment_method_domain: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_method_domains/" payment_method_domain "/validate" params))
+  (stripe-request :post (str "/v1/payment_method_domains/" payment_method_domain "/validate") params))

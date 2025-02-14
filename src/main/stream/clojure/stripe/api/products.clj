@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-products [params]
+(defn retrieve-products [params]
   """
   List all products
 
@@ -21,9 +21,9 @@
     - url: Only return products with the given url.
 
   """
-  (stripe-request :get "/v1/products" params))
+  (stripe-request :get (str "/v1/products") params))
 
-(defn post-products [params]
+(defn create-products [params]
   """
   Create a product
 
@@ -31,9 +31,9 @@
   Endpoint: /v1/products
 
   """
-  (stripe-request :post "/v1/products" params))
+  (stripe-request :post (str "/v1/products") params))
 
-(defn get-products-search [params]
+(defn retrieve-products [params]
   """
   Search products
 
@@ -47,9 +47,9 @@
     - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for products](https://stripe.com/docs/search#query-fields-for-products).
 
   """
-  (stripe-request :get "/v1/products/search" params))
+  (stripe-request :get (str "/v1/products/search") params))
 
-(defn delete-products-product-features-id [product id params]
+(defn delete-products [product id params]
   """
   Remove a feature from a product
 
@@ -61,9 +61,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/products/" product "/features/" id "" params))
+  (stripe-request :delete (str "/v1/products/" product "/features/" id "") params))
 
-(defn get-products-product-features-id [product id params]
+(defn retrieve-products [product id params]
   """
   Retrieve a product_feature
 
@@ -78,9 +78,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/products/" product "/features/" id "" params))
+  (stripe-request :get (str "/v1/products/" product "/features/" id "") params))
 
-(defn get-products-product-features [product params]
+(defn retrieve-products [product params]
   """
   List all features attached to a product
 
@@ -97,9 +97,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/products/" product "/features" params))
+  (stripe-request :get (str "/v1/products/" product "/features") params))
 
-(defn post-products-product-features [product params]
+(defn create-products [product params]
   """
   Attach a feature to a product
 
@@ -110,9 +110,9 @@
     - product: Path parameter.
 
   """
-  (stripe-request :post "/v1/products/" product "/features" params))
+  (stripe-request :post (str "/v1/products/" product "/features") params))
 
-(defn delete-products-id [id params]
+(defn delete-products [id params]
   """
   Delete a product
 
@@ -123,9 +123,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/products/" id "" params))
+  (stripe-request :delete (str "/v1/products/" id "") params))
 
-(defn get-products-id [id params]
+(defn retrieve-products [id params]
   """
   Retrieve a product
 
@@ -139,9 +139,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/products/" id "" params))
+  (stripe-request :get (str "/v1/products/" id "") params))
 
-(defn post-products-id [id params]
+(defn create-products [id params]
   """
   Update a product
 
@@ -152,4 +152,4 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/products/" id "" params))
+  (stripe-request :post (str "/v1/products/" id "") params))

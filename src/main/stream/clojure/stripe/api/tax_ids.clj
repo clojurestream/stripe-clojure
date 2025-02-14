@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-tax-ids [params]
+(defn retrieve-tax-ids [params]
   """
   List all tax IDs
 
@@ -17,9 +17,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/tax_ids" params))
+  (stripe-request :get (str "/v1/tax_ids") params))
 
-(defn post-tax-ids [params]
+(defn create-tax-ids [params]
   """
   Create a tax ID
 
@@ -27,9 +27,9 @@
   Endpoint: /v1/tax_ids
 
   """
-  (stripe-request :post "/v1/tax_ids" params))
+  (stripe-request :post (str "/v1/tax_ids") params))
 
-(defn delete-tax-ids-id [id params]
+(defn delete-tax-ids [id params]
   """
   Delete a tax ID
 
@@ -40,9 +40,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/tax_ids/" id "" params))
+  (stripe-request :delete (str "/v1/tax_ids/" id "") params))
 
-(defn get-tax-ids-id [id params]
+(defn retrieve-tax-ids [id params]
   """
   Retrieve a tax ID
 
@@ -56,4 +56,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/tax_ids/" id "" params))
+  (stripe-request :get (str "/v1/tax_ids/" id "") params))

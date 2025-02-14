@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-subscriptions-subscription-exposed-id [subscription_exposed_id params]
+(defn delete-subscriptions [subscription_exposed_id params]
   """
   Cancel a subscription
 
@@ -13,9 +13,9 @@
     - subscription_exposed_id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/subscriptions/" subscription_exposed_id "" params))
+  (stripe-request :delete (str "/v1/subscriptions/" subscription_exposed_id "") params))
 
-(defn get-subscriptions-subscription-exposed-id [subscription_exposed_id params]
+(defn retrieve-subscriptions [subscription_exposed_id params]
   """
   Retrieve a subscription
 
@@ -29,9 +29,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/subscriptions/" subscription_exposed_id "" params))
+  (stripe-request :get (str "/v1/subscriptions/" subscription_exposed_id "") params))
 
-(defn post-subscriptions-subscription-exposed-id [subscription_exposed_id params]
+(defn create-subscriptions [subscription_exposed_id params]
   """
   Update a subscription
 
@@ -42,9 +42,9 @@
     - subscription_exposed_id: Path parameter.
 
   """
-  (stripe-request :post "/v1/subscriptions/" subscription_exposed_id "" params))
+  (stripe-request :post (str "/v1/subscriptions/" subscription_exposed_id "") params))
 
-(defn delete-subscriptions-subscription-exposed-id-discount [subscription_exposed_id params]
+(defn delete-subscriptions [subscription_exposed_id params]
   """
   Delete a subscription discount
 
@@ -55,9 +55,9 @@
     - subscription_exposed_id: Path parameter.
 
   """
-  (stripe-request :delete "/v1/subscriptions/" subscription_exposed_id "/discount" params))
+  (stripe-request :delete (str "/v1/subscriptions/" subscription_exposed_id "/discount") params))
 
-(defn get-subscriptions-search [params]
+(defn retrieve-subscriptions [params]
   """
   Search subscriptions
 
@@ -71,9 +71,9 @@
     - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for subscriptions](https://stripe.com/docs/search#query-fields-for-subscriptions).
 
   """
-  (stripe-request :get "/v1/subscriptions/search" params))
+  (stripe-request :get (str "/v1/subscriptions/search") params))
 
-(defn post-subscriptions-subscription-resume [subscription params]
+(defn create-subscriptions [subscription params]
   """
   Resume a subscription
 
@@ -84,9 +84,9 @@
     - subscription: Path parameter.
 
   """
-  (stripe-request :post "/v1/subscriptions/" subscription "/resume" params))
+  (stripe-request :post (str "/v1/subscriptions/" subscription "/resume") params))
 
-(defn get-subscriptions [params]
+(defn retrieve-subscriptions [params]
   """
   List subscriptions
 
@@ -109,9 +109,9 @@
     - test_clock: Filter for subscriptions that are associated with the specified test clock. The response will not include subscriptions with test clocks if this and the customer parameter is not set.
 
   """
-  (stripe-request :get "/v1/subscriptions" params))
+  (stripe-request :get (str "/v1/subscriptions") params))
 
-(defn post-subscriptions [params]
+(defn create-subscriptions [params]
   """
   Create a subscription
 
@@ -119,4 +119,4 @@
   Endpoint: /v1/subscriptions
 
   """
-  (stripe-request :post "/v1/subscriptions" params))
+  (stripe-request :post (str "/v1/subscriptions") params))

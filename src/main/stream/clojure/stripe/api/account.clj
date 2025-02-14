@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-account [params]
+(defn retrieve-account [params]
   """
   Retrieve account
 
@@ -13,4 +13,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/account" params))
+  (stripe-request :get (str "/v1/account") params))

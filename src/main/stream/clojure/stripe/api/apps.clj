@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-apps-secrets [params]
+(defn retrieve-apps [params]
   """
   List secrets
 
@@ -17,9 +17,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/apps/secrets" params))
+  (stripe-request :get (str "/v1/apps/secrets") params))
 
-(defn post-apps-secrets [params]
+(defn create-apps [params]
   """
   Set a Secret
 
@@ -27,9 +27,9 @@
   Endpoint: /v1/apps/secrets
 
   """
-  (stripe-request :post "/v1/apps/secrets" params))
+  (stripe-request :post (str "/v1/apps/secrets") params))
 
-(defn post-apps-secrets-delete [params]
+(defn create-apps [params]
   """
   Delete a Secret
 
@@ -37,9 +37,9 @@
   Endpoint: /v1/apps/secrets/delete
 
   """
-  (stripe-request :post "/v1/apps/secrets/delete" params))
+  (stripe-request :post (str "/v1/apps/secrets/delete") params))
 
-(defn get-apps-secrets-find [params]
+(defn retrieve-apps [params]
   """
   Find a Secret
 
@@ -52,4 +52,4 @@
     - scope: Specifies the scoping of the secret. Requests originating from UI extensions can only access account-scoped secrets or secrets scoped to their own user.
 
   """
-  (stripe-request :get "/v1/apps/secrets/find" params))
+  (stripe-request :get (str "/v1/apps/secrets/find") params))

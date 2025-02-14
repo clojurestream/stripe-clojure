@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-webhook-endpoints [params]
+(defn retrieve-webhook-endpoints [params]
   """
   List all webhook endpoints
 
@@ -16,9 +16,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/webhook_endpoints" params))
+  (stripe-request :get (str "/v1/webhook_endpoints") params))
 
-(defn post-webhook-endpoints [params]
+(defn create-webhook-endpoints [params]
   """
   Create a webhook endpoint
 
@@ -26,9 +26,9 @@
   Endpoint: /v1/webhook_endpoints
 
   """
-  (stripe-request :post "/v1/webhook_endpoints" params))
+  (stripe-request :post (str "/v1/webhook_endpoints") params))
 
-(defn delete-webhook-endpoints-webhook-endpoint [webhook_endpoint params]
+(defn delete-webhook-endpoints [webhook_endpoint params]
   """
   Delete a webhook endpoint
 
@@ -39,9 +39,9 @@
     - webhook_endpoint: Path parameter.
 
   """
-  (stripe-request :delete "/v1/webhook_endpoints/" webhook_endpoint "" params))
+  (stripe-request :delete (str "/v1/webhook_endpoints/" webhook_endpoint "") params))
 
-(defn get-webhook-endpoints-webhook-endpoint [webhook_endpoint params]
+(defn retrieve-webhook-endpoints [webhook_endpoint params]
   """
   Retrieve a webhook endpoint
 
@@ -55,9 +55,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/webhook_endpoints/" webhook_endpoint "" params))
+  (stripe-request :get (str "/v1/webhook_endpoints/" webhook_endpoint "") params))
 
-(defn post-webhook-endpoints-webhook-endpoint [webhook_endpoint params]
+(defn create-webhook-endpoints [webhook_endpoint params]
   """
   Update a webhook endpoint
 
@@ -68,4 +68,4 @@
     - webhook_endpoint: Path parameter.
 
   """
-  (stripe-request :post "/v1/webhook_endpoints/" webhook_endpoint "" params))
+  (stripe-request :post (str "/v1/webhook_endpoints/" webhook_endpoint "") params))

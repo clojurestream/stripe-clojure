@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-balance-history [params]
+(defn retrieve-balance [params]
   """
   List all balance transactions
 
@@ -21,9 +21,9 @@
     - type: Only returns transactions of the given type. One of: `adjustment`, `advance`, `advance_funding`, `anticipation_repayment`, `application_fee`, `application_fee_refund`, `charge`, `climate_order_purchase`, `climate_order_refund`, `connect_collection_transfer`, `contribution`, `issuing_authorization_hold`, `issuing_authorization_release`, `issuing_dispute`, `issuing_transaction`, `obligation_outbound`, `obligation_reversal_inbound`, `payment`, `payment_failure_refund`, `payment_network_reserve_hold`, `payment_network_reserve_release`, `payment_refund`, `payment_reversal`, `payment_unreconciled`, `payout`, `payout_cancel`, `payout_failure`, `payout_minimum_balance_hold`, `payout_minimum_balance_release`, `refund`, `refund_failure`, `reserve_transaction`, `reserved_funds`, `stripe_fee`, `stripe_fx_fee`, `tax_fee`, `topup`, `topup_reversal`, `transfer`, `transfer_cancel`, `transfer_failure`, or `transfer_refund`.
 
   """
-  (stripe-request :get "/v1/balance/history" params))
+  (stripe-request :get (str "/v1/balance/history") params))
 
-(defn get-balance-history-id [id params]
+(defn retrieve-balance [id params]
   """
   Retrieve a balance transaction
 
@@ -37,9 +37,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/balance/history/" id "" params))
+  (stripe-request :get (str "/v1/balance/history/" id "") params))
 
-(defn get-balance [params]
+(defn retrieve-balance [params]
   """
   Retrieve balance
 
@@ -50,4 +50,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/balance" params))
+  (stripe-request :get (str "/v1/balance") params))

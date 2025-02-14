@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-apple-pay-domains-domain [domain params]
+(defn delete-apple-pay [domain params]
   """
   No description available.
 
@@ -13,9 +13,9 @@
     - domain: Path parameter.
 
   """
-  (stripe-request :delete "/v1/apple_pay/domains/" domain "" params))
+  (stripe-request :delete (str "/v1/apple_pay/domains/" domain "") params))
 
-(defn get-apple-pay-domains-domain [domain params]
+(defn retrieve-apple-pay [domain params]
   """
   No description available.
 
@@ -29,9 +29,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/apple_pay/domains/" domain "" params))
+  (stripe-request :get (str "/v1/apple_pay/domains/" domain "") params))
 
-(defn get-apple-pay-domains [params]
+(defn retrieve-apple-pay [params]
   """
   No description available.
 
@@ -46,9 +46,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/apple_pay/domains" params))
+  (stripe-request :get (str "/v1/apple_pay/domains") params))
 
-(defn post-apple-pay-domains [params]
+(defn create-apple-pay [params]
   """
   No description available.
 
@@ -56,4 +56,4 @@
   Endpoint: /v1/apple_pay/domains
 
   """
-  (stripe-request :post "/v1/apple_pay/domains" params))
+  (stripe-request :post (str "/v1/apple_pay/domains") params))

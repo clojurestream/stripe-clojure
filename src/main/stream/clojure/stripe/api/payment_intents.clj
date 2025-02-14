@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-payment-intents-intent [intent params]
+(defn retrieve-payment-intents [intent params]
   """
   Retrieve a PaymentIntent
 
@@ -17,9 +17,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/payment_intents/" intent "" params))
+  (stripe-request :get (str "/v1/payment_intents/" intent "") params))
 
-(defn post-payment-intents-intent [intent params]
+(defn create-payment-intents [intent params]
   """
   Update a PaymentIntent
 
@@ -30,9 +30,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_intents/" intent "" params))
+  (stripe-request :post (str "/v1/payment_intents/" intent "") params))
 
-(defn post-payment-intents-intent-increment-authorization [intent params]
+(defn create-payment-intents [intent params]
   """
   Increment an authorization
 
@@ -43,9 +43,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_intents/" intent "/increment_authorization" params))
+  (stripe-request :post (str "/v1/payment_intents/" intent "/increment_authorization") params))
 
-(defn post-payment-intents-intent-verify-microdeposits [intent params]
+(defn create-payment-intents [intent params]
   """
   Verify microdeposits on a PaymentIntent
 
@@ -56,9 +56,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_intents/" intent "/verify_microdeposits" params))
+  (stripe-request :post (str "/v1/payment_intents/" intent "/verify_microdeposits") params))
 
-(defn post-payment-intents-intent-capture [intent params]
+(defn create-payment-intents [intent params]
   """
   Capture a PaymentIntent
 
@@ -69,9 +69,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_intents/" intent "/capture" params))
+  (stripe-request :post (str "/v1/payment_intents/" intent "/capture") params))
 
-(defn post-payment-intents-intent-cancel [intent params]
+(defn create-payment-intents [intent params]
   """
   Cancel a PaymentIntent
 
@@ -82,9 +82,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_intents/" intent "/cancel" params))
+  (stripe-request :post (str "/v1/payment_intents/" intent "/cancel") params))
 
-(defn get-payment-intents-search [params]
+(defn retrieve-payment-intents [params]
   """
   Search PaymentIntents
 
@@ -98,9 +98,9 @@
     - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for payment intents](https://stripe.com/docs/search#query-fields-for-payment-intents).
 
   """
-  (stripe-request :get "/v1/payment_intents/search" params))
+  (stripe-request :get (str "/v1/payment_intents/search") params))
 
-(defn post-payment-intents-intent-confirm [intent params]
+(defn create-payment-intents [intent params]
   """
   Confirm a PaymentIntent
 
@@ -111,9 +111,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_intents/" intent "/confirm" params))
+  (stripe-request :post (str "/v1/payment_intents/" intent "/confirm") params))
 
-(defn post-payment-intents-intent-apply-customer-balance [intent params]
+(defn create-payment-intents [intent params]
   """
   Reconcile a customer_balance PaymentIntent
 
@@ -124,9 +124,9 @@
     - intent: Path parameter.
 
   """
-  (stripe-request :post "/v1/payment_intents/" intent "/apply_customer_balance" params))
+  (stripe-request :post (str "/v1/payment_intents/" intent "/apply_customer_balance") params))
 
-(defn get-payment-intents [params]
+(defn retrieve-payment-intents [params]
   """
   List all PaymentIntents
 
@@ -142,9 +142,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/payment_intents" params))
+  (stripe-request :get (str "/v1/payment_intents") params))
 
-(defn post-payment-intents [params]
+(defn create-payment-intents [params]
   """
   Create a PaymentIntent
 
@@ -152,4 +152,4 @@
   Endpoint: /v1/payment_intents
 
   """
-  (stripe-request :post "/v1/payment_intents" params))
+  (stripe-request :post (str "/v1/payment_intents") params))

@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-country-specs-country [country params]
+(defn retrieve-country-specs [country params]
   """
   Retrieve a Country Spec
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/country_specs/" country "" params))
+  (stripe-request :get (str "/v1/country_specs/" country "") params))
 
-(defn get-country-specs [params]
+(defn retrieve-country-specs [params]
   """
   List Country Specs
 
@@ -32,4 +32,4 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/country_specs" params))
+  (stripe-request :get (str "/v1/country_specs") params))

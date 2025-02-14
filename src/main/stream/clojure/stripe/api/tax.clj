@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-tax-registrations-id [id params]
+(defn retrieve-tax [id params]
   """
   Retrieve a registration
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/tax/registrations/" id "" params))
+  (stripe-request :get (str "/v1/tax/registrations/" id "") params))
 
-(defn post-tax-registrations-id [id params]
+(defn create-tax [id params]
   """
   Update a registration
 
@@ -29,9 +29,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/tax/registrations/" id "" params))
+  (stripe-request :post (str "/v1/tax/registrations/" id "") params))
 
-(defn post-tax-transactions-create-reversal [params]
+(defn create-tax [params]
   """
   Create a reversal transaction
 
@@ -39,9 +39,9 @@
   Endpoint: /v1/tax/transactions/create_reversal
 
   """
-  (stripe-request :post "/v1/tax/transactions/create_reversal" params))
+  (stripe-request :post (str "/v1/tax/transactions/create_reversal") params))
 
-(defn get-tax-transactions-transaction [transaction params]
+(defn retrieve-tax [transaction params]
   """
   Retrieve a transaction
 
@@ -55,9 +55,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/tax/transactions/" transaction "" params))
+  (stripe-request :get (str "/v1/tax/transactions/" transaction "") params))
 
-(defn post-tax-transactions-create-from-calculation [params]
+(defn create-tax [params]
   """
   Create a transaction from a calculation
 
@@ -65,9 +65,9 @@
   Endpoint: /v1/tax/transactions/create_from_calculation
 
   """
-  (stripe-request :post "/v1/tax/transactions/create_from_calculation" params))
+  (stripe-request :post (str "/v1/tax/transactions/create_from_calculation") params))
 
-(defn get-tax-calculations-calculation-line-items [calculation params]
+(defn retrieve-tax [calculation params]
   """
   Retrieve a calculation's line items
 
@@ -84,9 +84,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/tax/calculations/" calculation "/line_items" params))
+  (stripe-request :get (str "/v1/tax/calculations/" calculation "/line_items") params))
 
-(defn get-tax-settings [params]
+(defn retrieve-tax [params]
   """
   Retrieve settings
 
@@ -97,9 +97,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/tax/settings" params))
+  (stripe-request :get (str "/v1/tax/settings") params))
 
-(defn post-tax-settings [params]
+(defn create-tax [params]
   """
   Update settings
 
@@ -107,9 +107,9 @@
   Endpoint: /v1/tax/settings
 
   """
-  (stripe-request :post "/v1/tax/settings" params))
+  (stripe-request :post (str "/v1/tax/settings") params))
 
-(defn get-tax-registrations [params]
+(defn retrieve-tax [params]
   """
   List registrations
 
@@ -124,9 +124,9 @@
     - status: The status of the Tax Registration.
 
   """
-  (stripe-request :get "/v1/tax/registrations" params))
+  (stripe-request :get (str "/v1/tax/registrations") params))
 
-(defn post-tax-registrations [params]
+(defn create-tax [params]
   """
   Create a registration
 
@@ -134,9 +134,9 @@
   Endpoint: /v1/tax/registrations
 
   """
-  (stripe-request :post "/v1/tax/registrations" params))
+  (stripe-request :post (str "/v1/tax/registrations") params))
 
-(defn post-tax-calculations [params]
+(defn create-tax [params]
   """
   Create a Tax Calculation
 
@@ -144,9 +144,9 @@
   Endpoint: /v1/tax/calculations
 
   """
-  (stripe-request :post "/v1/tax/calculations" params))
+  (stripe-request :post (str "/v1/tax/calculations") params))
 
-(defn get-tax-transactions-transaction-line-items [transaction params]
+(defn retrieve-tax [transaction params]
   """
   Retrieve a transaction's line items
 
@@ -163,9 +163,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/tax/transactions/" transaction "/line_items" params))
+  (stripe-request :get (str "/v1/tax/transactions/" transaction "/line_items") params))
 
-(defn get-tax-calculations-calculation [calculation params]
+(defn retrieve-tax [calculation params]
   """
   Retrieve a Tax Calculation
 
@@ -179,4 +179,4 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/tax/calculations/" calculation "" params))
+  (stripe-request :get (str "/v1/tax/calculations/" calculation "") params))

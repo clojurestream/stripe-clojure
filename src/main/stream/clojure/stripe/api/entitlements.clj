@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-entitlements-features [params]
+(defn retrieve-entitlements [params]
   """
   List all features
 
@@ -18,9 +18,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/entitlements/features" params))
+  (stripe-request :get (str "/v1/entitlements/features") params))
 
-(defn post-entitlements-features [params]
+(defn create-entitlements [params]
   """
   Create a feature
 
@@ -28,9 +28,9 @@
   Endpoint: /v1/entitlements/features
 
   """
-  (stripe-request :post "/v1/entitlements/features" params))
+  (stripe-request :post (str "/v1/entitlements/features") params))
 
-(defn get-entitlements-features-id [id params]
+(defn retrieve-entitlements [id params]
   """
   Retrieve a feature
 
@@ -44,9 +44,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/entitlements/features/" id "" params))
+  (stripe-request :get (str "/v1/entitlements/features/" id "") params))
 
-(defn post-entitlements-features-id [id params]
+(defn create-entitlements [id params]
   """
   Updates a feature
 
@@ -57,9 +57,9 @@
     - id: Path parameter.
 
   """
-  (stripe-request :post "/v1/entitlements/features/" id "" params))
+  (stripe-request :post (str "/v1/entitlements/features/" id "") params))
 
-(defn get-entitlements-active-entitlements-id [id params]
+(defn retrieve-entitlements [id params]
   """
   Retrieve an active entitlement
 
@@ -73,9 +73,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/entitlements/active_entitlements/" id "" params))
+  (stripe-request :get (str "/v1/entitlements/active_entitlements/" id "") params))
 
-(defn get-entitlements-active-entitlements [params]
+(defn retrieve-entitlements [params]
   """
   List all active entitlements
 
@@ -90,4 +90,4 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/entitlements/active_entitlements" params))
+  (stripe-request :get (str "/v1/entitlements/active_entitlements") params))

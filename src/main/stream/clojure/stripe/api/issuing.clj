@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn get-issuing-disputes-dispute [dispute params]
+(defn retrieve-issuing [dispute params]
   """
   Retrieve a dispute
 
@@ -16,9 +16,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/issuing/disputes/" dispute "" params))
+  (stripe-request :get (str "/v1/issuing/disputes/" dispute "") params))
 
-(defn post-issuing-disputes-dispute [dispute params]
+(defn create-issuing [dispute params]
   """
   Update a dispute
 
@@ -29,9 +29,9 @@
     - dispute: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/disputes/" dispute "" params))
+  (stripe-request :post (str "/v1/issuing/disputes/" dispute "") params))
 
-(defn get-issuing-disputes [params]
+(defn retrieve-issuing [params]
   """
   List all disputes
 
@@ -48,9 +48,9 @@
     - transaction: Select the Issuing dispute for the given transaction.
 
   """
-  (stripe-request :get "/v1/issuing/disputes" params))
+  (stripe-request :get (str "/v1/issuing/disputes") params))
 
-(defn post-issuing-disputes [params]
+(defn create-issuing [params]
   """
   Create a dispute
 
@@ -58,9 +58,9 @@
   Endpoint: /v1/issuing/disputes
 
   """
-  (stripe-request :post "/v1/issuing/disputes" params))
+  (stripe-request :post (str "/v1/issuing/disputes") params))
 
-(defn post-issuing-disputes-dispute-submit [dispute params]
+(defn create-issuing [dispute params]
   """
   Submit a dispute
 
@@ -71,9 +71,9 @@
     - dispute: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/disputes/" dispute "/submit" params))
+  (stripe-request :post (str "/v1/issuing/disputes/" dispute "/submit") params))
 
-(defn get-issuing-tokens [params]
+(defn retrieve-issuing [params]
   """
   List all issuing tokens for card
 
@@ -90,9 +90,9 @@
     - status: Select Issuing tokens with the given status.
 
   """
-  (stripe-request :get "/v1/issuing/tokens" params))
+  (stripe-request :get (str "/v1/issuing/tokens") params))
 
-(defn get-issuing-personalization-designs-personalization-design [personalization_design params]
+(defn retrieve-issuing [personalization_design params]
   """
   Retrieve a personalization design
 
@@ -106,9 +106,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/issuing/personalization_designs/" personalization_design "" params))
+  (stripe-request :get (str "/v1/issuing/personalization_designs/" personalization_design "") params))
 
-(defn post-issuing-personalization-designs-personalization-design [personalization_design params]
+(defn create-issuing [personalization_design params]
   """
   Update a personalization design
 
@@ -119,9 +119,9 @@
     - personalization_design: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/personalization_designs/" personalization_design "" params))
+  (stripe-request :post (str "/v1/issuing/personalization_designs/" personalization_design "") params))
 
-(defn get-issuing-cardholders [params]
+(defn retrieve-issuing [params]
   """
   List all cardholders
 
@@ -140,9 +140,9 @@
     - type: Only return cardholders that have the given type. One of `individual` or `company`.
 
   """
-  (stripe-request :get "/v1/issuing/cardholders" params))
+  (stripe-request :get (str "/v1/issuing/cardholders") params))
 
-(defn post-issuing-cardholders [params]
+(defn create-issuing [params]
   """
   Create a cardholder
 
@@ -150,9 +150,9 @@
   Endpoint: /v1/issuing/cardholders
 
   """
-  (stripe-request :post "/v1/issuing/cardholders" params))
+  (stripe-request :post (str "/v1/issuing/cardholders") params))
 
-(defn post-issuing-authorizations-authorization-decline [authorization params]
+(defn create-issuing [authorization params]
   """
   Decline an authorization
 
@@ -163,9 +163,9 @@
     - authorization: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/authorizations/" authorization "/decline" params))
+  (stripe-request :post (str "/v1/issuing/authorizations/" authorization "/decline") params))
 
-(defn get-issuing-authorizations-authorization [authorization params]
+(defn retrieve-issuing [authorization params]
   """
   Retrieve an authorization
 
@@ -179,9 +179,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/issuing/authorizations/" authorization "" params))
+  (stripe-request :get (str "/v1/issuing/authorizations/" authorization "") params))
 
-(defn post-issuing-authorizations-authorization [authorization params]
+(defn create-issuing [authorization params]
   """
   Update an authorization
 
@@ -192,9 +192,9 @@
     - authorization: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/authorizations/" authorization "" params))
+  (stripe-request :post (str "/v1/issuing/authorizations/" authorization "") params))
 
-(defn get-issuing-authorizations [params]
+(defn retrieve-issuing [params]
   """
   List all authorizations
 
@@ -212,9 +212,9 @@
     - status: Only return authorizations with the given status. One of `pending`, `closed`, or `reversed`.
 
   """
-  (stripe-request :get "/v1/issuing/authorizations" params))
+  (stripe-request :get (str "/v1/issuing/authorizations") params))
 
-(defn get-issuing-cards [params]
+(defn retrieve-issuing [params]
   """
   List all cards
 
@@ -236,9 +236,9 @@
     - type: Only return cards that have the given type. One of `virtual` or `physical`.
 
   """
-  (stripe-request :get "/v1/issuing/cards" params))
+  (stripe-request :get (str "/v1/issuing/cards") params))
 
-(defn post-issuing-cards [params]
+(defn create-issuing [params]
   """
   Create a card
 
@@ -246,9 +246,9 @@
   Endpoint: /v1/issuing/cards
 
   """
-  (stripe-request :post "/v1/issuing/cards" params))
+  (stripe-request :post (str "/v1/issuing/cards") params))
 
-(defn get-issuing-transactions-transaction [transaction params]
+(defn retrieve-issuing [transaction params]
   """
   Retrieve a transaction
 
@@ -262,9 +262,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/issuing/transactions/" transaction "" params))
+  (stripe-request :get (str "/v1/issuing/transactions/" transaction "") params))
 
-(defn post-issuing-transactions-transaction [transaction params]
+(defn create-issuing [transaction params]
   """
   Update a transaction
 
@@ -275,9 +275,9 @@
     - transaction: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/transactions/" transaction "" params))
+  (stripe-request :post (str "/v1/issuing/transactions/" transaction "") params))
 
-(defn get-issuing-physical-bundles [params]
+(defn retrieve-issuing [params]
   """
   List all physical bundles
 
@@ -293,9 +293,9 @@
     - type: Only return physical bundles with the given type.
 
   """
-  (stripe-request :get "/v1/issuing/physical_bundles" params))
+  (stripe-request :get (str "/v1/issuing/physical_bundles") params))
 
-(defn get-issuing-cards-card [card params]
+(defn retrieve-issuing [card params]
   """
   Retrieve a card
 
@@ -309,9 +309,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/issuing/cards/" card "" params))
+  (stripe-request :get (str "/v1/issuing/cards/" card "") params))
 
-(defn post-issuing-cards-card [card params]
+(defn create-issuing [card params]
   """
   Update a card
 
@@ -322,9 +322,9 @@
     - card: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/cards/" card "" params))
+  (stripe-request :post (str "/v1/issuing/cards/" card "") params))
 
-(defn get-issuing-transactions [params]
+(defn retrieve-issuing [params]
   """
   List all transactions
 
@@ -342,9 +342,9 @@
     - type: Only return transactions that have the given type. One of `capture` or `refund`.
 
   """
-  (stripe-request :get "/v1/issuing/transactions" params))
+  (stripe-request :get (str "/v1/issuing/transactions") params))
 
-(defn get-issuing-personalization-designs [params]
+(defn retrieve-issuing [params]
   """
   List all personalization designs
 
@@ -361,9 +361,9 @@
     - status: Only return personalization designs with the given status.
 
   """
-  (stripe-request :get "/v1/issuing/personalization_designs" params))
+  (stripe-request :get (str "/v1/issuing/personalization_designs") params))
 
-(defn post-issuing-personalization-designs [params]
+(defn create-issuing [params]
   """
   Create a personalization design
 
@@ -371,9 +371,9 @@
   Endpoint: /v1/issuing/personalization_designs
 
   """
-  (stripe-request :post "/v1/issuing/personalization_designs" params))
+  (stripe-request :post (str "/v1/issuing/personalization_designs") params))
 
-(defn get-issuing-physical-bundles-physical-bundle [physical_bundle params]
+(defn retrieve-issuing [physical_bundle params]
   """
   Retrieve a physical bundle
 
@@ -387,9 +387,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/issuing/physical_bundles/" physical_bundle "" params))
+  (stripe-request :get (str "/v1/issuing/physical_bundles/" physical_bundle "") params))
 
-(defn get-issuing-cardholders-cardholder [cardholder params]
+(defn retrieve-issuing [cardholder params]
   """
   Retrieve a cardholder
 
@@ -403,9 +403,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/issuing/cardholders/" cardholder "" params))
+  (stripe-request :get (str "/v1/issuing/cardholders/" cardholder "") params))
 
-(defn post-issuing-cardholders-cardholder [cardholder params]
+(defn create-issuing [cardholder params]
   """
   Update a cardholder
 
@@ -416,9 +416,9 @@
     - cardholder: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/cardholders/" cardholder "" params))
+  (stripe-request :post (str "/v1/issuing/cardholders/" cardholder "") params))
 
-(defn post-issuing-authorizations-authorization-approve [authorization params]
+(defn create-issuing [authorization params]
   """
   Approve an authorization
 
@@ -429,9 +429,9 @@
     - authorization: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/authorizations/" authorization "/approve" params))
+  (stripe-request :post (str "/v1/issuing/authorizations/" authorization "/approve") params))
 
-(defn get-issuing-settlements-settlement [settlement params]
+(defn retrieve-issuing [settlement params]
   """
   Retrieve a settlement
 
@@ -445,9 +445,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/issuing/settlements/" settlement "" params))
+  (stripe-request :get (str "/v1/issuing/settlements/" settlement "") params))
 
-(defn post-issuing-settlements-settlement [settlement params]
+(defn create-issuing [settlement params]
   """
   Update a settlement
 
@@ -458,9 +458,9 @@
     - settlement: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/settlements/" settlement "" params))
+  (stripe-request :post (str "/v1/issuing/settlements/" settlement "") params))
 
-(defn get-issuing-tokens-token [token params]
+(defn retrieve-issuing [token params]
   """
   Retrieve an issuing token
 
@@ -474,9 +474,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/issuing/tokens/" token "" params))
+  (stripe-request :get (str "/v1/issuing/tokens/" token "") params))
 
-(defn post-issuing-tokens-token [token params]
+(defn create-issuing [token params]
   """
   Update a token status
 
@@ -487,4 +487,4 @@
     - token: Path parameter.
 
   """
-  (stripe-request :post "/v1/issuing/tokens/" token "" params))
+  (stripe-request :post (str "/v1/issuing/tokens/" token "") params))

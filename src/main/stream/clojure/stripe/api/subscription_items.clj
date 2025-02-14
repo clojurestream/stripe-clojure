@@ -2,7 +2,7 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-subscription-items-item [item params]
+(defn delete-subscription-items [item params]
   """
   Delete a subscription item
 
@@ -13,9 +13,9 @@
     - item: Path parameter.
 
   """
-  (stripe-request :delete "/v1/subscription_items/" item "" params))
+  (stripe-request :delete (str "/v1/subscription_items/" item "") params))
 
-(defn get-subscription-items-item [item params]
+(defn retrieve-subscription-items [item params]
   """
   Retrieve a subscription item
 
@@ -29,9 +29,9 @@
     - expand: Specifies which fields in the response should be expanded.
 
   """
-  (stripe-request :get "/v1/subscription_items/" item "" params))
+  (stripe-request :get (str "/v1/subscription_items/" item "") params))
 
-(defn post-subscription-items-item [item params]
+(defn create-subscription-items [item params]
   """
   Update a subscription item
 
@@ -42,9 +42,9 @@
     - item: Path parameter.
 
   """
-  (stripe-request :post "/v1/subscription_items/" item "" params))
+  (stripe-request :post (str "/v1/subscription_items/" item "") params))
 
-(defn get-subscription-items [params]
+(defn retrieve-subscription-items [params]
   """
   List all subscription items
 
@@ -59,9 +59,9 @@
     - subscription: The ID of the subscription whose items will be retrieved.
 
   """
-  (stripe-request :get "/v1/subscription_items" params))
+  (stripe-request :get (str "/v1/subscription_items") params))
 
-(defn post-subscription-items [params]
+(defn create-subscription-items [params]
   """
   Create a subscription item
 
@@ -69,9 +69,9 @@
   Endpoint: /v1/subscription_items
 
   """
-  (stripe-request :post "/v1/subscription_items" params))
+  (stripe-request :post (str "/v1/subscription_items") params))
 
-(defn get-subscription-items-subscription-item-usage-record-summaries [subscription_item params]
+(defn retrieve-subscription-items [subscription_item params]
   """
   List all subscription item period summaries
 
@@ -88,9 +88,9 @@
     - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   """
-  (stripe-request :get "/v1/subscription_items/" subscription_item "/usage_record_summaries" params))
+  (stripe-request :get (str "/v1/subscription_items/" subscription_item "/usage_record_summaries") params))
 
-(defn post-subscription-items-subscription-item-usage-records [subscription_item params]
+(defn create-subscription-items [subscription_item params]
   """
   Create a usage record
 
@@ -101,4 +101,4 @@
     - subscription_item: Path parameter.
 
   """
-  (stripe-request :post "/v1/subscription_items/" subscription_item "/usage_records" params))
+  (stripe-request :post (str "/v1/subscription_items/" subscription_item "/usage_records") params))
