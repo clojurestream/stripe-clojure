@@ -22,11 +22,16 @@
                    :operation-id (get details :operationId)
                    :summary (get details :summary)
                    :description (get details :description)
-                   :parameters (get details :parameters [])})  ;; Include parameters
+                   :parameters (get details :parameters [])})
              methods)))
     (apply concat)))
 
 ;; Step 3: Generate Functions
+(defn extract-resource [path]
+  "Extracts the resource type from a Stripe API path."
+  (second (clojure.string/split (name path) #"/" 3)))
+
+
 (defn extract-path-params [path]
   "Extracts path parameters like {customer} from a URL string."
   (let [path-str (name path)]
@@ -36,39 +41,44 @@
 (defn camel-to-kebab [s]
   "Converts CamelCase to kebab-case"
   (-> s
-    (string/replace #"([a-z])([A-Z])" "$1-$2") ;; Add hyphen between camelCase transitions
-    (string/replace #"([A-Z]+)([A-Z][a-z])" "$1-$2") ;; Fix uppercase sequences
-    (string/lower-case) ;; Convert everything to lowercase
-    (string/replace #"_" "-"))) ;; Replace underscores with dashes
+    (string/replace #"([a-z])([A-Z])" "$1-$2") ; Add hyphen between camelCase transitions
+    (string/replace #"([A-Z]+)([A-Z][a-z])" "$1-$2") ; Fix uppercase sequences
+    (string/lower-case) ; Convert everything to lowercase
+    (string/replace #"_" "-"))) ; Replace underscores with dashes
 
-(defn generate-function [endpoint]
+(defn camel-to-snake [s]
+  "Converts CamelCase to snake_case"
+  (-> s
+    (string/replace #"([a-z])([A-Z])" "$1-$2") ; Add hyphen between camelCase transitions
+    (string/replace #"([A-Z]+)([A-Z][a-z])" "$1-$2") ; Fix uppercase sequences
+    (string/lower-case))) ; Convert everything to lowercase
+
+(defn generate-function [endpoint schema]
   (let [{:keys [operation-id method path summary parameters]} endpoint
         kebab-op-id (camel-to-kebab operation-id)
-        path-str (name path) ;; Ensure it's a string
-        params (extract-path-params path-str)
-        param-names (if (empty? params) "params" (string/join " " params)) ;; Convert to function arguments
+        params (extract-path-params path)
+        required-params (string/join " " params)
+        param-docs (map (fn [p] (str "    - " p ": Path parameter.")) params)
+        query-params (filter #(= (:in %) "query") parameters)
+        query-docs (map (fn [q] (str "    - " (:name q) ": " (:description q))) query-params)
+        clean-path (-> path str (string/replace #"^:" ""))  ;; Remove leading colon
         replaced-path (reduce (fn [p param]
                                 (string/replace p (str "{" param "}") (str "\" " param " \"")))
-                        path-str
+                        clean-path
                         params)
-        path-params (filter #(= (:in %) "path") parameters)
-        query-params (filter #(= (:in %) "query") parameters)
+        final-path (str "\"" replaced-path "\"")
         docstring (str "  \"\"\"\n"
                     "  " (or summary "No description available.") "\n\n"
                     "  HTTP Method: " (string/upper-case (name method)) "\n"
-                    "  Endpoint: " path-str "\n\n"
-                    (when (seq path-params)
-                      (str "  Path Parameters:\n"
-                        (string/join "\n" (map #(str "    - " (:name %) ": " (:description %)) path-params))
-                        "\n\n"))
-                    (when (seq query-params)
-                      (str "  Query Parameters:\n"
-                        (string/join "\n" (map #(str "    - " (:name %) ": " (:description %)) query-params))
-                        "\n\n"))
+                    "  Endpoint: " clean-path "\n\n"
+                    (when (seq param-docs)
+                      (str "  Path Parameters:\n" (string/join "\n" param-docs) "\n\n"))
+                    (when (seq query-docs)
+                      (str "  Query Parameters:\n" (string/join "\n" query-docs) "\n\n"))
                     "  \"\"\"")]
-    (str "\n(defn " kebab-op-id " [" param-names " params]\n"
+    (str "\n(defn " kebab-op-id " [" (if (empty? required-params) "params" (str required-params " params")) "]\n"
       docstring "\n"
-      "  (stripe-request :" (name method) " (str \"" replaced-path "\") params))")))
+      "  (stripe-request :" (name method) " " final-path " params))")))
 
 ;; Step 4: Ensure Directory Exists & Write to File
 (defn ensure-directory [path]
@@ -76,26 +86,32 @@
     (when-not (.exists dir)
       (.mkdirs dir))))
 
-(defn write-to-file [filename content]
-  (ensure-directory "src/main/stream/clojure/stripe")
-  (spit filename content))
+(defn write-to-file [file-name content]
+  (ensure-directory (subs file-name 0 (string/last-index-of file-name "/")))
+  (spit file-name content))
 
-(defn generate-clj-file [functions]
-  (let [docstring (str
-                    "  \"WARNING: This file is auto-generated from Stripe's OpenAPI spec.\n"
-                    "  DO NOT MODIFY THIS FILE MANUALLY. Any changes will be overwritten.\n"
-                    "  ALPHA: Work-in-progress - expect breaking changes before the stable release.\"")
-        header (str "(ns stream.clojure.stripe.api\n" docstring "\n (:require [stream.clojure.stripe.request :refer [stripe-request]]))\n")
-        body (string/join "\n" functions)
-        content (str header body)]
-    (write-to-file "src/main/stream/clojure/stripe/api.clj" content)))
+(defn generate-namespaces [endpoints schema]
+  (let [grouped-by-resource (group-by #(extract-resource (:path %)) endpoints)]
+    (doseq [[resource endpoints] grouped-by-resource]
+      (when resource
+        (let [ns-name (str "stream.clojure.stripe.api." (camel-to-kebab resource))
+              filename (str "src/main/stream/clojure/stripe/api/" (camel-to-snake resource) ".clj")
+              functions (map #(generate-function % schema) endpoints)
+              content (str "(ns " ns-name "\n"
+                        "  (:require [stream.clojure.stripe.request :refer [stripe-request]]))\n\n"
+                        (string/join "\n" functions))]
+          (ensure-directory "src/main/stream/clojure/stripe/api/")
+          (write-to-file filename content))))))
 
 ;; Step 5: Automate
 (defn generate-stripe-clojure-sdk []
   (let [schema (fetch-stripe-schema)
         endpoints (extract-endpoints schema)
-        functions (map generate-function endpoints)]
-    (generate-clj-file functions)
-    (println "Stripe API wrapper generated successfully!")))
+        ; namespaces (generate-namespaces endpoints schema)
+        ; functions (map #(generate-function % schema) endpoints)
+        ]
+    (generate-namespaces endpoints schema)
+    ;(generate-clj-file functions)
+    (println "Stripe Clojure SDK generated successfully!")))
 
 (generate-stripe-clojure-sdk)
