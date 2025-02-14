@@ -29,7 +29,7 @@ Establish the core architecture and foundational components for API interaction.
 ### Phase 2: Beta (Current Stage)
 Feature-complete but may contain bugs; users can provide feedback.
 - [x] Standardized Function Naming – Ensured consistency and idiomatic Clojure practices.
-- [ ] Improve Developer Experience – Add comprehensive docstrings and REPL-friendly usage guidance.
+- [x] Improve Developer Experience – Add comprehensive docstrings and REPL-friendly usage guidance.
 - [ ] Error Handling & Logging – Provide structured logging and clear error messages for debugging.
 - [ ] Automated Testing & CI/CD Pipelines – Ensure continuous validation of API functionality.
 - [ ] Automated Deployment & Distribution – Set up Clojars, GitHub releases, and workflow automation.
