@@ -1,209 +1,211 @@
 (ns stream.clojure.stripe.api.charges
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn retrieve-charges [params]
-  """
-  List all charges
+(defn list-all [{:keys [query-params]}]
+  "List all charges
 
   HTTP Method: GET
   Endpoint: /v1/charges
 
   Query Parameters:
-    - created: Only return charges that were created during the given date interval.
-    - customer: Only return charges for the customer specified by this customer ID.
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - payment_intent: Only return charges that were created by the PaymentIntent specified by this PaymentIntent ID.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
-    - transfer_group: Only return charges for this transfer group, limited to 100.
+    - created: Only return charges that were created during the given date interval. [type: unknown]
+    - customer: Only return charges for the customer specified by this customer ID. [type: string]
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - payment-intent: Only return charges that were created by the PaymentIntent specified by this PaymentIntent ID. [type: string]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
+    - transfer-group: Only return charges for this transfer group, limited to 100. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/charges") params))
+  Example Usage:
+    (list-all {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/charges" :query-params query-params}))
 
-(defn create-charges [params]
-  """
-  No description available.
+(defn post [{:keys []}]
+  "No description available.
 
   HTTP Method: POST
   Endpoint: /v1/charges
 
-  """
-  (stripe-request :post (str "/v1/charges") params))
+  Example Usage:
+    (post {})"
+  (stripe-request :post {:endpoint "/v1/charges"}))
 
-(defn retrieve-charges [charge params]
-  """
-  List all refunds
+(defn list-all-charge-refunds [{:keys [charge-id query-params]}]
+  "List all refunds
 
   HTTP Method: GET
-  Endpoint: /v1/charges/{charge}/refunds
+  Endpoint: /v1/charges/{charge-id}/refunds
 
   Path Parameters:
-    - charge: Path parameter.
+    - charge-id: The charge-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/charges/" charge "/refunds") params))
+  Example Usage:
+    (list-all-charge-refunds {:charge-id example-charge-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/charges/{charge-id}/refunds" :path-params {:charge-id charge-id} :query-params query-params}))
 
-(defn create-charges [charge params]
-  """
-  Create customer balance refund
-
-  HTTP Method: POST
-  Endpoint: /v1/charges/{charge}/refunds
-
-  Path Parameters:
-    - charge: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/charges/" charge "/refunds") params))
-
-(defn create-charges [charge params]
-  """
-  No description available.
+(defn create-charge-refunds [{:keys [charge-id]}]
+  "Create customer balance refund
 
   HTTP Method: POST
-  Endpoint: /v1/charges/{charge}/dispute/close
+  Endpoint: /v1/charges/{charge-id}/refunds
 
   Path Parameters:
-    - charge: Path parameter.
+    - charge-id: The identifier of the charge to refund.
 
-  """
-  (stripe-request :post (str "/v1/charges/" charge "/dispute/close") params))
+  Example Usage:
+    (create-charge-refunds {:charge-id example-charge-id})"
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/refunds" :path-params {:charge-id charge-id}}))
 
-(defn create-charges [charge params]
-  """
-  Capture a payment
+(defn post-charge-dispute-close [{:keys [charge-id]}]
+  "No description available.
 
   HTTP Method: POST
-  Endpoint: /v1/charges/{charge}/capture
+  Endpoint: /v1/charges/{charge-id}/dispute/close
 
   Path Parameters:
-    - charge: Path parameter.
+    - charge-id: The charge-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/charges/" charge "/capture") params))
+  Example Usage:
+    (post-charge-dispute-close {:charge-id example-charge-id})"
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/dispute/close" :path-params {:charge-id charge-id}}))
 
-(defn retrieve-charges [params]
-  """
-  Search charges
+(defn post-charge-capture [{:keys [charge-id]}]
+  "Capture a payment
+
+  HTTP Method: POST
+  Endpoint: /v1/charges/{charge-id}/capture
+
+  Path Parameters:
+    - charge-id: The charge-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-charge-capture {:charge-id example-charge-id})"
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/capture" :path-params {:charge-id charge-id}}))
+
+(defn list-all-search [{:keys [query-params]}]
+  "Search charges
 
   HTTP Method: GET
   Endpoint: /v1/charges/search
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - page: A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
-    - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for charges](https://stripe.com/docs/search#query-fields-for-charges).
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - page: A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results. [type: string]
+    - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for charges](https://stripe.com/docs/search#query-fields-for-charges). (required) [type: string]
 
-  """
-  (stripe-request :get (str "/v1/charges/search") params))
+  Example Usage:
+    (list-all-search {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/charges/search" :query-params query-params}))
 
-(defn retrieve-charges [charge params]
-  """
-  No description available.
-
-  HTTP Method: GET
-  Endpoint: /v1/charges/{charge}/dispute
-
-  Path Parameters:
-    - charge: Path parameter.
-
-  Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
-
-  """
-  (stripe-request :get (str "/v1/charges/" charge "/dispute") params))
-
-(defn create-charges [charge params]
-  """
-  No description available.
-
-  HTTP Method: POST
-  Endpoint: /v1/charges/{charge}/dispute
-
-  Path Parameters:
-    - charge: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/charges/" charge "/dispute") params))
-
-(defn retrieve-charges [charge params]
-  """
-  Retrieve a charge
+(defn list-all-charge-dispute [{:keys [charge-id query-params]}]
+  "No description available.
 
   HTTP Method: GET
-  Endpoint: /v1/charges/{charge}
+  Endpoint: /v1/charges/{charge-id}/dispute
 
   Path Parameters:
-    - charge: Path parameter.
+    - charge-id: The charge-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/charges/" charge "") params))
+  Example Usage:
+    (list-all-charge-dispute {:charge-id example-charge-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/charges/{charge-id}/dispute" :path-params {:charge-id charge-id} :query-params query-params}))
 
-(defn create-charges [charge params]
-  """
-  Update a charge
-
-  HTTP Method: POST
-  Endpoint: /v1/charges/{charge}
-
-  Path Parameters:
-    - charge: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/charges/" charge "") params))
-
-(defn create-charges [charge params]
-  """
-  Create a refund
+(defn post-charge-dispute [{:keys [charge-id]}]
+  "No description available.
 
   HTTP Method: POST
-  Endpoint: /v1/charges/{charge}/refund
+  Endpoint: /v1/charges/{charge-id}/dispute
 
   Path Parameters:
-    - charge: Path parameter.
+    - charge-id: The charge-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/charges/" charge "/refund") params))
+  Example Usage:
+    (post-charge-dispute {:charge-id example-charge-id})"
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/dispute" :path-params {:charge-id charge-id}}))
 
-(defn retrieve-charges [charge refund params]
-  """
-  No description available.
+(defn retrieve-charge [{:keys [charge-id query-params]}]
+  "Retrieve a charge
 
   HTTP Method: GET
-  Endpoint: /v1/charges/{charge}/refunds/{refund}
+  Endpoint: /v1/charges/{charge-id}
 
   Path Parameters:
-    - charge: Path parameter.
-    - refund: Path parameter.
+    - charge-id: The charge-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/charges/" charge "/refunds/" refund "") params))
+  Example Usage:
+    (retrieve-charge {:charge-id example-charge-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/charges/{charge-id}" :path-params {:charge-id charge-id} :query-params query-params}))
 
-(defn create-charges [charge refund params]
-  """
-  No description available.
+(defn update-charge [{:keys [charge-id]}]
+  "Update a charge
 
   HTTP Method: POST
-  Endpoint: /v1/charges/{charge}/refunds/{refund}
+  Endpoint: /v1/charges/{charge-id}
 
   Path Parameters:
-    - charge: Path parameter.
-    - refund: Path parameter.
+    - charge-id: The charge-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/charges/" charge "/refunds/" refund "") params))
+  Example Usage:
+    (update-charge {:charge-id example-charge-id})"
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}" :path-params {:charge-id charge-id}}))
+
+(defn create-charge-refund [{:keys [charge-id]}]
+  "Create a refund
+
+  HTTP Method: POST
+  Endpoint: /v1/charges/{charge-id}/refund
+
+  Path Parameters:
+    - charge-id: The identifier of the charge to refund.
+
+  Example Usage:
+    (create-charge-refund {:charge-id example-charge-id})"
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/refund" :path-params {:charge-id charge-id}}))
+
+(defn retrieve-charge-refunds-refund [{:keys [charge-id refund-id query-params]}]
+  "No description available.
+
+  HTTP Method: GET
+  Endpoint: /v1/charges/{charge-id}/refunds/{refund-id}
+
+  Path Parameters:
+    - charge-id: The charge-id parameter. (required) [type: string]
+    - refund-id: The refund-id parameter. (required) [type: string]
+
+  Query Parameters:
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+
+  Example Usage:
+    (retrieve-charge-refunds-refund {:charge-id example-charge-id :refund-id example-refund-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/charges/{charge-id}/refunds/{refund-id}" :path-params {:charge-id charge-id :refund-id refund-id} :query-params query-params}))
+
+(defn post-charge-refunds-refund [{:keys [charge-id refund-id]}]
+  "No description available.
+
+  HTTP Method: POST
+  Endpoint: /v1/charges/{charge-id}/refunds/{refund-id}
+
+  Path Parameters:
+    - charge-id: The charge-id parameter. (required) [type: string]
+    - refund-id: The refund-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-charge-refunds-refund {:charge-id example-charge-id :refund-id example-refund-id})"
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/refunds/{refund-id}" :path-params {:charge-id charge-id :refund-id refund-id}}))

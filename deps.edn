@@ -1,8 +1,13 @@
 {:paths
- ["src/config"
-  "src/main"
-  "resources"]
+ ["src/dev"
+  "src/main"]
 
  :deps
  {org.clojure/clojure {:mvn/version "1.12.0"}
-  org.clojure/data.json {:mvn/version "2.5.0"}}}
+  org.clojure/data.json {:mvn/version "2.5.0"}}
+
+ :aliases
+ {:build
+  {:extra-paths ["src/dev" "src/main"]
+   :deps {io.github.clojure/tools.build {:git/tag "v0.10.7" :git/sha "573711e"}}
+   :ns-default build}}}

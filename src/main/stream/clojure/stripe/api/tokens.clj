@@ -1,29 +1,31 @@
 (ns stream.clojure.stripe.api.tokens
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn retrieve-tokens [token params]
-  """
-  Retrieve a token
+(defn retrieve-token [{:keys [token-id query-params]}]
+  "Retrieve a token
 
   HTTP Method: GET
-  Endpoint: /v1/tokens/{token}
+  Endpoint: /v1/tokens/{token-id}
 
   Path Parameters:
-    - token: Path parameter.
+    - token-id: The token-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/tokens/" token "") params))
+  Example Usage:
+    (retrieve-token {:token-id example-token-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/tokens/{token-id}" :path-params {:token-id token-id} :query-params query-params}))
 
-(defn create-tokens [params]
-  """
-  Create a CVC update token
+(defn create [{:keys []}]
+  "Create a CVC update token
 
   HTTP Method: POST
   Endpoint: /v1/tokens
 
-  """
-  (stripe-request :post (str "/v1/tokens") params))
+  Example Usage:
+    (create {})"
+  (stripe-request :post {:endpoint "/v1/tokens"}))

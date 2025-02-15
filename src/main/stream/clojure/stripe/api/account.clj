@@ -1,16 +1,18 @@
 (ns stream.clojure.stripe.api.account
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn retrieve-account [params]
-  """
-  Retrieve account
+(defn list-all [{:keys [query-params]}]
+  "Retrieve account
 
   HTTP Method: GET
   Endpoint: /v1/account
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/account") params))
+  Example Usage:
+    (list-all {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/account" :query-params query-params}))

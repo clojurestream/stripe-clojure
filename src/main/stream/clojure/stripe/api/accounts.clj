@@ -1,437 +1,439 @@
 (ns stream.clojure.stripe.api.accounts
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn retrieve-accounts [params]
-  """
-  List all connected accounts
+(defn list-all [{:keys [query-params]}]
+  "List all connected accounts
 
   HTTP Method: GET
   Endpoint: /v1/accounts
 
   Query Parameters:
-    - created: Only return connected accounts that were created during the given date interval.
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - created: Only return connected accounts that were created during the given date interval. [type: unknown]
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/accounts") params))
+  Example Usage:
+    (list-all {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts" :query-params query-params}))
 
-(defn create-accounts [params]
-  """
-  No description available.
+(defn post [{:keys []}]
+  "No description available.
 
   HTTP Method: POST
   Endpoint: /v1/accounts
 
-  """
-  (stripe-request :post (str "/v1/accounts") params))
+  Example Usage:
+    (post {})"
+  (stripe-request :post {:endpoint "/v1/accounts"}))
 
-(defn create-accounts [account params]
-  """
-  Create a login link
+(defn create-account-login-links [{:keys [account-id]}]
+  "Create a login link
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/login_links
+  Endpoint: /v1/accounts/{account-id}/login_links
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/login_links") params))
+  Example Usage:
+    (create-account-login-links {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/login_links" :path-params {:account-id account-id}}))
 
-(defn delete-accounts [account person params]
-  """
-  Delete a person
+(defn delete-account-persons-person [{:keys [account-id person-id]}]
+  "Delete a person
 
   HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account}/persons/{person}
+  Endpoint: /v1/accounts/{account-id}/persons/{person-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - person: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - person-id: The person-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/accounts/" account "/persons/" person "") params))
+  Example Usage:
+    (delete-account-persons-person {:account-id example-account-id :person-id example-person-id})"
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/persons/{person-id}" :path-params {:account-id account-id :person-id person-id}}))
 
-(defn retrieve-accounts [account person params]
-  """
-  Retrieve a person
+(defn retrieve-account-persons-person [{:keys [account-id person-id query-params]}]
+  "Retrieve a person
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}/persons/{person}
+  Endpoint: /v1/accounts/{account-id}/persons/{person-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - person: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - person-id: The person-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "/persons/" person "") params))
+  Example Usage:
+    (retrieve-account-persons-person {:account-id example-account-id :person-id example-person-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}/persons/{person-id}" :path-params {:account-id account-id :person-id person-id} :query-params query-params}))
 
-(defn create-accounts [account person params]
-  """
-  Update a person
+(defn update-account-persons-person [{:keys [account-id person-id]}]
+  "Update a person
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/persons/{person}
+  Endpoint: /v1/accounts/{account-id}/persons/{person-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - person: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - person-id: The person-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/persons/" person "") params))
+  Example Usage:
+    (update-account-persons-person {:account-id example-account-id :person-id example-person-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/persons/{person-id}" :path-params {:account-id account-id :person-id person-id}}))
 
-(defn delete-accounts [account id params]
-  """
-  Delete an external account
+(defn delete-account-bank-id [{:keys [account-id bank-account-id]}]
+  "Delete an external account
 
   HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account}/bank_accounts/{id}
+  Endpoint: /v1/accounts/{account-id}/bank_accounts/{bank-account-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - id: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - bank-account-id: The bank-account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/accounts/" account "/bank_accounts/" id "") params))
+  Example Usage:
+    (delete-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id})"
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id}}))
 
-(defn retrieve-accounts [account id params]
-  """
-  Retrieve an external account
+(defn retrieve-account-bank-id [{:keys [account-id bank-account-id query-params]}]
+  "Retrieve an external account
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}/bank_accounts/{id}
+  Endpoint: /v1/accounts/{account-id}/bank_accounts/{bank-account-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - id: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - bank-account-id: The bank-account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "/bank_accounts/" id "") params))
+  Example Usage:
+    (retrieve-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id} :query-params query-params}))
 
-(defn create-accounts [account id params]
-  """
-  No description available.
+(defn post-account-bank-id [{:keys [account-id bank-account-id]}]
+  "No description available.
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/bank_accounts/{id}
+  Endpoint: /v1/accounts/{account-id}/bank_accounts/{bank-account-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - id: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - bank-account-id: The bank-account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/bank_accounts/" id "") params))
+  Example Usage:
+    (post-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id}}))
 
-(defn delete-accounts [account person params]
-  """
-  Delete a person
+(defn delete-account-people-person [{:keys [account-id people-id]}]
+  "Delete a person
 
   HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account}/people/{person}
+  Endpoint: /v1/accounts/{account-id}/people/{people-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - person: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - people-id: The people-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/accounts/" account "/people/" person "") params))
+  Example Usage:
+    (delete-account-people-person {:account-id example-account-id :people-id example-people-id})"
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/people/{people-id}" :path-params {:account-id account-id :people-id people-id}}))
 
-(defn retrieve-accounts [account person params]
-  """
-  Retrieve a person
+(defn retrieve-account-people-person [{:keys [account-id people-id query-params]}]
+  "Retrieve a person
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}/people/{person}
+  Endpoint: /v1/accounts/{account-id}/people/{people-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - person: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - people-id: The people-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "/people/" person "") params))
+  Example Usage:
+    (retrieve-account-people-person {:account-id example-account-id :people-id example-people-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}/people/{people-id}" :path-params {:account-id account-id :people-id people-id} :query-params query-params}))
 
-(defn create-accounts [account person params]
-  """
-  Update a person
+(defn update-account-people-person [{:keys [account-id people-id]}]
+  "Update a person
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/people/{person}
+  Endpoint: /v1/accounts/{account-id}/people/{people-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - person: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - people-id: The people-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/people/" person "") params))
+  Example Usage:
+    (update-account-people-person {:account-id example-account-id :people-id example-people-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/people/{people-id}" :path-params {:account-id account-id :people-id people-id}}))
 
-(defn retrieve-accounts [account params]
-  """
-  List all persons
+(defn list-all-account-people [{:keys [account-id query-params]}]
+  "List all persons
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}/people
+  Endpoint: /v1/accounts/{account-id}/people
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - relationship: Filters on the list of people returned based on the person's relationship to the account's company.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - relationship: Filters on the list of people returned based on the person's relationship to the account's company. [type: object]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "/people") params))
+  Example Usage:
+    (list-all-account-people {:account-id example-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}/people" :path-params {:account-id account-id} :query-params query-params}))
 
-(defn create-accounts [account params]
-  """
-  Create a person
+(defn create-account-people [{:keys [account-id]}]
+  "Create a person
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/people
+  Endpoint: /v1/accounts/{account-id}/people
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/people") params))
+  Example Usage:
+    (create-account-people {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/people" :path-params {:account-id account-id}}))
 
-(defn delete-accounts [account params]
-  """
-  Delete an account
+(defn delete-account [{:keys [account-id]}]
+  "Delete an account
 
   HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account}
+  Endpoint: /v1/accounts/{account-id}
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/accounts/" account "") params))
+  Example Usage:
+    (delete-account {:account-id example-account-id})"
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}" :path-params {:account-id account-id}}))
 
-(defn retrieve-accounts [account params]
-  """
-  Retrieve account
+(defn retrieve-account [{:keys [account-id query-params]}]
+  "Retrieve account
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}
+  Endpoint: /v1/accounts/{account-id}
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "") params))
+  Example Usage:
+    (retrieve-account {:account-id example-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}" :path-params {:account-id account-id} :query-params query-params}))
 
-(defn create-accounts [account params]
-  """
-  Update an account
+(defn update-account [{:keys [account-id]}]
+  "Update an account
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}
+  Endpoint: /v1/accounts/{account-id}
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "") params))
+  Example Usage:
+    (update-account {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}" :path-params {:account-id account-id}}))
 
-(defn retrieve-accounts [account params]
-  """
-  List all persons
+(defn list-all-account-persons [{:keys [account-id query-params]}]
+  "List all persons
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}/persons
+  Endpoint: /v1/accounts/{account-id}/persons
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - relationship: Filters on the list of people returned based on the person's relationship to the account's company.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - relationship: Filters on the list of people returned based on the person's relationship to the account's company. [type: object]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "/persons") params))
+  Example Usage:
+    (list-all-account-persons {:account-id example-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}/persons" :path-params {:account-id account-id} :query-params query-params}))
 
-(defn create-accounts [account params]
-  """
-  Create a person
+(defn create-account-persons [{:keys [account-id]}]
+  "Create a person
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/persons
+  Endpoint: /v1/accounts/{account-id}/persons
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/persons") params))
+  Example Usage:
+    (create-account-persons {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/persons" :path-params {:account-id account-id}}))
 
-(defn retrieve-accounts [account capability params]
-  """
-  Retrieve an Account Capability
+(defn retrieve-account-capabilities-capability [{:keys [account-id capabilitie-id query-params]}]
+  "Retrieve an Account Capability
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}/capabilities/{capability}
+  Endpoint: /v1/accounts/{account-id}/capabilities/{capabilitie-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - capability: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - capabilitie-id: The capabilitie-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "/capabilities/" capability "") params))
+  Example Usage:
+    (retrieve-account-capabilities-capability {:account-id example-account-id :capabilitie-id example-capabilitie-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}/capabilities/{capabilitie-id}" :path-params {:account-id account-id :capabilitie-id capabilitie-id} :query-params query-params}))
 
-(defn create-accounts [account capability params]
-  """
-  Update an Account Capability
+(defn update-account-capabilities-capability [{:keys [account-id capabilitie-id]}]
+  "Update an Account Capability
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/capabilities/{capability}
+  Endpoint: /v1/accounts/{account-id}/capabilities/{capabilitie-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - capability: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - capabilitie-id: The capabilitie-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/capabilities/" capability "") params))
+  Example Usage:
+    (update-account-capabilities-capability {:account-id example-account-id :capabilitie-id example-capabilitie-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/capabilities/{capabilitie-id}" :path-params {:account-id account-id :capabilitie-id capabilitie-id}}))
 
-(defn retrieve-accounts [account params]
-  """
-  List all account capabilities
+(defn list-all-account-capabilities [{:keys [account-id query-params]}]
+  "List all account capabilities
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}/capabilities
+  Endpoint: /v1/accounts/{account-id}/capabilities
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "/capabilities") params))
+  Example Usage:
+    (list-all-account-capabilities {:account-id example-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}/capabilities" :path-params {:account-id account-id} :query-params query-params}))
 
-(defn create-accounts [account params]
-  """
-  Create an external account
+(defn create-account-bank [{:keys [account-id]}]
+  "Create an external account
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/bank_accounts
+  Endpoint: /v1/accounts/{account-id}/bank_accounts
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/bank_accounts") params))
+  Example Usage:
+    (create-account-bank {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/bank_accounts" :path-params {:account-id account-id}}))
 
-(defn retrieve-accounts [account params]
-  """
-  List all external accounts
+(defn list-all-account-external [{:keys [account-id query-params]}]
+  "List all external accounts
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}/external_accounts
+  Endpoint: /v1/accounts/{account-id}/external_accounts
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - object: Filter external accounts according to a particular object type.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - object: Filter external accounts according to a particular object type. [type: string]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "/external_accounts") params))
+  Example Usage:
+    (list-all-account-external {:account-id example-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}/external_accounts" :path-params {:account-id account-id} :query-params query-params}))
 
-(defn create-accounts [account params]
-  """
-  Create an external account
+(defn create-account-external [{:keys [account-id]}]
+  "Create an external account
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/external_accounts
+  Endpoint: /v1/accounts/{account-id}/external_accounts
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/external_accounts") params))
+  Example Usage:
+    (create-account-external {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/external_accounts" :path-params {:account-id account-id}}))
 
-(defn delete-accounts [account id params]
-  """
-  Delete an external account
+(defn delete-account-external-id [{:keys [account-id external-account-id]}]
+  "Delete an external account
 
   HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account}/external_accounts/{id}
+  Endpoint: /v1/accounts/{account-id}/external_accounts/{external-account-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - id: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - external-account-id: The external-account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/accounts/" account "/external_accounts/" id "") params))
+  Example Usage:
+    (delete-account-external-id {:account-id example-account-id :external-account-id example-external-account-id})"
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id}}))
 
-(defn retrieve-accounts [account id params]
-  """
-  Retrieve an external account
+(defn retrieve-account-external-id [{:keys [account-id external-account-id query-params]}]
+  "Retrieve an external account
 
   HTTP Method: GET
-  Endpoint: /v1/accounts/{account}/external_accounts/{id}
+  Endpoint: /v1/accounts/{account-id}/external_accounts/{external-account-id}
 
   Path Parameters:
-    - account: Path parameter.
-    - id: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - external-account-id: The external-account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/accounts/" account "/external_accounts/" id "") params))
+  Example Usage:
+    (retrieve-account-external-id {:account-id example-account-id :external-account-id example-external-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id} :query-params query-params}))
 
-(defn create-accounts [account id params]
-  """
-  No description available.
-
-  HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/external_accounts/{id}
-
-  Path Parameters:
-    - account: Path parameter.
-    - id: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/external_accounts/" id "") params))
-
-(defn create-accounts [account params]
-  """
-  Reject an account
+(defn post-account-external-id [{:keys [account-id external-account-id]}]
+  "No description available.
 
   HTTP Method: POST
-  Endpoint: /v1/accounts/{account}/reject
+  Endpoint: /v1/accounts/{account-id}/external_accounts/{external-account-id}
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
+    - external-account-id: The external-account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/accounts/" account "/reject") params))
+  Example Usage:
+    (post-account-external-id {:account-id example-account-id :external-account-id example-external-account-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id}}))
+
+(defn post-account-reject [{:keys [account-id]}]
+  "Reject an account
+
+  HTTP Method: POST
+  Endpoint: /v1/accounts/{account-id}/reject
+
+  Path Parameters:
+    - account-id: The account-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-account-reject {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/reject" :path-params {:account-id account-id}}))

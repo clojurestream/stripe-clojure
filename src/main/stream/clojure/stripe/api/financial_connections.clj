@@ -1,170 +1,172 @@
 (ns stream.clojure.stripe.api.financial-connections
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn create-financial-connections [params]
-  """
-  Create a Session
+(defn create-financial-connections-sessions [{:keys []}]
+  "Create a Session
 
   HTTP Method: POST
   Endpoint: /v1/financial_connections/sessions
 
-  """
-  (stripe-request :post (str "/v1/financial_connections/sessions") params))
+  Example Usage:
+    (create-financial-connections-sessions {})"
+  (stripe-request :post {:endpoint "/v1/financial_connections/sessions"}))
 
-(defn retrieve-financial-connections [account params]
-  """
-  Retrieve an Account
+(defn retrieve-financial-connections-accounts-account [{:keys [account-id query-params]}]
+  "Retrieve an Account
 
   HTTP Method: GET
-  Endpoint: /v1/financial_connections/accounts/{account}
+  Endpoint: /v1/financial_connections/accounts/{account-id}
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/financial_connections/accounts/" account "") params))
+  Example Usage:
+    (retrieve-financial-connections-accounts-account {:account-id example-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/financial_connections/accounts/{account-id}" :path-params {:account-id account-id} :query-params query-params}))
 
-(defn create-financial-connections [account params]
-  """
-  Refresh Account data
-
-  HTTP Method: POST
-  Endpoint: /v1/financial_connections/accounts/{account}/refresh
-
-  Path Parameters:
-    - account: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/financial_connections/accounts/" account "/refresh") params))
-
-(defn create-financial-connections [account params]
-  """
-  Unsubscribe from data refreshes for an Account
+(defn post-financial-connections-accounts-account-refresh [{:keys [account-id]}]
+  "Refresh Account data
 
   HTTP Method: POST
-  Endpoint: /v1/financial_connections/accounts/{account}/unsubscribe
+  Endpoint: /v1/financial_connections/accounts/{account-id}/refresh
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/financial_connections/accounts/" account "/unsubscribe") params))
+  Example Usage:
+    (post-financial-connections-accounts-account-refresh {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/refresh" :path-params {:account-id account-id}}))
 
-(defn create-financial-connections [account params]
-  """
-  Disconnect an Account
+(defn post-financial-connections-accounts-account-unsubscribe [{:keys [account-id]}]
+  "Unsubscribe from data refreshes for an Account
 
   HTTP Method: POST
-  Endpoint: /v1/financial_connections/accounts/{account}/disconnect
+  Endpoint: /v1/financial_connections/accounts/{account-id}/unsubscribe
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/financial_connections/accounts/" account "/disconnect") params))
+  Example Usage:
+    (post-financial-connections-accounts-account-unsubscribe {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/unsubscribe" :path-params {:account-id account-id}}))
 
-(defn retrieve-financial-connections [params]
-  """
-  List Transactions
+(defn post-financial-connections-accounts-account-disconnect [{:keys [account-id]}]
+  "Disconnect an Account
+
+  HTTP Method: POST
+  Endpoint: /v1/financial_connections/accounts/{account-id}/disconnect
+
+  Path Parameters:
+    - account-id: The account-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-financial-connections-accounts-account-disconnect {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/disconnect" :path-params {:account-id account-id}}))
+
+(defn list-all-financial-connections-transactions [{:keys [query-params]}]
+  "List Transactions
 
   HTTP Method: GET
   Endpoint: /v1/financial_connections/transactions
 
   Query Parameters:
-    - account: The ID of the Financial Connections Account whose transactions will be retrieved.
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
-    - transacted_at: A filter on the list based on the object `transacted_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with the following options:
-    - transaction_refresh: A filter on the list based on the object `transaction_refresh` field. The value can be a dictionary with the following options:
+    - account: The ID of the Financial Connections Account whose transactions will be retrieved. (required) [type: string]
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
+    - transacted-at: A filter on the list based on the object `transacted_at` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with the following options: [type: unknown]
+    - transaction-refresh: A filter on the list based on the object `transaction_refresh` field. The value can be a dictionary with the following options: [type: object]
 
-  """
-  (stripe-request :get (str "/v1/financial_connections/transactions") params))
+  Example Usage:
+    (list-all-financial-connections-transactions {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/financial_connections/transactions" :query-params query-params}))
 
-(defn retrieve-financial-connections [account params]
-  """
-  List Account Owners
-
-  HTTP Method: GET
-  Endpoint: /v1/financial_connections/accounts/{account}/owners
-
-  Path Parameters:
-    - account: Path parameter.
-
-  Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - ownership: The ID of the ownership object to fetch owners from.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
-
-  """
-  (stripe-request :get (str "/v1/financial_connections/accounts/" account "/owners") params))
-
-(defn retrieve-financial-connections [transaction params]
-  """
-  Retrieve a Transaction
+(defn list-all-financial-connections-accounts-account-owners [{:keys [account-id query-params]}]
+  "List Account Owners
 
   HTTP Method: GET
-  Endpoint: /v1/financial_connections/transactions/{transaction}
+  Endpoint: /v1/financial_connections/accounts/{account-id}/owners
 
   Path Parameters:
-    - transaction: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - ownership: The ID of the ownership object to fetch owners from. (required) [type: string]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/financial_connections/transactions/" transaction "") params))
+  Example Usage:
+    (list-all-financial-connections-accounts-account-owners {:account-id example-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/financial_connections/accounts/{account-id}/owners" :path-params {:account-id account-id} :query-params query-params}))
 
-(defn retrieve-financial-connections [session params]
-  """
-  Retrieve a Session
+(defn retrieve-financial-connections-transactions-transaction [{:keys [transaction-id query-params]}]
+  "Retrieve a Transaction
 
   HTTP Method: GET
-  Endpoint: /v1/financial_connections/sessions/{session}
+  Endpoint: /v1/financial_connections/transactions/{transaction-id}
 
   Path Parameters:
-    - session: Path parameter.
+    - transaction-id: The transaction-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/financial_connections/sessions/" session "") params))
+  Example Usage:
+    (retrieve-financial-connections-transactions-transaction {:transaction-id example-transaction-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/financial_connections/transactions/{transaction-id}" :path-params {:transaction-id transaction-id} :query-params query-params}))
 
-(defn create-financial-connections [account params]
-  """
-  Subscribe to data refreshes for an Account
+(defn retrieve-financial-connections-sessions-session [{:keys [session-id query-params]}]
+  "Retrieve a Session
+
+  HTTP Method: GET
+  Endpoint: /v1/financial_connections/sessions/{session-id}
+
+  Path Parameters:
+    - session-id: The session-id parameter. (required) [type: string]
+
+  Query Parameters:
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+
+  Example Usage:
+    (retrieve-financial-connections-sessions-session {:session-id example-session-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/financial_connections/sessions/{session-id}" :path-params {:session-id session-id} :query-params query-params}))
+
+(defn post-financial-connections-accounts-account-subscribe [{:keys [account-id]}]
+  "Subscribe to data refreshes for an Account
 
   HTTP Method: POST
-  Endpoint: /v1/financial_connections/accounts/{account}/subscribe
+  Endpoint: /v1/financial_connections/accounts/{account-id}/subscribe
 
   Path Parameters:
-    - account: Path parameter.
+    - account-id: The account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/financial_connections/accounts/" account "/subscribe") params))
+  Example Usage:
+    (post-financial-connections-accounts-account-subscribe {:account-id example-account-id})"
+  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/subscribe" :path-params {:account-id account-id}}))
 
-(defn retrieve-financial-connections [params]
-  """
-  List Accounts
+(defn list-all-financial-connections-accounts [{:keys [query-params]}]
+  "List Accounts
 
   HTTP Method: GET
   Endpoint: /v1/financial_connections/accounts
 
   Query Parameters:
-    - account_holder: If present, only return accounts that belong to the specified account holder. `account_holder[customer]` and `account_holder[account]` are mutually exclusive.
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - session: If present, only return accounts that were collected as part of the given session.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - account-holder: If present, only return accounts that belong to the specified account holder. `account_holder[customer]` and `account_holder[account]` are mutually exclusive. [type: object]
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - session: If present, only return accounts that were collected as part of the given session. [type: string]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/financial_connections/accounts") params))
+  Example Usage:
+    (list-all-financial-connections-accounts {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/financial_connections/accounts" :query-params query-params}))

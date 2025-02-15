@@ -1,71 +1,73 @@
 (ns stream.clojure.stripe.api.webhook-endpoints
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn retrieve-webhook-endpoints [params]
-  """
-  List all webhook endpoints
+(defn list-all-webhook-endpoints [{:keys [query-params]}]
+  "List all webhook endpoints
 
   HTTP Method: GET
   Endpoint: /v1/webhook_endpoints
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/webhook_endpoints") params))
+  Example Usage:
+    (list-all-webhook-endpoints {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/webhook_endpoints" :query-params query-params}))
 
-(defn create-webhook-endpoints [params]
-  """
-  Create a webhook endpoint
+(defn create-webhook-endpoints [{:keys []}]
+  "Create a webhook endpoint
 
   HTTP Method: POST
   Endpoint: /v1/webhook_endpoints
 
-  """
-  (stripe-request :post (str "/v1/webhook_endpoints") params))
+  Example Usage:
+    (create-webhook-endpoints {})"
+  (stripe-request :post {:endpoint "/v1/webhook_endpoints"}))
 
-(defn delete-webhook-endpoints [webhook_endpoint params]
-  """
-  Delete a webhook endpoint
+(defn delete-webhook-endpoints-webhook-endpoint [{:keys [webhook-endpoint-id]}]
+  "Delete a webhook endpoint
 
   HTTP Method: DELETE
-  Endpoint: /v1/webhook_endpoints/{webhook_endpoint}
+  Endpoint: /v1/webhook_endpoints/{webhook-endpoint-id}
 
   Path Parameters:
-    - webhook_endpoint: Path parameter.
+    - webhook-endpoint-id: The webhook-endpoint-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/webhook_endpoints/" webhook_endpoint "") params))
+  Example Usage:
+    (delete-webhook-endpoints-webhook-endpoint {:webhook-endpoint-id example-webhook-endpoint-id})"
+  (stripe-request :delete {:endpoint "/v1/webhook_endpoints/{webhook-endpoint-id}" :path-params {:webhook-endpoint-id webhook-endpoint-id}}))
 
-(defn retrieve-webhook-endpoints [webhook_endpoint params]
-  """
-  Retrieve a webhook endpoint
+(defn retrieve-webhook-endpoints-webhook-endpoint [{:keys [webhook-endpoint-id query-params]}]
+  "Retrieve a webhook endpoint
 
   HTTP Method: GET
-  Endpoint: /v1/webhook_endpoints/{webhook_endpoint}
+  Endpoint: /v1/webhook_endpoints/{webhook-endpoint-id}
 
   Path Parameters:
-    - webhook_endpoint: Path parameter.
+    - webhook-endpoint-id: The webhook-endpoint-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/webhook_endpoints/" webhook_endpoint "") params))
+  Example Usage:
+    (retrieve-webhook-endpoints-webhook-endpoint {:webhook-endpoint-id example-webhook-endpoint-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/webhook_endpoints/{webhook-endpoint-id}" :path-params {:webhook-endpoint-id webhook-endpoint-id} :query-params query-params}))
 
-(defn create-webhook-endpoints [webhook_endpoint params]
-  """
-  Update a webhook endpoint
+(defn update-webhook-endpoints-webhook-endpoint [{:keys [webhook-endpoint-id]}]
+  "Update a webhook endpoint
 
   HTTP Method: POST
-  Endpoint: /v1/webhook_endpoints/{webhook_endpoint}
+  Endpoint: /v1/webhook_endpoints/{webhook-endpoint-id}
 
   Path Parameters:
-    - webhook_endpoint: Path parameter.
+    - webhook-endpoint-id: The webhook-endpoint-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/webhook_endpoints/" webhook_endpoint "") params))
+  Example Usage:
+    (update-webhook-endpoints-webhook-endpoint {:webhook-endpoint-id example-webhook-endpoint-id})"
+  (stripe-request :post {:endpoint "/v1/webhook_endpoints/{webhook-endpoint-id}" :path-params {:webhook-endpoint-id webhook-endpoint-id}}))
