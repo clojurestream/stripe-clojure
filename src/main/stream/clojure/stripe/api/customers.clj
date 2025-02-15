@@ -1,729 +1,731 @@
 (ns stream.clojure.stripe.api.customers
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn retrieve-customers [customer transaction params]
-  """
-  Retrieve a cash balance transaction
+(defn retrieve-customer-cash-balance-transactions-transaction [{:keys [customer-id cash-balance-transaction-id query-params]}]
+  "Retrieve a cash balance transaction
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/cash_balance_transactions/{transaction}
+  Endpoint: /v1/customers/{customer-id}/cash_balance_transactions/{cash-balance-transaction-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - transaction: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - cash-balance-transaction-id: The cash-balance-transaction-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/cash_balance_transactions/" transaction "") params))
+  Example Usage:
+    (retrieve-customer-cash-balance-transactions-transaction {:customer-id example-customer-id :cash-balance-transaction-id example-cash-balance-transaction-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/cash_balance_transactions/{cash-balance-transaction-id}" :path-params {:customer-id customer-id :cash-balance-transaction-id cash-balance-transaction-id} :query-params query-params}))
 
-(defn retrieve-customers [customer params]
-  """
-  List customer balance transactions
+(defn list-all-customer-balance-transactions [{:keys [customer-id query-params]}]
+  "List customer balance transactions
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/balance_transactions
+  Endpoint: /v1/customers/{customer-id}/balance_transactions
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/balance_transactions") params))
+  Example Usage:
+    (list-all-customer-balance-transactions {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/balance_transactions" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn create-customers [customer params]
-  """
-  Create a customer balance transaction
+(defn create-customer-balance-transactions [{:keys [customer-id]}]
+  "Create a customer balance transaction
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/balance_transactions
+  Endpoint: /v1/customers/{customer-id}/balance_transactions
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/balance_transactions") params))
+  Example Usage:
+    (create-customer-balance-transactions {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/balance_transactions" :path-params {:customer-id customer-id}}))
 
-(defn retrieve-customers [customer payment_method params]
-  """
-  Retrieve a Customer's PaymentMethod
+(defn retrieve-customer-payment-methods-payment-method [{:keys [customer-id payment-method-id query-params]}]
+  "Retrieve a Customer's PaymentMethod
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/payment_methods/{payment_method}
+  Endpoint: /v1/customers/{customer-id}/payment_methods/{payment-method-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - payment_method: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - payment-method-id: The payment-method-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/payment_methods/" payment_method "") params))
+  Example Usage:
+    (retrieve-customer-payment-methods-payment-method {:customer-id example-customer-id :payment-method-id example-payment-method-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/payment_methods/{payment-method-id}" :path-params {:customer-id customer-id :payment-method-id payment-method-id} :query-params query-params}))
 
-(defn delete-customers [customer subscription_exposed_id params]
-  """
-  Cancel a subscription
+(defn delete-customer-subscriptions-subscription-exposed-id [{:keys [customer-id subscription-id]}]
+  "Cancel a subscription
 
   HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer}/subscriptions/{subscription_exposed_id}
+  Endpoint: /v1/customers/{customer-id}/subscriptions/{subscription-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - subscription_exposed_id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - subscription-id: The subscription-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "") params))
+  Example Usage:
+    (delete-customer-subscriptions-subscription-exposed-id {:customer-id example-customer-id :subscription-id example-subscription-id})"
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}" :path-params {:customer-id customer-id :subscription-id subscription-id}}))
 
-(defn retrieve-customers [customer subscription_exposed_id params]
-  """
-  Retrieve a subscription
+(defn retrieve-customer-subscriptions-subscription-exposed-id [{:keys [customer-id subscription-id query-params]}]
+  "Retrieve a subscription
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/subscriptions/{subscription_exposed_id}
+  Endpoint: /v1/customers/{customer-id}/subscriptions/{subscription-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - subscription_exposed_id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - subscription-id: The subscription-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "") params))
+  Example Usage:
+    (retrieve-customer-subscriptions-subscription-exposed-id {:customer-id example-customer-id :subscription-id example-subscription-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}" :path-params {:customer-id customer-id :subscription-id subscription-id} :query-params query-params}))
 
-(defn create-customers [customer subscription_exposed_id params]
-  """
-  Update a subscription on a customer
+(defn update-customer-subscriptions-subscription-exposed-id [{:keys [customer-id subscription-id]}]
+  "Update a subscription on a customer
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/subscriptions/{subscription_exposed_id}
+  Endpoint: /v1/customers/{customer-id}/subscriptions/{subscription-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - subscription_exposed_id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - subscription-id: The subscription-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "") params))
+  Example Usage:
+    (update-customer-subscriptions-subscription-exposed-id {:customer-id example-customer-id :subscription-id example-subscription-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}" :path-params {:customer-id customer-id :subscription-id subscription-id}}))
 
-(defn retrieve-customers [customer params]
-  """
-  List all bank accounts
+(defn list-all-customer-bank-accounts [{:keys [customer-id query-params]}]
+  "List all bank accounts
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/bank_accounts
+  Endpoint: /v1/customers/{customer-id}/bank_accounts
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/bank_accounts") params))
+  Example Usage:
+    (list-all-customer-bank-accounts {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/bank_accounts" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn create-customers [customer params]
-  """
-  Create a card
+(defn create-customer-bank-accounts [{:keys [customer-id]}]
+  "Create a card
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/bank_accounts
+  Endpoint: /v1/customers/{customer-id}/bank_accounts
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/bank_accounts") params))
+  Example Usage:
+    (create-customer-bank-accounts {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts" :path-params {:customer-id customer-id}}))
 
-(defn retrieve-customers [params]
-  """
-  Search customers
+(defn list-all-search [{:keys [query-params]}]
+  "Search customers
 
   HTTP Method: GET
   Endpoint: /v1/customers/search
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - page: A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
-    - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for customers](https://stripe.com/docs/search#query-fields-for-customers).
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - page: A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results. [type: string]
+    - query: The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for customers](https://stripe.com/docs/search#query-fields-for-customers). (required) [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers/search") params))
+  Example Usage:
+    (list-all-search {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/search" :query-params query-params}))
 
-(defn retrieve-customers [customer params]
-  """
-  List all cards
+(defn list-all-customer-cards [{:keys [customer-id query-params]}]
+  "List all cards
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/cards
+  Endpoint: /v1/customers/{customer-id}/cards
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/cards") params))
+  Example Usage:
+    (list-all-customer-cards {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/cards" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn create-customers [customer params]
-  """
-  Create a card
+(defn create-customer-cards [{:keys [customer-id]}]
+  "Create a card
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/cards
+  Endpoint: /v1/customers/{customer-id}/cards
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/cards") params))
+  Example Usage:
+    (create-customer-cards {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cards" :path-params {:customer-id customer-id}}))
 
-(defn retrieve-customers [customer params]
-  """
-  List cash balance transactions
+(defn list-all-customer-cash-balance-transactions [{:keys [customer-id query-params]}]
+  "List cash balance transactions
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/cash_balance_transactions
+  Endpoint: /v1/customers/{customer-id}/cash_balance_transactions
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/cash_balance_transactions") params))
+  Example Usage:
+    (list-all-customer-cash-balance-transactions {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/cash_balance_transactions" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn delete-customers [customer subscription_exposed_id params]
-  """
-  Delete a customer discount
+(defn delete-customer-subscriptions-subscription-exposed-id-discount [{:keys [customer-id subscription-id]}]
+  "Delete a customer discount
 
   HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer}/subscriptions/{subscription_exposed_id}/discount
+  Endpoint: /v1/customers/{customer-id}/subscriptions/{subscription-id}/discount
 
   Path Parameters:
-    - customer: Path parameter.
-    - subscription_exposed_id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - subscription-id: The subscription-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "/discount") params))
+  Example Usage:
+    (delete-customer-subscriptions-subscription-exposed-id-discount {:customer-id example-customer-id :subscription-id example-subscription-id})"
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}/discount" :path-params {:customer-id customer-id :subscription-id subscription-id}}))
 
-(defn retrieve-customers [customer subscription_exposed_id params]
-  """
-  No description available.
+(defn list-all-customer-subscriptions-subscription-exposed-id-discount [{:keys [customer-id subscription-id query-params]}]
+  "No description available.
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/subscriptions/{subscription_exposed_id}/discount
+  Endpoint: /v1/customers/{customer-id}/subscriptions/{subscription-id}/discount
 
   Path Parameters:
-    - customer: Path parameter.
-    - subscription_exposed_id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - subscription-id: The subscription-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/subscriptions/" subscription_exposed_id "/discount") params))
+  Example Usage:
+    (list-all-customer-subscriptions-subscription-exposed-id-discount {:customer-id example-customer-id :subscription-id example-subscription-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}/discount" :path-params {:customer-id customer-id :subscription-id subscription-id} :query-params query-params}))
 
-(defn retrieve-customers [customer params]
-  """
-  List all Customer tax IDs
+(defn list-all-customer-tax-ids [{:keys [customer-id query-params]}]
+  "List all Customer tax IDs
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/tax_ids
+  Endpoint: /v1/customers/{customer-id}/tax_ids
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/tax_ids") params))
+  Example Usage:
+    (list-all-customer-tax-ids {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/tax_ids" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn create-customers [customer params]
-  """
-  Create a Customer tax ID
+(defn create-customer-tax-ids [{:keys [customer-id]}]
+  "Create a Customer tax ID
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/tax_ids
+  Endpoint: /v1/customers/{customer-id}/tax_ids
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/tax_ids") params))
+  Example Usage:
+    (create-customer-tax-ids {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/tax_ids" :path-params {:customer-id customer-id}}))
 
-(defn retrieve-customers [customer params]
-  """
-  No description available.
+(defn list-all-customer-sources [{:keys [customer-id query-params]}]
+  "No description available.
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/sources
+  Endpoint: /v1/customers/{customer-id}/sources
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - object: Filter sources according to a particular object type.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - object: Filter sources according to a particular object type. [type: string]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/sources") params))
+  Example Usage:
+    (list-all-customer-sources {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/sources" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn create-customers [customer params]
-  """
-  Create a card
+(defn create-customer-sources [{:keys [customer-id]}]
+  "Create a card
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/sources
+  Endpoint: /v1/customers/{customer-id}/sources
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/sources") params))
+  Example Usage:
+    (create-customer-sources {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources" :path-params {:customer-id customer-id}}))
 
-(defn delete-customers [customer id params]
-  """
-  Delete a customer source
+(defn delete-customer-bank-accounts-id [{:keys [customer-id bank-account-id]}]
+  "Delete a customer source
 
   HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer}/bank_accounts/{id}
+  Endpoint: /v1/customers/{customer-id}/bank_accounts/{bank-account-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - bank-account-id: The bank-account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/customers/" customer "/bank_accounts/" id "") params))
+  Example Usage:
+    (delete-customer-bank-accounts-id {:customer-id example-customer-id :bank-account-id example-bank-account-id})"
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id}}))
 
-(defn retrieve-customers [customer id params]
-  """
-  Retrieve a bank account
+(defn retrieve-customer-bank-accounts-id [{:keys [customer-id bank-account-id query-params]}]
+  "Retrieve a bank account
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/bank_accounts/{id}
+  Endpoint: /v1/customers/{customer-id}/bank_accounts/{bank-account-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - bank-account-id: The bank-account-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/bank_accounts/" id "") params))
+  Example Usage:
+    (retrieve-customer-bank-accounts-id {:customer-id example-customer-id :bank-account-id example-bank-account-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id} :query-params query-params}))
 
-(defn create-customers [customer id params]
-  """
-  No description available.
-
-  HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/bank_accounts/{id}
-
-  Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/bank_accounts/" id "") params))
-
-(defn create-customers [customer id params]
-  """
-  Verify a bank account
+(defn post-customer-bank-accounts-id [{:keys [customer-id bank-account-id]}]
+  "No description available.
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/bank_accounts/{id}/verify
+  Endpoint: /v1/customers/{customer-id}/bank_accounts/{bank-account-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - bank-account-id: The bank-account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/bank_accounts/" id "/verify") params))
+  Example Usage:
+    (post-customer-bank-accounts-id {:customer-id example-customer-id :bank-account-id example-bank-account-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id}}))
 
-(defn create-customers [customer params]
-  """
-  Create or retrieve funding instructions for a customer cash balance
+(defn post-customer-bank-accounts-id-verify [{:keys [customer-id bank-account-id]}]
+  "Verify a bank account
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/funding_instructions
+  Endpoint: /v1/customers/{customer-id}/bank_accounts/{bank-account-id}/verify
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - bank-account-id: The bank-account-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/funding_instructions") params))
+  Example Usage:
+    (post-customer-bank-accounts-id-verify {:customer-id example-customer-id :bank-account-id example-bank-account-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}/verify" :path-params {:customer-id customer-id :bank-account-id bank-account-id}}))
 
-(defn retrieve-customers [customer params]
-  """
-  List active subscriptions
+(defn create-customer-funding-instructions [{:keys [customer-id]}]
+  "Create or retrieve funding instructions for a customer cash balance
+
+  HTTP Method: POST
+  Endpoint: /v1/customers/{customer-id}/funding_instructions
+
+  Path Parameters:
+    - customer-id: The customer-id parameter. (required) [type: string]
+
+  Example Usage:
+    (create-customer-funding-instructions {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/funding_instructions" :path-params {:customer-id customer-id}}))
+
+(defn list-all-customer-subscriptions [{:keys [customer-id query-params]}]
+  "List active subscriptions
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/subscriptions
+  Endpoint: /v1/customers/{customer-id}/subscriptions
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/subscriptions") params))
+  Example Usage:
+    (list-all-customer-subscriptions {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/subscriptions" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn create-customers [customer params]
-  """
-  Create a subscription
+(defn create-customer-subscriptions [{:keys [customer-id]}]
+  "Create a subscription
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/subscriptions
+  Endpoint: /v1/customers/{customer-id}/subscriptions
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/subscriptions") params))
+  Example Usage:
+    (create-customer-subscriptions {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/subscriptions" :path-params {:customer-id customer-id}}))
 
-(defn delete-customers [customer id params]
-  """
-  Delete a customer source
+(defn delete-customer-sources-id [{:keys [customer-id source-id]}]
+  "Delete a customer source
 
   HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer}/sources/{id}
+  Endpoint: /v1/customers/{customer-id}/sources/{source-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - source-id: The source-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/customers/" customer "/sources/" id "") params))
+  Example Usage:
+    (delete-customer-sources-id {:customer-id example-customer-id :source-id example-source-id})"
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id}}))
 
-(defn retrieve-customers [customer id params]
-  """
-  No description available.
+(defn retrieve-customer-sources-id [{:keys [customer-id source-id query-params]}]
+  "No description available.
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/sources/{id}
+  Endpoint: /v1/customers/{customer-id}/sources/{source-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - source-id: The source-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/sources/" id "") params))
+  Example Usage:
+    (retrieve-customer-sources-id {:customer-id example-customer-id :source-id example-source-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id} :query-params query-params}))
 
-(defn create-customers [customer id params]
-  """
-  No description available.
+(defn post-customer-sources-id [{:keys [customer-id source-id]}]
+  "No description available.
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/sources/{id}
+  Endpoint: /v1/customers/{customer-id}/sources/{source-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - source-id: The source-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/sources/" id "") params))
+  Example Usage:
+    (post-customer-sources-id {:customer-id example-customer-id :source-id example-source-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id}}))
 
-(defn retrieve-customers [customer transaction params]
-  """
-  Retrieve a customer balance transaction
+(defn retrieve-customer-balance-transactions-transaction [{:keys [customer-id balance-transaction-id query-params]}]
+  "Retrieve a customer balance transaction
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/balance_transactions/{transaction}
+  Endpoint: /v1/customers/{customer-id}/balance_transactions/{balance-transaction-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - transaction: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - balance-transaction-id: The balance-transaction-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/balance_transactions/" transaction "") params))
+  Example Usage:
+    (retrieve-customer-balance-transactions-transaction {:customer-id example-customer-id :balance-transaction-id example-balance-transaction-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/balance_transactions/{balance-transaction-id}" :path-params {:customer-id customer-id :balance-transaction-id balance-transaction-id} :query-params query-params}))
 
-(defn create-customers [customer transaction params]
-  """
-  Update a customer credit balance transaction
+(defn update-customer-balance-transactions-transaction [{:keys [customer-id balance-transaction-id]}]
+  "Update a customer credit balance transaction
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/balance_transactions/{transaction}
+  Endpoint: /v1/customers/{customer-id}/balance_transactions/{balance-transaction-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - transaction: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - balance-transaction-id: The balance-transaction-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/balance_transactions/" transaction "") params))
+  Example Usage:
+    (update-customer-balance-transactions-transaction {:customer-id example-customer-id :balance-transaction-id example-balance-transaction-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/balance_transactions/{balance-transaction-id}" :path-params {:customer-id customer-id :balance-transaction-id balance-transaction-id}}))
 
-(defn retrieve-customers [customer params]
-  """
-  Retrieve a cash balance
+(defn list-all-customer-cash-balance [{:keys [customer-id query-params]}]
+  "Retrieve a cash balance
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/cash_balance
+  Endpoint: /v1/customers/{customer-id}/cash_balance
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/cash_balance") params))
+  Example Usage:
+    (list-all-customer-cash-balance {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/cash_balance" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn create-customers [customer params]
-  """
-  Update a cash balance's settings
+(defn update-customer-cash-balance [{:keys [customer-id]}]
+  "Update a cash balance's settings
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/cash_balance
+  Endpoint: /v1/customers/{customer-id}/cash_balance
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/cash_balance") params))
+  Example Usage:
+    (update-customer-cash-balance {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cash_balance" :path-params {:customer-id customer-id}}))
 
-(defn delete-customers [customer id params]
-  """
-  Delete a Customer tax ID
+(defn delete-customer-tax-ids-id [{:keys [customer-id tax-id-id]}]
+  "Delete a Customer tax ID
 
   HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer}/tax_ids/{id}
+  Endpoint: /v1/customers/{customer-id}/tax_ids/{tax-id-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - tax-id-id: The tax-id-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/customers/" customer "/tax_ids/" id "") params))
+  Example Usage:
+    (delete-customer-tax-ids-id {:customer-id example-customer-id :tax-id-id example-tax-id-id})"
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/tax_ids/{tax-id-id}" :path-params {:customer-id customer-id :tax-id-id tax-id-id}}))
 
-(defn retrieve-customers [customer id params]
-  """
-  Retrieve a Customer tax ID
+(defn retrieve-customer-tax-ids-id [{:keys [customer-id tax-id-id query-params]}]
+  "Retrieve a Customer tax ID
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/tax_ids/{id}
+  Endpoint: /v1/customers/{customer-id}/tax_ids/{tax-id-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - tax-id-id: The tax-id-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/tax_ids/" id "") params))
+  Example Usage:
+    (retrieve-customer-tax-ids-id {:customer-id example-customer-id :tax-id-id example-tax-id-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/tax_ids/{tax-id-id}" :path-params {:customer-id customer-id :tax-id-id tax-id-id} :query-params query-params}))
 
-(defn delete-customers [customer params]
-  """
-  Delete a customer
+(defn delete-customer [{:keys [customer-id]}]
+  "Delete a customer
 
   HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer}
+  Endpoint: /v1/customers/{customer-id}
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/customers/" customer "") params))
+  Example Usage:
+    (delete-customer {:customer-id example-customer-id})"
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}" :path-params {:customer-id customer-id}}))
 
-(defn retrieve-customers [customer params]
-  """
-  Retrieve a customer
+(defn retrieve-customer [{:keys [customer-id query-params]}]
+  "Retrieve a customer
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}
+  Endpoint: /v1/customers/{customer-id}
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "") params))
+  Example Usage:
+    (retrieve-customer {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn create-customers [customer params]
-  """
-  Update a customer
+(defn update-customer [{:keys [customer-id]}]
+  "Update a customer
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}
+  Endpoint: /v1/customers/{customer-id}
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "") params))
+  Example Usage:
+    (update-customer {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}" :path-params {:customer-id customer-id}}))
 
-(defn delete-customers [customer id params]
-  """
-  Delete a customer source
+(defn delete-customer-cards-id [{:keys [customer-id card-id]}]
+  "Delete a customer source
 
   HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer}/cards/{id}
+  Endpoint: /v1/customers/{customer-id}/cards/{card-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - card-id: The card-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/customers/" customer "/cards/" id "") params))
+  Example Usage:
+    (delete-customer-cards-id {:customer-id example-customer-id :card-id example-card-id})"
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id}}))
 
-(defn retrieve-customers [customer id params]
-  """
-  Retrieve a card
+(defn retrieve-customer-cards-id [{:keys [customer-id card-id query-params]}]
+  "Retrieve a card
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/cards/{id}
+  Endpoint: /v1/customers/{customer-id}/cards/{card-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - card-id: The card-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/cards/" id "") params))
+  Example Usage:
+    (retrieve-customer-cards-id {:customer-id example-customer-id :card-id example-card-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id} :query-params query-params}))
 
-(defn create-customers [customer id params]
-  """
-  No description available.
-
-  HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/cards/{id}
-
-  Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/cards/" id "") params))
-
-(defn create-customers [customer id params]
-  """
-  Verify a bank account
+(defn post-customer-cards-id [{:keys [customer-id card-id]}]
+  "No description available.
 
   HTTP Method: POST
-  Endpoint: /v1/customers/{customer}/sources/{id}/verify
+  Endpoint: /v1/customers/{customer-id}/cards/{card-id}
 
   Path Parameters:
-    - customer: Path parameter.
-    - id: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - card-id: The card-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/customers/" customer "/sources/" id "/verify") params))
+  Example Usage:
+    (post-customer-cards-id {:customer-id example-customer-id :card-id example-card-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id}}))
 
-(defn retrieve-customers [customer params]
-  """
-  List a Customer's PaymentMethods
+(defn post-customer-sources-id-verify [{:keys [customer-id source-id]}]
+  "Verify a bank account
+
+  HTTP Method: POST
+  Endpoint: /v1/customers/{customer-id}/sources/{source-id}/verify
+
+  Path Parameters:
+    - customer-id: The customer-id parameter. (required) [type: string]
+    - source-id: The source-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-customer-sources-id-verify {:customer-id example-customer-id :source-id example-source-id})"
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources/{source-id}/verify" :path-params {:customer-id customer-id :source-id source-id}}))
+
+(defn list-all-customer-payment-methods [{:keys [customer-id query-params]}]
+  "List a Customer's PaymentMethods
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/payment_methods
+  Endpoint: /v1/customers/{customer-id}/payment_methods
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - allow_redisplay: This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to `unspecified`.
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
-    - type: An optional filter on the list, based on the object `type` field. Without the filter, the list includes all current and future payment method types. If your integration expects only one type of payment method in the response, make sure to provide a type value in the request.
+    - allow-redisplay: This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to `unspecified`. [type: string]
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
+    - type: An optional filter on the list, based on the object `type` field. Without the filter, the list includes all current and future payment method types. If your integration expects only one type of payment method in the response, make sure to provide a type value in the request. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/payment_methods") params))
+  Example Usage:
+    (list-all-customer-payment-methods {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/payment_methods" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn retrieve-customers [params]
-  """
-  List all customers
+(defn list-all [{:keys [query-params]}]
+  "List all customers
 
   HTTP Method: GET
   Endpoint: /v1/customers
 
   Query Parameters:
-    - created: Only return customers that were created during the given date interval.
-    - email: A case-sensitive filter on the list based on the customer's `email` field. The value must be a string.
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
-    - test_clock: Provides a list of customers that are associated with the specified test clock. The response will not include customers with test clocks if this parameter is not set.
+    - created: Only return customers that were created during the given date interval. [type: unknown]
+    - email: A case-sensitive filter on the list based on the customer's `email` field. The value must be a string. [type: string]
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
+    - test-clock: Provides a list of customers that are associated with the specified test clock. The response will not include customers with test clocks if this parameter is not set. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/customers") params))
+  Example Usage:
+    (list-all {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers" :query-params query-params}))
 
-(defn create-customers [params]
-  """
-  Create a customer
+(defn create [{:keys []}]
+  "Create a customer
 
   HTTP Method: POST
   Endpoint: /v1/customers
 
-  """
-  (stripe-request :post (str "/v1/customers") params))
+  Example Usage:
+    (create {})"
+  (stripe-request :post {:endpoint "/v1/customers"}))
 
-(defn delete-customers [customer params]
-  """
-  Delete a customer discount
+(defn delete-customer-discount [{:keys [customer-id]}]
+  "Delete a customer discount
 
   HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer}/discount
+  Endpoint: /v1/customers/{customer-id}/discount
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/customers/" customer "/discount") params))
+  Example Usage:
+    (delete-customer-discount {:customer-id example-customer-id})"
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/discount" :path-params {:customer-id customer-id}}))
 
-(defn retrieve-customers [customer params]
-  """
-  No description available.
+(defn list-all-customer-discount [{:keys [customer-id query-params]}]
+  "No description available.
 
   HTTP Method: GET
-  Endpoint: /v1/customers/{customer}/discount
+  Endpoint: /v1/customers/{customer-id}/discount
 
   Path Parameters:
-    - customer: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/customers/" customer "/discount") params))
+  Example Usage:
+    (list-all-customer-discount {:customer-id example-customer-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/customers/{customer-id}/discount" :path-params {:customer-id customer-id} :query-params query-params}))

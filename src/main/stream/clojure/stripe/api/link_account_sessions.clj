@@ -1,29 +1,31 @@
 (ns stream.clojure.stripe.api.link-account-sessions
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn create-link-account-sessions [params]
-  """
-  Create a Session
+(defn create-link-account-sessions [{:keys []}]
+  "Create a Session
 
   HTTP Method: POST
   Endpoint: /v1/link_account_sessions
 
-  """
-  (stripe-request :post (str "/v1/link_account_sessions") params))
+  Example Usage:
+    (create-link-account-sessions {})"
+  (stripe-request :post {:endpoint "/v1/link_account_sessions"}))
 
-(defn retrieve-link-account-sessions [session params]
-  """
-  Retrieve a Session
+(defn retrieve-link-account-sessions-session [{:keys [link-account-session-id query-params]}]
+  "Retrieve a Session
 
   HTTP Method: GET
-  Endpoint: /v1/link_account_sessions/{session}
+  Endpoint: /v1/link_account_sessions/{link-account-session-id}
 
   Path Parameters:
-    - session: Path parameter.
+    - link-account-session-id: The link-account-session-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/link_account_sessions/" session "") params))
+  Example Usage:
+    (retrieve-link-account-sessions-session {:link-account-session-id example-link-account-session-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/link_account_sessions/{link-account-session-id}" :path-params {:link-account-session-id link-account-session-id} :query-params query-params}))

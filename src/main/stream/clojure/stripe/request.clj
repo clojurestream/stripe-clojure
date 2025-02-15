@@ -1,10 +1,23 @@
 (ns stream.clojure.stripe.request
   (:refer-clojure :exclude [send])
-  (:require [clojure.data.json :as json])
+  (:require [clojure.string :as string]
+            [clojure.data.json :as json]
+            [stream.clojure.stripe.api :as api])
   (:import [java.net.http HttpClient HttpRequest HttpClient$Version]
            [java.net.http HttpRequest$BodyPublishers HttpResponse$BodyHandlers]
-           [java.net URI]
+           [java.net URI URLEncoder]
            [java.time Duration]))
+
+(defn kebabify-key [k]
+  (-> k name
+    (string/replace #"([a-z])([A-Z])" "$1-$2")
+    (string/lower-case)))
+
+(defn build-query-string [qp]
+  (->> qp
+    (map (fn [[k v]]
+           (str (name k) "=" (URLEncoder/encode (str v) "UTF-8"))))
+    (clojure.string/join "&")))
 
 (defonce ^HttpClient client
   (-> (HttpClient/newBuilder)
@@ -13,8 +26,9 @@
     (.build)))
 
 (defn send
-  [method url {:keys [headers body as timeout] :or {headers {}, as :json, timeout 10}}]
-  (let [request-builder (-> (HttpRequest/newBuilder)
+  [method url {:keys [headers body as timeout query-params] :or {headers {}, as :json, timeout 10}}]
+  (let [url (if query-params (str url "?" (build-query-string query-params)))
+        request-builder (-> (HttpRequest/newBuilder)
                           (.uri (URI/create url))
                           (.timeout (Duration/ofSeconds timeout))
                           (.header "Content-Type" "application/json"))
@@ -31,6 +45,7 @@
                   (= method :put) (.PUT request-builder (HttpRequest$BodyPublishers/ofString json-body))
                   :else (throw (IllegalArgumentException. (str "Unsupported HTTP method: " method))))
         response (.send client (.build request) (HttpResponse$BodyHandlers/ofString))]
+    (prn :req-builder request-builder)
     (try
       {:status (.statusCode response)
        :body (if (= as :json)
@@ -42,7 +57,6 @@
 (def stripe-base-url "https://api.stripe.com/")
 
 (defn stripe-request
-  [method endpoint params]
-  (let [api-key "sk_test_api_key"]
-    (send method (str stripe-base-url endpoint)
-      (merge {:headers {"Authorization" (str "Bearer" api-key)}} params))))
+  [method params]
+  (send method (str stripe-base-url (:endpoint params))
+    (merge {:headers {"Authorization" (str "Bearer " api/*stripe-api-key*)}} params)))

@@ -1,104 +1,106 @@
 (ns stream.clojure.stripe.api.subscription-items
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-subscription-items [item params]
-  """
-  Delete a subscription item
+(defn delete-subscription-items-item [{:keys [subscription-item-id]}]
+  "Delete a subscription item
 
   HTTP Method: DELETE
-  Endpoint: /v1/subscription_items/{item}
+  Endpoint: /v1/subscription_items/{subscription-item-id}
 
   Path Parameters:
-    - item: Path parameter.
+    - subscription-item-id: The subscription-item-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/subscription_items/" item "") params))
+  Example Usage:
+    (delete-subscription-items-item {:subscription-item-id example-subscription-item-id})"
+  (stripe-request :delete {:endpoint "/v1/subscription_items/{subscription-item-id}" :path-params {:subscription-item-id subscription-item-id}}))
 
-(defn retrieve-subscription-items [item params]
-  """
-  Retrieve a subscription item
+(defn retrieve-subscription-items-item [{:keys [subscription-item-id query-params]}]
+  "Retrieve a subscription item
 
   HTTP Method: GET
-  Endpoint: /v1/subscription_items/{item}
+  Endpoint: /v1/subscription_items/{subscription-item-id}
 
   Path Parameters:
-    - item: Path parameter.
+    - subscription-item-id: The subscription-item-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/subscription_items/" item "") params))
+  Example Usage:
+    (retrieve-subscription-items-item {:subscription-item-id example-subscription-item-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/subscription_items/{subscription-item-id}" :path-params {:subscription-item-id subscription-item-id} :query-params query-params}))
 
-(defn create-subscription-items [item params]
-  """
-  Update a subscription item
+(defn update-subscription-items-item [{:keys [subscription-item-id]}]
+  "Update a subscription item
 
   HTTP Method: POST
-  Endpoint: /v1/subscription_items/{item}
+  Endpoint: /v1/subscription_items/{subscription-item-id}
 
   Path Parameters:
-    - item: Path parameter.
+    - subscription-item-id: The subscription-item-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/subscription_items/" item "") params))
+  Example Usage:
+    (update-subscription-items-item {:subscription-item-id example-subscription-item-id})"
+  (stripe-request :post {:endpoint "/v1/subscription_items/{subscription-item-id}" :path-params {:subscription-item-id subscription-item-id}}))
 
-(defn retrieve-subscription-items [params]
-  """
-  List all subscription items
+(defn list-all-subscription-items [{:keys [query-params]}]
+  "List all subscription items
 
   HTTP Method: GET
   Endpoint: /v1/subscription_items
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
-    - subscription: The ID of the subscription whose items will be retrieved.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
+    - subscription: The ID of the subscription whose items will be retrieved. (required) [type: string]
 
-  """
-  (stripe-request :get (str "/v1/subscription_items") params))
+  Example Usage:
+    (list-all-subscription-items {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/subscription_items" :query-params query-params}))
 
-(defn create-subscription-items [params]
-  """
-  Create a subscription item
+(defn create-subscription-items [{:keys []}]
+  "Create a subscription item
 
   HTTP Method: POST
   Endpoint: /v1/subscription_items
 
-  """
-  (stripe-request :post (str "/v1/subscription_items") params))
+  Example Usage:
+    (create-subscription-items {})"
+  (stripe-request :post {:endpoint "/v1/subscription_items"}))
 
-(defn retrieve-subscription-items [subscription_item params]
-  """
-  List all subscription item period summaries
+(defn list-all-subscription-items-subscription-item-usage-record-summaries [{:keys [subscription-item-id query-params]}]
+  "List all subscription item period summaries
 
   HTTP Method: GET
-  Endpoint: /v1/subscription_items/{subscription_item}/usage_record_summaries
+  Endpoint: /v1/subscription_items/{subscription-item-id}/usage_record_summaries
 
   Path Parameters:
-    - subscription_item: Path parameter.
+    - subscription-item-id: The subscription-item-id parameter. (required) [type: string]
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/subscription_items/" subscription_item "/usage_record_summaries") params))
+  Example Usage:
+    (list-all-subscription-items-subscription-item-usage-record-summaries {:subscription-item-id example-subscription-item-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/subscription_items/{subscription-item-id}/usage_record_summaries" :path-params {:subscription-item-id subscription-item-id} :query-params query-params}))
 
-(defn create-subscription-items [subscription_item params]
-  """
-  Create a usage record
+(defn create-subscription-items-subscription-item-usage-records [{:keys [subscription-item-id]}]
+  "Create a usage record
 
   HTTP Method: POST
-  Endpoint: /v1/subscription_items/{subscription_item}/usage_records
+  Endpoint: /v1/subscription_items/{subscription-item-id}/usage_records
 
   Path Parameters:
-    - subscription_item: Path parameter.
+    - subscription-item-id: The subscription-item-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/subscription_items/" subscription_item "/usage_records") params))
+  Example Usage:
+    (create-subscription-items-subscription-item-usage-records {:subscription-item-id example-subscription-item-id})"
+  (stripe-request :post {:endpoint "/v1/subscription_items/{subscription-item-id}/usage_records" :path-params {:subscription-item-id subscription-item-id}}))

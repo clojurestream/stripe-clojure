@@ -1,518 +1,533 @@
 (ns stream.clojure.stripe.api.test-helpers
+  "Info: This ns is auto-generated from the Stripe OpenAPI spec."
+  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn create-test-helpers [id params]
-  """
-  Test mode: Fail an OutboundPayment
+(defn post-test-helpers-treasury-outbound-payments-id-fail [{:keys [outbound-payment-id]}]
+  "Test mode: Fail an OutboundPayment
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/outbound_payments/{id}/fail
+  Endpoint: /v1/test_helpers/treasury/outbound_payments/{outbound-payment-id}/fail
 
   Path Parameters:
-    - id: Path parameter.
+    - outbound-payment-id: The outbound-payment-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/outbound_payments/" id "/fail") params))
+  Example Usage:
+    (post-test-helpers-treasury-outbound-payments-id-fail {:outbound-payment-id example-outbound-payment-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/outbound_payments/{outbound-payment-id}/fail" :path-params {:outbound-payment-id outbound-payment-id}}))
 
-(defn create-test-helpers [outbound_transfer params]
-  """
-  Test mode: Post an OutboundTransfer
+(defn post-test-helpers-treasury-outbound-transfers-outbound-transfer-post [{:keys [outbound-transfer-id]}]
+  "Test mode: Post an OutboundTransfer
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/post
+  Endpoint: /v1/test_helpers/treasury/outbound_transfers/{outbound-transfer-id}/post
 
   Path Parameters:
-    - outbound_transfer: Path parameter.
+    - outbound-transfer-id: The outbound-transfer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/outbound_transfers/" outbound_transfer "/post") params))
+  Example Usage:
+    (post-test-helpers-treasury-outbound-transfers-outbound-transfer-post {:outbound-transfer-id example-outbound-transfer-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/outbound_transfers/{outbound-transfer-id}/post" :path-params {:outbound-transfer-id outbound-transfer-id}}))
 
-(defn create-test-helpers [authorization params]
-  """
-  Finalize a test-mode authorization's amount
+(defn post-test-helpers-issuing-authorizations-authorization-finalize-amount [{:keys [authorization-id]}]
+  "Finalize a test-mode authorization's amount
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization}/finalize_amount
+  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization-id}/finalize_amount
 
   Path Parameters:
-    - authorization: Path parameter.
+    - authorization-id: The authorization-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/authorizations/" authorization "/finalize_amount") params))
+  Example Usage:
+    (post-test-helpers-issuing-authorizations-authorization-finalize-amount {:authorization-id example-authorization-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/authorizations/{authorization-id}/finalize_amount" :path-params {:authorization-id authorization-id}}))
 
-(defn create-test-helpers [transaction params]
-  """
-  Refund a test-mode transaction
+(defn post-test-helpers-issuing-transactions-transaction-refund [{:keys [transaction-id]}]
+  "Refund a test-mode transaction
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/transactions/{transaction}/refund
+  Endpoint: /v1/test_helpers/issuing/transactions/{transaction-id}/refund
 
   Path Parameters:
-    - transaction: Path parameter.
+    - transaction-id: The transaction-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/transactions/" transaction "/refund") params))
+  Example Usage:
+    (post-test-helpers-issuing-transactions-transaction-refund {:transaction-id example-transaction-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/transactions/{transaction-id}/refund" :path-params {:transaction-id transaction-id}}))
 
-(defn create-test-helpers [params]
-  """
-  Create a test-mode authorization
+(defn create-test-helpers-issuing-authorizations [{:keys []}]
+  "Create a test-mode authorization
 
   HTTP Method: POST
   Endpoint: /v1/test_helpers/issuing/authorizations
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/authorizations") params))
+  Example Usage:
+    (create-test-helpers-issuing-authorizations {})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/authorizations"}))
 
-(defn create-test-helpers [params]
-  """
-  Test mode: Create a ReceivedDebit
+(defn post-test-helpers-treasury-received-debits [{:keys []}]
+  "Test mode: Create a ReceivedDebit
 
   HTTP Method: POST
   Endpoint: /v1/test_helpers/treasury/received_debits
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/received_debits") params))
+  Example Usage:
+    (post-test-helpers-treasury-received-debits {})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/received_debits"}))
 
-(defn create-test-helpers [id params]
-  """
-  Test mode: Succeed an InboundTransfer
-
-  HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/inbound_transfers/{id}/succeed
-
-  Path Parameters:
-    - id: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/inbound_transfers/" id "/succeed") params))
-
-(defn create-test-helpers [personalization_design params]
-  """
-  Reject a testmode personalization design
+(defn post-test-helpers-treasury-inbound-transfers-id-succeed [{:keys [inbound-transfer-id]}]
+  "Test mode: Succeed an InboundTransfer
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/personalization_designs/{personalization_design}/reject
+  Endpoint: /v1/test_helpers/treasury/inbound_transfers/{inbound-transfer-id}/succeed
 
   Path Parameters:
-    - personalization_design: Path parameter.
+    - inbound-transfer-id: The inbound-transfer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/personalization_designs/" personalization_design "/reject") params))
+  Example Usage:
+    (post-test-helpers-treasury-inbound-transfers-id-succeed {:inbound-transfer-id example-inbound-transfer-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/inbound_transfers/{inbound-transfer-id}/succeed" :path-params {:inbound-transfer-id inbound-transfer-id}}))
 
-(defn create-test-helpers [authorization params]
-  """
-  Reverse a test-mode authorization
+(defn post-test-helpers-issuing-settlements-settlement-complete [{:keys [settlement-id]}]
+  "Complete a test-mode settlement
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization}/reverse
+  Endpoint: /v1/test_helpers/issuing/settlements/{settlement-id}/complete
 
   Path Parameters:
-    - authorization: Path parameter.
+    - settlement-id: The settlement token to mark as complete.
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/authorizations/" authorization "/reverse") params))
+  Example Usage:
+    (post-test-helpers-issuing-settlements-settlement-complete {:settlement-id example-settlement-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/settlements/{settlement-id}/complete" :path-params {:settlement-id settlement-id}}))
 
-(defn create-test-helpers [id params]
-  """
-  Test mode: Return an OutboundPayment
+(defn post-test-helpers-issuing-personalization-designs-personalization-design-reject [{:keys [personalization-design-id]}]
+  "Reject a testmode personalization design
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/outbound_payments/{id}/return
+  Endpoint: /v1/test_helpers/issuing/personalization_designs/{personalization-design-id}/reject
 
   Path Parameters:
-    - id: Path parameter.
+    - personalization-design-id: The personalization-design-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/outbound_payments/" id "/return") params))
+  Example Usage:
+    (post-test-helpers-issuing-personalization-designs-personalization-design-reject {:personalization-design-id example-personalization-design-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/personalization_designs/{personalization-design-id}/reject" :path-params {:personalization-design-id personalization-design-id}}))
 
-(defn create-test-helpers [id params]
-  """
-  Test mode: Fail an InboundTransfer
+(defn post-test-helpers-issuing-authorizations-authorization-reverse [{:keys [authorization-id]}]
+  "Reverse a test-mode authorization
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/inbound_transfers/{id}/fail
+  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization-id}/reverse
 
   Path Parameters:
-    - id: Path parameter.
+    - authorization-id: The authorization-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/inbound_transfers/" id "/fail") params))
+  Example Usage:
+    (post-test-helpers-issuing-authorizations-authorization-reverse {:authorization-id example-authorization-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/authorizations/{authorization-id}/reverse" :path-params {:authorization-id authorization-id}}))
 
-(defn create-test-helpers [params]
-  """
-  Test mode: Create a ReceivedCredit
+(defn post-test-helpers-treasury-outbound-payments-id-return [{:keys [outbound-payment-id]}]
+  "Test mode: Return an OutboundPayment
+
+  HTTP Method: POST
+  Endpoint: /v1/test_helpers/treasury/outbound_payments/{outbound-payment-id}/return
+
+  Path Parameters:
+    - outbound-payment-id: The outbound-payment-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-test-helpers-treasury-outbound-payments-id-return {:outbound-payment-id example-outbound-payment-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/outbound_payments/{outbound-payment-id}/return" :path-params {:outbound-payment-id outbound-payment-id}}))
+
+(defn post-test-helpers-treasury-inbound-transfers-id-fail [{:keys [inbound-transfer-id]}]
+  "Test mode: Fail an InboundTransfer
+
+  HTTP Method: POST
+  Endpoint: /v1/test_helpers/treasury/inbound_transfers/{inbound-transfer-id}/fail
+
+  Path Parameters:
+    - inbound-transfer-id: The inbound-transfer-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-test-helpers-treasury-inbound-transfers-id-fail {:inbound-transfer-id example-inbound-transfer-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/inbound_transfers/{inbound-transfer-id}/fail" :path-params {:inbound-transfer-id inbound-transfer-id}}))
+
+(defn post-test-helpers-treasury-received-credits [{:keys []}]
+  "Test mode: Create a ReceivedCredit
 
   HTTP Method: POST
   Endpoint: /v1/test_helpers/treasury/received_credits
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/received_credits") params))
+  Example Usage:
+    (post-test-helpers-treasury-received-credits {})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/received_credits"}))
 
-(defn create-test-helpers [card params]
-  """
-  Return a testmode card
-
-  HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/cards/{card}/shipping/return
-
-  Path Parameters:
-    - card: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/cards/" card "/shipping/return") params))
-
-(defn create-test-helpers [personalization_design params]
-  """
-  Deactivate a testmode personalization design
+(defn post-test-helpers-issuing-cards-card-shipping-return [{:keys [card-id]}]
+  "Return a testmode card
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/personalization_designs/{personalization_design}/deactivate
+  Endpoint: /v1/test_helpers/issuing/cards/{card-id}/shipping/return
 
   Path Parameters:
-    - personalization_design: Path parameter.
+    - card-id: The card-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/personalization_designs/" personalization_design "/deactivate") params))
+  Example Usage:
+    (post-test-helpers-issuing-cards-card-shipping-return {:card-id example-card-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/cards/{card-id}/shipping/return" :path-params {:card-id card-id}}))
 
-(defn create-test-helpers [outbound_transfer params]
-  """
-  Test mode: Fail an OutboundTransfer
+(defn post-test-helpers-issuing-personalization-designs-personalization-design-deactivate [{:keys [personalization-design-id]}]
+  "Deactivate a testmode personalization design
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/fail
+  Endpoint: /v1/test_helpers/issuing/personalization_designs/{personalization-design-id}/deactivate
 
   Path Parameters:
-    - outbound_transfer: Path parameter.
+    - personalization-design-id: The personalization-design-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/outbound_transfers/" outbound_transfer "/fail") params))
+  Example Usage:
+    (post-test-helpers-issuing-personalization-designs-personalization-design-deactivate {:personalization-design-id example-personalization-design-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/personalization_designs/{personalization-design-id}/deactivate" :path-params {:personalization-design-id personalization-design-id}}))
 
-(defn create-test-helpers [params]
-  """
-  Create a test Confirmation Token
+(defn post-test-helpers-treasury-outbound-transfers-outbound-transfer-fail [{:keys [outbound-transfer-id]}]
+  "Test mode: Fail an OutboundTransfer
+
+  HTTP Method: POST
+  Endpoint: /v1/test_helpers/treasury/outbound_transfers/{outbound-transfer-id}/fail
+
+  Path Parameters:
+    - outbound-transfer-id: The outbound-transfer-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-test-helpers-treasury-outbound-transfers-outbound-transfer-fail {:outbound-transfer-id example-outbound-transfer-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/outbound_transfers/{outbound-transfer-id}/fail" :path-params {:outbound-transfer-id outbound-transfer-id}}))
+
+(defn create-test-helpers-confirmation-tokens [{:keys []}]
+  "Create a test Confirmation Token
 
   HTTP Method: POST
   Endpoint: /v1/test_helpers/confirmation_tokens
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/confirmation_tokens") params))
+  Example Usage:
+    (create-test-helpers-confirmation-tokens {})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/confirmation_tokens"}))
 
-(defn delete-test-helpers [test_clock params]
-  """
-  Delete a test clock
+(defn delete-test-helpers-test-clocks-test-clock [{:keys [test-clock-id]}]
+  "Delete a test clock
 
   HTTP Method: DELETE
-  Endpoint: /v1/test_helpers/test_clocks/{test_clock}
+  Endpoint: /v1/test_helpers/test_clocks/{test-clock-id}
 
   Path Parameters:
-    - test_clock: Path parameter.
+    - test-clock-id: The test-clock-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :delete (str "/v1/test_helpers/test_clocks/" test_clock "") params))
+  Example Usage:
+    (delete-test-helpers-test-clocks-test-clock {:test-clock-id example-test-clock-id})"
+  (stripe-request :delete {:endpoint "/v1/test_helpers/test_clocks/{test-clock-id}" :path-params {:test-clock-id test-clock-id}}))
 
-(defn retrieve-test-helpers [test_clock params]
-  """
-  Retrieve a test clock
+(defn retrieve-test-helpers-test-clocks-test-clock [{:keys [test-clock-id query-params]}]
+  "Retrieve a test clock
 
   HTTP Method: GET
-  Endpoint: /v1/test_helpers/test_clocks/{test_clock}
+  Endpoint: /v1/test_helpers/test_clocks/{test-clock-id}
 
   Path Parameters:
-    - test_clock: Path parameter.
+    - test-clock-id: The test-clock-id parameter. (required) [type: string]
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded.
+    - expand: Specifies which fields in the response should be expanded. [type: array]
 
-  """
-  (stripe-request :get (str "/v1/test_helpers/test_clocks/" test_clock "") params))
+  Example Usage:
+    (retrieve-test-helpers-test-clocks-test-clock {:test-clock-id example-test-clock-id :query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/test_helpers/test_clocks/{test-clock-id}" :path-params {:test-clock-id test-clock-id} :query-params query-params}))
 
-(defn create-test-helpers [refund params]
-  """
-  Expire a pending refund.
-
-  HTTP Method: POST
-  Endpoint: /v1/test_helpers/refunds/{refund}/expire
-
-  Path Parameters:
-    - refund: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/test_helpers/refunds/" refund "/expire") params))
-
-(defn create-test-helpers [card params]
-  """
-  Fail a testmode card
+(defn post-test-helpers-refunds-refund-expire [{:keys [refund-id]}]
+  "Expire a pending refund.
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/cards/{card}/shipping/fail
+  Endpoint: /v1/test_helpers/refunds/{refund-id}/expire
 
   Path Parameters:
-    - card: Path parameter.
+    - refund-id: The refund-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/cards/" card "/shipping/fail") params))
+  Example Usage:
+    (post-test-helpers-refunds-refund-expire {:refund-id example-refund-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/refunds/{refund-id}/expire" :path-params {:refund-id refund-id}}))
 
-(defn create-test-helpers [authorization params]
-  """
-  Capture a test-mode authorization
+(defn post-test-helpers-issuing-cards-card-shipping-fail [{:keys [card-id]}]
+  "Fail a testmode card
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization}/capture
+  Endpoint: /v1/test_helpers/issuing/cards/{card-id}/shipping/fail
 
   Path Parameters:
-    - authorization: Path parameter.
+    - card-id: The card-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/authorizations/" authorization "/capture") params))
+  Example Usage:
+    (post-test-helpers-issuing-cards-card-shipping-fail {:card-id example-card-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/cards/{card-id}/shipping/fail" :path-params {:card-id card-id}}))
 
-(defn create-test-helpers [id params]
-  """
-  Test mode: Post an OutboundPayment
+(defn post-test-helpers-issuing-authorizations-authorization-capture [{:keys [authorization-id]}]
+  "Capture a test-mode authorization
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/outbound_payments/{id}/post
+  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization-id}/capture
 
   Path Parameters:
-    - id: Path parameter.
+    - authorization-id: The authorization-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/outbound_payments/" id "/post") params))
+  Example Usage:
+    (post-test-helpers-issuing-authorizations-authorization-capture {:authorization-id example-authorization-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/authorizations/{authorization-id}/capture" :path-params {:authorization-id authorization-id}}))
 
-(defn create-test-helpers [outbound_transfer params]
-  """
-  Test mode: Return an OutboundTransfer
+(defn post-test-helpers-treasury-outbound-payments-id-post [{:keys [outbound-payment-id]}]
+  "Test mode: Post an OutboundPayment
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}/return
+  Endpoint: /v1/test_helpers/treasury/outbound_payments/{outbound-payment-id}/post
 
   Path Parameters:
-    - outbound_transfer: Path parameter.
+    - outbound-payment-id: The outbound-payment-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/outbound_transfers/" outbound_transfer "/return") params))
+  Example Usage:
+    (post-test-helpers-treasury-outbound-payments-id-post {:outbound-payment-id example-outbound-payment-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/outbound_payments/{outbound-payment-id}/post" :path-params {:outbound-payment-id outbound-payment-id}}))
 
-(defn create-test-helpers [authorization params]
-  """
-  Respond to fraud challenge
+(defn post-test-helpers-treasury-outbound-transfers-outbound-transfer-return [{:keys [outbound-transfer-id]}]
+  "Test mode: Return an OutboundTransfer
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization}/fraud_challenges/respond
+  Endpoint: /v1/test_helpers/treasury/outbound_transfers/{outbound-transfer-id}/return
 
   Path Parameters:
-    - authorization: Path parameter.
+    - outbound-transfer-id: The outbound-transfer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/authorizations/" authorization "/fraud_challenges/respond") params))
+  Example Usage:
+    (post-test-helpers-treasury-outbound-transfers-outbound-transfer-return {:outbound-transfer-id example-outbound-transfer-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/outbound_transfers/{outbound-transfer-id}/return" :path-params {:outbound-transfer-id outbound-transfer-id}}))
 
-(defn create-test-helpers [authorization params]
-  """
-  Expire a test-mode authorization
+(defn post-test-helpers-issuing-authorizations-authorization-fraud-challenges-respond [{:keys [authorization-id]}]
+  "Respond to fraud challenge
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization}/expire
+  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization-id}/fraud_challenges/respond
 
   Path Parameters:
-    - authorization: Path parameter.
+    - authorization-id: The authorization-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/authorizations/" authorization "/expire") params))
+  Example Usage:
+    (post-test-helpers-issuing-authorizations-authorization-fraud-challenges-respond {:authorization-id example-authorization-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/authorizations/{authorization-id}/fraud_challenges/respond" :path-params {:authorization-id authorization-id}}))
 
-(defn create-test-helpers [customer params]
-  """
-  Fund a test mode cash balance
+(defn post-test-helpers-issuing-authorizations-authorization-expire [{:keys [authorization-id]}]
+  "Expire a test-mode authorization
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/customers/{customer}/fund_cash_balance
+  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization-id}/expire
 
   Path Parameters:
-    - customer: Path parameter.
+    - authorization-id: The authorization-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/customers/" customer "/fund_cash_balance") params))
+  Example Usage:
+    (post-test-helpers-issuing-authorizations-authorization-expire {:authorization-id example-authorization-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/authorizations/{authorization-id}/expire" :path-params {:authorization-id authorization-id}}))
 
-(defn create-test-helpers [test_clock params]
-  """
-  Advance a test clock
+(defn post-test-helpers-customers-customer-fund-cash-balance [{:keys [customer-id]}]
+  "Fund a test mode cash balance
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/test_clocks/{test_clock}/advance
+  Endpoint: /v1/test_helpers/customers/{customer-id}/fund_cash_balance
 
   Path Parameters:
-    - test_clock: Path parameter.
+    - customer-id: The customer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/test_clocks/" test_clock "/advance") params))
+  Example Usage:
+    (post-test-helpers-customers-customer-fund-cash-balance {:customer-id example-customer-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/customers/{customer-id}/fund_cash_balance" :path-params {:customer-id customer-id}}))
 
-(defn create-test-helpers [id params]
-  """
-  Test mode: Return an InboundTransfer
+(defn post-test-helpers-test-clocks-test-clock-advance [{:keys [test-clock-id]}]
+  "Advance a test clock
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/inbound_transfers/{id}/return
+  Endpoint: /v1/test_helpers/test_clocks/{test-clock-id}/advance
 
   Path Parameters:
-    - id: Path parameter.
+    - test-clock-id: The test-clock-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/inbound_transfers/" id "/return") params))
+  Example Usage:
+    (post-test-helpers-test-clocks-test-clock-advance {:test-clock-id example-test-clock-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/test_clocks/{test-clock-id}/advance" :path-params {:test-clock-id test-clock-id}}))
 
-(defn create-test-helpers [outbound_transfer params]
-  """
-  Test mode: Update an OutboundTransfer
+(defn post-test-helpers-treasury-inbound-transfers-id-return [{:keys [inbound-transfer-id]}]
+  "Test mode: Return an InboundTransfer
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/outbound_transfers/{outbound_transfer}
+  Endpoint: /v1/test_helpers/treasury/inbound_transfers/{inbound-transfer-id}/return
 
   Path Parameters:
-    - outbound_transfer: Path parameter.
+    - inbound-transfer-id: The inbound-transfer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/outbound_transfers/" outbound_transfer "") params))
+  Example Usage:
+    (post-test-helpers-treasury-inbound-transfers-id-return {:inbound-transfer-id example-inbound-transfer-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/inbound_transfers/{inbound-transfer-id}/return" :path-params {:inbound-transfer-id inbound-transfer-id}}))
 
-(defn create-test-helpers [personalization_design params]
-  """
-  Activate a testmode personalization design
+(defn post-test-helpers-treasury-outbound-transfers-outbound-transfer [{:keys [outbound-transfer-id]}]
+  "Test mode: Update an OutboundTransfer
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/personalization_designs/{personalization_design}/activate
+  Endpoint: /v1/test_helpers/treasury/outbound_transfers/{outbound-transfer-id}
 
   Path Parameters:
-    - personalization_design: Path parameter.
+    - outbound-transfer-id: The outbound-transfer-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/personalization_designs/" personalization_design "/activate") params))
+  Example Usage:
+    (post-test-helpers-treasury-outbound-transfers-outbound-transfer {:outbound-transfer-id example-outbound-transfer-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/outbound_transfers/{outbound-transfer-id}" :path-params {:outbound-transfer-id outbound-transfer-id}}))
 
-(defn create-test-helpers [params]
-  """
-  Create a test-mode settleemnt
+(defn post-test-helpers-issuing-personalization-designs-personalization-design-activate [{:keys [personalization-design-id]}]
+  "Activate a testmode personalization design
+
+  HTTP Method: POST
+  Endpoint: /v1/test_helpers/issuing/personalization_designs/{personalization-design-id}/activate
+
+  Path Parameters:
+    - personalization-design-id: The personalization-design-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-test-helpers-issuing-personalization-designs-personalization-design-activate {:personalization-design-id example-personalization-design-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/personalization_designs/{personalization-design-id}/activate" :path-params {:personalization-design-id personalization-design-id}}))
+
+(defn create-test-helpers-issuing-settlements [{:keys []}]
+  "Create a test-mode settleemnt
 
   HTTP Method: POST
   Endpoint: /v1/test_helpers/issuing/settlements
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/settlements") params))
+  Example Usage:
+    (create-test-helpers-issuing-settlements {})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/settlements"}))
 
-(defn create-test-helpers [params]
-  """
-  Create a test-mode unlinked refund
+(defn create-test-helpers-issuing-transactions-create-unlinked-refund [{:keys []}]
+  "Create a test-mode unlinked refund
 
   HTTP Method: POST
   Endpoint: /v1/test_helpers/issuing/transactions/create_unlinked_refund
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/transactions/create_unlinked_refund") params))
+  Example Usage:
+    (create-test-helpers-issuing-transactions-create-unlinked-refund {})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/transactions/create_unlinked_refund"}))
 
-(defn create-test-helpers [authorization params]
-  """
-  Increment a test-mode authorization
-
-  HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization}/increment
-
-  Path Parameters:
-    - authorization: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/authorizations/" authorization "/increment") params))
-
-(defn create-test-helpers [card params]
-  """
-  Ship a testmode card
+(defn post-test-helpers-issuing-authorizations-authorization-increment [{:keys [authorization-id]}]
+  "Increment a test-mode authorization
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/cards/{card}/shipping/ship
+  Endpoint: /v1/test_helpers/issuing/authorizations/{authorization-id}/increment
 
   Path Parameters:
-    - card: Path parameter.
+    - authorization-id: The authorization-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/cards/" card "/shipping/ship") params))
+  Example Usage:
+    (post-test-helpers-issuing-authorizations-authorization-increment {:authorization-id example-authorization-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/authorizations/{authorization-id}/increment" :path-params {:authorization-id authorization-id}}))
 
-(defn create-test-helpers [card params]
-  """
-  Deliver a testmode card
+(defn post-test-helpers-issuing-cards-card-shipping-ship [{:keys [card-id]}]
+  "Ship a testmode card
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/cards/{card}/shipping/deliver
+  Endpoint: /v1/test_helpers/issuing/cards/{card-id}/shipping/ship
 
   Path Parameters:
-    - card: Path parameter.
+    - card-id: The card-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/cards/" card "/shipping/deliver") params))
+  Example Usage:
+    (post-test-helpers-issuing-cards-card-shipping-ship {:card-id example-card-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/cards/{card-id}/shipping/ship" :path-params {:card-id card-id}}))
 
-(defn create-test-helpers [reader params]
-  """
-  Simulate presenting a payment method
+(defn post-test-helpers-issuing-cards-card-shipping-deliver [{:keys [card-id]}]
+  "Deliver a testmode card
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/terminal/readers/{reader}/present_payment_method
+  Endpoint: /v1/test_helpers/issuing/cards/{card-id}/shipping/deliver
 
   Path Parameters:
-    - reader: Path parameter.
+    - card-id: The card-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/terminal/readers/" reader "/present_payment_method") params))
+  Example Usage:
+    (post-test-helpers-issuing-cards-card-shipping-deliver {:card-id example-card-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/cards/{card-id}/shipping/deliver" :path-params {:card-id card-id}}))
 
-(defn retrieve-test-helpers [params]
-  """
-  List all test clocks
+(defn post-test-helpers-terminal-readers-reader-present-payment-method [{:keys [reader-id]}]
+  "Simulate presenting a payment method
+
+  HTTP Method: POST
+  Endpoint: /v1/test_helpers/terminal/readers/{reader-id}/present_payment_method
+
+  Path Parameters:
+    - reader-id: The reader-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-test-helpers-terminal-readers-reader-present-payment-method {:reader-id example-reader-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/terminal/readers/{reader-id}/present_payment_method" :path-params {:reader-id reader-id}}))
+
+(defn list-all-test-helpers-test-clocks [{:keys [query-params]}]
+  "List all test clocks
 
   HTTP Method: GET
   Endpoint: /v1/test_helpers/test_clocks
 
   Query Parameters:
-    - ending_before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand: Specifies which fields in the response should be expanded.
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting_after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
+    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
+    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
 
-  """
-  (stripe-request :get (str "/v1/test_helpers/test_clocks") params))
+  Example Usage:
+    (list-all-test-helpers-test-clocks {:query-params {:limit 10}})"
+  (stripe-request :get {:endpoint "/v1/test_helpers/test_clocks" :query-params query-params}))
 
-(defn create-test-helpers [params]
-  """
-  Create a test clock
+(defn create-test-helpers-test-clocks [{:keys []}]
+  "Create a test clock
 
   HTTP Method: POST
   Endpoint: /v1/test_helpers/test_clocks
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/test_clocks") params))
+  Example Usage:
+    (create-test-helpers-test-clocks {})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/test_clocks"}))
 
-(defn create-test-helpers [params]
-  """
-  Create a test-mode force capture
+(defn create-test-helpers-issuing-transactions-create-force-capture [{:keys []}]
+  "Create a test-mode force capture
 
   HTTP Method: POST
   Endpoint: /v1/test_helpers/issuing/transactions/create_force_capture
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/transactions/create_force_capture") params))
+  Example Usage:
+    (create-test-helpers-issuing-transactions-create-force-capture {})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/transactions/create_force_capture"}))
 
-(defn create-test-helpers [id params]
-  """
-  Test mode: Update an OutboundPayment
-
-  HTTP Method: POST
-  Endpoint: /v1/test_helpers/treasury/outbound_payments/{id}
-
-  Path Parameters:
-    - id: Path parameter.
-
-  """
-  (stripe-request :post (str "/v1/test_helpers/treasury/outbound_payments/" id "") params))
-
-(defn create-test-helpers [card params]
-  """
-  Submit a testmode card
+(defn post-test-helpers-treasury-outbound-payments-id [{:keys [outbound-payment-id]}]
+  "Test mode: Update an OutboundPayment
 
   HTTP Method: POST
-  Endpoint: /v1/test_helpers/issuing/cards/{card}/shipping/submit
+  Endpoint: /v1/test_helpers/treasury/outbound_payments/{outbound-payment-id}
 
   Path Parameters:
-    - card: Path parameter.
+    - outbound-payment-id: The outbound-payment-id parameter. (required) [type: string]
 
-  """
-  (stripe-request :post (str "/v1/test_helpers/issuing/cards/" card "/shipping/submit") params))
+  Example Usage:
+    (post-test-helpers-treasury-outbound-payments-id {:outbound-payment-id example-outbound-payment-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/treasury/outbound_payments/{outbound-payment-id}" :path-params {:outbound-payment-id outbound-payment-id}}))
+
+(defn post-test-helpers-issuing-cards-card-shipping-submit [{:keys [card-id]}]
+  "Submit a testmode card
+
+  HTTP Method: POST
+  Endpoint: /v1/test_helpers/issuing/cards/{card-id}/shipping/submit
+
+  Path Parameters:
+    - card-id: The card-id parameter. (required) [type: string]
+
+  Example Usage:
+    (post-test-helpers-issuing-cards-card-shipping-submit {:card-id example-card-id})"
+  (stripe-request :post {:endpoint "/v1/test_helpers/issuing/cards/{card-id}/shipping/submit" :path-params {:card-id card-id}}))
