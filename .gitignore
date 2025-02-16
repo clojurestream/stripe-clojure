@@ -12,7 +12,7 @@
 .cpcache
 .eastwood
 .factorypath
-.github
+.github/workflows
 .hg/
 .hgignore
 .idea
