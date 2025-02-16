@@ -27,7 +27,9 @@
 
 (defn send
   [method url {:keys [headers body as timeout query-params] :or {headers {}, as :json, timeout 10}}]
-  (let [url (if query-params (str url "?" (build-query-string query-params)))
+  (let [url (if query-params
+              (str url "?" (build-query-string query-params))
+              url)
         request-builder (-> (HttpRequest/newBuilder)
                           (.uri (URI/create url))
                           (.timeout (Duration/ofSeconds timeout))
@@ -54,9 +56,22 @@
       (catch Exception e
         {:error (.getMessage e)}))))
 
-(def stripe-base-url "https://api.stripe.com/")
+(def stripe-base-url "https://api.stripe.com")
+
+(defn interpolate-endpoint [endpoint path-params]
+  (reduce (fn [s [k v]]
+            (string/replace s (str "{" (name k) "}") (str v)))
+    endpoint
+    path-params))
 
 (defn stripe-request
   [method params]
-  (send method (str stripe-base-url (:endpoint params))
-    (merge {:headers {"Authorization" (str "Bearer " api/*stripe-api-key*)}} params)))
+  (let [raw-endpoint (:endpoint params)
+        path-params  (:path-params params)
+        endpoint     (if path-params
+                       (interpolate-endpoint raw-endpoint path-params)
+                       raw-endpoint)
+        url          (str stripe-base-url endpoint)]
+    (send method url
+      (merge {:headers {"Authorization" (str "Bearer " api/*stripe-api-key*)}}
+        params))))
