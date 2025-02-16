@@ -1,10 +1,9 @@
 (ns stream.clojure.stripe.api.account-links
   "Info: This ns is auto-generated from the Stripe OpenAPI spec."
-  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn create-account-links [{:keys []}]
+(defn create-account-links
   "Create an account link
 
   HTTP Method: POST
@@ -12,4 +11,5 @@
 
   Example Usage:
     (create-account-links {})"
+  [{:keys []}]
   (stripe-request :post {:endpoint "/v1/account_links"}))

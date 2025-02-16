@@ -29,13 +29,15 @@
 
 ;; Step 3: Helpers for Function Generation
 
-(defn extract-resource [path]
+(defn extract-resource
   "Extracts the resource type from a Stripe API path.
    Example: \"/v1/customers/{customer}/bank_accounts\" → \"customers\"."
+  [path]
   (second (string/split (name path) #"/" 3)))
 
-(defn extract-path-params [path]
+(defn extract-path-params
   "Extracts path parameters (e.g. {customer}) from a URL string."
+  [path]
   (let [path-str (name path)]
     (map #(subs % 1 (dec (count %)))
       (re-seq #"\{[^\}]+\}" path-str))))
@@ -55,8 +57,9 @@
     (string/replace #"([A-Z]+)([A-Z][a-z])" "$1-$2")
     (string/lower-case)))
 
-(defn singularize [s]
+(defn singularize
   "A simple singularization: if s ends with an \"s\" and is longer than one character, remove it."
+  [s]
   (if (and (> (count s) 1)
         (.endsWith s "s"))
     (subs s 0 (dec (count s)))
@@ -142,7 +145,7 @@
         keys-str (if (seq query-param-objs)
                    (str base (when (not (empty? base)) " ") "query-params")
                    base)]
-    (str "[{:keys [" keys-str "]}]")))
+    (str "  [{:keys [" keys-str "]}]")))
 
 ;; Helper: Replace each parameter placeholder in the path with its descriptive version.
 (defn descriptive-endpoint [path]
@@ -165,8 +168,9 @@
                        "")
                raw-desc (or (:description q)
                       (str "The " qkey " parameter."))
-               desc (replace-double-with-single raw-desc)]
-           (str "    - " qkey ": " desc (when (:required q) " (required)") " [type: " (or (get-in q [:schema :type]) "unknown") "]" extra)))
+               desc (replace-double-with-single raw-desc)
+               type (string/capitalize (get-in q [:schema :type] "Unknown"))]
+           (str "    - " qkey " (" type "): " desc  (when (:required q) " (required)") extra)))
     query-param-objs))
 
 (defn generate-example-usage [path query-param-objs fn-name]
@@ -196,11 +200,12 @@
                                                          (= (:in %) "path"))
                                                    %)
                                             parameters)
+                                type (string/capitalize (get-in param-def [:schema :type] "Unknown"))
                                 desc (if param-def
                                        (or (:description param-def)
-                                         (str "The " (name dkey) " parameter. (required) [type: " (or (get-in param-def [:schema :type]) "string") "]"))
-                                       (str "The " (name dkey) " parameter. (required) [type: string]"))]
-                            (str "    - " (name dkey) ": " desc)))
+                                         (str "The " (name dkey) " parameter. (required)"))
+                                       (str "The " (name dkey) " parameter. (required)"))]
+                            (str "    - " (name dkey) " (" type "): " desc)))
                      path-tokens)
         ;; Build documentation for query parameters.
         query-docs (generate-query-param-docs query-param-objs)
@@ -238,8 +243,9 @@
                       (str "  Query Parameters:\n" (string/join "\n" query-docs) "\n\n"))
                     usage
                     "\"")]
-    (str "\n(defn " fn-name " " destructuring "\n"
+    (str "\n(defn " fn-name "\n"
       docstring "\n"
+      destructuring "\n"
       "  (stripe-request " method " " request-map "))")))
 
 ;; Step 4: Ensure Directory Exists & Write to File
@@ -263,11 +269,9 @@
                         (let [unique-name (unique-function-name @fn-names ep)]
                           (swap! fn-names conj unique-name)
                           (generate-function-with-name unique-name ep schema)))
-            exclude-str "  (:refer-clojure :exclude [list get update])\n"
             info-str "  \"Info: This ns is auto-generated from the Stripe OpenAPI spec.\"\n"
             content (str "(ns " ns-name "\n"
                       info-str
-                      exclude-str
                       "  (:require [stream.clojure.stripe.request :refer [stripe-request]]))\n\n"
                       (string/join "\n" functions))]
         (ensure-directory "src/main/stream/clojure/stripe/api/")

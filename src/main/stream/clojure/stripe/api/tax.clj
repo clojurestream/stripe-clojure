@@ -1,39 +1,40 @@
 (ns stream.clojure.stripe.api.tax
   "Info: This ns is auto-generated from the Stripe OpenAPI spec."
-  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn retrieve-registrations-id [{:keys [registration-id query-params]}]
+(defn retrieve-registrations-id
   "Retrieve a registration
 
   HTTP Method: GET
   Endpoint: /v1/tax/registrations/{registration-id}
 
   Path Parameters:
-    - registration-id: The registration-id parameter. (required) [type: string]
+    - registration-id (String): The registration-id parameter. (required)
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - expand (Array): Specifies which fields in the response should be expanded.
 
   Example Usage:
     (retrieve-registrations-id {:registration-id example-registration-id :query-params {:limit 10}})"
+  [{:keys [registration-id query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/registrations/{registration-id}" :path-params {:registration-id registration-id} :query-params query-params}))
 
-(defn update-registrations-id [{:keys [registration-id]}]
+(defn update-registrations-id
   "Update a registration
 
   HTTP Method: POST
   Endpoint: /v1/tax/registrations/{registration-id}
 
   Path Parameters:
-    - registration-id: The registration-id parameter. (required) [type: string]
+    - registration-id (String): The registration-id parameter. (required)
 
   Example Usage:
     (update-registrations-id {:registration-id example-registration-id})"
+  [{:keys [registration-id]}]
   (stripe-request :post {:endpoint "/v1/tax/registrations/{registration-id}" :path-params {:registration-id registration-id}}))
 
-(defn create-transactions-create-reversal [{:keys []}]
+(defn create-transactions-create-reversal
   "Create a reversal transaction
 
   HTTP Method: POST
@@ -41,25 +42,27 @@
 
   Example Usage:
     (create-transactions-create-reversal {})"
+  [{:keys []}]
   (stripe-request :post {:endpoint "/v1/tax/transactions/create_reversal"}))
 
-(defn retrieve-transactions-transaction [{:keys [transaction-id query-params]}]
+(defn retrieve-transactions-transaction
   "Retrieve a transaction
 
   HTTP Method: GET
   Endpoint: /v1/tax/transactions/{transaction-id}
 
   Path Parameters:
-    - transaction-id: The transaction-id parameter. (required) [type: string]
+    - transaction-id (String): The transaction-id parameter. (required)
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - expand (Array): Specifies which fields in the response should be expanded.
 
   Example Usage:
     (retrieve-transactions-transaction {:transaction-id example-transaction-id :query-params {:limit 10}})"
+  [{:keys [transaction-id query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/transactions/{transaction-id}" :path-params {:transaction-id transaction-id} :query-params query-params}))
 
-(defn create-transactions-create-from-calculation [{:keys []}]
+(defn create-transactions-create-from-calculation
   "Create a transaction from a calculation
 
   HTTP Method: POST
@@ -67,41 +70,44 @@
 
   Example Usage:
     (create-transactions-create-from-calculation {})"
+  [{:keys []}]
   (stripe-request :post {:endpoint "/v1/tax/transactions/create_from_calculation"}))
 
-(defn list-all-calculations-calculation-line-items [{:keys [calculation-id query-params]}]
+(defn list-all-calculations-calculation-line-items
   "Retrieve a calculation's line items
 
   HTTP Method: GET
   Endpoint: /v1/tax/calculations/{calculation-id}/line_items
 
   Path Parameters:
-    - calculation-id: The calculation-id parameter. (required) [type: string]
+    - calculation-id (String): The calculation-id parameter. (required)
 
   Query Parameters:
-    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
-    - expand: Specifies which fields in the response should be expanded. [type: array]
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
-    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
+    - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
+    - expand (Array): Specifies which fields in the response should be expanded.
+    - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
+    - starting-after (String): A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   Example Usage:
     (list-all-calculations-calculation-line-items {:calculation-id example-calculation-id :query-params {:limit 10}})"
+  [{:keys [calculation-id query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/calculations/{calculation-id}/line_items" :path-params {:calculation-id calculation-id} :query-params query-params}))
 
-(defn list-all-settings [{:keys [query-params]}]
+(defn list-all-settings
   "Retrieve settings
 
   HTTP Method: GET
   Endpoint: /v1/tax/settings
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - expand (Array): Specifies which fields in the response should be expanded.
 
   Example Usage:
     (list-all-settings {:query-params {:limit 10}})"
+  [{:keys [query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/settings" :query-params query-params}))
 
-(defn update-settings [{:keys []}]
+(defn update-settings
   "Update settings
 
   HTTP Method: POST
@@ -109,26 +115,28 @@
 
   Example Usage:
     (update-settings {})"
+  [{:keys []}]
   (stripe-request :post {:endpoint "/v1/tax/settings"}))
 
-(defn list-all-registrations [{:keys [query-params]}]
+(defn list-all-registrations
   "List registrations
 
   HTTP Method: GET
   Endpoint: /v1/tax/registrations
 
   Query Parameters:
-    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
-    - expand: Specifies which fields in the response should be expanded. [type: array]
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
-    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
-    - status: The status of the Tax Registration. [type: string]
+    - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
+    - expand (Array): Specifies which fields in the response should be expanded.
+    - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
+    - starting-after (String): A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - status (String): The status of the Tax Registration.
 
   Example Usage:
     (list-all-registrations {:query-params {:limit 10}})"
+  [{:keys [query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/registrations" :query-params query-params}))
 
-(defn create-registrations [{:keys []}]
+(defn create-registrations
   "Create a registration
 
   HTTP Method: POST
@@ -136,9 +144,10 @@
 
   Example Usage:
     (create-registrations {})"
+  [{:keys []}]
   (stripe-request :post {:endpoint "/v1/tax/registrations"}))
 
-(defn create-calculations [{:keys []}]
+(defn create-calculations
   "Create a Tax Calculation
 
   HTTP Method: POST
@@ -146,39 +155,42 @@
 
   Example Usage:
     (create-calculations {})"
+  [{:keys []}]
   (stripe-request :post {:endpoint "/v1/tax/calculations"}))
 
-(defn list-all-transactions-transaction-line-items [{:keys [transaction-id query-params]}]
+(defn list-all-transactions-transaction-line-items
   "Retrieve a transaction's line items
 
   HTTP Method: GET
   Endpoint: /v1/tax/transactions/{transaction-id}/line_items
 
   Path Parameters:
-    - transaction-id: The transaction-id parameter. (required) [type: string]
+    - transaction-id (String): The transaction-id parameter. (required)
 
   Query Parameters:
-    - ending-before: A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list. [type: string]
-    - expand: Specifies which fields in the response should be expanded. [type: array]
-    - limit: A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10. [type: integer]
-    - starting-after: A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list. [type: string]
+    - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
+    - expand (Array): Specifies which fields in the response should be expanded.
+    - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
+    - starting-after (String): A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
   Example Usage:
     (list-all-transactions-transaction-line-items {:transaction-id example-transaction-id :query-params {:limit 10}})"
+  [{:keys [transaction-id query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/transactions/{transaction-id}/line_items" :path-params {:transaction-id transaction-id} :query-params query-params}))
 
-(defn retrieve-calculations-calculation [{:keys [calculation-id query-params]}]
+(defn retrieve-calculations-calculation
   "Retrieve a Tax Calculation
 
   HTTP Method: GET
   Endpoint: /v1/tax/calculations/{calculation-id}
 
   Path Parameters:
-    - calculation-id: The calculation-id parameter. (required) [type: string]
+    - calculation-id (String): The calculation-id parameter. (required)
 
   Query Parameters:
-    - expand: Specifies which fields in the response should be expanded. [type: array]
+    - expand (Array): Specifies which fields in the response should be expanded.
 
   Example Usage:
     (retrieve-calculations-calculation {:calculation-id example-calculation-id :query-params {:limit 10}})"
+  [{:keys [calculation-id query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/calculations/{calculation-id}" :path-params {:calculation-id calculation-id} :query-params query-params}))
