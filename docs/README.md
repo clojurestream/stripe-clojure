@@ -100,7 +100,7 @@ This breaks down as follows:
 
 
 - **SDK Version:**  
-  `clj-sdk-0.0.6`
+  `clojure-sdk-0.0.6`
   - This follows standard semantic versioning (X.Y.Z) for our Clojure SDK.
   - Changes to this version reflect updates, bug fixes, or potential breaking changes in our client library, independent of the underlying API.
 
