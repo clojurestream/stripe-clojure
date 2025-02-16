@@ -25,7 +25,7 @@ The following behaviors are considered unacceptable within this community:
 ## 4. Reporting Violations
 If you experience or witness behavior that violates this Code of Conduct, you are encouraged to report it by:
 
-- **Email:** [conduct@clojure.stream](mailto:conduct@clojure.stream)
+- **Email:** [compliance@clojure.stream](mailto:compliance@clojure.stream)
 
 Reports will be handled with discretion and confidentiality. The community moderators or organizers will review reports and take appropriate action.
 
