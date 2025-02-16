@@ -10,3 +10,5 @@
 (count (-> (products/list-all {:query-params {:limit 2}}) :body :data))
 
 (customers/list-all {:query-params {:limit 1}})
+
+(customers/retrieve-customer {:customer-id "cus_OW1RKPdJ5FUoEz"})

@@ -1,10 +1,9 @@
 (ns stream.clojure.stripe.api.customer-sessions
   "Info: This ns is auto-generated from the Stripe OpenAPI spec."
-  (:refer-clojure :exclude [list get update])
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn create-customer-sessions [{:keys []}]
+(defn create-customer-sessions
   "Create a Customer Session
 
   HTTP Method: POST
@@ -12,4 +11,5 @@
 
   Example Usage:
     (create-customer-sessions {})"
+  [{:keys []}]
   (stripe-request :post {:endpoint "/v1/customer_sessions"}))
