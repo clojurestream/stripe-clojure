@@ -13,11 +13,28 @@
     (string/replace #"([a-z])([A-Z])" "$1-$2")
     (string/lower-case)))
 
+(defn flatten-params
+  "Flattens nested maps into bracket notation for Stripe API.
+   {:foo 1 :bar {:baz 2}} => [[\"foo\" 1] [\"bar[baz]\" 2]]"
+  ([params] (flatten-params params nil))
+  ([params prefix]
+   (reduce-kv
+     (fn [acc k v]
+       (let [key-name (name k)
+             full-key (if prefix
+                        (str prefix "[" key-name "]")
+                        key-name)]
+         (if (map? v)
+           (into acc (flatten-params v full-key))
+           (conj acc [full-key v]))))
+     []
+     params)))
+
 (defn build-query-string [qp]
-  (->> qp
-    (map (fn [[k v]]
-           (str (name k) "=" (URLEncoder/encode (str v) "UTF-8"))))
-    (clojure.string/join "&")))
+  (->> (flatten-params qp)
+       (map (fn [[k v]]
+              (str k "=" (URLEncoder/encode (str v) "UTF-8"))))
+       (string/join "&")))
 
 (defonce ^HttpClient client
   (-> (HttpClient/newBuilder)
@@ -47,7 +64,6 @@
                   (= method :put) (.PUT request-builder (HttpRequest$BodyPublishers/ofString json-body))
                   :else (throw (IllegalArgumentException. (str "Unsupported HTTP method: " method))))
         response (.send client (.build request) (HttpResponse$BodyHandlers/ofString))]
-    (prn :req-builder request-builder)
     (try
       {:status (.statusCode response)
        :body (if (= as :json)
