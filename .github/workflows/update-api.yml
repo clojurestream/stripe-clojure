@@ -1,0 +1,99 @@
+name: Check Stripe API Updates
+
+on:
+  schedule:
+    # Run daily at 9:00 UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  check-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Clojure
+        uses: DeLaGuardo/setup-clojure@12.5
+        with:
+          cli: latest
+
+      - name: Cache deps
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.gitlibs
+            ~/.clojure/.cpcache
+          key: ${{ runner.os }}-clojure-${{ hashFiles('**/deps.edn') }}
+          restore-keys: |
+            ${{ runner.os }}-clojure-
+
+      - name: Get current Stripe API version
+        id: current
+        run: |
+          VERSION=$(grep -oP 'stripe-api-version "\K[^"]+' src/dev/versions.clj || echo "unknown")
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Fetch latest Stripe API version
+        id: latest
+        run: |
+          VERSION=$(curl -s https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json | jq -r '.info.version')
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if update needed
+        id: check
+        run: |
+          if [ "${{ steps.current.outputs.VERSION }}" != "${{ steps.latest.outputs.VERSION }}" ]; then
+            echo "UPDATE_NEEDED=true" >> $GITHUB_OUTPUT
+            echo "Update available: ${{ steps.current.outputs.VERSION }} -> ${{ steps.latest.outputs.VERSION }}"
+          else
+            echo "UPDATE_NEEDED=false" >> $GITHUB_OUTPUT
+            echo "Already up to date: ${{ steps.current.outputs.VERSION }}"
+          fi
+
+      - name: Regenerate SDK
+        if: steps.check.outputs.UPDATE_NEEDED == 'true'
+        run: |
+          # Remove auto-execution line temporarily, run generator, restore
+          sed -i 's/^(generate-stripe-clojure-sdk)$/;; (generate-stripe-clojure-sdk)/' src/main/stream/clojure/stripe/generator.clj
+          clojure -M -e "(require '[stream.clojure.stripe.generator :as gen]) (gen/generate-stripe-clojure-sdk)"
+          sed -i 's/^;; (generate-stripe-clojure-sdk)$/(generate-stripe-clojure-sdk)/' src/main/stream/clojure/stripe/generator.clj
+
+      - name: Run tests
+        if: steps.check.outputs.UPDATE_NEEDED == 'true'
+        run: clojure -M:test
+
+      - name: Create Pull Request
+        if: steps.check.outputs.UPDATE_NEEDED == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "feat: Update to Stripe API ${{ steps.latest.outputs.VERSION }}"
+          title: "Update to Stripe API ${{ steps.latest.outputs.VERSION }}"
+          body: |
+            ## Stripe API Update
+
+            This PR was automatically generated to update the SDK to the latest Stripe API version.
+
+            **Changes:**
+            - Previous version: `${{ steps.current.outputs.VERSION }}`
+            - New version: `${{ steps.latest.outputs.VERSION }}`
+
+            **Verification:**
+            - [x] SDK regenerated from OpenAPI spec
+            - [x] Tests passed
+
+            Please review the generated code changes before merging.
+          branch: update-stripe-api-${{ steps.latest.outputs.VERSION }}
+          delete-branch: true
+          labels: |
+            automated
+            stripe-api-update
