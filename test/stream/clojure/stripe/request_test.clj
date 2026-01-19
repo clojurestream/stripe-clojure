@@ -142,8 +142,8 @@
 ;;; ---------------------------------------------------------------------------
 
 (deftest configuration-test
-  (testing "stripe-base-url is correct"
-    (is (= "https://api.stripe.com" request/stripe-base-url)))
+  (testing "*stripe-base-url* is correct"
+    (is (= "https://api.stripe.com" request/*stripe-base-url*)))
 
   (testing "user-agent contains version info"
     (is (string/includes? request/user-agent "stripe-clojure/"))

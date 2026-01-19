@@ -13,7 +13,7 @@
 ;;; Configuration
 ;;; ---------------------------------------------------------------------------
 
-(def stripe-base-url "https://api.stripe.com")
+(def ^:dynamic *stripe-base-url* "https://api.stripe.com")
 
 (def ^:dynamic *stripe-version* "2025-02-24.acacia")
 
@@ -205,7 +205,7 @@
         endpoint (if path-params
                    (interpolate-endpoint raw-endpoint path-params)
                    raw-endpoint)
-        url (str stripe-base-url endpoint)
+        url (str *stripe-base-url* endpoint)
         idempotency-key (:idempotency-key params)
         base-headers {"Authorization" (str "Bearer " api/*stripe-api-key*)
                       "Stripe-Version" *stripe-version*
