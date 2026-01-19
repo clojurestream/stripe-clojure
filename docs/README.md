@@ -115,13 +115,13 @@ Establish the core architecture and foundational components for API interaction.
 - [x] Standardized Function Naming – Ensured consistency and idiomatic Clojure practices.
 - [x] Improve Developer Experience – Add comprehensive docstrings and REPL-friendly usage guidance.
 - [x] Split Functions by Resource - Add ns fod different resource for easier exploration.
-- [ ] Error Handling & Logging – Provide structured logging and clear error messages for debugging.
+- [x] Error Handling & Logging – Provide structured logging and clear error messages for debugging.
 - [x] Configuration - Centralized client configuration that holds :api-key etc.
 - [x] Versioning - ensures targeting the correct version of the Stripe API while also tracking the evolution of the Clojure SDK
 
 ### Phase 3: Beta 
 Feature-complete but may contain bugs; users can provide feedback.
-- [ ] Automated Testing & CI/CD Pipelines – Ensure continuous validation of API functionality.
+- [x] Automated Testing & CI/CD Pipelines – Ensure continuous validation of API functionality.
 - [ ] Automated Deployment & Distribution – Set up Clojars, GitHub releases, and workflow automation.
 
 #### Early Adopter Phase (Pre-1.0)
