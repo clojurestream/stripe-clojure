@@ -1,6 +1,5 @@
 {:paths
- ["src/dev"
-  "src/main"]
+ ["src/dev" "src/main"]
 
  :deps
  {org.clojure/clojure {:mvn/version "1.12.4"}

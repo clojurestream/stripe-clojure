@@ -9,6 +9,12 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    services:
+      stripe-mock:
+        image: stripe/stripe-mock:latest
+        ports:
+          - 12111:12111
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,8 +43,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-clojure-
 
-      - name: Run tests
+      - name: Run unit tests
         run: clojure -M:test
+
+      - name: Run integration tests
+        run: clojure -M:test-integration
 
       - name: Extract version from tag
         id: version
