@@ -42,6 +42,7 @@
 
   Query Parameters:
     - customer (String): Only return credit grants for this customer.
+    - customer-account (String): Only return credit grants for this account representing the customer.
     - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
     - expand (Array): Specifies which fields in the response should be expanded.
     - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
@@ -133,7 +134,7 @@
   Endpoint: /v1/billing/meters/{meter-id}/deactivate
 
   Path Parameters:
-    - meter-id (String): Unique identifier for the object.
+    - meter-id (String): The meter-id parameter. (required)
 
   Example Usage:
     (post-meters-id-deactivate {:meter-id example-meter-id})"
@@ -237,7 +238,8 @@
   Endpoint: /v1/billing/credit_balance_summary
 
   Query Parameters:
-    - customer (String): The customer for which to fetch credit balance summary. (required)
+    - customer (String): The customer whose credit balance summary you're retrieving.
+    - customer-account (String): The account representing the customer whose credit balance summary you're retrieving.
     - expand (Array): Specifies which fields in the response should be expanded.
     - filter (Object): The filter criteria for the credit balance summary. (required)
 
@@ -253,7 +255,7 @@
   Endpoint: /v1/billing/meters/{meter-id}/reactivate
 
   Path Parameters:
-    - meter-id (String): Unique identifier for the object.
+    - meter-id (String): The meter-id parameter. (required)
 
   Example Usage:
     (post-meters-id-reactivate {:meter-id example-meter-id})"
@@ -313,7 +315,8 @@
 
   Query Parameters:
     - credit-grant (String): The credit grant for which to fetch credit balance transactions.
-    - customer (String): The customer for which to fetch credit balance transactions. (required)
+    - customer (String): The customer whose credit balance transactions you're retrieving.
+    - customer-account (String): The account representing the customer whose credit balance transactions you're retrieving.
     - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
     - expand (Array): Specifies which fields in the response should be expanded.
     - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
@@ -331,7 +334,7 @@
   Endpoint: /v1/billing/meters/{meter-id}
 
   Path Parameters:
-    - meter-id (String): Unique identifier for the object.
+    - meter-id (String): The meter-id parameter. (required)
 
   Query Parameters:
     - expand (Array): Specifies which fields in the response should be expanded.
@@ -348,7 +351,7 @@
   Endpoint: /v1/billing/meters/{meter-id}
 
   Path Parameters:
-    - meter-id (String): Unique identifier for the object.
+    - meter-id (String): The meter-id parameter. (required)
 
   Example Usage:
     (update-meters-id {:meter-id example-meter-id})"

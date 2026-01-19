@@ -20,6 +20,20 @@
   [{:keys [query-params]}]
   (stripe-request :get {:endpoint "/v1/sigma/scheduled_query_runs" :query-params query-params}))
 
+(defn update-saved-queries-id
+  "Update an existing Sigma Query
+
+  HTTP Method: POST
+  Endpoint: /v1/sigma/saved_queries/{saved-querie-id}
+
+  Path Parameters:
+    - saved-querie-id (String): The `id` of the saved query to update. This should be a valid `id` that was previously created.
+
+  Example Usage:
+    (update-saved-queries-id {:saved-querie-id example-saved-querie-id})"
+  [{:keys [saved-querie-id]}]
+  (stripe-request :post {:endpoint "/v1/sigma/saved_queries/{saved-querie-id}" :path-params {:saved-querie-id saved-querie-id}}))
+
 (defn retrieve-scheduled-query-runs-scheduled-query-run
   "Retrieve a scheduled query run
 

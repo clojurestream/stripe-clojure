@@ -31,8 +31,10 @@
     - customer-id (String): The customer-id parameter. (required)
 
   Query Parameters:
+    - created (Unknown): Only return customer balance transactions that were created during the given date interval.
     - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
     - expand (Array): Specifies which fields in the response should be expanded.
+    - invoice (String): Only return transactions that are related to the specified invoice.
     - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
     - starting-after (String): A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
 
@@ -73,21 +75,6 @@
   [{:keys [customer-id payment-method-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}/payment_methods/{payment-method-id}" :path-params {:customer-id customer-id :payment-method-id payment-method-id} :query-params query-params}))
 
-(defn delete-customer-subscriptions-subscription-exposed-id
-  "Cancel a subscription
-
-  HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer-id}/subscriptions/{subscription-id}
-
-  Path Parameters:
-    - customer-id (String): The customer-id parameter. (required)
-    - subscription-id (String): The subscription-id parameter. (required)
-
-  Example Usage:
-    (delete-customer-subscriptions-subscription-exposed-id {:customer-id example-customer-id :subscription-id example-subscription-id})"
-  [{:keys [customer-id subscription-id]}]
-  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}" :path-params {:customer-id customer-id :subscription-id subscription-id}}))
-
 (defn retrieve-customer-subscriptions-subscription-exposed-id
   "Retrieve a subscription
 
@@ -105,6 +92,21 @@
     (retrieve-customer-subscriptions-subscription-exposed-id {:customer-id example-customer-id :subscription-id example-subscription-id :query-params {:limit 10}})"
   [{:keys [customer-id subscription-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}" :path-params {:customer-id customer-id :subscription-id subscription-id} :query-params query-params}))
+
+(defn delete-customer-subscriptions-subscription-exposed-id
+  "Cancel a subscription
+
+  HTTP Method: DELETE
+  Endpoint: /v1/customers/{customer-id}/subscriptions/{subscription-id}
+
+  Path Parameters:
+    - customer-id (String): The customer-id parameter. (required)
+    - subscription-id (String): The subscription-id parameter. (required)
+
+  Example Usage:
+    (delete-customer-subscriptions-subscription-exposed-id {:customer-id example-customer-id :subscription-id example-subscription-id})"
+  [{:keys [customer-id subscription-id]}]
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}" :path-params {:customer-id customer-id :subscription-id subscription-id}}))
 
 (defn update-customer-subscriptions-subscription-exposed-id
   "Update a subscription on a customer
@@ -165,7 +167,7 @@
     - expand (Array): Specifies which fields in the response should be expanded.
     - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
     - page (String): A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
-    - query (String): The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for customers](https://stripe.com/docs/search#query-fields-for-customers). (required)
+    - query (String): The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for customers](https://docs.stripe.com/search#query-fields-for-customers). (required)
 
   Example Usage:
     (list-all-search {:query-params {:limit 10}})"
@@ -226,21 +228,6 @@
   [{:keys [customer-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}/cash_balance_transactions" :path-params {:customer-id customer-id} :query-params query-params}))
 
-(defn delete-customer-subscriptions-subscription-exposed-id-discount
-  "Delete a customer discount
-
-  HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer-id}/subscriptions/{subscription-id}/discount
-
-  Path Parameters:
-    - customer-id (String): The customer-id parameter. (required)
-    - subscription-id (String): The subscription-id parameter. (required)
-
-  Example Usage:
-    (delete-customer-subscriptions-subscription-exposed-id-discount {:customer-id example-customer-id :subscription-id example-subscription-id})"
-  [{:keys [customer-id subscription-id]}]
-  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}/discount" :path-params {:customer-id customer-id :subscription-id subscription-id}}))
-
 (defn list-all-customer-subscriptions-subscription-exposed-id-discount
   "No description available.
 
@@ -258,6 +245,21 @@
     (list-all-customer-subscriptions-subscription-exposed-id-discount {:customer-id example-customer-id :subscription-id example-subscription-id :query-params {:limit 10}})"
   [{:keys [customer-id subscription-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}/discount" :path-params {:customer-id customer-id :subscription-id subscription-id} :query-params query-params}))
+
+(defn delete-customer-subscriptions-subscription-exposed-id-discount
+  "Delete a customer discount
+
+  HTTP Method: DELETE
+  Endpoint: /v1/customers/{customer-id}/subscriptions/{subscription-id}/discount
+
+  Path Parameters:
+    - customer-id (String): The customer-id parameter. (required)
+    - subscription-id (String): The subscription-id parameter. (required)
+
+  Example Usage:
+    (delete-customer-subscriptions-subscription-exposed-id-discount {:customer-id example-customer-id :subscription-id example-subscription-id})"
+  [{:keys [customer-id subscription-id]}]
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}/discount" :path-params {:customer-id customer-id :subscription-id subscription-id}}))
 
 (defn list-all-customer-tax-ids
   "List all Customer tax IDs
@@ -328,21 +330,6 @@
   [{:keys [customer-id]}]
   (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources" :path-params {:customer-id customer-id}}))
 
-(defn delete-customer-bank-accounts-id
-  "Delete a customer source
-
-  HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer-id}/bank_accounts/{bank-account-id}
-
-  Path Parameters:
-    - customer-id (String): The customer-id parameter. (required)
-    - bank-account-id (String): The bank-account-id parameter. (required)
-
-  Example Usage:
-    (delete-customer-bank-accounts-id {:customer-id example-customer-id :bank-account-id example-bank-account-id})"
-  [{:keys [customer-id bank-account-id]}]
-  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id}}))
-
 (defn retrieve-customer-bank-accounts-id
   "Retrieve a bank account
 
@@ -360,6 +347,21 @@
     (retrieve-customer-bank-accounts-id {:customer-id example-customer-id :bank-account-id example-bank-account-id :query-params {:limit 10}})"
   [{:keys [customer-id bank-account-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id} :query-params query-params}))
+
+(defn delete-customer-bank-accounts-id
+  "Delete a customer source
+
+  HTTP Method: DELETE
+  Endpoint: /v1/customers/{customer-id}/bank_accounts/{bank-account-id}
+
+  Path Parameters:
+    - customer-id (String): The customer-id parameter. (required)
+    - bank-account-id (String): The bank-account-id parameter. (required)
+
+  Example Usage:
+    (delete-customer-bank-accounts-id {:customer-id example-customer-id :bank-account-id example-bank-account-id})"
+  [{:keys [customer-id bank-account-id]}]
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id}}))
 
 (defn post-customer-bank-accounts-id
   "No description available.
@@ -439,21 +441,6 @@
   [{:keys [customer-id]}]
   (stripe-request :post {:endpoint "/v1/customers/{customer-id}/subscriptions" :path-params {:customer-id customer-id}}))
 
-(defn delete-customer-sources-id
-  "Delete a customer source
-
-  HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer-id}/sources/{source-id}
-
-  Path Parameters:
-    - customer-id (String): The customer-id parameter. (required)
-    - source-id (String): The source-id parameter. (required)
-
-  Example Usage:
-    (delete-customer-sources-id {:customer-id example-customer-id :source-id example-source-id})"
-  [{:keys [customer-id source-id]}]
-  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id}}))
-
 (defn retrieve-customer-sources-id
   "No description available.
 
@@ -471,6 +458,21 @@
     (retrieve-customer-sources-id {:customer-id example-customer-id :source-id example-source-id :query-params {:limit 10}})"
   [{:keys [customer-id source-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id} :query-params query-params}))
+
+(defn delete-customer-sources-id
+  "Delete a customer source
+
+  HTTP Method: DELETE
+  Endpoint: /v1/customers/{customer-id}/sources/{source-id}
+
+  Path Parameters:
+    - customer-id (String): The customer-id parameter. (required)
+    - source-id (String): The source-id parameter. (required)
+
+  Example Usage:
+    (delete-customer-sources-id {:customer-id example-customer-id :source-id example-source-id})"
+  [{:keys [customer-id source-id]}]
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id}}))
 
 (defn post-customer-sources-id
   "No description available.
@@ -551,21 +553,6 @@
   [{:keys [customer-id]}]
   (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cash_balance" :path-params {:customer-id customer-id}}))
 
-(defn delete-customer-tax-ids-id
-  "Delete a Customer tax ID
-
-  HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer-id}/tax_ids/{tax-id-id}
-
-  Path Parameters:
-    - customer-id (String): The customer-id parameter. (required)
-    - tax-id-id (String): The tax-id-id parameter. (required)
-
-  Example Usage:
-    (delete-customer-tax-ids-id {:customer-id example-customer-id :tax-id-id example-tax-id-id})"
-  [{:keys [customer-id tax-id-id]}]
-  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/tax_ids/{tax-id-id}" :path-params {:customer-id customer-id :tax-id-id tax-id-id}}))
-
 (defn retrieve-customer-tax-ids-id
   "Retrieve a Customer tax ID
 
@@ -584,19 +571,20 @@
   [{:keys [customer-id tax-id-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}/tax_ids/{tax-id-id}" :path-params {:customer-id customer-id :tax-id-id tax-id-id} :query-params query-params}))
 
-(defn delete-customer
-  "Delete a customer
+(defn delete-customer-tax-ids-id
+  "Delete a Customer tax ID
 
   HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer-id}
+  Endpoint: /v1/customers/{customer-id}/tax_ids/{tax-id-id}
 
   Path Parameters:
     - customer-id (String): The customer-id parameter. (required)
+    - tax-id-id (String): The tax-id-id parameter. (required)
 
   Example Usage:
-    (delete-customer {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}" :path-params {:customer-id customer-id}}))
+    (delete-customer-tax-ids-id {:customer-id example-customer-id :tax-id-id example-tax-id-id})"
+  [{:keys [customer-id tax-id-id]}]
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/tax_ids/{tax-id-id}" :path-params {:customer-id customer-id :tax-id-id tax-id-id}}))
 
 (defn retrieve-customer
   "Retrieve a customer
@@ -615,6 +603,20 @@
   [{:keys [customer-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}" :path-params {:customer-id customer-id} :query-params query-params}))
 
+(defn delete-customer
+  "Delete a customer
+
+  HTTP Method: DELETE
+  Endpoint: /v1/customers/{customer-id}
+
+  Path Parameters:
+    - customer-id (String): The customer-id parameter. (required)
+
+  Example Usage:
+    (delete-customer {:customer-id example-customer-id})"
+  [{:keys [customer-id]}]
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}" :path-params {:customer-id customer-id}}))
+
 (defn update-customer
   "Update a customer
 
@@ -628,21 +630,6 @@
     (update-customer {:customer-id example-customer-id})"
   [{:keys [customer-id]}]
   (stripe-request :post {:endpoint "/v1/customers/{customer-id}" :path-params {:customer-id customer-id}}))
-
-(defn delete-customer-cards-id
-  "Delete a customer source
-
-  HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer-id}/cards/{card-id}
-
-  Path Parameters:
-    - customer-id (String): The customer-id parameter. (required)
-    - card-id (String): The card-id parameter. (required)
-
-  Example Usage:
-    (delete-customer-cards-id {:customer-id example-customer-id :card-id example-card-id})"
-  [{:keys [customer-id card-id]}]
-  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id}}))
 
 (defn retrieve-customer-cards-id
   "Retrieve a card
@@ -661,6 +648,21 @@
     (retrieve-customer-cards-id {:customer-id example-customer-id :card-id example-card-id :query-params {:limit 10}})"
   [{:keys [customer-id card-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id} :query-params query-params}))
+
+(defn delete-customer-cards-id
+  "Delete a customer source
+
+  HTTP Method: DELETE
+  Endpoint: /v1/customers/{customer-id}/cards/{card-id}
+
+  Path Parameters:
+    - customer-id (String): The customer-id parameter. (required)
+    - card-id (String): The card-id parameter. (required)
+
+  Example Usage:
+    (delete-customer-cards-id {:customer-id example-customer-id :card-id example-card-id})"
+  [{:keys [customer-id card-id]}]
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id}}))
 
 (defn post-customer-cards-id
   "No description available.
@@ -702,7 +704,7 @@
     - customer-id (String): The customer-id parameter. (required)
 
   Query Parameters:
-    - allow-redisplay (String): This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow. The field defaults to `unspecified`.
+    - allow-redisplay (String): This field indicates whether this payment method can be shown again to its customer in a checkout flow. Stripe products such as Checkout and Elements use this field to determine whether a payment method can be shown as a saved payment method in a checkout flow.
     - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
     - expand (Array): Specifies which fields in the response should be expanded.
     - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
@@ -745,20 +747,6 @@
   [{:keys []}]
   (stripe-request :post {:endpoint "/v1/customers"}))
 
-(defn delete-customer-discount
-  "Delete a customer discount
-
-  HTTP Method: DELETE
-  Endpoint: /v1/customers/{customer-id}/discount
-
-  Path Parameters:
-    - customer-id (String): The customer-id parameter. (required)
-
-  Example Usage:
-    (delete-customer-discount {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/discount" :path-params {:customer-id customer-id}}))
-
 (defn list-all-customer-discount
   "No description available.
 
@@ -775,3 +763,17 @@
     (list-all-customer-discount {:customer-id example-customer-id :query-params {:limit 10}})"
   [{:keys [customer-id query-params]}]
   (stripe-request :get {:endpoint "/v1/customers/{customer-id}/discount" :path-params {:customer-id customer-id} :query-params query-params}))
+
+(defn delete-customer-discount
+  "Delete a customer discount
+
+  HTTP Method: DELETE
+  Endpoint: /v1/customers/{customer-id}/discount
+
+  Path Parameters:
+    - customer-id (String): The customer-id parameter. (required)
+
+  Example Usage:
+    (delete-customer-discount {:customer-id example-customer-id})"
+  [{:keys [customer-id]}]
+  (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/discount" :path-params {:customer-id customer-id}}))

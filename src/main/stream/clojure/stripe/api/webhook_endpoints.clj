@@ -31,20 +31,6 @@
   [{:keys []}]
   (stripe-request :post {:endpoint "/v1/webhook_endpoints"}))
 
-(defn delete-webhook-endpoints-webhook-endpoint
-  "Delete a webhook endpoint
-
-  HTTP Method: DELETE
-  Endpoint: /v1/webhook_endpoints/{webhook-endpoint-id}
-
-  Path Parameters:
-    - webhook-endpoint-id (String): The webhook-endpoint-id parameter. (required)
-
-  Example Usage:
-    (delete-webhook-endpoints-webhook-endpoint {:webhook-endpoint-id example-webhook-endpoint-id})"
-  [{:keys [webhook-endpoint-id]}]
-  (stripe-request :delete {:endpoint "/v1/webhook_endpoints/{webhook-endpoint-id}" :path-params {:webhook-endpoint-id webhook-endpoint-id}}))
-
 (defn retrieve-webhook-endpoints-webhook-endpoint
   "Retrieve a webhook endpoint
 
@@ -61,6 +47,20 @@
     (retrieve-webhook-endpoints-webhook-endpoint {:webhook-endpoint-id example-webhook-endpoint-id :query-params {:limit 10}})"
   [{:keys [webhook-endpoint-id query-params]}]
   (stripe-request :get {:endpoint "/v1/webhook_endpoints/{webhook-endpoint-id}" :path-params {:webhook-endpoint-id webhook-endpoint-id} :query-params query-params}))
+
+(defn delete-webhook-endpoints-webhook-endpoint
+  "Delete a webhook endpoint
+
+  HTTP Method: DELETE
+  Endpoint: /v1/webhook_endpoints/{webhook-endpoint-id}
+
+  Path Parameters:
+    - webhook-endpoint-id (String): The webhook-endpoint-id parameter. (required)
+
+  Example Usage:
+    (delete-webhook-endpoints-webhook-endpoint {:webhook-endpoint-id example-webhook-endpoint-id})"
+  [{:keys [webhook-endpoint-id]}]
+  (stripe-request :delete {:endpoint "/v1/webhook_endpoints/{webhook-endpoint-id}" :path-params {:webhook-endpoint-id webhook-endpoint-id}}))
 
 (defn update-webhook-endpoints-webhook-endpoint
   "Update a webhook endpoint

@@ -34,20 +34,6 @@
   [{:keys []}]
   (stripe-request :post {:endpoint "/v1/plans"}))
 
-(defn delete-plan
-  "Delete a plan
-
-  HTTP Method: DELETE
-  Endpoint: /v1/plans/{plan-id}
-
-  Path Parameters:
-    - plan-id (String): The plan-id parameter. (required)
-
-  Example Usage:
-    (delete-plan {:plan-id example-plan-id})"
-  [{:keys [plan-id]}]
-  (stripe-request :delete {:endpoint "/v1/plans/{plan-id}" :path-params {:plan-id plan-id}}))
-
 (defn retrieve-plan
   "Retrieve a plan
 
@@ -64,6 +50,20 @@
     (retrieve-plan {:plan-id example-plan-id :query-params {:limit 10}})"
   [{:keys [plan-id query-params]}]
   (stripe-request :get {:endpoint "/v1/plans/{plan-id}" :path-params {:plan-id plan-id} :query-params query-params}))
+
+(defn delete-plan
+  "Delete a plan
+
+  HTTP Method: DELETE
+  Endpoint: /v1/plans/{plan-id}
+
+  Path Parameters:
+    - plan-id (String): The plan-id parameter. (required)
+
+  Example Usage:
+    (delete-plan {:plan-id example-plan-id})"
+  [{:keys [plan-id]}]
+  (stripe-request :delete {:endpoint "/v1/plans/{plan-id}" :path-params {:plan-id plan-id}}))
 
 (defn update-plan
   "Update a plan

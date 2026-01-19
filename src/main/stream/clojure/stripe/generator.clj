@@ -1,17 +1,19 @@
 (ns stream.clojure.stripe.generator
-  (:require [clojure.data.json :as json]
+  (:require [jsonista.core :as json]
             [clojure.java.io :as io]
-            [clojure.string :as string]
-            [clojure.set :as set]
-            [stream.clojure.stripe.request :as request]))
+            [clojure.string :as string]))
 
 ;; Step 1: Fetch OpenAPI Schema
 (def stripe-openapi-url
   "https://raw.githubusercontent.com/stripe/openapi/master/openapi/spec3.json")
 
+(def json-mapper
+  "Object mapper that converts keys to keywords."
+  json/keyword-keys-object-mapper)
+
 (defn fetch-stripe-schema []
   (let [response (slurp stripe-openapi-url)]
-    (json/read-str response :key-fn keyword)))
+    (json/read-value response json-mapper)))
 
 ;; Step 2: Extract Endpoints
 (defn extract-endpoints [schema]
@@ -187,7 +189,7 @@
         (if (seq example-lines) (str " " qp-line) qp-line) ; extra space if qp is after another keyword
         "") "})")))
 
-(defn generate-function-with-name [fn-name endpoint schema]
+(defn generate-function-with-name [fn-name endpoint _schema]
   (let [{:keys [method path summary parameters]} endpoint
         path-tokens (vec (extract-path-params (name path)))
         ;; Generate the destructuring using both path and query parameters.

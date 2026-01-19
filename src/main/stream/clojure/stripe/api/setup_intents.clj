@@ -89,6 +89,7 @@
 It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers. It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
     - created (Unknown): A filter on the list, based on the object `created` field. The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.
     - customer (String): Only return SetupIntents for the customer specified by this customer ID.
+    - customer-account (String): Only return SetupIntents for the account specified by this customer ID.
     - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
     - expand (Array): Specifies which fields in the response should be expanded.
     - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.

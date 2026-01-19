@@ -23,20 +23,6 @@
   [{:keys [query-params]}]
   (stripe-request :get {:endpoint "/v1/radar/early_fraud_warnings" :query-params query-params}))
 
-(defn delete-value-list-items-item
-  "Delete a value list item
-
-  HTTP Method: DELETE
-  Endpoint: /v1/radar/value_list_items/{value-list-item-id}
-
-  Path Parameters:
-    - value-list-item-id (String): The value-list-item-id parameter. (required)
-
-  Example Usage:
-    (delete-value-list-items-item {:value-list-item-id example-value-list-item-id})"
-  [{:keys [value-list-item-id]}]
-  (stripe-request :delete {:endpoint "/v1/radar/value_list_items/{value-list-item-id}" :path-params {:value-list-item-id value-list-item-id}}))
-
 (defn retrieve-value-list-items-item
   "Retrieve a value list item
 
@@ -54,19 +40,19 @@
   [{:keys [value-list-item-id query-params]}]
   (stripe-request :get {:endpoint "/v1/radar/value_list_items/{value-list-item-id}" :path-params {:value-list-item-id value-list-item-id} :query-params query-params}))
 
-(defn delete-value-lists-value-list
-  "Delete a value list
+(defn delete-value-list-items-item
+  "Delete a value list item
 
   HTTP Method: DELETE
-  Endpoint: /v1/radar/value_lists/{value-list-id}
+  Endpoint: /v1/radar/value_list_items/{value-list-item-id}
 
   Path Parameters:
-    - value-list-id (String): The value-list-id parameter. (required)
+    - value-list-item-id (String): The value-list-item-id parameter. (required)
 
   Example Usage:
-    (delete-value-lists-value-list {:value-list-id example-value-list-id})"
-  [{:keys [value-list-id]}]
-  (stripe-request :delete {:endpoint "/v1/radar/value_lists/{value-list-id}" :path-params {:value-list-id value-list-id}}))
+    (delete-value-list-items-item {:value-list-item-id example-value-list-item-id})"
+  [{:keys [value-list-item-id]}]
+  (stripe-request :delete {:endpoint "/v1/radar/value_list_items/{value-list-item-id}" :path-params {:value-list-item-id value-list-item-id}}))
 
 (defn retrieve-value-lists-value-list
   "Retrieve a value list
@@ -84,6 +70,20 @@
     (retrieve-value-lists-value-list {:value-list-id example-value-list-id :query-params {:limit 10}})"
   [{:keys [value-list-id query-params]}]
   (stripe-request :get {:endpoint "/v1/radar/value_lists/{value-list-id}" :path-params {:value-list-id value-list-id} :query-params query-params}))
+
+(defn delete-value-lists-value-list
+  "Delete a value list
+
+  HTTP Method: DELETE
+  Endpoint: /v1/radar/value_lists/{value-list-id}
+
+  Path Parameters:
+    - value-list-id (String): The value-list-id parameter. (required)
+
+  Example Usage:
+    (delete-value-lists-value-list {:value-list-id example-value-list-id})"
+  [{:keys [value-list-id]}]
+  (stripe-request :delete {:endpoint "/v1/radar/value_lists/{value-list-id}" :path-params {:value-list-id value-list-id}}))
 
 (defn update-value-lists-value-list
   "Update a value list

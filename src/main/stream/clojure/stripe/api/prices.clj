@@ -79,7 +79,7 @@
     - expand (Array): Specifies which fields in the response should be expanded.
     - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
     - page (String): A cursor for pagination across multiple pages of results. Don't include this parameter on the first call. Use the next_page value returned in a previous response to request subsequent results.
-    - query (String): The search query string. See [search query language](https://stripe.com/docs/search#search-query-language) and the list of supported [query fields for prices](https://stripe.com/docs/search#query-fields-for-prices). (required)
+    - query (String): The search query string. See [search query language](https://docs.stripe.com/search#search-query-language) and the list of supported [query fields for prices](https://docs.stripe.com/search#query-fields-for-prices). (required)
 
   Example Usage:
     (list-all-search {:query-params {:limit 10}})"

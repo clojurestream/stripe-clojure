@@ -32,20 +32,6 @@
   [{:keys []}]
   (stripe-request :post {:endpoint "/v1/coupons"}))
 
-(defn delete-coupon
-  "Delete a coupon
-
-  HTTP Method: DELETE
-  Endpoint: /v1/coupons/{coupon-id}
-
-  Path Parameters:
-    - coupon-id (String): The coupon-id parameter. (required)
-
-  Example Usage:
-    (delete-coupon {:coupon-id example-coupon-id})"
-  [{:keys [coupon-id]}]
-  (stripe-request :delete {:endpoint "/v1/coupons/{coupon-id}" :path-params {:coupon-id coupon-id}}))
-
 (defn retrieve-coupon
   "Retrieve a coupon
 
@@ -62,6 +48,20 @@
     (retrieve-coupon {:coupon-id example-coupon-id :query-params {:limit 10}})"
   [{:keys [coupon-id query-params]}]
   (stripe-request :get {:endpoint "/v1/coupons/{coupon-id}" :path-params {:coupon-id coupon-id} :query-params query-params}))
+
+(defn delete-coupon
+  "Delete a coupon
+
+  HTTP Method: DELETE
+  Endpoint: /v1/coupons/{coupon-id}
+
+  Path Parameters:
+    - coupon-id (String): The coupon-id parameter. (required)
+
+  Example Usage:
+    (delete-coupon {:coupon-id example-coupon-id})"
+  [{:keys [coupon-id]}]
+  (stripe-request :delete {:endpoint "/v1/coupons/{coupon-id}" :path-params {:coupon-id coupon-id}}))
 
 (defn update-coupon
   "Update a coupon

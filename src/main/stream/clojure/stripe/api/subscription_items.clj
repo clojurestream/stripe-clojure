@@ -3,20 +3,6 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-subscription-items-item
-  "Delete a subscription item
-
-  HTTP Method: DELETE
-  Endpoint: /v1/subscription_items/{subscription-item-id}
-
-  Path Parameters:
-    - subscription-item-id (String): The subscription-item-id parameter. (required)
-
-  Example Usage:
-    (delete-subscription-items-item {:subscription-item-id example-subscription-item-id})"
-  [{:keys [subscription-item-id]}]
-  (stripe-request :delete {:endpoint "/v1/subscription_items/{subscription-item-id}" :path-params {:subscription-item-id subscription-item-id}}))
-
 (defn retrieve-subscription-items-item
   "Retrieve a subscription item
 
@@ -33,6 +19,20 @@
     (retrieve-subscription-items-item {:subscription-item-id example-subscription-item-id :query-params {:limit 10}})"
   [{:keys [subscription-item-id query-params]}]
   (stripe-request :get {:endpoint "/v1/subscription_items/{subscription-item-id}" :path-params {:subscription-item-id subscription-item-id} :query-params query-params}))
+
+(defn delete-subscription-items-item
+  "Delete a subscription item
+
+  HTTP Method: DELETE
+  Endpoint: /v1/subscription_items/{subscription-item-id}
+
+  Path Parameters:
+    - subscription-item-id (String): The subscription-item-id parameter. (required)
+
+  Example Usage:
+    (delete-subscription-items-item {:subscription-item-id example-subscription-item-id})"
+  [{:keys [subscription-item-id]}]
+  (stripe-request :delete {:endpoint "/v1/subscription_items/{subscription-item-id}" :path-params {:subscription-item-id subscription-item-id}}))
 
 (defn update-subscription-items-item
   "Update a subscription item
@@ -76,37 +76,3 @@
     (create-subscription-items {})"
   [{:keys []}]
   (stripe-request :post {:endpoint "/v1/subscription_items"}))
-
-(defn list-all-subscription-items-subscription-item-usage-record-summaries
-  "List all subscription item period summaries
-
-  HTTP Method: GET
-  Endpoint: /v1/subscription_items/{subscription-item-id}/usage_record_summaries
-
-  Path Parameters:
-    - subscription-item-id (String): The subscription-item-id parameter. (required)
-
-  Query Parameters:
-    - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
-    - expand (Array): Specifies which fields in the response should be expanded.
-    - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
-    - starting-after (String): A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
-
-  Example Usage:
-    (list-all-subscription-items-subscription-item-usage-record-summaries {:subscription-item-id example-subscription-item-id :query-params {:limit 10}})"
-  [{:keys [subscription-item-id query-params]}]
-  (stripe-request :get {:endpoint "/v1/subscription_items/{subscription-item-id}/usage_record_summaries" :path-params {:subscription-item-id subscription-item-id} :query-params query-params}))
-
-(defn create-subscription-items-subscription-item-usage-records
-  "Create a usage record
-
-  HTTP Method: POST
-  Endpoint: /v1/subscription_items/{subscription-item-id}/usage_records
-
-  Path Parameters:
-    - subscription-item-id (String): The subscription-item-id parameter. (required)
-
-  Example Usage:
-    (create-subscription-items-subscription-item-usage-records {:subscription-item-id example-subscription-item-id})"
-  [{:keys [subscription-item-id]}]
-  (stripe-request :post {:endpoint "/v1/subscription_items/{subscription-item-id}/usage_records" :path-params {:subscription-item-id subscription-item-id}}))

@@ -14,6 +14,7 @@
     - completed-at (Unknown): Only return subscription schedules that completed during the given date interval.
     - created (Unknown): Only return subscription schedules that were created during the given date interval.
     - customer (String): Only return subscription schedules for the given customer.
+    - customer-account (String): Only return subscription schedules for the given account.
     - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
     - expand (Array): Specifies which fields in the response should be expanded.
     - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.

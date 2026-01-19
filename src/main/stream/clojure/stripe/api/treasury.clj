@@ -219,6 +219,7 @@
     - expand (Array): Specifies which fields in the response should be expanded.
     - limit (Integer): A limit ranging from 1 to 100 (defaults to 10).
     - starting-after (String): An object ID cursor for use in pagination.
+    - status (String): Only return FinancialAccounts that have the given status: `open` or `closed`
 
   Example Usage:
     (list-all-financial-accounts {:query-params {:limit 10}})"

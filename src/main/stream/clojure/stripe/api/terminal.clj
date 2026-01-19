@@ -3,19 +3,33 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-configurations-configuration
-  "Delete a Configuration
+(defn post-readers-reader-collect-inputs
+  "Collect inputs using a Reader
 
-  HTTP Method: DELETE
-  Endpoint: /v1/terminal/configurations/{configuration-id}
+  HTTP Method: POST
+  Endpoint: /v1/terminal/readers/{reader-id}/collect_inputs
 
   Path Parameters:
-    - configuration-id (String): The configuration-id parameter. (required)
+    - reader-id (String): The reader-id parameter. (required)
 
   Example Usage:
-    (delete-configurations-configuration {:configuration-id example-configuration-id})"
-  [{:keys [configuration-id]}]
-  (stripe-request :delete {:endpoint "/v1/terminal/configurations/{configuration-id}" :path-params {:configuration-id configuration-id}}))
+    (post-readers-reader-collect-inputs {:reader-id example-reader-id})"
+  [{:keys [reader-id]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/collect_inputs" :path-params {:reader-id reader-id}}))
+
+(defn post-readers-reader-collect-payment-method
+  "Hand off a PaymentIntent to a Reader and collect card details
+
+  HTTP Method: POST
+  Endpoint: /v1/terminal/readers/{reader-id}/collect_payment_method
+
+  Path Parameters:
+    - reader-id (String): The reader-id parameter. (required)
+
+  Example Usage:
+    (post-readers-reader-collect-payment-method {:reader-id example-reader-id})"
+  [{:keys [reader-id]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/collect_payment_method" :path-params {:reader-id reader-id}}))
 
 (defn retrieve-configurations-configuration
   "Retrieve a Configuration
@@ -33,6 +47,20 @@
     (retrieve-configurations-configuration {:configuration-id example-configuration-id :query-params {:limit 10}})"
   [{:keys [configuration-id query-params]}]
   (stripe-request :get {:endpoint "/v1/terminal/configurations/{configuration-id}" :path-params {:configuration-id configuration-id} :query-params query-params}))
+
+(defn delete-configurations-configuration
+  "Delete a Configuration
+
+  HTTP Method: DELETE
+  Endpoint: /v1/terminal/configurations/{configuration-id}
+
+  Path Parameters:
+    - configuration-id (String): The configuration-id parameter. (required)
+
+  Example Usage:
+    (delete-configurations-configuration {:configuration-id example-configuration-id})"
+  [{:keys [configuration-id]}]
+  (stripe-request :delete {:endpoint "/v1/terminal/configurations/{configuration-id}" :path-params {:configuration-id configuration-id}}))
 
 (defn update-configurations-configuration
   "Update a Configuration
@@ -119,20 +147,6 @@
   [{:keys [reader-id]}]
   (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/refund_payment" :path-params {:reader-id reader-id}}))
 
-(defn delete-readers-reader
-  "Delete a Reader
-
-  HTTP Method: DELETE
-  Endpoint: /v1/terminal/readers/{reader-id}
-
-  Path Parameters:
-    - reader-id (String): The reader-id parameter. (required)
-
-  Example Usage:
-    (delete-readers-reader {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :delete {:endpoint "/v1/terminal/readers/{reader-id}" :path-params {:reader-id reader-id}}))
-
 (defn retrieve-readers-reader
   "Retrieve a Reader
 
@@ -150,6 +164,20 @@
   [{:keys [reader-id query-params]}]
   (stripe-request :get {:endpoint "/v1/terminal/readers/{reader-id}" :path-params {:reader-id reader-id} :query-params query-params}))
 
+(defn delete-readers-reader
+  "Delete a Reader
+
+  HTTP Method: DELETE
+  Endpoint: /v1/terminal/readers/{reader-id}
+
+  Path Parameters:
+    - reader-id (String): The reader-id parameter. (required)
+
+  Example Usage:
+    (delete-readers-reader {:reader-id example-reader-id})"
+  [{:keys [reader-id]}]
+  (stripe-request :delete {:endpoint "/v1/terminal/readers/{reader-id}" :path-params {:reader-id reader-id}}))
+
 (defn update-readers-reader
   "Update a Reader
 
@@ -163,20 +191,6 @@
     (update-readers-reader {:reader-id example-reader-id})"
   [{:keys [reader-id]}]
   (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}" :path-params {:reader-id reader-id}}))
-
-(defn delete-locations-location
-  "Delete a Location
-
-  HTTP Method: DELETE
-  Endpoint: /v1/terminal/locations/{location-id}
-
-  Path Parameters:
-    - location-id (String): The location-id parameter. (required)
-
-  Example Usage:
-    (delete-locations-location {:location-id example-location-id})"
-  [{:keys [location-id]}]
-  (stripe-request :delete {:endpoint "/v1/terminal/locations/{location-id}" :path-params {:location-id location-id}}))
 
 (defn retrieve-locations-location
   "Retrieve a Location
@@ -194,6 +208,20 @@
     (retrieve-locations-location {:location-id example-location-id :query-params {:limit 10}})"
   [{:keys [location-id query-params]}]
   (stripe-request :get {:endpoint "/v1/terminal/locations/{location-id}" :path-params {:location-id location-id} :query-params query-params}))
+
+(defn delete-locations-location
+  "Delete a Location
+
+  HTTP Method: DELETE
+  Endpoint: /v1/terminal/locations/{location-id}
+
+  Path Parameters:
+    - location-id (String): The location-id parameter. (required)
+
+  Example Usage:
+    (delete-locations-location {:location-id example-location-id})"
+  [{:keys [location-id]}]
+  (stripe-request :delete {:endpoint "/v1/terminal/locations/{location-id}" :path-params {:location-id location-id}}))
 
 (defn update-locations-location
   "Update a Location
@@ -296,6 +324,31 @@
     (create-locations {})"
   [{:keys []}]
   (stripe-request :post {:endpoint "/v1/terminal/locations"}))
+
+(defn post-readers-reader-confirm-payment-intent
+  "Confirm a PaymentIntent on the Reader
+
+  HTTP Method: POST
+  Endpoint: /v1/terminal/readers/{reader-id}/confirm_payment_intent
+
+  Path Parameters:
+    - reader-id (String): The reader-id parameter. (required)
+
+  Example Usage:
+    (post-readers-reader-confirm-payment-intent {:reader-id example-reader-id})"
+  [{:keys [reader-id]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/confirm_payment_intent" :path-params {:reader-id reader-id}}))
+
+(defn create-onboarding-links
+  "Create an Onboarding Link
+
+  HTTP Method: POST
+  Endpoint: /v1/terminal/onboarding_links
+
+  Example Usage:
+    (create-onboarding-links {})"
+  [{:keys []}]
+  (stripe-request :post {:endpoint "/v1/terminal/onboarding_links"}))
 
 (defn create-connection-tokens
   "Create a Connection Token

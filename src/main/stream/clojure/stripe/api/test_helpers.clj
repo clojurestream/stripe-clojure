@@ -17,6 +17,20 @@
   [{:keys [outbound-payment-id]}]
   (stripe-request :post {:endpoint "/v1/test_helpers/treasury/outbound_payments/{outbound-payment-id}/fail" :path-params {:outbound-payment-id outbound-payment-id}}))
 
+(defn post-test-helpers-terminal-readers-reader-succeed-input-collection
+  "Simulate a successful input collection
+
+  HTTP Method: POST
+  Endpoint: /v1/test_helpers/terminal/readers/{reader-id}/succeed_input_collection
+
+  Path Parameters:
+    - reader-id (String): The reader-id parameter. (required)
+
+  Example Usage:
+    (post-test-helpers-terminal-readers-reader-succeed-input-collection {:reader-id example-reader-id})"
+  [{:keys [reader-id]}]
+  (stripe-request :post {:endpoint "/v1/test_helpers/terminal/readers/{reader-id}/succeed_input_collection" :path-params {:reader-id reader-id}}))
+
 (defn post-test-helpers-treasury-outbound-transfers-outbound-transfer-post
   "Test mode: Post an OutboundTransfer
 
@@ -176,6 +190,20 @@
   [{:keys []}]
   (stripe-request :post {:endpoint "/v1/test_helpers/treasury/received_credits"}))
 
+(defn post-test-helpers-terminal-readers-reader-timeout-input-collection
+  "Simulate an input collection timeout
+
+  HTTP Method: POST
+  Endpoint: /v1/test_helpers/terminal/readers/{reader-id}/timeout_input_collection
+
+  Path Parameters:
+    - reader-id (String): The reader-id parameter. (required)
+
+  Example Usage:
+    (post-test-helpers-terminal-readers-reader-timeout-input-collection {:reader-id example-reader-id})"
+  [{:keys [reader-id]}]
+  (stripe-request :post {:endpoint "/v1/test_helpers/terminal/readers/{reader-id}/timeout_input_collection" :path-params {:reader-id reader-id}}))
+
 (defn post-test-helpers-issuing-cards-card-shipping-return
   "Return a testmode card
 
@@ -229,20 +257,6 @@
   [{:keys []}]
   (stripe-request :post {:endpoint "/v1/test_helpers/confirmation_tokens"}))
 
-(defn delete-test-helpers-test-clocks-test-clock
-  "Delete a test clock
-
-  HTTP Method: DELETE
-  Endpoint: /v1/test_helpers/test_clocks/{test-clock-id}
-
-  Path Parameters:
-    - test-clock-id (String): The test-clock-id parameter. (required)
-
-  Example Usage:
-    (delete-test-helpers-test-clocks-test-clock {:test-clock-id example-test-clock-id})"
-  [{:keys [test-clock-id]}]
-  (stripe-request :delete {:endpoint "/v1/test_helpers/test_clocks/{test-clock-id}" :path-params {:test-clock-id test-clock-id}}))
-
 (defn retrieve-test-helpers-test-clocks-test-clock
   "Retrieve a test clock
 
@@ -259,6 +273,20 @@
     (retrieve-test-helpers-test-clocks-test-clock {:test-clock-id example-test-clock-id :query-params {:limit 10}})"
   [{:keys [test-clock-id query-params]}]
   (stripe-request :get {:endpoint "/v1/test_helpers/test_clocks/{test-clock-id}" :path-params {:test-clock-id test-clock-id} :query-params query-params}))
+
+(defn delete-test-helpers-test-clocks-test-clock
+  "Delete a test clock
+
+  HTTP Method: DELETE
+  Endpoint: /v1/test_helpers/test_clocks/{test-clock-id}
+
+  Path Parameters:
+    - test-clock-id (String): The test-clock-id parameter. (required)
+
+  Example Usage:
+    (delete-test-helpers-test-clocks-test-clock {:test-clock-id example-test-clock-id})"
+  [{:keys [test-clock-id]}]
+  (stripe-request :delete {:endpoint "/v1/test_helpers/test_clocks/{test-clock-id}" :path-params {:test-clock-id test-clock-id}}))
 
 (defn post-test-helpers-refunds-refund-expire
   "Expire a pending refund.
@@ -429,7 +457,7 @@
   (stripe-request :post {:endpoint "/v1/test_helpers/issuing/personalization_designs/{personalization-design-id}/activate" :path-params {:personalization-design-id personalization-design-id}}))
 
 (defn create-test-helpers-issuing-settlements
-  "Create a test-mode settleemnt
+  "Create a test-mode settlement
 
   HTTP Method: POST
   Endpoint: /v1/test_helpers/issuing/settlements

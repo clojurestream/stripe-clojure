@@ -194,3 +194,18 @@
     (retrieve-calculations-calculation {:calculation-id example-calculation-id :query-params {:limit 10}})"
   [{:keys [calculation-id query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/calculations/{calculation-id}" :path-params {:calculation-id calculation-id} :query-params query-params}))
+
+(defn list-all-associations-find
+  "Find a Tax Association
+
+  HTTP Method: GET
+  Endpoint: /v1/tax/associations/find
+
+  Query Parameters:
+    - expand (Array): Specifies which fields in the response should be expanded.
+    - payment-intent (String): Valid [PaymentIntent](https://docs.stripe.com/api/payment_intents/object) id (required)
+
+  Example Usage:
+    (list-all-associations-find {:query-params {:limit 10}})"
+  [{:keys [query-params]}]
+  (stripe-request :get {:endpoint "/v1/tax/associations/find" :query-params query-params}))

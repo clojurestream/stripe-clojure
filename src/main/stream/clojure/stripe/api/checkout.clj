@@ -4,7 +4,7 @@
 
 
 (defn retrieve-sessions-session
-  "Retrieve a Session
+  "Retrieve a Checkout Session
 
   HTTP Method: GET
   Endpoint: /v1/checkout/sessions/{session-id}
@@ -21,7 +21,7 @@
   (stripe-request :get {:endpoint "/v1/checkout/sessions/{session-id}" :path-params {:session-id session-id} :query-params query-params}))
 
 (defn update-sessions-session
-  "Update a Session
+  "Update a Checkout Session
 
   HTTP Method: POST
   Endpoint: /v1/checkout/sessions/{session-id}
@@ -43,6 +43,7 @@
   Query Parameters:
     - created (Unknown): Only return Checkout Sessions that were created during the given date interval.
     - customer (String): Only return the Checkout Sessions for the Customer specified.
+    - customer-account (String): Only return the Checkout Sessions for the Account specified.
     - customer-details (Object): Only return the Checkout Sessions for the Customer details specified.
     - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
     - expand (Array): Specifies which fields in the response should be expanded.
@@ -59,7 +60,7 @@
   (stripe-request :get {:endpoint "/v1/checkout/sessions" :query-params query-params}))
 
 (defn create-sessions
-  "Create a Session
+  "Create a Checkout Session
 
   HTTP Method: POST
   Endpoint: /v1/checkout/sessions
@@ -90,7 +91,7 @@
   (stripe-request :get {:endpoint "/v1/checkout/sessions/{session-id}/line_items" :path-params {:session-id session-id} :query-params query-params}))
 
 (defn post-sessions-session-expire
-  "Expire a Session
+  "Expire a Checkout Session
 
   HTTP Method: POST
   Endpoint: /v1/checkout/sessions/{session-id}/expire

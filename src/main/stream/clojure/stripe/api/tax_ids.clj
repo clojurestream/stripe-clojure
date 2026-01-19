@@ -32,20 +32,6 @@
   [{:keys []}]
   (stripe-request :post {:endpoint "/v1/tax_ids"}))
 
-(defn delete-tax-ids-id
-  "Delete a tax ID
-
-  HTTP Method: DELETE
-  Endpoint: /v1/tax_ids/{tax-id-id}
-
-  Path Parameters:
-    - tax-id-id (String): The tax-id-id parameter. (required)
-
-  Example Usage:
-    (delete-tax-ids-id {:tax-id-id example-tax-id-id})"
-  [{:keys [tax-id-id]}]
-  (stripe-request :delete {:endpoint "/v1/tax_ids/{tax-id-id}" :path-params {:tax-id-id tax-id-id}}))
-
 (defn retrieve-tax-ids-id
   "Retrieve a tax ID
 
@@ -62,3 +48,17 @@
     (retrieve-tax-ids-id {:tax-id-id example-tax-id-id :query-params {:limit 10}})"
   [{:keys [tax-id-id query-params]}]
   (stripe-request :get {:endpoint "/v1/tax_ids/{tax-id-id}" :path-params {:tax-id-id tax-id-id} :query-params query-params}))
+
+(defn delete-tax-ids-id
+  "Delete a tax ID
+
+  HTTP Method: DELETE
+  Endpoint: /v1/tax_ids/{tax-id-id}
+
+  Path Parameters:
+    - tax-id-id (String): The tax-id-id parameter. (required)
+
+  Example Usage:
+    (delete-tax-ids-id {:tax-id-id example-tax-id-id})"
+  [{:keys [tax-id-id]}]
+  (stripe-request :delete {:endpoint "/v1/tax_ids/{tax-id-id}" :path-params {:tax-id-id tax-id-id}}))

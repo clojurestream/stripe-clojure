@@ -46,21 +46,6 @@
   [{:keys [account-id]}]
   (stripe-request :post {:endpoint "/v1/accounts/{account-id}/login_links" :path-params {:account-id account-id}}))
 
-(defn delete-account-persons-person
-  "Delete a person
-
-  HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account-id}/persons/{person-id}
-
-  Path Parameters:
-    - account-id (String): The account-id parameter. (required)
-    - person-id (String): The person-id parameter. (required)
-
-  Example Usage:
-    (delete-account-persons-person {:account-id example-account-id :person-id example-person-id})"
-  [{:keys [account-id person-id]}]
-  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/persons/{person-id}" :path-params {:account-id account-id :person-id person-id}}))
-
 (defn retrieve-account-persons-person
   "Retrieve a person
 
@@ -79,6 +64,21 @@
   [{:keys [account-id person-id query-params]}]
   (stripe-request :get {:endpoint "/v1/accounts/{account-id}/persons/{person-id}" :path-params {:account-id account-id :person-id person-id} :query-params query-params}))
 
+(defn delete-account-persons-person
+  "Delete a person
+
+  HTTP Method: DELETE
+  Endpoint: /v1/accounts/{account-id}/persons/{person-id}
+
+  Path Parameters:
+    - account-id (String): The account-id parameter. (required)
+    - person-id (String): The person-id parameter. (required)
+
+  Example Usage:
+    (delete-account-persons-person {:account-id example-account-id :person-id example-person-id})"
+  [{:keys [account-id person-id]}]
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/persons/{person-id}" :path-params {:account-id account-id :person-id person-id}}))
+
 (defn update-account-persons-person
   "Update a person
 
@@ -94,21 +94,6 @@
   [{:keys [account-id person-id]}]
   (stripe-request :post {:endpoint "/v1/accounts/{account-id}/persons/{person-id}" :path-params {:account-id account-id :person-id person-id}}))
 
-(defn delete-account-bank-id
-  "Delete an external account
-
-  HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account-id}/bank_accounts/{bank-account-id}
-
-  Path Parameters:
-    - account-id (String): The account-id parameter. (required)
-    - bank-account-id (String): The bank-account-id parameter. (required)
-
-  Example Usage:
-    (delete-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id})"
-  [{:keys [account-id bank-account-id]}]
-  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id}}))
-
 (defn retrieve-account-bank-id
   "Retrieve an external account
 
@@ -117,7 +102,7 @@
 
   Path Parameters:
     - account-id (String): The account-id parameter. (required)
-    - bank-account-id (String): The bank-account-id parameter. (required)
+    - bank-account-id (String): Unique identifier for the external account to be retrieved.
 
   Query Parameters:
     - expand (Array): Specifies which fields in the response should be expanded.
@@ -126,6 +111,21 @@
     (retrieve-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id :query-params {:limit 10}})"
   [{:keys [account-id bank-account-id query-params]}]
   (stripe-request :get {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id} :query-params query-params}))
+
+(defn delete-account-bank-id
+  "Delete an external account
+
+  HTTP Method: DELETE
+  Endpoint: /v1/accounts/{account-id}/bank_accounts/{bank-account-id}
+
+  Path Parameters:
+    - account-id (String): The account-id parameter. (required)
+    - bank-account-id (String): Unique identifier for the external account to be deleted.
+
+  Example Usage:
+    (delete-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id})"
+  [{:keys [account-id bank-account-id]}]
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id}}))
 
 (defn post-account-bank-id
   "No description available.
@@ -141,21 +141,6 @@
     (post-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id})"
   [{:keys [account-id bank-account-id]}]
   (stripe-request :post {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id}}))
-
-(defn delete-account-people-person
-  "Delete a person
-
-  HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account-id}/people/{people-id}
-
-  Path Parameters:
-    - account-id (String): The account-id parameter. (required)
-    - people-id (String): The people-id parameter. (required)
-
-  Example Usage:
-    (delete-account-people-person {:account-id example-account-id :people-id example-people-id})"
-  [{:keys [account-id people-id]}]
-  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/people/{people-id}" :path-params {:account-id account-id :people-id people-id}}))
 
 (defn retrieve-account-people-person
   "Retrieve a person
@@ -174,6 +159,21 @@
     (retrieve-account-people-person {:account-id example-account-id :people-id example-people-id :query-params {:limit 10}})"
   [{:keys [account-id people-id query-params]}]
   (stripe-request :get {:endpoint "/v1/accounts/{account-id}/people/{people-id}" :path-params {:account-id account-id :people-id people-id} :query-params query-params}))
+
+(defn delete-account-people-person
+  "Delete a person
+
+  HTTP Method: DELETE
+  Endpoint: /v1/accounts/{account-id}/people/{people-id}
+
+  Path Parameters:
+    - account-id (String): The account-id parameter. (required)
+    - people-id (String): The people-id parameter. (required)
+
+  Example Usage:
+    (delete-account-people-person {:account-id example-account-id :people-id example-people-id})"
+  [{:keys [account-id people-id]}]
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/people/{people-id}" :path-params {:account-id account-id :people-id people-id}}))
 
 (defn update-account-people-person
   "Update a person
@@ -225,20 +225,6 @@
   [{:keys [account-id]}]
   (stripe-request :post {:endpoint "/v1/accounts/{account-id}/people" :path-params {:account-id account-id}}))
 
-(defn delete-account
-  "Delete an account
-
-  HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account-id}
-
-  Path Parameters:
-    - account-id (String): The account-id parameter. (required)
-
-  Example Usage:
-    (delete-account {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}" :path-params {:account-id account-id}}))
-
 (defn retrieve-account
   "Retrieve account
 
@@ -255,6 +241,20 @@
     (retrieve-account {:account-id example-account-id :query-params {:limit 10}})"
   [{:keys [account-id query-params]}]
   (stripe-request :get {:endpoint "/v1/accounts/{account-id}" :path-params {:account-id account-id} :query-params query-params}))
+
+(defn delete-account
+  "Delete an account
+
+  HTTP Method: DELETE
+  Endpoint: /v1/accounts/{account-id}
+
+  Path Parameters:
+    - account-id (String): The account-id parameter. (required)
+
+  Example Usage:
+    (delete-account {:account-id example-account-id})"
+  [{:keys [account-id]}]
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}" :path-params {:account-id account-id}}))
 
 (defn update-account
   "Update an account
@@ -404,21 +404,6 @@
   [{:keys [account-id]}]
   (stripe-request :post {:endpoint "/v1/accounts/{account-id}/external_accounts" :path-params {:account-id account-id}}))
 
-(defn delete-account-external-id
-  "Delete an external account
-
-  HTTP Method: DELETE
-  Endpoint: /v1/accounts/{account-id}/external_accounts/{external-account-id}
-
-  Path Parameters:
-    - account-id (String): The account-id parameter. (required)
-    - external-account-id (String): The external-account-id parameter. (required)
-
-  Example Usage:
-    (delete-account-external-id {:account-id example-account-id :external-account-id example-external-account-id})"
-  [{:keys [account-id external-account-id]}]
-  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id}}))
-
 (defn retrieve-account-external-id
   "Retrieve an external account
 
@@ -427,7 +412,7 @@
 
   Path Parameters:
     - account-id (String): The account-id parameter. (required)
-    - external-account-id (String): The external-account-id parameter. (required)
+    - external-account-id (String): Unique identifier for the external account to be retrieved.
 
   Query Parameters:
     - expand (Array): Specifies which fields in the response should be expanded.
@@ -436,6 +421,21 @@
     (retrieve-account-external-id {:account-id example-account-id :external-account-id example-external-account-id :query-params {:limit 10}})"
   [{:keys [account-id external-account-id query-params]}]
   (stripe-request :get {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id} :query-params query-params}))
+
+(defn delete-account-external-id
+  "Delete an external account
+
+  HTTP Method: DELETE
+  Endpoint: /v1/accounts/{account-id}/external_accounts/{external-account-id}
+
+  Path Parameters:
+    - account-id (String): The account-id parameter. (required)
+    - external-account-id (String): Unique identifier for the external account to be deleted.
+
+  Example Usage:
+    (delete-account-external-id {:account-id example-account-id :external-account-id example-external-account-id})"
+  [{:keys [account-id external-account-id]}]
+  (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id}}))
 
 (defn post-account-external-id
   "No description available.

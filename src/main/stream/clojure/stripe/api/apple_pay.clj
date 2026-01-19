@@ -3,20 +3,6 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn delete-apple-pay-domains-domain
-  "No description available.
-
-  HTTP Method: DELETE
-  Endpoint: /v1/apple_pay/domains/{domain-id}
-
-  Path Parameters:
-    - domain-id (String): The domain-id parameter. (required)
-
-  Example Usage:
-    (delete-apple-pay-domains-domain {:domain-id example-domain-id})"
-  [{:keys [domain-id]}]
-  (stripe-request :delete {:endpoint "/v1/apple_pay/domains/{domain-id}" :path-params {:domain-id domain-id}}))
-
 (defn retrieve-apple-pay-domains-domain
   "No description available.
 
@@ -33,6 +19,20 @@
     (retrieve-apple-pay-domains-domain {:domain-id example-domain-id :query-params {:limit 10}})"
   [{:keys [domain-id query-params]}]
   (stripe-request :get {:endpoint "/v1/apple_pay/domains/{domain-id}" :path-params {:domain-id domain-id} :query-params query-params}))
+
+(defn delete-apple-pay-domains-domain
+  "No description available.
+
+  HTTP Method: DELETE
+  Endpoint: /v1/apple_pay/domains/{domain-id}
+
+  Path Parameters:
+    - domain-id (String): The domain-id parameter. (required)
+
+  Example Usage:
+    (delete-apple-pay-domains-domain {:domain-id example-domain-id})"
+  [{:keys [domain-id]}]
+  (stripe-request :delete {:endpoint "/v1/apple_pay/domains/{domain-id}" :path-params {:domain-id domain-id}}))
 
 (defn list-all-apple-pay-domains
   "No description available.
