@@ -3,11 +3,17 @@
   "src/main"]
 
  :deps
- {org.clojure/clojure {:mvn/version "1.12.0"}
-  org.clojure/data.json {:mvn/version "2.5.0"}}
+ {org.clojure/clojure {:mvn/version "1.12.4"}
+  metosin/jsonista {:mvn/version "0.3.13"}}
 
  :aliases
  {:build
   {:extra-paths ["src/dev" "src/main"]
-   :deps {io.github.clojure/tools.build {:git/tag "v0.10.7" :git/sha "573711e"}}
-   :ns-default build}}}
+   :deps {io.github.clojure/tools.build {:git/tag "v0.10.12" :git/sha "97c55629"}}
+   :ns-default build}
+
+  :test
+  {:extra-paths ["test"]
+   :extra-deps {io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+   :main-opts ["-m" "cognitect.test-runner"]
+   :exec-fn cognitect.test-runner.api/test}}}
