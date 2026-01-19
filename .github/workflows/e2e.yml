@@ -1,0 +1,44 @@
+name: E2E Tests
+
+on:
+  schedule:
+    # Run weekly on Sundays at 6:00 UTC
+    - cron: '0 6 * * 0'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    # Only run if STRIPE_TEST_KEY secret is configured
+    if: ${{ secrets.STRIPE_TEST_KEY != '' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Setup Clojure
+        uses: DeLaGuardo/setup-clojure@12.5
+        with:
+          cli: latest
+
+      - name: Cache deps
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.gitlibs
+            ~/.clojure/.cpcache
+          key: ${{ runner.os }}-clojure-${{ hashFiles('**/deps.edn') }}
+          restore-keys: |
+            ${{ runner.os }}-clojure-
+
+      - name: Run E2E tests
+        env:
+          STRIPE_TEST_KEY: ${{ secrets.STRIPE_TEST_KEY }}
+        run: clojure -M:test-e2e
