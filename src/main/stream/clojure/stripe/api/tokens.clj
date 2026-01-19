@@ -28,5 +28,5 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/tokens"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/tokens" :body body}))

@@ -33,8 +33,8 @@
 
   Example Usage:
     (create-verification-sessions {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/identity/verification_sessions"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/identity/verification_sessions" :body body}))
 
 (defn post-verification-sessions-session-cancel
   "Cancel a VerificationSession
@@ -47,8 +47,8 @@
 
   Example Usage:
     (post-verification-sessions-session-cancel {:verification-session-id example-verification-session-id})"
-  [{:keys [verification-session-id]}]
-  (stripe-request :post {:endpoint "/v1/identity/verification_sessions/{verification-session-id}/cancel" :path-params {:verification-session-id verification-session-id}}))
+  [{:keys [verification-session-id body]}]
+  (stripe-request :post {:endpoint "/v1/identity/verification_sessions/{verification-session-id}/cancel" :path-params {:verification-session-id verification-session-id} :body body}))
 
 (defn list-all-verification-reports
   "List VerificationReports
@@ -99,8 +99,8 @@
 
   Example Usage:
     (post-verification-sessions-session-redact {:verification-session-id example-verification-session-id})"
-  [{:keys [verification-session-id]}]
-  (stripe-request :post {:endpoint "/v1/identity/verification_sessions/{verification-session-id}/redact" :path-params {:verification-session-id verification-session-id}}))
+  [{:keys [verification-session-id body]}]
+  (stripe-request :post {:endpoint "/v1/identity/verification_sessions/{verification-session-id}/redact" :path-params {:verification-session-id verification-session-id} :body body}))
 
 (defn retrieve-verification-sessions-session
   "Retrieve a VerificationSession
@@ -130,5 +130,5 @@
 
   Example Usage:
     (update-verification-sessions-session {:verification-session-id example-verification-session-id})"
-  [{:keys [verification-session-id]}]
-  (stripe-request :post {:endpoint "/v1/identity/verification_sessions/{verification-session-id}" :path-params {:verification-session-id verification-session-id}}))
+  [{:keys [verification-session-id body]}]
+  (stripe-request :post {:endpoint "/v1/identity/verification_sessions/{verification-session-id}" :path-params {:verification-session-id verification-session-id} :body body}))

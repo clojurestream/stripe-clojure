@@ -45,8 +45,8 @@
 
   Example Usage:
     (update-invoiceitem {:invoiceitem-id example-invoiceitem-id})"
-  [{:keys [invoiceitem-id]}]
-  (stripe-request :post {:endpoint "/v1/invoiceitems/{invoiceitem-id}" :path-params {:invoiceitem-id invoiceitem-id}}))
+  [{:keys [invoiceitem-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoiceitems/{invoiceitem-id}" :path-params {:invoiceitem-id invoiceitem-id} :body body}))
 
 (defn list-all
   "List all invoice items
@@ -78,5 +78,5 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/invoiceitems"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/invoiceitems" :body body}))

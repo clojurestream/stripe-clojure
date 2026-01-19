@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-review-approve {:review-id example-review-id})"
-  [{:keys [review-id]}]
-  (stripe-request :post {:endpoint "/v1/reviews/{review-id}/approve" :path-params {:review-id review-id}}))
+  [{:keys [review-id body]}]
+  (stripe-request :post {:endpoint "/v1/reviews/{review-id}/approve" :path-params {:review-id review-id} :body body}))
 
 (defn retrieve-review
   "Retrieve a review

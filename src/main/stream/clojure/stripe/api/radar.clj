@@ -96,8 +96,8 @@
 
   Example Usage:
     (update-value-lists-value-list {:value-list-id example-value-list-id})"
-  [{:keys [value-list-id]}]
-  (stripe-request :post {:endpoint "/v1/radar/value_lists/{value-list-id}" :path-params {:value-list-id value-list-id}}))
+  [{:keys [value-list-id body]}]
+  (stripe-request :post {:endpoint "/v1/radar/value_lists/{value-list-id}" :path-params {:value-list-id value-list-id} :body body}))
 
 (defn list-all-value-lists
   "List all value lists
@@ -127,8 +127,8 @@
 
   Example Usage:
     (create-value-lists {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/radar/value_lists"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/radar/value_lists" :body body}))
 
 (defn list-all-value-list-items
   "List all value list items
@@ -158,8 +158,8 @@
 
   Example Usage:
     (create-value-list-items {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/radar/value_list_items"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/radar/value_list_items" :body body}))
 
 (defn retrieve-early-fraud-warnings-early-fraud-warning
   "Retrieve an early fraud warning

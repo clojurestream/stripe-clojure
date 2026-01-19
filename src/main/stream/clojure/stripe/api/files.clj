@@ -30,8 +30,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/files"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/files" :body body}))
 
 (defn retrieve-file
   "Retrieve a file

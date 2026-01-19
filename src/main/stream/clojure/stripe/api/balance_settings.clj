@@ -25,5 +25,5 @@
 
   Example Usage:
     (update-balance-settings {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/balance_settings"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/balance_settings" :body body}))

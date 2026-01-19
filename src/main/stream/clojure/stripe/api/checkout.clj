@@ -31,8 +31,8 @@
 
   Example Usage:
     (update-sessions-session {:session-id example-session-id})"
-  [{:keys [session-id]}]
-  (stripe-request :post {:endpoint "/v1/checkout/sessions/{session-id}" :path-params {:session-id session-id}}))
+  [{:keys [session-id body]}]
+  (stripe-request :post {:endpoint "/v1/checkout/sessions/{session-id}" :path-params {:session-id session-id} :body body}))
 
 (defn list-all-sessions
   "List all Checkout Sessions
@@ -67,8 +67,8 @@
 
   Example Usage:
     (create-sessions {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/checkout/sessions"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/checkout/sessions" :body body}))
 
 (defn list-all-sessions-session-line-items
   "Retrieve a Checkout Session's line items
@@ -101,5 +101,5 @@
 
   Example Usage:
     (post-sessions-session-expire {:session-id example-session-id})"
-  [{:keys [session-id]}]
-  (stripe-request :post {:endpoint "/v1/checkout/sessions/{session-id}/expire" :path-params {:session-id session-id}}))
+  [{:keys [session-id body]}]
+  (stripe-request :post {:endpoint "/v1/checkout/sessions/{session-id}/expire" :path-params {:session-id session-id} :body body}))

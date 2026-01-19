@@ -35,8 +35,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/prices"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/prices" :body body}))
 
 (defn retrieve-price
   "Retrieve a price
@@ -66,8 +66,8 @@
 
   Example Usage:
     (update-price {:price-id example-price-id})"
-  [{:keys [price-id]}]
-  (stripe-request :post {:endpoint "/v1/prices/{price-id}" :path-params {:price-id price-id}}))
+  [{:keys [price-id body]}]
+  (stripe-request :post {:endpoint "/v1/prices/{price-id}" :path-params {:price-id price-id} :body body}))
 
 (defn list-all-search
   "Search prices

@@ -139,14 +139,17 @@
 (defn generate-destructuring
   "Generates the destructuring map for the function signature.
    It extracts descriptive keys for all path parameters and adds
-   'query-params' only if there are any query parameters."
-  [path query-param-objs]
+   'query-params' for query parameters and 'body' for POST/PUT methods."
+  [path query-param-objs method]
   (let [tokens (vec (extract-path-params path))
         desc-keys (map (fn [p] (descriptive-path-param-key (name path) p)) tokens)
         base (string/join " " (map name desc-keys))
-        keys-str (if (seq query-param-objs)
-                   (str base (when (not (empty? base)) " ") "query-params")
-                   base)]
+        has-body? (contains? #{:post :put "post" "put"} method)
+        keys-parts (cond-> []
+                     (seq base) (conj base)
+                     (seq query-param-objs) (conj "query-params")
+                     has-body? (conj "body"))
+        keys-str (string/join " " keys-parts)]
     (str "  [{:keys [" keys-str "]}]")))
 
 ;; Helper: Replace each parameter placeholder in the path with its descriptive version.
@@ -192,9 +195,10 @@
 (defn generate-function-with-name [fn-name endpoint _schema]
   (let [{:keys [method path summary parameters]} endpoint
         path-tokens (vec (extract-path-params (name path)))
-        ;; Generate the destructuring using both path and query parameters.
+        ;; Generate the destructuring using path, query, and body parameters.
         query-param-objs (filter #(= (:in %) "query") parameters)
-        destructuring (generate-destructuring (name path) query-param-objs)
+        has-body? (contains? #{:post :put "post" "put"} method)
+        destructuring (generate-destructuring (name path) query-param-objs method)
         ;; Build documentation for path parameters.
         param-docs (map (fn [p]
                           (let [dkey (descriptive-path-param-key (name path) p)
@@ -230,9 +234,14 @@
         query-params-string (if (seq query-param-objs)
                               ":query-params query-params"
                               "")
+        ;; Build the :body string only for POST/PUT methods.
+        body-string (if has-body?
+                      ":body body"
+                      "")
         entries (remove empty? (list (str ":endpoint \"" final-endpoint "\"")
                                  path-params-string
-                                 query-params-string))
+                                 query-params-string
+                                 body-string))
         request-map (str "{" (string/join " " entries) "}")
         usage (generate-example-usage (name path) query-param-objs fn-name)
         docstring (str "  \""

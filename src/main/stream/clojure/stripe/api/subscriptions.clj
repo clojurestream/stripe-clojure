@@ -45,8 +45,8 @@
 
   Example Usage:
     (update-subscription-exposed-id {:subscription-id example-subscription-id})"
-  [{:keys [subscription-id]}]
-  (stripe-request :post {:endpoint "/v1/subscriptions/{subscription-id}" :path-params {:subscription-id subscription-id}}))
+  [{:keys [subscription-id body]}]
+  (stripe-request :post {:endpoint "/v1/subscriptions/{subscription-id}" :path-params {:subscription-id subscription-id} :body body}))
 
 (defn post-subscription-migrate
   "Migrate a subscription
@@ -59,8 +59,8 @@
 
   Example Usage:
     (post-subscription-migrate {:subscription-id example-subscription-id})"
-  [{:keys [subscription-id]}]
-  (stripe-request :post {:endpoint "/v1/subscriptions/{subscription-id}/migrate" :path-params {:subscription-id subscription-id}}))
+  [{:keys [subscription-id body]}]
+  (stripe-request :post {:endpoint "/v1/subscriptions/{subscription-id}/migrate" :path-params {:subscription-id subscription-id} :body body}))
 
 (defn delete-subscription-exposed-id-discount
   "Delete a subscription discount
@@ -104,8 +104,8 @@
 
   Example Usage:
     (post-subscription-resume {:subscription-id example-subscription-id})"
-  [{:keys [subscription-id]}]
-  (stripe-request :post {:endpoint "/v1/subscriptions/{subscription-id}/resume" :path-params {:subscription-id subscription-id}}))
+  [{:keys [subscription-id body]}]
+  (stripe-request :post {:endpoint "/v1/subscriptions/{subscription-id}/resume" :path-params {:subscription-id subscription-id} :body body}))
 
 (defn list-all
   "List subscriptions
@@ -142,5 +142,5 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/subscriptions"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/subscriptions" :body body}))

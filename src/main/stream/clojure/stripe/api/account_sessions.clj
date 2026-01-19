@@ -11,5 +11,5 @@
 
   Example Usage:
     (create-account-sessions {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/account_sessions"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/account_sessions" :body body}))

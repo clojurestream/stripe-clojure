@@ -31,8 +31,8 @@
 
   Example Usage:
     (update-promotion-codes-promotion-code {:promotion-code-id example-promotion-code-id})"
-  [{:keys [promotion-code-id]}]
-  (stripe-request :post {:endpoint "/v1/promotion_codes/{promotion-code-id}" :path-params {:promotion-code-id promotion-code-id}}))
+  [{:keys [promotion-code-id body]}]
+  (stripe-request :post {:endpoint "/v1/promotion_codes/{promotion-code-id}" :path-params {:promotion-code-id promotion-code-id} :body body}))
 
 (defn list-all-promotion-codes
   "List all promotion codes
@@ -65,5 +65,5 @@
 
   Example Usage:
     (create-promotion-codes {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/promotion_codes"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/promotion_codes" :body body}))

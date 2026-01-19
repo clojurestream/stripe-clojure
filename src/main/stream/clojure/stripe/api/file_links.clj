@@ -31,8 +31,8 @@
 
   Example Usage:
     (update-file-links-link {:file-link-id example-file-link-id})"
-  [{:keys [file-link-id]}]
-  (stripe-request :post {:endpoint "/v1/file_links/{file-link-id}" :path-params {:file-link-id file-link-id}}))
+  [{:keys [file-link-id body]}]
+  (stripe-request :post {:endpoint "/v1/file_links/{file-link-id}" :path-params {:file-link-id file-link-id} :body body}))
 
 (defn list-all-file-links
   "List all file links
@@ -62,5 +62,5 @@
 
   Example Usage:
     (create-file-links {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/file_links"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/file_links" :body body}))

@@ -11,8 +11,8 @@
 
   Example Usage:
     (create-create-preview {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/invoices/create_preview"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/create_preview" :body body}))
 
 (defn list-all-search
   "Search invoices
@@ -42,8 +42,8 @@
 
   Example Usage:
     (post-invoice-void {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/void" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/void" :path-params {:invoice-id invoice-id} :body body}))
 
 (defn post-invoice-attach-payment
   "Attach a payment to an Invoice
@@ -56,8 +56,8 @@
 
   Example Usage:
     (post-invoice-attach-payment {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/attach_payment" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/attach_payment" :path-params {:invoice-id invoice-id} :body body}))
 
 (defn list-all-invoice-lines
   "Retrieve an invoice's line items
@@ -90,8 +90,8 @@
 
   Example Usage:
     (post-invoice-update-lines {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/update_lines" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/update_lines" :path-params {:invoice-id invoice-id} :body body}))
 
 (defn post-invoice-add-lines
   "Bulk add invoice line items
@@ -104,8 +104,8 @@
 
   Example Usage:
     (post-invoice-add-lines {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/add_lines" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/add_lines" :path-params {:invoice-id invoice-id} :body body}))
 
 (defn post-invoice-send
   "Send an invoice for manual payment
@@ -118,8 +118,8 @@
 
   Example Usage:
     (post-invoice-send {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/send" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/send" :path-params {:invoice-id invoice-id} :body body}))
 
 (defn post-invoice-mark-uncollectible
   "Mark an invoice as uncollectible
@@ -132,8 +132,8 @@
 
   Example Usage:
     (post-invoice-mark-uncollectible {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/mark_uncollectible" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/mark_uncollectible" :path-params {:invoice-id invoice-id} :body body}))
 
 (defn post-invoice-finalize
   "Finalize an invoice
@@ -146,8 +146,8 @@
 
   Example Usage:
     (post-invoice-finalize {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/finalize" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/finalize" :path-params {:invoice-id invoice-id} :body body}))
 
 (defn update-invoice-lines-line-item-id
   "Update an invoice's line item
@@ -161,8 +161,8 @@
 
   Example Usage:
     (update-invoice-lines-line-item-id {:invoice-id example-invoice-id :line-id example-line-id})"
-  [{:keys [invoice-id line-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/lines/{line-id}" :path-params {:invoice-id invoice-id :line-id line-id}}))
+  [{:keys [invoice-id line-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/lines/{line-id}" :path-params {:invoice-id invoice-id :line-id line-id} :body body}))
 
 (defn list-all
   "List all invoices
@@ -196,8 +196,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/invoices"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/invoices" :body body}))
 
 (defn post-invoice-remove-lines
   "Bulk remove invoice line items
@@ -210,8 +210,8 @@
 
   Example Usage:
     (post-invoice-remove-lines {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/remove_lines" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/remove_lines" :path-params {:invoice-id invoice-id} :body body}))
 
 (defn retrieve-invoice
   "Retrieve an invoice
@@ -255,8 +255,8 @@
 
   Example Usage:
     (update-invoice {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}" :path-params {:invoice-id invoice-id} :body body}))
 
 (defn post-invoice-pay
   "Pay an invoice
@@ -269,5 +269,5 @@
 
   Example Usage:
     (post-invoice-pay {:invoice-id example-invoice-id})"
-  [{:keys [invoice-id]}]
-  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/pay" :path-params {:invoice-id invoice-id}}))
+  [{:keys [invoice-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoices/{invoice-id}/pay" :path-params {:invoice-id invoice-id} :body body}))

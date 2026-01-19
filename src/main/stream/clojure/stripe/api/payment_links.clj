@@ -31,8 +31,8 @@
 
   Example Usage:
     (update-payment-links-payment-link {:payment-link-id example-payment-link-id})"
-  [{:keys [payment-link-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_links/{payment-link-id}" :path-params {:payment-link-id payment-link-id}}))
+  [{:keys [payment-link-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_links/{payment-link-id}" :path-params {:payment-link-id payment-link-id} :body body}))
 
 (defn list-all-payment-links-payment-link-line-items
   "Retrieve a payment link's line items
@@ -80,5 +80,5 @@
 
   Example Usage:
     (create-payment-links {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/payment_links"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/payment_links" :body body}))

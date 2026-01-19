@@ -54,8 +54,8 @@
 
   Example Usage:
     (create-customer-balance-transactions {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/balance_transactions" :path-params {:customer-id customer-id}}))
+  [{:keys [customer-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/balance_transactions" :path-params {:customer-id customer-id} :body body}))
 
 (defn retrieve-customer-payment-methods-payment-method
   "Retrieve a Customer's PaymentMethod
@@ -120,8 +120,8 @@
 
   Example Usage:
     (update-customer-subscriptions-subscription-exposed-id {:customer-id example-customer-id :subscription-id example-subscription-id})"
-  [{:keys [customer-id subscription-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}" :path-params {:customer-id customer-id :subscription-id subscription-id}}))
+  [{:keys [customer-id subscription-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/subscriptions/{subscription-id}" :path-params {:customer-id customer-id :subscription-id subscription-id} :body body}))
 
 (defn list-all-customer-bank-accounts
   "List all bank accounts
@@ -154,8 +154,8 @@
 
   Example Usage:
     (create-customer-bank-accounts {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts" :path-params {:customer-id customer-id}}))
+  [{:keys [customer-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts" :path-params {:customer-id customer-id} :body body}))
 
 (defn list-all-search
   "Search customers
@@ -205,8 +205,8 @@
 
   Example Usage:
     (create-customer-cards {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cards" :path-params {:customer-id customer-id}}))
+  [{:keys [customer-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cards" :path-params {:customer-id customer-id} :body body}))
 
 (defn list-all-customer-cash-balance-transactions
   "List cash balance transactions
@@ -292,8 +292,8 @@
 
   Example Usage:
     (create-customer-tax-ids {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/tax_ids" :path-params {:customer-id customer-id}}))
+  [{:keys [customer-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/tax_ids" :path-params {:customer-id customer-id} :body body}))
 
 (defn list-all-customer-sources
   "No description available.
@@ -327,8 +327,8 @@
 
   Example Usage:
     (create-customer-sources {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources" :path-params {:customer-id customer-id}}))
+  [{:keys [customer-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources" :path-params {:customer-id customer-id} :body body}))
 
 (defn retrieve-customer-bank-accounts-id
   "Retrieve a bank account
@@ -375,8 +375,8 @@
 
   Example Usage:
     (post-customer-bank-accounts-id {:customer-id example-customer-id :bank-account-id example-bank-account-id})"
-  [{:keys [customer-id bank-account-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id}}))
+  [{:keys [customer-id bank-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id} :body body}))
 
 (defn post-customer-bank-accounts-id-verify
   "Verify a bank account
@@ -390,8 +390,8 @@
 
   Example Usage:
     (post-customer-bank-accounts-id-verify {:customer-id example-customer-id :bank-account-id example-bank-account-id})"
-  [{:keys [customer-id bank-account-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}/verify" :path-params {:customer-id customer-id :bank-account-id bank-account-id}}))
+  [{:keys [customer-id bank-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}/verify" :path-params {:customer-id customer-id :bank-account-id bank-account-id} :body body}))
 
 (defn create-customer-funding-instructions
   "Create or retrieve funding instructions for a customer cash balance
@@ -404,8 +404,8 @@
 
   Example Usage:
     (create-customer-funding-instructions {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/funding_instructions" :path-params {:customer-id customer-id}}))
+  [{:keys [customer-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/funding_instructions" :path-params {:customer-id customer-id} :body body}))
 
 (defn list-all-customer-subscriptions
   "List active subscriptions
@@ -438,8 +438,8 @@
 
   Example Usage:
     (create-customer-subscriptions {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/subscriptions" :path-params {:customer-id customer-id}}))
+  [{:keys [customer-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/subscriptions" :path-params {:customer-id customer-id} :body body}))
 
 (defn retrieve-customer-sources-id
   "No description available.
@@ -486,8 +486,8 @@
 
   Example Usage:
     (post-customer-sources-id {:customer-id example-customer-id :source-id example-source-id})"
-  [{:keys [customer-id source-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id}}))
+  [{:keys [customer-id source-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id} :body body}))
 
 (defn retrieve-customer-balance-transactions-transaction
   "Retrieve a customer balance transaction
@@ -519,8 +519,8 @@
 
   Example Usage:
     (update-customer-balance-transactions-transaction {:customer-id example-customer-id :balance-transaction-id example-balance-transaction-id})"
-  [{:keys [customer-id balance-transaction-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/balance_transactions/{balance-transaction-id}" :path-params {:customer-id customer-id :balance-transaction-id balance-transaction-id}}))
+  [{:keys [customer-id balance-transaction-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/balance_transactions/{balance-transaction-id}" :path-params {:customer-id customer-id :balance-transaction-id balance-transaction-id} :body body}))
 
 (defn list-all-customer-cash-balance
   "Retrieve a cash balance
@@ -550,8 +550,8 @@
 
   Example Usage:
     (update-customer-cash-balance {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cash_balance" :path-params {:customer-id customer-id}}))
+  [{:keys [customer-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cash_balance" :path-params {:customer-id customer-id} :body body}))
 
 (defn retrieve-customer-tax-ids-id
   "Retrieve a Customer tax ID
@@ -628,8 +628,8 @@
 
   Example Usage:
     (update-customer {:customer-id example-customer-id})"
-  [{:keys [customer-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}" :path-params {:customer-id customer-id}}))
+  [{:keys [customer-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}" :path-params {:customer-id customer-id} :body body}))
 
 (defn retrieve-customer-cards-id
   "Retrieve a card
@@ -676,8 +676,8 @@
 
   Example Usage:
     (post-customer-cards-id {:customer-id example-customer-id :card-id example-card-id})"
-  [{:keys [customer-id card-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id}}))
+  [{:keys [customer-id card-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id} :body body}))
 
 (defn post-customer-sources-id-verify
   "Verify a bank account
@@ -691,8 +691,8 @@
 
   Example Usage:
     (post-customer-sources-id-verify {:customer-id example-customer-id :source-id example-source-id})"
-  [{:keys [customer-id source-id]}]
-  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources/{source-id}/verify" :path-params {:customer-id customer-id :source-id source-id}}))
+  [{:keys [customer-id source-id body]}]
+  (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources/{source-id}/verify" :path-params {:customer-id customer-id :source-id source-id} :body body}))
 
 (defn list-all-customer-payment-methods
   "List a Customer's PaymentMethods
@@ -744,8 +744,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/customers"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/customers" :body body}))
 
 (defn list-all-customer-discount
   "No description available.

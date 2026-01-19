@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-setup-intents-intent-cancel {:setup-intent-id example-setup-intent-id})"
-  [{:keys [setup-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/setup_intents/{setup-intent-id}/cancel" :path-params {:setup-intent-id setup-intent-id}}))
+  [{:keys [setup-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/setup_intents/{setup-intent-id}/cancel" :path-params {:setup-intent-id setup-intent-id} :body body}))
 
 (defn retrieve-setup-intents-intent
   "Retrieve a SetupIntent
@@ -46,8 +46,8 @@
 
   Example Usage:
     (update-setup-intents-intent {:setup-intent-id example-setup-intent-id})"
-  [{:keys [setup-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/setup_intents/{setup-intent-id}" :path-params {:setup-intent-id setup-intent-id}}))
+  [{:keys [setup-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/setup_intents/{setup-intent-id}" :path-params {:setup-intent-id setup-intent-id} :body body}))
 
 (defn post-setup-intents-intent-confirm
   "Confirm a SetupIntent
@@ -60,8 +60,8 @@
 
   Example Usage:
     (post-setup-intents-intent-confirm {:setup-intent-id example-setup-intent-id})"
-  [{:keys [setup-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/setup_intents/{setup-intent-id}/confirm" :path-params {:setup-intent-id setup-intent-id}}))
+  [{:keys [setup-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/setup_intents/{setup-intent-id}/confirm" :path-params {:setup-intent-id setup-intent-id} :body body}))
 
 (defn post-setup-intents-intent-verify-microdeposits
   "Verify microdeposits on a SetupIntent
@@ -74,8 +74,8 @@
 
   Example Usage:
     (post-setup-intents-intent-verify-microdeposits {:setup-intent-id example-setup-intent-id})"
-  [{:keys [setup-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/setup_intents/{setup-intent-id}/verify_microdeposits" :path-params {:setup-intent-id setup-intent-id}}))
+  [{:keys [setup-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/setup_intents/{setup-intent-id}/verify_microdeposits" :path-params {:setup-intent-id setup-intent-id} :body body}))
 
 (defn list-all-setup-intents
   "List all SetupIntents
@@ -109,5 +109,5 @@ It can only be used for this Stripe Account’s own money movement flows like In
 
   Example Usage:
     (create-setup-intents {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/setup_intents"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/setup_intents" :body body}))

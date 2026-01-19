@@ -52,8 +52,8 @@
 
   Example Usage:
     (post-linked-accounts-account-refresh {:linked-account-id example-linked-account-id})"
-  [{:keys [linked-account-id]}]
-  (stripe-request :post {:endpoint "/v1/linked_accounts/{linked-account-id}/refresh" :path-params {:linked-account-id linked-account-id}}))
+  [{:keys [linked-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/linked_accounts/{linked-account-id}/refresh" :path-params {:linked-account-id linked-account-id} :body body}))
 
 (defn post-linked-accounts-account-disconnect
   "Disconnect an Account
@@ -66,8 +66,8 @@
 
   Example Usage:
     (post-linked-accounts-account-disconnect {:linked-account-id example-linked-account-id})"
-  [{:keys [linked-account-id]}]
-  (stripe-request :post {:endpoint "/v1/linked_accounts/{linked-account-id}/disconnect" :path-params {:linked-account-id linked-account-id}}))
+  [{:keys [linked-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/linked_accounts/{linked-account-id}/disconnect" :path-params {:linked-account-id linked-account-id} :body body}))
 
 (defn list-all-linked-accounts
   "List Accounts

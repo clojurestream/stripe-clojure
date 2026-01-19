@@ -34,8 +34,8 @@
 
   Example Usage:
     (create-id-reversals {:transfer-id example-transfer-id})"
-  [{:keys [transfer-id]}]
-  (stripe-request :post {:endpoint "/v1/transfers/{transfer-id}/reversals" :path-params {:transfer-id transfer-id}}))
+  [{:keys [transfer-id body]}]
+  (stripe-request :post {:endpoint "/v1/transfers/{transfer-id}/reversals" :path-params {:transfer-id transfer-id} :body body}))
 
 (defn retrieve-transfer-reversals-id
   "Retrieve a reversal
@@ -67,8 +67,8 @@
 
   Example Usage:
     (update-transfer-reversals-id {:transfer-id example-transfer-id :reversal-id example-reversal-id})"
-  [{:keys [transfer-id reversal-id]}]
-  (stripe-request :post {:endpoint "/v1/transfers/{transfer-id}/reversals/{reversal-id}" :path-params {:transfer-id transfer-id :reversal-id reversal-id}}))
+  [{:keys [transfer-id reversal-id body]}]
+  (stripe-request :post {:endpoint "/v1/transfers/{transfer-id}/reversals/{reversal-id}" :path-params {:transfer-id transfer-id :reversal-id reversal-id} :body body}))
 
 (defn list-all
   "List all transfers
@@ -98,8 +98,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/transfers"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/transfers" :body body}))
 
 (defn retrieve-transfer
   "Retrieve a transfer
@@ -129,5 +129,5 @@
 
   Example Usage:
     (update-transfer {:transfer-id example-transfer-id})"
-  [{:keys [transfer-id]}]
-  (stripe-request :post {:endpoint "/v1/transfers/{transfer-id}" :path-params {:transfer-id transfer-id}}))
+  [{:keys [transfer-id body]}]
+  (stripe-request :post {:endpoint "/v1/transfers/{transfer-id}" :path-params {:transfer-id transfer-id} :body body}))

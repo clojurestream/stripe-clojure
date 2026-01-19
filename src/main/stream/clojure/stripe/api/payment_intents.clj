@@ -52,8 +52,8 @@
 
   Example Usage:
     (update-payment-intents-intent {:payment-intent-id example-payment-intent-id})"
-  [{:keys [payment-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}" :path-params {:payment-intent-id payment-intent-id}}))
+  [{:keys [payment-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}" :path-params {:payment-intent-id payment-intent-id} :body body}))
 
 (defn post-payment-intents-intent-increment-authorization
   "Increment an authorization
@@ -66,8 +66,8 @@
 
   Example Usage:
     (post-payment-intents-intent-increment-authorization {:payment-intent-id example-payment-intent-id})"
-  [{:keys [payment-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/increment_authorization" :path-params {:payment-intent-id payment-intent-id}}))
+  [{:keys [payment-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/increment_authorization" :path-params {:payment-intent-id payment-intent-id} :body body}))
 
 (defn post-payment-intents-intent-verify-microdeposits
   "Verify microdeposits on a PaymentIntent
@@ -80,8 +80,8 @@
 
   Example Usage:
     (post-payment-intents-intent-verify-microdeposits {:payment-intent-id example-payment-intent-id})"
-  [{:keys [payment-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/verify_microdeposits" :path-params {:payment-intent-id payment-intent-id}}))
+  [{:keys [payment-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/verify_microdeposits" :path-params {:payment-intent-id payment-intent-id} :body body}))
 
 (defn post-payment-intents-intent-capture
   "Capture a PaymentIntent
@@ -94,8 +94,8 @@
 
   Example Usage:
     (post-payment-intents-intent-capture {:payment-intent-id example-payment-intent-id})"
-  [{:keys [payment-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/capture" :path-params {:payment-intent-id payment-intent-id}}))
+  [{:keys [payment-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/capture" :path-params {:payment-intent-id payment-intent-id} :body body}))
 
 (defn post-payment-intents-intent-cancel
   "Cancel a PaymentIntent
@@ -108,8 +108,8 @@
 
   Example Usage:
     (post-payment-intents-intent-cancel {:payment-intent-id example-payment-intent-id})"
-  [{:keys [payment-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/cancel" :path-params {:payment-intent-id payment-intent-id}}))
+  [{:keys [payment-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/cancel" :path-params {:payment-intent-id payment-intent-id} :body body}))
 
 (defn list-all-payment-intents-search
   "Search PaymentIntents
@@ -139,8 +139,8 @@
 
   Example Usage:
     (post-payment-intents-intent-confirm {:payment-intent-id example-payment-intent-id})"
-  [{:keys [payment-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/confirm" :path-params {:payment-intent-id payment-intent-id}}))
+  [{:keys [payment-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/confirm" :path-params {:payment-intent-id payment-intent-id} :body body}))
 
 (defn post-payment-intents-intent-apply-customer-balance
   "Reconcile a customer_balance PaymentIntent
@@ -153,8 +153,8 @@
 
   Example Usage:
     (post-payment-intents-intent-apply-customer-balance {:payment-intent-id example-payment-intent-id})"
-  [{:keys [payment-intent-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/apply_customer_balance" :path-params {:payment-intent-id payment-intent-id}}))
+  [{:keys [payment-intent-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_intents/{payment-intent-id}/apply_customer_balance" :path-params {:payment-intent-id payment-intent-id} :body body}))
 
 (defn list-all-payment-intents
   "List all PaymentIntents
@@ -184,5 +184,5 @@
 
   Example Usage:
     (create-payment-intents {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/payment_intents"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/payment_intents" :body body}))

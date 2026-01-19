@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-credit-notes-id-void {:credit-note-id example-credit-note-id})"
-  [{:keys [credit-note-id]}]
-  (stripe-request :post {:endpoint "/v1/credit_notes/{credit-note-id}/void" :path-params {:credit-note-id credit-note-id}}))
+  [{:keys [credit-note-id body]}]
+  (stripe-request :post {:endpoint "/v1/credit_notes/{credit-note-id}/void" :path-params {:credit-note-id credit-note-id} :body body}))
 
 (defn list-all-credit-notes-preview-lines
   "Retrieve a credit note preview's line items
@@ -96,8 +96,8 @@
 
   Example Usage:
     (create-credit-notes {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/credit_notes"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/credit_notes" :body body}))
 
 (defn retrieve-credit-notes-id
   "Retrieve a credit note
@@ -127,8 +127,8 @@
 
   Example Usage:
     (update-credit-notes-id {:credit-note-id example-credit-note-id})"
-  [{:keys [credit-note-id]}]
-  (stripe-request :post {:endpoint "/v1/credit_notes/{credit-note-id}" :path-params {:credit-note-id credit-note-id}}))
+  [{:keys [credit-note-id body]}]
+  (stripe-request :post {:endpoint "/v1/credit_notes/{credit-note-id}" :path-params {:credit-note-id credit-note-id} :body body}))
 
 (defn list-all-credit-notes-preview
   "Preview a credit note

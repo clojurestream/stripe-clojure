@@ -31,8 +31,8 @@
 
   Example Usage:
     (update-tax-rates-tax-rate {:tax-rate-id example-tax-rate-id})"
-  [{:keys [tax-rate-id]}]
-  (stripe-request :post {:endpoint "/v1/tax_rates/{tax-rate-id}" :path-params {:tax-rate-id tax-rate-id}}))
+  [{:keys [tax-rate-id body]}]
+  (stripe-request :post {:endpoint "/v1/tax_rates/{tax-rate-id}" :path-params {:tax-rate-id tax-rate-id} :body body}))
 
 (defn list-all-tax-rates
   "List all tax rates
@@ -62,5 +62,5 @@
 
   Example Usage:
     (create-tax-rates {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/tax_rates"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/tax_rates" :body body}))

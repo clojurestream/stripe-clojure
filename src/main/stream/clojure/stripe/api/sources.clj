@@ -32,8 +32,8 @@
 
   Example Usage:
     (post-source-verify {:source-id example-source-id})"
-  [{:keys [source-id]}]
-  (stripe-request :post {:endpoint "/v1/sources/{source-id}/verify" :path-params {:source-id source-id}}))
+  [{:keys [source-id body]}]
+  (stripe-request :post {:endpoint "/v1/sources/{source-id}/verify" :path-params {:source-id source-id} :body body}))
 
 (defn retrieve-source
   "Retrieve a source
@@ -64,8 +64,8 @@
 
   Example Usage:
     (update-source {:source-id example-source-id})"
-  [{:keys [source-id]}]
-  (stripe-request :post {:endpoint "/v1/sources/{source-id}" :path-params {:source-id source-id}}))
+  [{:keys [source-id body]}]
+  (stripe-request :post {:endpoint "/v1/sources/{source-id}" :path-params {:source-id source-id} :body body}))
 
 (defn retrieve-source-mandate-notifications-mandate-notification
   "Retrieve a Source MandateNotification
@@ -113,5 +113,5 @@
 
   Example Usage:
     (post {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/sources"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/sources" :body body}))

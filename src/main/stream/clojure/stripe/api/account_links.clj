@@ -11,5 +11,5 @@
 
   Example Usage:
     (create-account-links {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/account_links"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/account_links" :body body}))

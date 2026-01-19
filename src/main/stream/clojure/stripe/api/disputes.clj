@@ -34,8 +34,8 @@
 
   Example Usage:
     (post-dispute-close {:dispute-id example-dispute-id})"
-  [{:keys [dispute-id]}]
-  (stripe-request :post {:endpoint "/v1/disputes/{dispute-id}/close" :path-params {:dispute-id dispute-id}}))
+  [{:keys [dispute-id body]}]
+  (stripe-request :post {:endpoint "/v1/disputes/{dispute-id}/close" :path-params {:dispute-id dispute-id} :body body}))
 
 (defn retrieve-dispute
   "Retrieve a dispute
@@ -65,5 +65,5 @@
 
   Example Usage:
     (update-dispute {:dispute-id example-dispute-id})"
-  [{:keys [dispute-id]}]
-  (stripe-request :post {:endpoint "/v1/disputes/{dispute-id}" :path-params {:dispute-id dispute-id}}))
+  [{:keys [dispute-id body]}]
+  (stripe-request :post {:endpoint "/v1/disputes/{dispute-id}" :path-params {:dispute-id dispute-id} :body body}))

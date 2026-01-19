@@ -29,8 +29,8 @@
 
   Example Usage:
     (create-tax-ids {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/tax_ids"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/tax_ids" :body body}))
 
 (defn retrieve-tax-ids-id
   "Retrieve a tax ID

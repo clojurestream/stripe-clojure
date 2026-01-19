@@ -34,8 +34,8 @@
 
   Example Usage:
     (create-application-fees-id-refunds {:application-fee-id example-application-fee-id})"
-  [{:keys [application-fee-id]}]
-  (stripe-request :post {:endpoint "/v1/application_fees/{application-fee-id}/refunds" :path-params {:application-fee-id application-fee-id}}))
+  [{:keys [application-fee-id body]}]
+  (stripe-request :post {:endpoint "/v1/application_fees/{application-fee-id}/refunds" :path-params {:application-fee-id application-fee-id} :body body}))
 
 (defn list-all-application-fees
   "List all application fees
@@ -86,8 +86,8 @@
 
   Example Usage:
     (update-application-fees-fee-refunds-id {:application-fee-id example-application-fee-id :refund-id example-refund-id})"
-  [{:keys [application-fee-id refund-id]}]
-  (stripe-request :post {:endpoint "/v1/application_fees/{application-fee-id}/refunds/{refund-id}" :path-params {:application-fee-id application-fee-id :refund-id refund-id}}))
+  [{:keys [application-fee-id refund-id body]}]
+  (stripe-request :post {:endpoint "/v1/application_fees/{application-fee-id}/refunds/{refund-id}" :path-params {:application-fee-id application-fee-id :refund-id refund-id} :body body}))
 
 (defn retrieve-application-fees-id
   "Retrieve an application fee
@@ -117,5 +117,5 @@
 
   Example Usage:
     (post-application-fees-id-refund {:application-fee-id example-application-fee-id})"
-  [{:keys [application-fee-id]}]
-  (stripe-request :post {:endpoint "/v1/application_fees/{application-fee-id}/refund" :path-params {:application-fee-id application-fee-id}}))
+  [{:keys [application-fee-id body]}]
+  (stripe-request :post {:endpoint "/v1/application_fees/{application-fee-id}/refund" :path-params {:application-fee-id application-fee-id} :body body}))

@@ -29,8 +29,8 @@
 
   Example Usage:
     (create-requests {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/forwarding/requests"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/forwarding/requests" :body body}))
 
 (defn retrieve-requests-id
   "Retrieve a ForwardingRequest

@@ -31,8 +31,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/topups"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/topups" :body body}))
 
 (defn post-topup-cancel
   "Cancel a top-up
@@ -45,8 +45,8 @@
 
   Example Usage:
     (post-topup-cancel {:topup-id example-topup-id})"
-  [{:keys [topup-id]}]
-  (stripe-request :post {:endpoint "/v1/topups/{topup-id}/cancel" :path-params {:topup-id topup-id}}))
+  [{:keys [topup-id body]}]
+  (stripe-request :post {:endpoint "/v1/topups/{topup-id}/cancel" :path-params {:topup-id topup-id} :body body}))
 
 (defn retrieve-topup
   "Retrieve a top-up
@@ -76,5 +76,5 @@
 
   Example Usage:
     (update-topup {:topup-id example-topup-id})"
-  [{:keys [topup-id]}]
-  (stripe-request :post {:endpoint "/v1/topups/{topup-id}" :path-params {:topup-id topup-id}}))
+  [{:keys [topup-id body]}]
+  (stripe-request :post {:endpoint "/v1/topups/{topup-id}" :path-params {:topup-id topup-id} :body body}))

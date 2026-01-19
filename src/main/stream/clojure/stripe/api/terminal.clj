@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-readers-reader-collect-inputs {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/collect_inputs" :path-params {:reader-id reader-id}}))
+  [{:keys [reader-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/collect_inputs" :path-params {:reader-id reader-id} :body body}))
 
 (defn post-readers-reader-collect-payment-method
   "Hand off a PaymentIntent to a Reader and collect card details
@@ -28,8 +28,8 @@
 
   Example Usage:
     (post-readers-reader-collect-payment-method {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/collect_payment_method" :path-params {:reader-id reader-id}}))
+  [{:keys [reader-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/collect_payment_method" :path-params {:reader-id reader-id} :body body}))
 
 (defn retrieve-configurations-configuration
   "Retrieve a Configuration
@@ -73,8 +73,8 @@
 
   Example Usage:
     (update-configurations-configuration {:configuration-id example-configuration-id})"
-  [{:keys [configuration-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/configurations/{configuration-id}" :path-params {:configuration-id configuration-id}}))
+  [{:keys [configuration-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/configurations/{configuration-id}" :path-params {:configuration-id configuration-id} :body body}))
 
 (defn list-all-configurations
   "List all Configurations
@@ -102,8 +102,8 @@
 
   Example Usage:
     (create-configurations {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/terminal/configurations"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/configurations" :body body}))
 
 (defn post-readers-reader-process-payment-intent
   "Hand-off a PaymentIntent to a Reader
@@ -116,8 +116,8 @@
 
   Example Usage:
     (post-readers-reader-process-payment-intent {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/process_payment_intent" :path-params {:reader-id reader-id}}))
+  [{:keys [reader-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/process_payment_intent" :path-params {:reader-id reader-id} :body body}))
 
 (defn post-readers-reader-set-reader-display
   "Set reader display
@@ -130,8 +130,8 @@
 
   Example Usage:
     (post-readers-reader-set-reader-display {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/set_reader_display" :path-params {:reader-id reader-id}}))
+  [{:keys [reader-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/set_reader_display" :path-params {:reader-id reader-id} :body body}))
 
 (defn post-readers-reader-refund-payment
   "Refund a Charge or a PaymentIntent in-person
@@ -144,8 +144,8 @@
 
   Example Usage:
     (post-readers-reader-refund-payment {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/refund_payment" :path-params {:reader-id reader-id}}))
+  [{:keys [reader-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/refund_payment" :path-params {:reader-id reader-id} :body body}))
 
 (defn retrieve-readers-reader
   "Retrieve a Reader
@@ -189,8 +189,8 @@
 
   Example Usage:
     (update-readers-reader {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}" :path-params {:reader-id reader-id}}))
+  [{:keys [reader-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}" :path-params {:reader-id reader-id} :body body}))
 
 (defn retrieve-locations-location
   "Retrieve a Location
@@ -234,8 +234,8 @@
 
   Example Usage:
     (update-locations-location {:location-id example-location-id})"
-  [{:keys [location-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/locations/{location-id}" :path-params {:location-id location-id}}))
+  [{:keys [location-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/locations/{location-id}" :path-params {:location-id location-id} :body body}))
 
 (defn post-readers-reader-process-setup-intent
   "Hand-off a SetupIntent to a Reader
@@ -248,8 +248,8 @@
 
   Example Usage:
     (post-readers-reader-process-setup-intent {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/process_setup_intent" :path-params {:reader-id reader-id}}))
+  [{:keys [reader-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/process_setup_intent" :path-params {:reader-id reader-id} :body body}))
 
 (defn post-readers-reader-cancel-action
   "Cancel the current reader action
@@ -262,8 +262,8 @@
 
   Example Usage:
     (post-readers-reader-cancel-action {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/cancel_action" :path-params {:reader-id reader-id}}))
+  [{:keys [reader-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/cancel_action" :path-params {:reader-id reader-id} :body body}))
 
 (defn list-all-readers
   "List all Readers
@@ -294,8 +294,8 @@
 
   Example Usage:
     (create-readers {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers" :body body}))
 
 (defn list-all-locations
   "List all Locations
@@ -322,8 +322,8 @@
 
   Example Usage:
     (create-locations {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/terminal/locations"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/locations" :body body}))
 
 (defn post-readers-reader-confirm-payment-intent
   "Confirm a PaymentIntent on the Reader
@@ -336,8 +336,8 @@
 
   Example Usage:
     (post-readers-reader-confirm-payment-intent {:reader-id example-reader-id})"
-  [{:keys [reader-id]}]
-  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/confirm_payment_intent" :path-params {:reader-id reader-id}}))
+  [{:keys [reader-id body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/readers/{reader-id}/confirm_payment_intent" :path-params {:reader-id reader-id} :body body}))
 
 (defn create-onboarding-links
   "Create an Onboarding Link
@@ -347,8 +347,8 @@
 
   Example Usage:
     (create-onboarding-links {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/terminal/onboarding_links"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/onboarding_links" :body body}))
 
 (defn create-connection-tokens
   "Create a Connection Token
@@ -358,5 +358,5 @@
 
   Example Usage:
     (create-connection-tokens {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/terminal/connection_tokens"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/connection_tokens" :body body}))

@@ -31,8 +31,8 @@
 
   Example Usage:
     (update-registrations-id {:registration-id example-registration-id})"
-  [{:keys [registration-id]}]
-  (stripe-request :post {:endpoint "/v1/tax/registrations/{registration-id}" :path-params {:registration-id registration-id}}))
+  [{:keys [registration-id body]}]
+  (stripe-request :post {:endpoint "/v1/tax/registrations/{registration-id}" :path-params {:registration-id registration-id} :body body}))
 
 (defn create-transactions-create-reversal
   "Create a reversal transaction
@@ -42,8 +42,8 @@
 
   Example Usage:
     (create-transactions-create-reversal {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/tax/transactions/create_reversal"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/tax/transactions/create_reversal" :body body}))
 
 (defn retrieve-transactions-transaction
   "Retrieve a transaction
@@ -70,8 +70,8 @@
 
   Example Usage:
     (create-transactions-create-from-calculation {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/tax/transactions/create_from_calculation"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/tax/transactions/create_from_calculation" :body body}))
 
 (defn list-all-calculations-calculation-line-items
   "Retrieve a calculation's line items
@@ -115,8 +115,8 @@
 
   Example Usage:
     (update-settings {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/tax/settings"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/tax/settings" :body body}))
 
 (defn list-all-registrations
   "List registrations
@@ -144,8 +144,8 @@
 
   Example Usage:
     (create-registrations {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/tax/registrations"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/tax/registrations" :body body}))
 
 (defn create-calculations
   "Create a Tax Calculation
@@ -155,8 +155,8 @@
 
   Example Usage:
     (create-calculations {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/tax/calculations"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/tax/calculations" :body body}))
 
 (defn list-all-transactions-transaction-line-items
   "Retrieve a transaction's line items

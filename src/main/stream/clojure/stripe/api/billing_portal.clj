@@ -11,8 +11,8 @@
 
   Example Usage:
     (create-billing-portal-sessions {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/billing_portal/sessions"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/billing_portal/sessions" :body body}))
 
 (defn list-all-billing-portal-configurations
   "List portal configurations
@@ -41,8 +41,8 @@
 
   Example Usage:
     (create-billing-portal-configurations {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/billing_portal/configurations"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/billing_portal/configurations" :body body}))
 
 (defn retrieve-billing-portal-configurations-configuration
   "Retrieve a portal configuration
@@ -72,5 +72,5 @@
 
   Example Usage:
     (update-billing-portal-configurations-configuration {:configuration-id example-configuration-id})"
-  [{:keys [configuration-id]}]
-  (stripe-request :post {:endpoint "/v1/billing_portal/configurations/{configuration-id}" :path-params {:configuration-id configuration-id}}))
+  [{:keys [configuration-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing_portal/configurations/{configuration-id}" :path-params {:configuration-id configuration-id} :body body}))

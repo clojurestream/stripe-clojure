@@ -45,8 +45,8 @@
 
   Example Usage:
     (update-subscription-items-item {:subscription-item-id example-subscription-item-id})"
-  [{:keys [subscription-item-id]}]
-  (stripe-request :post {:endpoint "/v1/subscription_items/{subscription-item-id}" :path-params {:subscription-item-id subscription-item-id}}))
+  [{:keys [subscription-item-id body]}]
+  (stripe-request :post {:endpoint "/v1/subscription_items/{subscription-item-id}" :path-params {:subscription-item-id subscription-item-id} :body body}))
 
 (defn list-all-subscription-items
   "List all subscription items
@@ -74,5 +74,5 @@
 
   Example Usage:
     (create-subscription-items {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/subscription_items"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/subscription_items" :body body}))

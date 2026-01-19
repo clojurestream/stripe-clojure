@@ -31,8 +31,8 @@
 
   Example Usage:
     (update-disputes-dispute {:dispute-id example-dispute-id})"
-  [{:keys [dispute-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/disputes/{dispute-id}" :path-params {:dispute-id dispute-id}}))
+  [{:keys [dispute-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/disputes/{dispute-id}" :path-params {:dispute-id dispute-id} :body body}))
 
 (defn list-all-disputes
   "List all disputes
@@ -62,8 +62,8 @@
 
   Example Usage:
     (create-disputes {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/issuing/disputes"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/disputes" :body body}))
 
 (defn post-disputes-dispute-submit
   "Submit a dispute
@@ -76,8 +76,8 @@
 
   Example Usage:
     (post-disputes-dispute-submit {:dispute-id example-dispute-id})"
-  [{:keys [dispute-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/disputes/{dispute-id}/submit" :path-params {:dispute-id dispute-id}}))
+  [{:keys [dispute-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/disputes/{dispute-id}/submit" :path-params {:dispute-id dispute-id} :body body}))
 
 (defn list-all-tokens
   "List all issuing tokens for card
@@ -127,8 +127,8 @@
 
   Example Usage:
     (update-personalization-designs-personalization-design {:personalization-design-id example-personalization-design-id})"
-  [{:keys [personalization-design-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/personalization_designs/{personalization-design-id}" :path-params {:personalization-design-id personalization-design-id}}))
+  [{:keys [personalization-design-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/personalization_designs/{personalization-design-id}" :path-params {:personalization-design-id personalization-design-id} :body body}))
 
 (defn list-all-cardholders
   "List all cardholders
@@ -160,8 +160,8 @@
 
   Example Usage:
     (create-cardholders {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/issuing/cardholders"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/cardholders" :body body}))
 
 (defn post-authorizations-authorization-decline
   "Decline an authorization
@@ -174,8 +174,8 @@
 
   Example Usage:
     (post-authorizations-authorization-decline {:authorization-id example-authorization-id})"
-  [{:keys [authorization-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/authorizations/{authorization-id}/decline" :path-params {:authorization-id authorization-id}}))
+  [{:keys [authorization-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/authorizations/{authorization-id}/decline" :path-params {:authorization-id authorization-id} :body body}))
 
 (defn retrieve-authorizations-authorization
   "Retrieve an authorization
@@ -205,8 +205,8 @@
 
   Example Usage:
     (update-authorizations-authorization {:authorization-id example-authorization-id})"
-  [{:keys [authorization-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/authorizations/{authorization-id}" :path-params {:authorization-id authorization-id}}))
+  [{:keys [authorization-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/authorizations/{authorization-id}" :path-params {:authorization-id authorization-id} :body body}))
 
 (defn list-all-authorizations
   "List all authorizations
@@ -262,8 +262,8 @@
 
   Example Usage:
     (create-cards {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/issuing/cards"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/cards" :body body}))
 
 (defn retrieve-transactions-transaction
   "Retrieve a transaction
@@ -293,8 +293,8 @@
 
   Example Usage:
     (update-transactions-transaction {:transaction-id example-transaction-id})"
-  [{:keys [transaction-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/transactions/{transaction-id}" :path-params {:transaction-id transaction-id}}))
+  [{:keys [transaction-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/transactions/{transaction-id}" :path-params {:transaction-id transaction-id} :body body}))
 
 (defn list-all-physical-bundles
   "List all physical bundles
@@ -343,8 +343,8 @@
 
   Example Usage:
     (update-cards-card {:card-id example-card-id})"
-  [{:keys [card-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/cards/{card-id}" :path-params {:card-id card-id}}))
+  [{:keys [card-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/cards/{card-id}" :path-params {:card-id card-id} :body body}))
 
 (defn list-all-transactions
   "List all transactions
@@ -395,8 +395,8 @@
 
   Example Usage:
     (create-personalization-designs {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/issuing/personalization_designs"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/personalization_designs" :body body}))
 
 (defn retrieve-physical-bundles-physical-bundle
   "Retrieve a physical bundle
@@ -443,8 +443,8 @@
 
   Example Usage:
     (update-cardholders-cardholder {:cardholder-id example-cardholder-id})"
-  [{:keys [cardholder-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/cardholders/{cardholder-id}" :path-params {:cardholder-id cardholder-id}}))
+  [{:keys [cardholder-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/cardholders/{cardholder-id}" :path-params {:cardholder-id cardholder-id} :body body}))
 
 (defn post-authorizations-authorization-approve
   "Approve an authorization
@@ -457,8 +457,8 @@
 
   Example Usage:
     (post-authorizations-authorization-approve {:authorization-id example-authorization-id})"
-  [{:keys [authorization-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/authorizations/{authorization-id}/approve" :path-params {:authorization-id authorization-id}}))
+  [{:keys [authorization-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/authorizations/{authorization-id}/approve" :path-params {:authorization-id authorization-id} :body body}))
 
 (defn retrieve-settlements-settlement
   "Retrieve a settlement
@@ -488,8 +488,8 @@
 
   Example Usage:
     (update-settlements-settlement {:settlement-id example-settlement-id})"
-  [{:keys [settlement-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/settlements/{settlement-id}" :path-params {:settlement-id settlement-id}}))
+  [{:keys [settlement-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/settlements/{settlement-id}" :path-params {:settlement-id settlement-id} :body body}))
 
 (defn retrieve-tokens-token
   "Retrieve an issuing token
@@ -519,5 +519,5 @@
 
   Example Usage:
     (update-tokens-token {:token-id example-token-id})"
-  [{:keys [token-id]}]
-  (stripe-request :post {:endpoint "/v1/issuing/tokens/{token-id}" :path-params {:token-id token-id}}))
+  [{:keys [token-id body]}]
+  (stripe-request :post {:endpoint "/v1/issuing/tokens/{token-id}" :path-params {:token-id token-id} :body body}))

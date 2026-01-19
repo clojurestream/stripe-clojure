@@ -35,8 +35,8 @@
 
   Example Usage:
     (create-subscription-schedules {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/subscription_schedules"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/subscription_schedules" :body body}))
 
 (defn post-subscription-schedules-schedule-release
   "Release a schedule
@@ -49,8 +49,8 @@
 
   Example Usage:
     (post-subscription-schedules-schedule-release {:subscription-schedule-id example-subscription-schedule-id})"
-  [{:keys [subscription-schedule-id]}]
-  (stripe-request :post {:endpoint "/v1/subscription_schedules/{subscription-schedule-id}/release" :path-params {:subscription-schedule-id subscription-schedule-id}}))
+  [{:keys [subscription-schedule-id body]}]
+  (stripe-request :post {:endpoint "/v1/subscription_schedules/{subscription-schedule-id}/release" :path-params {:subscription-schedule-id subscription-schedule-id} :body body}))
 
 (defn retrieve-subscription-schedules-schedule
   "Retrieve a schedule
@@ -80,8 +80,8 @@
 
   Example Usage:
     (update-subscription-schedules-schedule {:subscription-schedule-id example-subscription-schedule-id})"
-  [{:keys [subscription-schedule-id]}]
-  (stripe-request :post {:endpoint "/v1/subscription_schedules/{subscription-schedule-id}" :path-params {:subscription-schedule-id subscription-schedule-id}}))
+  [{:keys [subscription-schedule-id body]}]
+  (stripe-request :post {:endpoint "/v1/subscription_schedules/{subscription-schedule-id}" :path-params {:subscription-schedule-id subscription-schedule-id} :body body}))
 
 (defn post-subscription-schedules-schedule-cancel
   "Cancel a schedule
@@ -94,5 +94,5 @@
 
   Example Usage:
     (post-subscription-schedules-schedule-cancel {:subscription-schedule-id example-subscription-schedule-id})"
-  [{:keys [subscription-schedule-id]}]
-  (stripe-request :post {:endpoint "/v1/subscription_schedules/{subscription-schedule-id}/cancel" :path-params {:subscription-schedule-id subscription-schedule-id}}))
+  [{:keys [subscription-schedule-id body]}]
+  (stripe-request :post {:endpoint "/v1/subscription_schedules/{subscription-schedule-id}/cancel" :path-params {:subscription-schedule-id subscription-schedule-id} :body body}))

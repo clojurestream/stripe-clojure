@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-invoice-rendering-templates-template-archive {:invoice-rendering-template-id example-invoice-rendering-template-id})"
-  [{:keys [invoice-rendering-template-id]}]
-  (stripe-request :post {:endpoint "/v1/invoice_rendering_templates/{invoice-rendering-template-id}/archive" :path-params {:invoice-rendering-template-id invoice-rendering-template-id}}))
+  [{:keys [invoice-rendering-template-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoice_rendering_templates/{invoice-rendering-template-id}/archive" :path-params {:invoice-rendering-template-id invoice-rendering-template-id} :body body}))
 
 (defn list-all-invoice-rendering-templates
   "List all invoice rendering templates
@@ -64,5 +64,5 @@
 
   Example Usage:
     (post-invoice-rendering-templates-template-unarchive {:invoice-rendering-template-id example-invoice-rendering-template-id})"
-  [{:keys [invoice-rendering-template-id]}]
-  (stripe-request :post {:endpoint "/v1/invoice_rendering_templates/{invoice-rendering-template-id}/unarchive" :path-params {:invoice-rendering-template-id invoice-rendering-template-id}}))
+  [{:keys [invoice-rendering-template-id body]}]
+  (stripe-request :post {:endpoint "/v1/invoice_rendering_templates/{invoice-rendering-template-id}/unarchive" :path-params {:invoice-rendering-template-id invoice-rendering-template-id} :body body}))

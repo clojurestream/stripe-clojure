@@ -33,8 +33,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/products"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/products" :body body}))
 
 (defn list-all-search
   "Search products
@@ -117,8 +117,8 @@
 
   Example Usage:
     (post-product-features {:product-id example-product-id})"
-  [{:keys [product-id]}]
-  (stripe-request :post {:endpoint "/v1/products/{product-id}/features" :path-params {:product-id product-id}}))
+  [{:keys [product-id body]}]
+  (stripe-request :post {:endpoint "/v1/products/{product-id}/features" :path-params {:product-id product-id} :body body}))
 
 (defn retrieve-id
   "Retrieve a product
@@ -162,5 +162,5 @@
 
   Example Usage:
     (update-id {:product-id example-product-id})"
-  [{:keys [product-id]}]
-  (stripe-request :post {:endpoint "/v1/products/{product-id}" :path-params {:product-id product-id}}))
+  [{:keys [product-id body]}]
+  (stripe-request :post {:endpoint "/v1/products/{product-id}" :path-params {:product-id product-id} :body body}))

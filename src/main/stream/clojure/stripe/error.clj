@@ -125,9 +125,17 @@
   [status body request-id]
   (let [stripe-error (parse-stripe-error body)
         stripe-type (:stripe/type stripe-error)
-        category (or (get stripe-type->category stripe-type)
-                     (status->category status)
-                     :cognitect.anomalies/fault)
+        ;; For specific HTTP statuses (404, 401, 403, 409, 429), HTTP status takes precedence
+        ;; because Stripe often returns "invalid_request_error" for various status codes.
+        ;; For 400/402, we check Stripe type first to distinguish card errors.
+        status-priority-codes #{401 403 404 409 429 500 502 503 504}
+        category (if (contains? status-priority-codes status)
+                   (or (status->category status)
+                       (get stripe-type->category stripe-type)
+                       :cognitect.anomalies/fault)
+                   (or (get stripe-type->category stripe-type)
+                       (status->category status)
+                       :cognitect.anomalies/fault))
         message (or (:stripe/message stripe-error)
                     (str "HTTP " status " error"))]
     (cond-> {:cognitect.anomalies/category category

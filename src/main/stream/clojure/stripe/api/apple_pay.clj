@@ -60,5 +60,5 @@
 
   Example Usage:
     (post-apple-pay-domains {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/apple_pay/domains"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/apple_pay/domains" :body body}))

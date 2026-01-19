@@ -43,8 +43,8 @@
 
   Example Usage:
     (create-report-runs {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/reporting/report_runs"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/reporting/report_runs" :body body}))
 
 (defn retrieve-report-types-report-type
   "Retrieve a Report Type

@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-payout-cancel {:payout-id example-payout-id})"
-  [{:keys [payout-id]}]
-  (stripe-request :post {:endpoint "/v1/payouts/{payout-id}/cancel" :path-params {:payout-id payout-id}}))
+  [{:keys [payout-id body]}]
+  (stripe-request :post {:endpoint "/v1/payouts/{payout-id}/cancel" :path-params {:payout-id payout-id} :body body}))
 
 (defn retrieve-payout
   "Retrieve a payout
@@ -45,8 +45,8 @@
 
   Example Usage:
     (update-payout {:payout-id example-payout-id})"
-  [{:keys [payout-id]}]
-  (stripe-request :post {:endpoint "/v1/payouts/{payout-id}" :path-params {:payout-id payout-id}}))
+  [{:keys [payout-id body]}]
+  (stripe-request :post {:endpoint "/v1/payouts/{payout-id}" :path-params {:payout-id payout-id} :body body}))
 
 (defn post-payout-reverse
   "Reverse a payout
@@ -59,8 +59,8 @@
 
   Example Usage:
     (post-payout-reverse {:payout-id example-payout-id})"
-  [{:keys [payout-id]}]
-  (stripe-request :post {:endpoint "/v1/payouts/{payout-id}/reverse" :path-params {:payout-id payout-id}}))
+  [{:keys [payout-id body]}]
+  (stripe-request :post {:endpoint "/v1/payouts/{payout-id}/reverse" :path-params {:payout-id payout-id} :body body}))
 
 (defn list-all
   "List all payouts
@@ -91,5 +91,5 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/payouts"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/payouts" :body body}))

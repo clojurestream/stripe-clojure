@@ -11,8 +11,8 @@
 
   Example Usage:
     (create-financial-connections-sessions {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/financial_connections/sessions"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/financial_connections/sessions" :body body}))
 
 (defn retrieve-financial-connections-accounts-account
   "Retrieve an Account
@@ -42,8 +42,8 @@
 
   Example Usage:
     (post-financial-connections-accounts-account-refresh {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/refresh" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/refresh" :path-params {:account-id account-id} :body body}))
 
 (defn post-financial-connections-accounts-account-unsubscribe
   "Unsubscribe from data refreshes for an Account
@@ -56,8 +56,8 @@
 
   Example Usage:
     (post-financial-connections-accounts-account-unsubscribe {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/unsubscribe" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/unsubscribe" :path-params {:account-id account-id} :body body}))
 
 (defn post-financial-connections-accounts-account-disconnect
   "Disconnect an Account
@@ -70,8 +70,8 @@
 
   Example Usage:
     (post-financial-connections-accounts-account-disconnect {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/disconnect" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/disconnect" :path-params {:account-id account-id} :body body}))
 
 (defn list-all-financial-connections-transactions
   "List Transactions
@@ -159,8 +159,8 @@
 
   Example Usage:
     (post-financial-connections-accounts-account-subscribe {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/subscribe" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/financial_connections/accounts/{account-id}/subscribe" :path-params {:account-id account-id} :body body}))
 
 (defn list-all-financial-connections-accounts
   "List Accounts

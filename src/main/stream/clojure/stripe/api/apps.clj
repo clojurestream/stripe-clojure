@@ -29,8 +29,8 @@
 
   Example Usage:
     (post-secrets {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/apps/secrets"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/apps/secrets" :body body}))
 
 (defn post-secrets-delete
   "Delete a Secret
@@ -40,8 +40,8 @@
 
   Example Usage:
     (post-secrets-delete {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/apps/secrets/delete"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/apps/secrets/delete" :body body}))
 
 (defn list-all-secrets-find
   "Find a Secret

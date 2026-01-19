@@ -29,8 +29,8 @@
 
   Example Usage:
     (create-payment-method-configurations {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/payment_method_configurations"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/payment_method_configurations" :body body}))
 
 (defn retrieve-payment-method-configurations-configuration
   "Retrieve payment method configuration
@@ -60,5 +60,5 @@
 
   Example Usage:
     (update-payment-method-configurations-configuration {:payment-method-configuration-id example-payment-method-configuration-id})"
-  [{:keys [payment-method-configuration-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_method_configurations/{payment-method-configuration-id}" :path-params {:payment-method-configuration-id payment-method-configuration-id}}))
+  [{:keys [payment-method-configuration-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_method_configurations/{payment-method-configuration-id}" :path-params {:payment-method-configuration-id payment-method-configuration-id} :body body}))

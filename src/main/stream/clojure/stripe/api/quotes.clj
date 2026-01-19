@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-quote-accept {:quote-id example-quote-id})"
-  [{:keys [quote-id]}]
-  (stripe-request :post {:endpoint "/v1/quotes/{quote-id}/accept" :path-params {:quote-id quote-id}}))
+  [{:keys [quote-id body]}]
+  (stripe-request :post {:endpoint "/v1/quotes/{quote-id}/accept" :path-params {:quote-id quote-id} :body body}))
 
 (defn list-all-quote-line-items
   "Retrieve a quote's line items
@@ -48,8 +48,8 @@
 
   Example Usage:
     (post-quote-finalize {:quote-id example-quote-id})"
-  [{:keys [quote-id]}]
-  (stripe-request :post {:endpoint "/v1/quotes/{quote-id}/finalize" :path-params {:quote-id quote-id}}))
+  [{:keys [quote-id body]}]
+  (stripe-request :post {:endpoint "/v1/quotes/{quote-id}/finalize" :path-params {:quote-id quote-id} :body body}))
 
 (defn list-all
   "List all quotes
@@ -80,8 +80,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/quotes"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/quotes" :body body}))
 
 (defn list-all-quote-computed-upfront-line-items
   "Retrieve a quote's upfront line items
@@ -114,8 +114,8 @@
 
   Example Usage:
     (post-quote-cancel {:quote-id example-quote-id})"
-  [{:keys [quote-id]}]
-  (stripe-request :post {:endpoint "/v1/quotes/{quote-id}/cancel" :path-params {:quote-id quote-id}}))
+  [{:keys [quote-id body]}]
+  (stripe-request :post {:endpoint "/v1/quotes/{quote-id}/cancel" :path-params {:quote-id quote-id} :body body}))
 
 (defn retrieve-quote
   "Retrieve a quote
@@ -145,8 +145,8 @@
 
   Example Usage:
     (update-quote {:quote-id example-quote-id})"
-  [{:keys [quote-id]}]
-  (stripe-request :post {:endpoint "/v1/quotes/{quote-id}" :path-params {:quote-id quote-id}}))
+  [{:keys [quote-id body]}]
+  (stripe-request :post {:endpoint "/v1/quotes/{quote-id}" :path-params {:quote-id quote-id} :body body}))
 
 (defn list-all-quote-pdf
   "Download quote PDF

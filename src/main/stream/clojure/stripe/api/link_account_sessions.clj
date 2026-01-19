@@ -11,8 +11,8 @@
 
   Example Usage:
     (create-link-account-sessions {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/link_account_sessions"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/link_account_sessions" :body body}))
 
 (defn retrieve-link-account-sessions-session
   "Retrieve a Session

@@ -25,5 +25,5 @@
 
   Example Usage:
     (create-ephemeral-keys {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/ephemeral_keys"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/ephemeral_keys" :body body}))

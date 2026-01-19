@@ -29,8 +29,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/coupons"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/coupons" :body body}))
 
 (defn retrieve-coupon
   "Retrieve a coupon
@@ -74,5 +74,5 @@
 
   Example Usage:
     (update-coupon {:coupon-id example-coupon-id})"
-  [{:keys [coupon-id]}]
-  (stripe-request :post {:endpoint "/v1/coupons/{coupon-id}" :path-params {:coupon-id coupon-id}}))
+  [{:keys [coupon-id body]}]
+  (stripe-request :post {:endpoint "/v1/coupons/{coupon-id}" :path-params {:coupon-id coupon-id} :body body}))

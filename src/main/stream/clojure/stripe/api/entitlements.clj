@@ -30,8 +30,8 @@
 
   Example Usage:
     (create-features {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/entitlements/features"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/entitlements/features" :body body}))
 
 (defn retrieve-features-id
   "Retrieve a feature
@@ -61,8 +61,8 @@
 
   Example Usage:
     (post-features-id {:feature-id example-feature-id})"
-  [{:keys [feature-id]}]
-  (stripe-request :post {:endpoint "/v1/entitlements/features/{feature-id}" :path-params {:feature-id feature-id}}))
+  [{:keys [feature-id body]}]
+  (stripe-request :post {:endpoint "/v1/entitlements/features/{feature-id}" :path-params {:feature-id feature-id} :body body}))
 
 (defn retrieve-active-id
   "Retrieve an active entitlement

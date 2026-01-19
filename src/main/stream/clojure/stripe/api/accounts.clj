@@ -29,8 +29,8 @@
 
   Example Usage:
     (post {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/accounts"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/accounts" :body body}))
 
 (defn create-account-login-links
   "Create a login link
@@ -43,8 +43,8 @@
 
   Example Usage:
     (create-account-login-links {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/login_links" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/login_links" :path-params {:account-id account-id} :body body}))
 
 (defn retrieve-account-persons-person
   "Retrieve a person
@@ -91,8 +91,8 @@
 
   Example Usage:
     (update-account-persons-person {:account-id example-account-id :person-id example-person-id})"
-  [{:keys [account-id person-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/persons/{person-id}" :path-params {:account-id account-id :person-id person-id}}))
+  [{:keys [account-id person-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/persons/{person-id}" :path-params {:account-id account-id :person-id person-id} :body body}))
 
 (defn retrieve-account-bank-id
   "Retrieve an external account
@@ -139,8 +139,8 @@
 
   Example Usage:
     (post-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id})"
-  [{:keys [account-id bank-account-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id}}))
+  [{:keys [account-id bank-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id} :body body}))
 
 (defn retrieve-account-people-person
   "Retrieve a person
@@ -187,8 +187,8 @@
 
   Example Usage:
     (update-account-people-person {:account-id example-account-id :people-id example-people-id})"
-  [{:keys [account-id people-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/people/{people-id}" :path-params {:account-id account-id :people-id people-id}}))
+  [{:keys [account-id people-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/people/{people-id}" :path-params {:account-id account-id :people-id people-id} :body body}))
 
 (defn list-all-account-people
   "List all persons
@@ -222,8 +222,8 @@
 
   Example Usage:
     (create-account-people {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/people" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/people" :path-params {:account-id account-id} :body body}))
 
 (defn retrieve-account
   "Retrieve account
@@ -267,8 +267,8 @@
 
   Example Usage:
     (update-account {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}" :path-params {:account-id account-id} :body body}))
 
 (defn list-all-account-persons
   "List all persons
@@ -302,8 +302,8 @@
 
   Example Usage:
     (create-account-persons {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/persons" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/persons" :path-params {:account-id account-id} :body body}))
 
 (defn retrieve-account-capabilities-capability
   "Retrieve an Account Capability
@@ -335,8 +335,8 @@
 
   Example Usage:
     (update-account-capabilities-capability {:account-id example-account-id :capabilitie-id example-capabilitie-id})"
-  [{:keys [account-id capabilitie-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/capabilities/{capabilitie-id}" :path-params {:account-id account-id :capabilitie-id capabilitie-id}}))
+  [{:keys [account-id capabilitie-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/capabilities/{capabilitie-id}" :path-params {:account-id account-id :capabilitie-id capabilitie-id} :body body}))
 
 (defn list-all-account-capabilities
   "List all account capabilities
@@ -366,8 +366,8 @@
 
   Example Usage:
     (create-account-bank {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/bank_accounts" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/bank_accounts" :path-params {:account-id account-id} :body body}))
 
 (defn list-all-account-external
   "List all external accounts
@@ -401,8 +401,8 @@
 
   Example Usage:
     (create-account-external {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/external_accounts" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/external_accounts" :path-params {:account-id account-id} :body body}))
 
 (defn retrieve-account-external-id
   "Retrieve an external account
@@ -449,8 +449,8 @@
 
   Example Usage:
     (post-account-external-id {:account-id example-account-id :external-account-id example-external-account-id})"
-  [{:keys [account-id external-account-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id}}))
+  [{:keys [account-id external-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id} :body body}))
 
 (defn post-account-reject
   "Reject an account
@@ -463,5 +463,5 @@
 
   Example Usage:
     (post-account-reject {:account-id example-account-id})"
-  [{:keys [account-id]}]
-  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/reject" :path-params {:account-id account-id}}))
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/reject" :path-params {:account-id account-id} :body body}))

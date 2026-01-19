@@ -31,8 +31,8 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/plans"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/plans" :body body}))
 
 (defn retrieve-plan
   "Retrieve a plan
@@ -76,5 +76,5 @@
 
   Example Usage:
     (update-plan {:plan-id example-plan-id})"
-  [{:keys [plan-id]}]
-  (stripe-request :post {:endpoint "/v1/plans/{plan-id}" :path-params {:plan-id plan-id}}))
+  [{:keys [plan-id body]}]
+  (stripe-request :post {:endpoint "/v1/plans/{plan-id}" :path-params {:plan-id plan-id} :body body}))

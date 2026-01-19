@@ -30,8 +30,8 @@
 
   Example Usage:
     (create-payment-method-domains {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/payment_method_domains"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/payment_method_domains" :body body}))
 
 (defn retrieve-payment-method-domains-payment-method-domain
   "Retrieve a payment method domain
@@ -61,8 +61,8 @@
 
   Example Usage:
     (update-payment-method-domains-payment-method-domain {:payment-method-domain-id example-payment-method-domain-id})"
-  [{:keys [payment-method-domain-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_method_domains/{payment-method-domain-id}" :path-params {:payment-method-domain-id payment-method-domain-id}}))
+  [{:keys [payment-method-domain-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_method_domains/{payment-method-domain-id}" :path-params {:payment-method-domain-id payment-method-domain-id} :body body}))
 
 (defn post-payment-method-domains-payment-method-domain-validate
   "Validate an existing payment method domain
@@ -75,5 +75,5 @@
 
   Example Usage:
     (post-payment-method-domains-payment-method-domain-validate {:payment-method-domain-id example-payment-method-domain-id})"
-  [{:keys [payment-method-domain-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_method_domains/{payment-method-domain-id}/validate" :path-params {:payment-method-domain-id payment-method-domain-id}}))
+  [{:keys [payment-method-domain-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_method_domains/{payment-method-domain-id}/validate" :path-params {:payment-method-domain-id payment-method-domain-id} :body body}))

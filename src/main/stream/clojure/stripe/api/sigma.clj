@@ -31,8 +31,8 @@
 
   Example Usage:
     (update-saved-queries-id {:saved-querie-id example-saved-querie-id})"
-  [{:keys [saved-querie-id]}]
-  (stripe-request :post {:endpoint "/v1/sigma/saved_queries/{saved-querie-id}" :path-params {:saved-querie-id saved-querie-id}}))
+  [{:keys [saved-querie-id body]}]
+  (stripe-request :post {:endpoint "/v1/sigma/saved_queries/{saved-querie-id}" :path-params {:saved-querie-id saved-querie-id} :body body}))
 
 (defn retrieve-scheduled-query-runs-scheduled-query-run
   "Retrieve a scheduled query run

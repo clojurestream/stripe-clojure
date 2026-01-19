@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-orders-order-cancel {:order-id example-order-id})"
-  [{:keys [order-id]}]
-  (stripe-request :post {:endpoint "/v1/climate/orders/{order-id}/cancel" :path-params {:order-id order-id}}))
+  [{:keys [order-id body]}]
+  (stripe-request :post {:endpoint "/v1/climate/orders/{order-id}/cancel" :path-params {:order-id order-id} :body body}))
 
 (defn list-all-suppliers
   "List suppliers
@@ -93,8 +93,8 @@
 
   Example Usage:
     (create-orders {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/climate/orders"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/climate/orders" :body body}))
 
 (defn retrieve-orders-order
   "Retrieve an order
@@ -124,8 +124,8 @@
 
   Example Usage:
     (update-orders-order {:order-id example-order-id})"
-  [{:keys [order-id]}]
-  (stripe-request :post {:endpoint "/v1/climate/orders/{order-id}" :path-params {:order-id order-id}}))
+  [{:keys [order-id body]}]
+  (stripe-request :post {:endpoint "/v1/climate/orders/{order-id}" :path-params {:order-id order-id} :body body}))
 
 (defn retrieve-suppliers-supplier
   "Retrieve a supplier

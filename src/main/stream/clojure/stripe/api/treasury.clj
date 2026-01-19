@@ -87,8 +87,8 @@
 
   Example Usage:
     (post-financial-accounts-financial-account-close {:financial-account-id example-financial-account-id})"
-  [{:keys [financial-account-id]}]
-  (stripe-request :post {:endpoint "/v1/treasury/financial_accounts/{financial-account-id}/close" :path-params {:financial-account-id financial-account-id}}))
+  [{:keys [financial-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/financial_accounts/{financial-account-id}/close" :path-params {:financial-account-id financial-account-id} :body body}))
 
 (defn list-all-outbound-transfers
   "List all OutboundTransfers
@@ -117,8 +117,8 @@
 
   Example Usage:
     (create-outbound-transfers {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/treasury/outbound_transfers"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/outbound_transfers" :body body}))
 
 (defn list-all-transaction-entries
   "List all TransactionEntries
@@ -187,8 +187,8 @@
 
   Example Usage:
     (update-financial-accounts-financial-account-features {:financial-account-id example-financial-account-id})"
-  [{:keys [financial-account-id]}]
-  (stripe-request :post {:endpoint "/v1/treasury/financial_accounts/{financial-account-id}/features" :path-params {:financial-account-id financial-account-id}}))
+  [{:keys [financial-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/financial_accounts/{financial-account-id}/features" :path-params {:financial-account-id financial-account-id} :body body}))
 
 (defn retrieve-inbound-transfers-id
   "Retrieve an InboundTransfer
@@ -234,8 +234,8 @@
 
   Example Usage:
     (create-financial-accounts {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/treasury/financial_accounts"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/financial_accounts" :body body}))
 
 (defn post-inbound-transfers-inbound-transfer-cancel
   "Cancel an InboundTransfer
@@ -248,8 +248,8 @@
 
   Example Usage:
     (post-inbound-transfers-inbound-transfer-cancel {:inbound-transfer-id example-inbound-transfer-id})"
-  [{:keys [inbound-transfer-id]}]
-  (stripe-request :post {:endpoint "/v1/treasury/inbound_transfers/{inbound-transfer-id}/cancel" :path-params {:inbound-transfer-id inbound-transfer-id}}))
+  [{:keys [inbound-transfer-id body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/inbound_transfers/{inbound-transfer-id}/cancel" :path-params {:inbound-transfer-id inbound-transfer-id} :body body}))
 
 (defn retrieve-received-debits-id
   "Retrieve a ReceivedDebit
@@ -279,8 +279,8 @@
 
   Example Usage:
     (post-outbound-payments-id-cancel {:outbound-payment-id example-outbound-payment-id})"
-  [{:keys [outbound-payment-id]}]
-  (stripe-request :post {:endpoint "/v1/treasury/outbound_payments/{outbound-payment-id}/cancel" :path-params {:outbound-payment-id outbound-payment-id}}))
+  [{:keys [outbound-payment-id body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/outbound_payments/{outbound-payment-id}/cancel" :path-params {:outbound-payment-id outbound-payment-id} :body body}))
 
 (defn list-all-outbound-payments
   "List all OutboundPayments
@@ -311,8 +311,8 @@
 
   Example Usage:
     (create-outbound-payments {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/treasury/outbound_payments"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/outbound_payments" :body body}))
 
 (defn post-outbound-transfers-outbound-transfer-cancel
   "Cancel an OutboundTransfer
@@ -325,8 +325,8 @@
 
   Example Usage:
     (post-outbound-transfers-outbound-transfer-cancel {:outbound-transfer-id example-outbound-transfer-id})"
-  [{:keys [outbound-transfer-id]}]
-  (stripe-request :post {:endpoint "/v1/treasury/outbound_transfers/{outbound-transfer-id}/cancel" :path-params {:outbound-transfer-id outbound-transfer-id}}))
+  [{:keys [outbound-transfer-id body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/outbound_transfers/{outbound-transfer-id}/cancel" :path-params {:outbound-transfer-id outbound-transfer-id} :body body}))
 
 (defn list-all-received-debits
   "List all ReceivedDebits
@@ -428,8 +428,8 @@
 
   Example Usage:
     (create-inbound-transfers {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/treasury/inbound_transfers"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/inbound_transfers" :body body}))
 
 (defn list-all-credit-reversals
   "List all CreditReversals
@@ -459,8 +459,8 @@
 
   Example Usage:
     (create-credit-reversals {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/treasury/credit_reversals"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/credit_reversals" :body body}))
 
 (defn retrieve-transactions-id
   "Retrieve a Transaction
@@ -507,8 +507,8 @@
 
   Example Usage:
     (update-financial-accounts-financial-account {:financial-account-id example-financial-account-id})"
-  [{:keys [financial-account-id]}]
-  (stripe-request :post {:endpoint "/v1/treasury/financial_accounts/{financial-account-id}" :path-params {:financial-account-id financial-account-id}}))
+  [{:keys [financial-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/financial_accounts/{financial-account-id}" :path-params {:financial-account-id financial-account-id} :body body}))
 
 (defn list-all-debit-reversals
   "List all DebitReversals
@@ -539,5 +539,5 @@
 
   Example Usage:
     (create-debit-reversals {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/treasury/debit_reversals"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/treasury/debit_reversals" :body body}))

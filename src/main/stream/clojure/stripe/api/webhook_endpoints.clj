@@ -28,8 +28,8 @@
 
   Example Usage:
     (create-webhook-endpoints {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/webhook_endpoints"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/webhook_endpoints" :body body}))
 
 (defn retrieve-webhook-endpoints-webhook-endpoint
   "Retrieve a webhook endpoint
@@ -73,5 +73,5 @@
 
   Example Usage:
     (update-webhook-endpoints-webhook-endpoint {:webhook-endpoint-id example-webhook-endpoint-id})"
-  [{:keys [webhook-endpoint-id]}]
-  (stripe-request :post {:endpoint "/v1/webhook_endpoints/{webhook-endpoint-id}" :path-params {:webhook-endpoint-id webhook-endpoint-id}}))
+  [{:keys [webhook-endpoint-id body]}]
+  (stripe-request :post {:endpoint "/v1/webhook_endpoints/{webhook-endpoint-id}" :path-params {:webhook-endpoint-id webhook-endpoint-id} :body body}))

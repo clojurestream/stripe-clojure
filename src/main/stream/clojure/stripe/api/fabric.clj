@@ -11,8 +11,8 @@
 
   Example Usage:
     (post-service-subscribe {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/fabric/service/subscribe"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/fabric/service/subscribe" :body body}))
 
 (defn list-all-service-integration-config
   "No description available.

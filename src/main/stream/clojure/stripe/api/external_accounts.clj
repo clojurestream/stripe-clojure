@@ -14,5 +14,5 @@
 
   Example Usage:
     (post-external-accounts-id {:external-account-id example-external-account-id})"
-  [{:keys [external-account-id]}]
-  (stripe-request :post {:endpoint "/v1/external_accounts/{external-account-id}" :path-params {:external-account-id external-account-id}}))
+  [{:keys [external-account-id body]}]
+  (stripe-request :post {:endpoint "/v1/external_accounts/{external-account-id}" :path-params {:external-account-id external-account-id} :body body}))

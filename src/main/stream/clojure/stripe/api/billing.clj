@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-alerts-id-archive {:alert-id example-alert-id})"
-  [{:keys [alert-id]}]
-  (stripe-request :post {:endpoint "/v1/billing/alerts/{alert-id}/archive" :path-params {:alert-id alert-id}}))
+  [{:keys [alert-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/alerts/{alert-id}/archive" :path-params {:alert-id alert-id} :body body}))
 
 (defn retrieve-alerts-id
   "Retrieve a billing alert
@@ -61,8 +61,8 @@
 
   Example Usage:
     (create-credit-grants {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/billing/credit_grants"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/billing/credit_grants" :body body}))
 
 (defn list-all-meters-id-event-summaries
   "List billing meter event summaries
@@ -96,8 +96,8 @@
 
   Example Usage:
     (create-meter-event-adjustments {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/billing/meter_event_adjustments"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/billing/meter_event_adjustments" :body body}))
 
 (defn post-alerts-id-deactivate
   "Deactivate a billing alert
@@ -110,8 +110,8 @@
 
   Example Usage:
     (post-alerts-id-deactivate {:alert-id example-alert-id})"
-  [{:keys [alert-id]}]
-  (stripe-request :post {:endpoint "/v1/billing/alerts/{alert-id}/deactivate" :path-params {:alert-id alert-id}}))
+  [{:keys [alert-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/alerts/{alert-id}/deactivate" :path-params {:alert-id alert-id} :body body}))
 
 (defn post-credit-grants-id-expire
   "Expire a credit grant
@@ -124,8 +124,8 @@
 
   Example Usage:
     (post-credit-grants-id-expire {:credit-grant-id example-credit-grant-id})"
-  [{:keys [credit-grant-id]}]
-  (stripe-request :post {:endpoint "/v1/billing/credit_grants/{credit-grant-id}/expire" :path-params {:credit-grant-id credit-grant-id}}))
+  [{:keys [credit-grant-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/credit_grants/{credit-grant-id}/expire" :path-params {:credit-grant-id credit-grant-id} :body body}))
 
 (defn post-meters-id-deactivate
   "Deactivate a billing meter
@@ -138,8 +138,8 @@
 
   Example Usage:
     (post-meters-id-deactivate {:meter-id example-meter-id})"
-  [{:keys [meter-id]}]
-  (stripe-request :post {:endpoint "/v1/billing/meters/{meter-id}/deactivate" :path-params {:meter-id meter-id}}))
+  [{:keys [meter-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/meters/{meter-id}/deactivate" :path-params {:meter-id meter-id} :body body}))
 
 (defn list-all-alerts
   "List billing alerts
@@ -168,8 +168,8 @@
 
   Example Usage:
     (create-alerts {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/billing/alerts"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/billing/alerts" :body body}))
 
 (defn post-alerts-id-activate
   "Activate a billing alert
@@ -182,8 +182,8 @@
 
   Example Usage:
     (post-alerts-id-activate {:alert-id example-alert-id})"
-  [{:keys [alert-id]}]
-  (stripe-request :post {:endpoint "/v1/billing/alerts/{alert-id}/activate" :path-params {:alert-id alert-id}}))
+  [{:keys [alert-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/alerts/{alert-id}/activate" :path-params {:alert-id alert-id} :body body}))
 
 (defn retrieve-credit-balance-transactions-id
   "Retrieve a credit balance transaction
@@ -228,8 +228,8 @@
 
   Example Usage:
     (create-meters {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/billing/meters"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/billing/meters" :body body}))
 
 (defn list-all-credit-balance-summary
   "Retrieve the credit balance summary for a customer
@@ -259,8 +259,8 @@
 
   Example Usage:
     (post-meters-id-reactivate {:meter-id example-meter-id})"
-  [{:keys [meter-id]}]
-  (stripe-request :post {:endpoint "/v1/billing/meters/{meter-id}/reactivate" :path-params {:meter-id meter-id}}))
+  [{:keys [meter-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/meters/{meter-id}/reactivate" :path-params {:meter-id meter-id} :body body}))
 
 (defn post-credit-grants-id-void
   "Void a credit grant
@@ -273,8 +273,8 @@
 
   Example Usage:
     (post-credit-grants-id-void {:credit-grant-id example-credit-grant-id})"
-  [{:keys [credit-grant-id]}]
-  (stripe-request :post {:endpoint "/v1/billing/credit_grants/{credit-grant-id}/void" :path-params {:credit-grant-id credit-grant-id}}))
+  [{:keys [credit-grant-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/credit_grants/{credit-grant-id}/void" :path-params {:credit-grant-id credit-grant-id} :body body}))
 
 (defn retrieve-credit-grants-id
   "Retrieve a credit grant
@@ -304,8 +304,8 @@
 
   Example Usage:
     (update-credit-grants-id {:credit-grant-id example-credit-grant-id})"
-  [{:keys [credit-grant-id]}]
-  (stripe-request :post {:endpoint "/v1/billing/credit_grants/{credit-grant-id}" :path-params {:credit-grant-id credit-grant-id}}))
+  [{:keys [credit-grant-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/credit_grants/{credit-grant-id}" :path-params {:credit-grant-id credit-grant-id} :body body}))
 
 (defn list-all-credit-balance-transactions
   "List credit balance transactions
@@ -355,8 +355,8 @@
 
   Example Usage:
     (update-meters-id {:meter-id example-meter-id})"
-  [{:keys [meter-id]}]
-  (stripe-request :post {:endpoint "/v1/billing/meters/{meter-id}" :path-params {:meter-id meter-id}}))
+  [{:keys [meter-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/meters/{meter-id}" :path-params {:meter-id meter-id} :body body}))
 
 (defn create-meter-events
   "Create a billing meter event
@@ -366,5 +366,5 @@
 
   Example Usage:
     (create-meter-events {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/billing/meter_events"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/billing/meter_events" :body body}))

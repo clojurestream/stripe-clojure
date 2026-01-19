@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-refund-cancel {:refund-id example-refund-id})"
-  [{:keys [refund-id]}]
-  (stripe-request :post {:endpoint "/v1/refunds/{refund-id}/cancel" :path-params {:refund-id refund-id}}))
+  [{:keys [refund-id body]}]
+  (stripe-request :post {:endpoint "/v1/refunds/{refund-id}/cancel" :path-params {:refund-id refund-id} :body body}))
 
 (defn retrieve-refund
   "Retrieve a refund
@@ -45,8 +45,8 @@
 
   Example Usage:
     (update-refund {:refund-id example-refund-id})"
-  [{:keys [refund-id]}]
-  (stripe-request :post {:endpoint "/v1/refunds/{refund-id}" :path-params {:refund-id refund-id}}))
+  [{:keys [refund-id body]}]
+  (stripe-request :post {:endpoint "/v1/refunds/{refund-id}" :path-params {:refund-id refund-id} :body body}))
 
 (defn list-all
   "List all refunds
@@ -76,5 +76,5 @@
 
   Example Usage:
     (create {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/refunds"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/refunds" :body body}))

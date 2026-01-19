@@ -31,8 +31,8 @@
 
   Example Usage:
     (update-shipping-rates-shipping-rate-token {:shipping-rate-id example-shipping-rate-id})"
-  [{:keys [shipping-rate-id]}]
-  (stripe-request :post {:endpoint "/v1/shipping_rates/{shipping-rate-id}" :path-params {:shipping-rate-id shipping-rate-id}}))
+  [{:keys [shipping-rate-id body]}]
+  (stripe-request :post {:endpoint "/v1/shipping_rates/{shipping-rate-id}" :path-params {:shipping-rate-id shipping-rate-id} :body body}))
 
 (defn list-all-shipping-rates
   "List all shipping rates
@@ -62,5 +62,5 @@
 
   Example Usage:
     (create-shipping-rates {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/shipping_rates"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/shipping_rates" :body body}))

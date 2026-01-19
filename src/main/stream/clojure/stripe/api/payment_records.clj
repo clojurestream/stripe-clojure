@@ -11,8 +11,8 @@
 
   Example Usage:
     (post-payment-records-report-payment {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/payment_records/report_payment"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/payment_records/report_payment" :body body}))
 
 (defn post-payment-records-id-report-payment-attempt-canceled
   "Report payment attempt canceled
@@ -25,8 +25,8 @@
 
   Example Usage:
     (post-payment-records-id-report-payment-attempt-canceled {:payment-record-id example-payment-record-id})"
-  [{:keys [payment-record-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt_canceled" :path-params {:payment-record-id payment-record-id}}))
+  [{:keys [payment-record-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt_canceled" :path-params {:payment-record-id payment-record-id} :body body}))
 
 (defn post-payment-records-id-report-payment-attempt
   "Report a payment attempt
@@ -39,8 +39,8 @@
 
   Example Usage:
     (post-payment-records-id-report-payment-attempt {:payment-record-id example-payment-record-id})"
-  [{:keys [payment-record-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt" :path-params {:payment-record-id payment-record-id}}))
+  [{:keys [payment-record-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt" :path-params {:payment-record-id payment-record-id} :body body}))
 
 (defn retrieve-payment-records-id
   "Retrieve a Payment Record
@@ -70,8 +70,8 @@
 
   Example Usage:
     (post-payment-records-id-report-payment-attempt-informational {:payment-record-id example-payment-record-id})"
-  [{:keys [payment-record-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt_informational" :path-params {:payment-record-id payment-record-id}}))
+  [{:keys [payment-record-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt_informational" :path-params {:payment-record-id payment-record-id} :body body}))
 
 (defn post-payment-records-id-report-refund
   "Report a refund
@@ -84,8 +84,8 @@
 
   Example Usage:
     (post-payment-records-id-report-refund {:payment-record-id example-payment-record-id})"
-  [{:keys [payment-record-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_refund" :path-params {:payment-record-id payment-record-id}}))
+  [{:keys [payment-record-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_refund" :path-params {:payment-record-id payment-record-id} :body body}))
 
 (defn post-payment-records-id-report-payment-attempt-failed
   "Report payment attempt failed
@@ -98,8 +98,8 @@
 
   Example Usage:
     (post-payment-records-id-report-payment-attempt-failed {:payment-record-id example-payment-record-id})"
-  [{:keys [payment-record-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt_failed" :path-params {:payment-record-id payment-record-id}}))
+  [{:keys [payment-record-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt_failed" :path-params {:payment-record-id payment-record-id} :body body}))
 
 (defn post-payment-records-id-report-payment-attempt-guaranteed
   "Report payment attempt guaranteed
@@ -112,5 +112,5 @@
 
   Example Usage:
     (post-payment-records-id-report-payment-attempt-guaranteed {:payment-record-id example-payment-record-id})"
-  [{:keys [payment-record-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt_guaranteed" :path-params {:payment-record-id payment-record-id}}))
+  [{:keys [payment-record-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_records/{payment-record-id}/report_payment_attempt_guaranteed" :path-params {:payment-record-id payment-record-id} :body body}))

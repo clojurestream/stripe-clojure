@@ -14,8 +14,8 @@
 
   Example Usage:
     (post-payment-methods-payment-method-detach {:payment-method-id example-payment-method-id})"
-  [{:keys [payment-method-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_methods/{payment-method-id}/detach" :path-params {:payment-method-id payment-method-id}}))
+  [{:keys [payment-method-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_methods/{payment-method-id}/detach" :path-params {:payment-method-id payment-method-id} :body body}))
 
 (defn list-all-payment-methods
   "List PaymentMethods
@@ -46,8 +46,8 @@
 
   Example Usage:
     (post-payment-methods {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/payment_methods"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/payment_methods" :body body}))
 
 (defn post-payment-methods-payment-method-attach
   "Attach a PaymentMethod to a Customer
@@ -60,8 +60,8 @@
 
   Example Usage:
     (post-payment-methods-payment-method-attach {:payment-method-id example-payment-method-id})"
-  [{:keys [payment-method-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_methods/{payment-method-id}/attach" :path-params {:payment-method-id payment-method-id}}))
+  [{:keys [payment-method-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_methods/{payment-method-id}/attach" :path-params {:payment-method-id payment-method-id} :body body}))
 
 (defn retrieve-payment-methods-payment-method
   "Retrieve a PaymentMethod
@@ -91,5 +91,5 @@
 
   Example Usage:
     (update-payment-methods-payment-method {:payment-method-id example-payment-method-id})"
-  [{:keys [payment-method-id]}]
-  (stripe-request :post {:endpoint "/v1/payment_methods/{payment-method-id}" :path-params {:payment-method-id payment-method-id}}))
+  [{:keys [payment-method-id body]}]
+  (stripe-request :post {:endpoint "/v1/payment_methods/{payment-method-id}" :path-params {:payment-method-id payment-method-id} :body body}))

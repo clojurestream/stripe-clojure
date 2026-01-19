@@ -32,8 +32,8 @@
 
   Example Usage:
     (post {})"
-  [{:keys []}]
-  (stripe-request :post {:endpoint "/v1/charges"}))
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/charges" :body body}))
 
 (defn list-all-charge-refunds
   "List all refunds
@@ -66,8 +66,8 @@
 
   Example Usage:
     (create-charge-refunds {:charge-id example-charge-id})"
-  [{:keys [charge-id]}]
-  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/refunds" :path-params {:charge-id charge-id}}))
+  [{:keys [charge-id body]}]
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/refunds" :path-params {:charge-id charge-id} :body body}))
 
 (defn post-charge-dispute-close
   "No description available.
@@ -80,8 +80,8 @@
 
   Example Usage:
     (post-charge-dispute-close {:charge-id example-charge-id})"
-  [{:keys [charge-id]}]
-  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/dispute/close" :path-params {:charge-id charge-id}}))
+  [{:keys [charge-id body]}]
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/dispute/close" :path-params {:charge-id charge-id} :body body}))
 
 (defn post-charge-capture
   "Capture a payment
@@ -94,8 +94,8 @@
 
   Example Usage:
     (post-charge-capture {:charge-id example-charge-id})"
-  [{:keys [charge-id]}]
-  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/capture" :path-params {:charge-id charge-id}}))
+  [{:keys [charge-id body]}]
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/capture" :path-params {:charge-id charge-id} :body body}))
 
 (defn list-all-search
   "Search charges
@@ -142,8 +142,8 @@
 
   Example Usage:
     (post-charge-dispute {:charge-id example-charge-id})"
-  [{:keys [charge-id]}]
-  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/dispute" :path-params {:charge-id charge-id}}))
+  [{:keys [charge-id body]}]
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/dispute" :path-params {:charge-id charge-id} :body body}))
 
 (defn retrieve-charge
   "Retrieve a charge
@@ -173,8 +173,8 @@
 
   Example Usage:
     (update-charge {:charge-id example-charge-id})"
-  [{:keys [charge-id]}]
-  (stripe-request :post {:endpoint "/v1/charges/{charge-id}" :path-params {:charge-id charge-id}}))
+  [{:keys [charge-id body]}]
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}" :path-params {:charge-id charge-id} :body body}))
 
 (defn create-charge-refund
   "Create a refund
@@ -187,8 +187,8 @@
 
   Example Usage:
     (create-charge-refund {:charge-id example-charge-id})"
-  [{:keys [charge-id]}]
-  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/refund" :path-params {:charge-id charge-id}}))
+  [{:keys [charge-id body]}]
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/refund" :path-params {:charge-id charge-id} :body body}))
 
 (defn retrieve-charge-refunds-refund
   "No description available.
@@ -220,5 +220,5 @@
 
   Example Usage:
     (post-charge-refunds-refund {:charge-id example-charge-id :refund-id example-refund-id})"
-  [{:keys [charge-id refund-id]}]
-  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/refunds/{refund-id}" :path-params {:charge-id charge-id :refund-id refund-id}}))
+  [{:keys [charge-id refund-id body]}]
+  (stripe-request :post {:endpoint "/v1/charges/{charge-id}/refunds/{refund-id}" :path-params {:charge-id charge-id :refund-id refund-id} :body body}))
