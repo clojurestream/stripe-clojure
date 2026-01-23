@@ -93,7 +93,7 @@
           (is (= "month" (get-in price-result [:body :recurring :interval]))))
 
         ;; Archive product (cleanup)
-        (let [archive-result (products/update-id {:id product-id
+        (let [archive-result (products/update-id {:product-id product-id
                                                   :body {:active false}})]
           (is (not (error/anomaly? archive-result))
               (str "Product archive failed: " archive-result)))))))
