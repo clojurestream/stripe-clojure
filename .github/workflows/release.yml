@@ -76,5 +76,7 @@ jobs:
         with:
           body: ${{ steps.changelog.outputs.content }}
           files: target/*.jar
+          # Automatically marks v1.0.0-beta.1 as a pre-release
+          prerelease: ${{ contains(github.ref, 'beta') || contains(github.ref, 'alpha')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
