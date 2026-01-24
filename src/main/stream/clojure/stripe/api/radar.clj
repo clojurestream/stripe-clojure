@@ -99,6 +99,17 @@
   [{:keys [value-list-id body]}]
   (stripe-request :post {:endpoint "/v1/radar/value_lists/{value-list-id}" :path-params {:value-list-id value-list-id} :body body}))
 
+(defn create-payment-evaluations
+  "Create a Payment Evaluation
+
+  HTTP Method: POST
+  Endpoint: /v1/radar/payment_evaluations
+
+  Example Usage:
+    (create-payment-evaluations {})"
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/radar/payment_evaluations" :body body}))
+
 (defn list-all-value-lists
   "List all value lists
 
