@@ -4,8 +4,8 @@ The Stripe Clojure (JVM) library provides convenient access to the Stripe API fr
 
 This library is automatically generated using Stripe's OpenAPI specification, ensuring up-to-date compatibility with the latest Stripe API features.
 
-> [!CAUTION]
-> Alpha (α) : This library is in an early-stage development phase. Names, structures, and functionalities may change as the project evolves. Expect breaking changes before a stable release.
+> [!WARNING]
+> Beta (β): This library is in beta development phase. Feature-complete but may contain bugs; users can provide feedback.
 
 ## Rationale 
 
@@ -30,7 +30,7 @@ This SDK is an auto-generated Clojure library for interacting with the Stripe AP
 Add the dependency to your `deps.edn` (or your preferred build tool) once the artifact is published to Clojars. For example:
 
 ```clojure
-{:deps {io.github.clojurestream/stripe-clojure {:git/tag "TAG" :git/sha "SHA"}}}
+{:deps {io.github.clojurestream/stripe-clojure {:git/sha "SHA"}}}
 ```
 
 ### Configuring Your API Key
