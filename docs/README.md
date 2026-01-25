@@ -30,8 +30,17 @@ This SDK is an auto-generated Clojure library for interacting with the Stripe AP
 Add the dependency to your `deps.edn` (or your preferred build tool) once the artifact is published to Clojars. For example:
 
 ```clojure
-{:deps {io.github.clojurestream/stripe-clojure {:git/sha "SHA"}}}
+io.github.clojurestream/stripe-clojure {:git/sha "37cbfa66da3144ca306b01aea87f63f8c3cb7b6c"}}
 ```
+
+```clojure
+stream.clojure/stripe-clojure {:mvn/version "1.0.0-beta.1"}
+```
+
+```clojure
+[stream.clojure/stripe-clojure "1.0.0-beta.1"]
+```
+
 
 ### Configuring Your API Key
 
