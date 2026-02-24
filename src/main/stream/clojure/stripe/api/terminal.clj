@@ -237,6 +237,17 @@
   [{:keys [location-id body]}]
   (stripe-request :post {:endpoint "/v1/terminal/locations/{location-id}" :path-params {:location-id location-id} :body body}))
 
+(defn create-refunds
+  "Create a refund using a Terminal-supported device.
+
+  HTTP Method: POST
+  Endpoint: /v1/terminal/refunds
+
+  Example Usage:
+    (create-refunds {})"
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/terminal/refunds" :body body}))
+
 (defn post-readers-reader-process-setup-intent
   "Hand-off a SetupIntent to a Reader
 
