@@ -35,7 +35,7 @@
   (stripe-request :post {:endpoint "/v1/tax/registrations/{registration-id}" :path-params {:registration-id registration-id} :body body}))
 
 (defn create-transactions-create-reversal
-  "Create a reversal transaction
+  "Create a reversal Transaction
 
   HTTP Method: POST
   Endpoint: /v1/tax/transactions/create_reversal
@@ -46,7 +46,7 @@
   (stripe-request :post {:endpoint "/v1/tax/transactions/create_reversal" :body body}))
 
 (defn retrieve-transactions-transaction
-  "Retrieve a transaction
+  "Retrieve a Transaction
 
   HTTP Method: GET
   Endpoint: /v1/tax/transactions/{transaction-id}
@@ -63,7 +63,7 @@
   (stripe-request :get {:endpoint "/v1/tax/transactions/{transaction-id}" :path-params {:transaction-id transaction-id} :query-params query-params}))
 
 (defn create-transactions-create-from-calculation
-  "Create a transaction from a calculation
+  "Create a Transaction from a Calculation
 
   HTTP Method: POST
   Endpoint: /v1/tax/transactions/create_from_calculation
@@ -74,7 +74,7 @@
   (stripe-request :post {:endpoint "/v1/tax/transactions/create_from_calculation" :body body}))
 
 (defn list-all-calculations-calculation-line-items
-  "Retrieve a calculation's line items
+  "Retrieve a Calculation's line items
 
   HTTP Method: GET
   Endpoint: /v1/tax/calculations/{calculation-id}/line_items
@@ -148,7 +148,7 @@
   (stripe-request :post {:endpoint "/v1/tax/registrations" :body body}))
 
 (defn create-calculations
-  "Create a Tax Calculation
+  "Create a Calculation
 
   HTTP Method: POST
   Endpoint: /v1/tax/calculations
@@ -159,7 +159,7 @@
   (stripe-request :post {:endpoint "/v1/tax/calculations" :body body}))
 
 (defn list-all-transactions-transaction-line-items
-  "Retrieve a transaction's line items
+  "Retrieve a Transaction's line items
 
   HTTP Method: GET
   Endpoint: /v1/tax/transactions/{transaction-id}/line_items
@@ -179,7 +179,7 @@
   (stripe-request :get {:endpoint "/v1/tax/transactions/{transaction-id}/line_items" :path-params {:transaction-id transaction-id} :query-params query-params}))
 
 (defn retrieve-calculations-calculation
-  "Retrieve a Tax Calculation
+  "Retrieve a Calculation
 
   HTTP Method: GET
   Endpoint: /v1/tax/calculations/{calculation-id}
