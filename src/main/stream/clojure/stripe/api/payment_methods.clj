@@ -38,14 +38,14 @@
   [{:keys [query-params]}]
   (stripe-request :get {:endpoint "/v1/payment_methods" :query-params query-params}))
 
-(defn post-payment-methods
-  "Shares a PaymentMethod
+(defn create-payment-methods
+  "Create a PaymentMethod
 
   HTTP Method: POST
   Endpoint: /v1/payment_methods
 
   Example Usage:
-    (post-payment-methods {})"
+    (create-payment-methods {})"
   [{:keys [body]}]
   (stripe-request :post {:endpoint "/v1/payment_methods" :body body}))
 
