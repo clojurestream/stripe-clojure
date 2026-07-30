@@ -14,6 +14,25 @@
   [{:keys [body]}]
   (stripe-request :post {:endpoint "/v1/payment_records/report_payment" :body body}))
 
+(defn list-all-payment-records
+  "List Payment Records
+
+  HTTP Method: GET
+  Endpoint: /v1/payment_records
+
+  Query Parameters:
+    - created-after (Integer): Only return Payment Records that were created after this unix timestamp.
+    - created-before (Integer): Only return Payment Records that were created before this unix timestamp.
+    - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
+    - expand (Array): Specifies which fields in the response should be expanded.
+    - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
+    - starting-after (String): A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+
+  Example Usage:
+    (list-all-payment-records {:query-params {:limit 10}})"
+  [{:keys [query-params]}]
+  (stripe-request :get {:endpoint "/v1/payment_records" :query-params query-params}))
+
 (defn post-payment-records-id-report-payment-attempt-canceled
   "Report payment attempt canceled
 

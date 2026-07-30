@@ -21,14 +21,14 @@
   [{:keys [query-params]}]
   (stripe-request :get {:endpoint "/v1/accounts" :query-params query-params}))
 
-(defn post
-  "No description available.
+(defn create
+  "Create an account
 
   HTTP Method: POST
   Endpoint: /v1/accounts
 
   Example Usage:
-    (post {})"
+    (create {})"
   [{:keys [body]}]
   (stripe-request :post {:endpoint "/v1/accounts" :body body}))
 
@@ -127,8 +127,8 @@
   [{:keys [account-id bank-account-id]}]
   (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id}}))
 
-(defn post-account-bank-id
-  "No description available.
+(defn update-account-bank-id
+  "Update a bank account
 
   HTTP Method: POST
   Endpoint: /v1/accounts/{account-id}/bank_accounts/{bank-account-id}
@@ -138,7 +138,7 @@
     - bank-account-id (String): The bank-account-id parameter. (required)
 
   Example Usage:
-    (post-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id})"
+    (update-account-bank-id {:account-id example-account-id :bank-account-id example-bank-account-id})"
   [{:keys [account-id bank-account-id body]}]
   (stripe-request :post {:endpoint "/v1/accounts/{account-id}/bank_accounts/{bank-account-id}" :path-params {:account-id account-id :bank-account-id bank-account-id} :body body}))
 
@@ -224,6 +224,20 @@
     (create-account-people {:account-id example-account-id})"
   [{:keys [account-id body]}]
   (stripe-request :post {:endpoint "/v1/accounts/{account-id}/people" :path-params {:account-id account-id} :body body}))
+
+(defn post-account-unreject
+  "Unreject an account
+
+  HTTP Method: POST
+  Endpoint: /v1/accounts/{account-id}/unreject
+
+  Path Parameters:
+    - account-id (String): The account-id parameter. (required)
+
+  Example Usage:
+    (post-account-unreject {:account-id example-account-id})"
+  [{:keys [account-id body]}]
+  (stripe-request :post {:endpoint "/v1/accounts/{account-id}/unreject" :path-params {:account-id account-id} :body body}))
 
 (defn retrieve-account
   "Retrieve account
@@ -437,8 +451,8 @@
   [{:keys [account-id external-account-id]}]
   (stripe-request :delete {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id}}))
 
-(defn post-account-external-id
-  "No description available.
+(defn update-account-external-id
+  "Update a bank account
 
   HTTP Method: POST
   Endpoint: /v1/accounts/{account-id}/external_accounts/{external-account-id}
@@ -448,7 +462,7 @@
     - external-account-id (String): The external-account-id parameter. (required)
 
   Example Usage:
-    (post-account-external-id {:account-id example-account-id :external-account-id example-external-account-id})"
+    (update-account-external-id {:account-id example-account-id :external-account-id example-external-account-id})"
   [{:keys [account-id external-account-id body]}]
   (stripe-request :post {:endpoint "/v1/accounts/{account-id}/external_accounts/{external-account-id}" :path-params {:account-id account-id :external-account-id external-account-id} :body body}))
 
