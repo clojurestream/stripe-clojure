@@ -248,6 +248,35 @@
   [{:keys [query-params]}]
   (stripe-request :get {:endpoint "/v1/billing/credit_balance_summary" :query-params query-params}))
 
+(defn list-all-feedback-options
+  "Feedback Options List API Method
+
+  HTTP Method: GET
+  Endpoint: /v1/billing/feedback_options
+
+  Query Parameters:
+    - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
+    - expand (Array): Specifies which fields in the response should be expanded.
+    - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
+    - starting-after (String): A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - status (String): Filter results to only include feedback options with the given status.
+
+  Example Usage:
+    (list-all-feedback-options {:query-params {:limit 10}})"
+  [{:keys [query-params]}]
+  (stripe-request :get {:endpoint "/v1/billing/feedback_options" :query-params query-params}))
+
+(defn create-feedback-options
+  "Create a feedback option
+
+  HTTP Method: POST
+  Endpoint: /v1/billing/feedback_options
+
+  Example Usage:
+    (create-feedback-options {})"
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/billing/feedback_options" :body body}))
+
 (defn post-meters-id-reactivate
   "Reactivate a billing meter
 
@@ -262,6 +291,37 @@
   [{:keys [meter-id body]}]
   (stripe-request :post {:endpoint "/v1/billing/meters/{meter-id}/reactivate" :path-params {:meter-id meter-id} :body body}))
 
+(defn retrieve-feedback-options-id
+  "Retrieve a feedback option
+
+  HTTP Method: GET
+  Endpoint: /v1/billing/feedback_options/{feedback-option-id}
+
+  Path Parameters:
+    - feedback-option-id (String): The feedback-option-id parameter. (required)
+
+  Query Parameters:
+    - expand (Array): Specifies which fields in the response should be expanded.
+
+  Example Usage:
+    (retrieve-feedback-options-id {:feedback-option-id example-feedback-option-id :query-params {:limit 10}})"
+  [{:keys [feedback-option-id query-params]}]
+  (stripe-request :get {:endpoint "/v1/billing/feedback_options/{feedback-option-id}" :path-params {:feedback-option-id feedback-option-id} :query-params query-params}))
+
+(defn update-feedback-options-id
+  "Update a feedback option
+
+  HTTP Method: POST
+  Endpoint: /v1/billing/feedback_options/{feedback-option-id}
+
+  Path Parameters:
+    - feedback-option-id (String): The feedback-option-id parameter. (required)
+
+  Example Usage:
+    (update-feedback-options-id {:feedback-option-id example-feedback-option-id})"
+  [{:keys [feedback-option-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/feedback_options/{feedback-option-id}" :path-params {:feedback-option-id feedback-option-id} :body body}))
+
 (defn post-credit-grants-id-void
   "Void a credit grant
 
@@ -275,6 +335,20 @@
     (post-credit-grants-id-void {:credit-grant-id example-credit-grant-id})"
   [{:keys [credit-grant-id body]}]
   (stripe-request :post {:endpoint "/v1/billing/credit_grants/{credit-grant-id}/void" :path-params {:credit-grant-id credit-grant-id} :body body}))
+
+(defn post-feedback-options-id-deactivate
+  "Deactivate a feedback option
+
+  HTTP Method: POST
+  Endpoint: /v1/billing/feedback_options/{feedback-option-id}/deactivate
+
+  Path Parameters:
+    - feedback-option-id (String): The feedback-option-id parameter. (required)
+
+  Example Usage:
+    (post-feedback-options-id-deactivate {:feedback-option-id example-feedback-option-id})"
+  [{:keys [feedback-option-id body]}]
+  (stripe-request :post {:endpoint "/v1/billing/feedback_options/{feedback-option-id}/deactivate" :path-params {:feedback-option-id feedback-option-id} :body body}))
 
 (defn retrieve-credit-grants-id
   "Retrieve a credit grant

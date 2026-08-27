@@ -24,14 +24,14 @@
   [{:keys [query-params]}]
   (stripe-request :get {:endpoint "/v1/charges" :query-params query-params}))
 
-(defn post
-  "No description available.
+(defn create
+  "Create a charge
 
   HTTP Method: POST
   Endpoint: /v1/charges
 
   Example Usage:
-    (post {})"
+    (create {})"
   [{:keys [body]}]
   (stripe-request :post {:endpoint "/v1/charges" :body body}))
 
@@ -56,7 +56,7 @@
   (stripe-request :get {:endpoint "/v1/charges/{charge-id}/refunds" :path-params {:charge-id charge-id} :query-params query-params}))
 
 (defn create-charge-refunds
-  "Create customer balance refund
+  "Create a refund
 
   HTTP Method: POST
   Endpoint: /v1/charges/{charge-id}/refunds
@@ -84,7 +84,7 @@
   (stripe-request :post {:endpoint "/v1/charges/{charge-id}/dispute/close" :path-params {:charge-id charge-id} :body body}))
 
 (defn post-charge-capture
-  "Capture a payment
+  "Capture a charge
 
   HTTP Method: POST
   Endpoint: /v1/charges/{charge-id}/capture

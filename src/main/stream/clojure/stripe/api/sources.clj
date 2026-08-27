@@ -105,13 +105,13 @@
   [{:keys [source-id query-params]}]
   (stripe-request :get {:endpoint "/v1/sources/{source-id}/source_transactions" :path-params {:source-id source-id} :query-params query-params}))
 
-(defn post
-  "Shares a source
+(defn create
+  "Create a source
 
   HTTP Method: POST
   Endpoint: /v1/sources
 
   Example Usage:
-    (post {})"
+    (create {})"
   [{:keys [body]}]
   (stripe-request :post {:endpoint "/v1/sources" :body body}))
