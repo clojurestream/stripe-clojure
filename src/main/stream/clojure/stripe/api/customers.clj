@@ -363,8 +363,8 @@
   [{:keys [customer-id bank-account-id]}]
   (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id}}))
 
-(defn post-customer-bank-accounts-id
-  "No description available.
+(defn update-customer-bank-accounts-id
+  "Update a card
 
   HTTP Method: POST
   Endpoint: /v1/customers/{customer-id}/bank_accounts/{bank-account-id}
@@ -374,7 +374,7 @@
     - bank-account-id (String): The bank-account-id parameter. (required)
 
   Example Usage:
-    (post-customer-bank-accounts-id {:customer-id example-customer-id :bank-account-id example-bank-account-id})"
+    (update-customer-bank-accounts-id {:customer-id example-customer-id :bank-account-id example-bank-account-id})"
   [{:keys [customer-id bank-account-id body]}]
   (stripe-request :post {:endpoint "/v1/customers/{customer-id}/bank_accounts/{bank-account-id}" :path-params {:customer-id customer-id :bank-account-id bank-account-id} :body body}))
 
@@ -474,8 +474,8 @@
   [{:keys [customer-id source-id]}]
   (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id}}))
 
-(defn post-customer-sources-id
-  "No description available.
+(defn update-customer-sources-id
+  "Update a card
 
   HTTP Method: POST
   Endpoint: /v1/customers/{customer-id}/sources/{source-id}
@@ -485,7 +485,7 @@
     - source-id (String): The source-id parameter. (required)
 
   Example Usage:
-    (post-customer-sources-id {:customer-id example-customer-id :source-id example-source-id})"
+    (update-customer-sources-id {:customer-id example-customer-id :source-id example-source-id})"
   [{:keys [customer-id source-id body]}]
   (stripe-request :post {:endpoint "/v1/customers/{customer-id}/sources/{source-id}" :path-params {:customer-id customer-id :source-id source-id} :body body}))
 
@@ -664,8 +664,8 @@
   [{:keys [customer-id card-id]}]
   (stripe-request :delete {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id}}))
 
-(defn post-customer-cards-id
-  "No description available.
+(defn update-customer-cards-id
+  "Update a card
 
   HTTP Method: POST
   Endpoint: /v1/customers/{customer-id}/cards/{card-id}
@@ -675,7 +675,7 @@
     - card-id (String): The card-id parameter. (required)
 
   Example Usage:
-    (post-customer-cards-id {:customer-id example-customer-id :card-id example-card-id})"
+    (update-customer-cards-id {:customer-id example-customer-id :card-id example-card-id})"
   [{:keys [customer-id card-id body]}]
   (stripe-request :post {:endpoint "/v1/customers/{customer-id}/cards/{card-id}" :path-params {:customer-id customer-id :card-id card-id} :body body}))
 

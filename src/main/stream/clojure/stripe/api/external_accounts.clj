@@ -3,8 +3,8 @@
   (:require [stream.clojure.stripe.request :refer [stripe-request]]))
 
 
-(defn post-external-accounts-id
-  "No description available.
+(defn update-external-accounts-id
+  "Update a bank account
 
   HTTP Method: POST
   Endpoint: /v1/external_accounts/{external-account-id}
@@ -13,6 +13,6 @@
     - external-account-id (String): The external-account-id parameter. (required)
 
   Example Usage:
-    (post-external-accounts-id {:external-account-id example-external-account-id})"
+    (update-external-accounts-id {:external-account-id example-external-account-id})"
   [{:keys [external-account-id body]}]
   (stripe-request :post {:endpoint "/v1/external_accounts/{external-account-id}" :path-params {:external-account-id external-account-id} :body body}))
