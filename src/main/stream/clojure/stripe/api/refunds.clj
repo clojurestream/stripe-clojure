@@ -69,7 +69,7 @@
   (stripe-request :get {:endpoint "/v1/refunds" :query-params query-params}))
 
 (defn create
-  "Create customer balance refund
+  "Create a refund
 
   HTTP Method: POST
   Endpoint: /v1/refunds
