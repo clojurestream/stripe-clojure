@@ -62,6 +62,20 @@
   [{:keys [subscription-id body]}]
   (stripe-request :post {:endpoint "/v1/subscriptions/{subscription-id}/migrate" :path-params {:subscription-id subscription-id} :body body}))
 
+(defn post-subscription-pause
+  "Pause a subscription
+
+  HTTP Method: POST
+  Endpoint: /v1/subscriptions/{subscription-id}/pause
+
+  Path Parameters:
+    - subscription-id (String): The subscription-id parameter. (required)
+
+  Example Usage:
+    (post-subscription-pause {:subscription-id example-subscription-id})"
+  [{:keys [subscription-id body]}]
+  (stripe-request :post {:endpoint "/v1/subscriptions/{subscription-id}/pause" :path-params {:subscription-id subscription-id} :body body}))
+
 (defn delete-subscription-exposed-id-discount
   "Delete a subscription discount
 

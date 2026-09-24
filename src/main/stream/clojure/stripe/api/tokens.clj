@@ -21,7 +21,7 @@
   (stripe-request :get {:endpoint "/v1/tokens/{token-id}" :path-params {:token-id token-id} :query-params query-params}))
 
 (defn create
-  "Create a CVC update token
+  "Create a bank account token
 
   HTTP Method: POST
   Endpoint: /v1/tokens

@@ -35,7 +35,7 @@
   (stripe-request :post {:endpoint "/v1/tax/registrations/{registration-id}" :path-params {:registration-id registration-id} :body body}))
 
 (defn create-transactions-create-reversal
-  "Create a reversal transaction
+  "Create a reversal Transaction
 
   HTTP Method: POST
   Endpoint: /v1/tax/transactions/create_reversal
@@ -46,7 +46,7 @@
   (stripe-request :post {:endpoint "/v1/tax/transactions/create_reversal" :body body}))
 
 (defn retrieve-transactions-transaction
-  "Retrieve a transaction
+  "Retrieve a Transaction
 
   HTTP Method: GET
   Endpoint: /v1/tax/transactions/{transaction-id}
@@ -62,8 +62,37 @@
   [{:keys [transaction-id query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/transactions/{transaction-id}" :path-params {:transaction-id transaction-id} :query-params query-params}))
 
+(defn list-all-locations
+  "List tax locations
+
+  HTTP Method: GET
+  Endpoint: /v1/tax/locations
+
+  Query Parameters:
+    - ending-before (String): A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with `obj_bar`, your subsequent call can include `ending_before=obj_bar` in order to fetch the previous page of the list.
+    - expand (Array): Specifies which fields in the response should be expanded.
+    - limit (Integer): A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 10.
+    - starting-after (String): A cursor for use in pagination. `starting_after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with `obj_foo`, your subsequent call can include `starting_after=obj_foo` in order to fetch the next page of the list.
+    - type (String): Type of the tax location. Currently the only option is `performance`. (required)
+
+  Example Usage:
+    (list-all-locations {:query-params {:limit 10}})"
+  [{:keys [query-params]}]
+  (stripe-request :get {:endpoint "/v1/tax/locations" :query-params query-params}))
+
+(defn create-locations
+  "Create a tax location
+
+  HTTP Method: POST
+  Endpoint: /v1/tax/locations
+
+  Example Usage:
+    (create-locations {})"
+  [{:keys [body]}]
+  (stripe-request :post {:endpoint "/v1/tax/locations" :body body}))
+
 (defn create-transactions-create-from-calculation
-  "Create a transaction from a calculation
+  "Create a Transaction from a Calculation
 
   HTTP Method: POST
   Endpoint: /v1/tax/transactions/create_from_calculation
@@ -74,7 +103,7 @@
   (stripe-request :post {:endpoint "/v1/tax/transactions/create_from_calculation" :body body}))
 
 (defn list-all-calculations-calculation-line-items
-  "Retrieve a calculation's line items
+  "Retrieve a Calculation's line items
 
   HTTP Method: GET
   Endpoint: /v1/tax/calculations/{calculation-id}/line_items
@@ -148,7 +177,7 @@
   (stripe-request :post {:endpoint "/v1/tax/registrations" :body body}))
 
 (defn create-calculations
-  "Create a Tax Calculation
+  "Create a Calculation
 
   HTTP Method: POST
   Endpoint: /v1/tax/calculations
@@ -159,7 +188,7 @@
   (stripe-request :post {:endpoint "/v1/tax/calculations" :body body}))
 
 (defn list-all-transactions-transaction-line-items
-  "Retrieve a transaction's line items
+  "Retrieve a Transaction's line items
 
   HTTP Method: GET
   Endpoint: /v1/tax/transactions/{transaction-id}/line_items
@@ -179,7 +208,7 @@
   (stripe-request :get {:endpoint "/v1/tax/transactions/{transaction-id}/line_items" :path-params {:transaction-id transaction-id} :query-params query-params}))
 
 (defn retrieve-calculations-calculation
-  "Retrieve a Tax Calculation
+  "Retrieve a Calculation
 
   HTTP Method: GET
   Endpoint: /v1/tax/calculations/{calculation-id}
@@ -209,3 +238,20 @@
     (list-all-associations-find {:query-params {:limit 10}})"
   [{:keys [query-params]}]
   (stripe-request :get {:endpoint "/v1/tax/associations/find" :query-params query-params}))
+
+(defn retrieve-locations-location
+  "Retrieve a tax location
+
+  HTTP Method: GET
+  Endpoint: /v1/tax/locations/{location-id}
+
+  Path Parameters:
+    - location-id (String): The location-id parameter. (required)
+
+  Query Parameters:
+    - expand (Array): Specifies which fields in the response should be expanded.
+
+  Example Usage:
+    (retrieve-locations-location {:location-id example-location-id :query-params {:limit 10}})"
+  [{:keys [location-id query-params]}]
+  (stripe-request :get {:endpoint "/v1/tax/locations/{location-id}" :path-params {:location-id location-id} :query-params query-params}))
